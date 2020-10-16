@@ -1,33 +1,13 @@
-[DPlayer](https://github.com/DIYgod/DPlayer)：可爱的弹幕视频播放器
-[Kafka](https://dunwu.github.io/bigdata-tutorial/kafka/) 📚
-[yoshiko2/AV_Data_Capture](https://github.com/yoshiko2/AV_Data_Capture) | 日本电影元数据刮削器，配合 kodi
-[Pixel Art to CS](https://github.com/jvalen/pixel-art-react)：一个在线像素风绘图工具，比较有意思的是它使用 box-shadow 和 keyframes CSS 属性来实现，最终可以导出成 CSS 放到自己网站上
+[Java 9 中的 GC 调优基础](https://weekly.manong.io/bounce?nid=187&aid=11026&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvjlyla)
+[如何在大量的数据中判断一个数是否存在？](https://github.com/doocs/advanced-java/blob/master/docs/big-data/find-a-number-if-exists.md)
+[JpressProjects/jpress](https://github.com/JpressProjects/jpress) | JPress，一个类似 WordPress 的系统，使用 JFinal 和 Jboot 开发。jpress 官网的所有功能也是用 jpress 自身搭建的... | 2.0k | JavaScript | 11/30 |
+[PI-REC](https://github.com/youyuge34/PI-REC)：PI-REC 该项目通过与 AI 结合的方式，帮你快速将手绘草稿转为成品图，随便画几笔就能转成完整画像，简直堪称手残党的福音！
+| 118 | [yujiangshui/about-me](https://github.com/yujiangshui/about-me) | 个人网页简历的源代码 | 143 | CSS | 02/19 |
+[deep-photo-styletransfer](https://github.com/luanfujun/deep-photo-styletransfer)：一个基于深度学习的开源项目，利用了深度卷积网络来进行摄影风格转换，瞬间切换图片风格，实在是强。
+[EasyScheduler](https://github.com/analysys/EasyScheduler "EasyScheduler")\*\* ： Easy Scheduler 是一个分布式工作流任务调度系统，主要解决“复杂任务依赖但无法直接监控任务健康状态”的问题。Easy Scheduler 以 DAG 方式组装任务，可以实时监控任务的运行状态。同时，它支持重试，重新运行等操作... 。
+[idea 运行 maven 多模块工程遇到的坑](https://segmentfault.com/a/1190000021287865)
+[浙江移动数据中台的建设和应用实践](https://www.infoq.cn/article/aCYQ3sUe19qMjdvsYwDW?utm_source=rss&utm_medium=article)
 
-- [2019.05.31 第二十五期 - Java 自虐题精选](https://www.bilibili.com/video/av54202244)
-  [MSEC](https://github.com/Tencent/MSEC)：腾讯开源的毫秒服务引擎（Mass Service Engine in Cluster）。它是一个开源框架，适用于在廉价机器组成的集群上开发和运营分布式后台服务。毫秒服务引擎集 RPC、名字发现服务、负载均衡、业务监控、灰度发布、容量管理、日志管理、key-value 存储于一体
-  [**JAVA IO**](https://github.com/dunwu/javacore/tree/master/docs/io)
-  [KGQA-Based-On-medicine](https://github.com/YeYzheng/KGQA-Based-On-medicine) | 一个基于医药知识图谱的智能问答系统，支持疾病症状、疾病用药、药品查询等功能 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HxaTtmRx6)
-  [消息队列](https://github.com/dunwu/blog/blob/master/source/_posts/theory/mq-theory.md) - 关键词：`重复消费`、`消息丢失`、`消息顺序性`、`消息积压`
-  [LICEcap](http://www.cockos.com/licecap/)：GIF 录屏工具
-  [lihengming/spring-boot-api-project-seed](https://github.com/lihengming/spring-boot-api-project-seed) | :seedling::rocket:一个基于 Spring Boot & MyBatis 的种子项目，用于快速构建中小型 API、RESTful API 项目~ | 5.5k | Java | 04/22 |
-  [jsPDF](https://github.com/MrRio/jsPDF)：基于 HTML5 的强大 PDF 生成工具，可以直接在客户端生成 pdf 文件，包括 pdf 中的图像和一些图形绘制
-  [gxtrobot/bustag](https://github.com/gxtrobot/bustag) | a tag and recommend system for old bus driver 给老司机用的一个番号推荐系统 | 2.9k | JavaScript | 10/29 |
-  [MyCat 读写分离与分库分表](https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/MySQL_Mycat中间件.md)
-  [greys-anatomy](https://github.com/oldmanpushcart/greys-anatomy)：Java 诊断工具
-  [硬核干货！7600 字带你学会 Redis 性能优化点 - 51CTO.COM](https://news.51cto.com/art/202005/616093.htm)
-  [2019.12.27 第四十期 - 阿里开源工程 Velocity Spring Boot](https://www.bilibili.com/video/av80903598)
-  [WeFlow](https://github.com/weixin/WeFlow)：微信出品的一个高效、强大、跨平台的 Web 前端开发工作流工具
-  [TheKingOfDuck/fuzzDicts](https://github.com/TheKingOfDuck/fuzzDicts) | Web Pentesting Fuzz 字典
-  [Exrick/x-boot](https://github.com/Exrick/x-boot):基于 Spring Boot 2.x 的前后端分离开发平台 X-Boot 前端：Vue+iView Admin 后端：Spring Boot 2.x/Spring Security/JWT/Spring Data JPA+Mybatis-Plus/Redis/Elasticsearch/Activiti 分布式限流/同步锁/验证码/SnowFlake 雪花算法 ID 生成 动态权限管理 数据权限 工作流 代码生成 日志记录 定时任务 第三方社交账号、短信登录 单点登录
-  [Java 9 中的 GC 调优基础](https://weekly.manong.io/bounce?nid=187&aid=11026&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvjlyla)
-  [如何在大量的数据中判断一个数是否存在？](https://github.com/doocs/advanced-java/blob/master/docs/big-data/find-a-number-if-exists.md)
-  [JpressProjects/jpress](https://github.com/JpressProjects/jpress) | JPress，一个类似 WordPress 的系统，使用 JFinal 和 Jboot 开发。jpress 官网的所有功能也是用 jpress 自身搭建的... | 2.0k | JavaScript | 11/30 |
-  [PI-REC](https://github.com/youyuge34/PI-REC)：PI-REC 该项目通过与 AI 结合的方式，帮你快速将手绘草稿转为成品图，随便画几笔就能转成完整画像，简直堪称手残党的福音！
-  | 118 | [yujiangshui/about-me](https://github.com/yujiangshui/about-me) | 个人网页简历的源代码 | 143 | CSS | 02/19 |
-  [deep-photo-styletransfer](https://github.com/luanfujun/deep-photo-styletransfer)：一个基于深度学习的开源项目，利用了深度卷积网络来进行摄影风格转换，瞬间切换图片风格，实在是强。
-  [EasyScheduler](https://github.com/analysys/EasyScheduler "EasyScheduler")\*\* ： Easy Scheduler 是一个分布式工作流任务调度系统，主要解决“复杂任务依赖但无法直接监控任务健康状态”的问题。Easy Scheduler 以 DAG 方式组装任务，可以实时监控任务的运行状态。同时，它支持重试，重新运行等操作... 。
-  [idea 运行 maven 多模块工程遇到的坑](https://segmentfault.com/a/1190000021287865)
-  [浙江移动数据中台的建设和应用实践](https://www.infoq.cn/article/aCYQ3sUe19qMjdvsYwDW?utm_source=rss&utm_medium=article)
 - [**RPC**](https://github.com/dunwu/javatech/blob/master/docs/soa/) - [Dubbo](https://github.com/dunwu/javatech/blob/master/docs/soa/dubbo.md)
   [LogoDiy](https://github.com/sherlonWang/logodiy)：一 �� 简单的在线 Logo 制作工具
   [frontend-bootcamp](https://github.com/microsoft/frontend-bootcamp) | 微软这两天刚开源的前端练习资料 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HiCpnhwN0)
@@ -1439,4 +1419,16 @@
   [spring-boot-pay](https://gitee.com/52itstyle/spring-boot-pay)：支付服务：支付宝，微信，银联详细代码案例；支付 API 文档、持续更新中 https://blog.52itstyle.vip/
   [zhixuanziben/gouyan-movie-vue](https://github.com/zhixuanziben/gouyan-movie-vue) | 这是一个基于 vue 全家桶制作的在线电影影讯网站，利用豆瓣 api 的接口获取数据，模仿猫眼电影制作的 webapp，实现了当前热映电影，即将上映电影，电影详细信息，短评和长评论信息，影星个人信息，以及电影查询的功能 | 310 | Vue | 11/09 |
   [szad670401/end-to-end-for-chinese-plate-recognition](https://github.com/szad670401/end-to-end-for-chinese-plate-recognition) 中文车牌识别
-[ngxtop](https://github.com/lebinh/ngxtop)：解析 nginx 访问日志并格式化输出有用的信息，可以用来实时了解你的服务器正在发生的情况。安装命令 pip install ngxtop
+  [ngxtop](https://github.com/lebinh/ngxtop)：解析 nginx 访问日志并格式化输出有用的信息，可以用来实时了解你的服务器正在发生的情况。安装命令 pip install ngxtop
+  [DPlayer](https://github.com/DIYgod/DPlayer)：可爱的弹幕视频播放器
+  [yoshiko2/AV_Data_Capture](https://github.com/yoshiko2/AV_Data_Capture) | 日本电影元数据刮削器，配合 kodi
+  [Pixel Art to CS](https://github.com/jvalen/pixel-art-react)：一个在线像素风绘图工具，比较有意思的是它使用 box-shadow 和 keyframes CSS 属性来实现，最终可以导出成 CSS 放到自己网站上
+  [2019.05.31 第二十五期 - Java 自虐题精选](https://www.bilibili.com/video/av54202244)
+  [KGQA-Based-On-medicine](https://github.com/YeYzheng/KGQA-Based-On-medicine) | 一个基于医药知识图谱的智能问答系统，支持疾病症状、疾病用药、药品查询等功能 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HxaTtmRx6)
+  [jsPDF](https://github.com/MrRio/jsPDF)：基于 HTML5 的强大 PDF 生成工具，可以直接在客户端生成 pdf 文件，包括 pdf 中的图像和一些图形绘制
+  [gxtrobot/bustag](https://github.com/gxtrobot/bustag) | a tag and recommend system for old bus driver 给老司机用的一个番号推荐系统 | 2.9k | JavaScript | 10/29 |
+  [MyCat 读写分离与分库分表](https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/MySQL_Mycat中间件.md)
+  [greys-anatomy](https://github.com/oldmanpushcart/greys-anatomy)：Java 诊断工具
+  [2019.12.27 第四十期 - 阿里开源工程 Velocity Spring Boot](https://www.bilibili.com/video/av80903598)
+  [TheKingOfDuck/fuzzDicts](https://github.com/TheKingOfDuck/fuzzDicts) | Web Pentesting Fuzz 字典
+  [Exrick/x-boot](https://github.com/Exrick/x-boot):基于 Spring Boot 2.x 的前后端分离开发平台 X-Boot 前端：Vue+iView Admin 后端：Spring Boot 2.x/Spring Security/JWT/Spring Data JPA+Mybatis-Plus/Redis/Elasticsearch/Activiti 分布式限流/同步锁/验证码/SnowFlake 雪花算法 ID 生成 动态权限管理 数据权限 工作流 代码生成 日志记录 定时任务 第三方社交账号、短信登录 单点登录
