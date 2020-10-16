@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔壁王校长的栗子</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <child-1></child-1>
+    <child-2></child-2>
+</div>
+<script>
+    // 1.创建公共的 Vue 对象
+    var bridge = new Vue();
+    // 2.创建两个子组件
+    Vue.component('child-1',{
+        template:`
+            <div> 
+                <h4>msg: {{msg}}</h4>
+                <input type="button" value="1->2" @click="sendData" />
+            </div>
+        `,
+        data: function(){
+            return{
+                msg: ''
+            }
+        },
+        methods: {
+            sendData: function(){
+                bridge.$emit('OneToTwoEvent','Hello 2, I am 1')
+            }
+        },
+        mounted: function(){
+
+        var that = this;
+
+        bridge.$on('TwoToOneEvent', function(msg){
+            console.log('收到来自2的信息：'+msg);
+            that.msg = msg;
+        })
+        } 
+    });
+
+    Vue.component('child-2',{
+        template: `
+            <div>
+                <h4>msg: {{msg}}</h4>
+                <input type="button" value="2->1" @click="sendData" />
+            </div>
+        `,
+        data: function(){
+            return{
+                msg: ''
+            }
+        },
+        mounted: function(){
+
+            var that = this;
+
+            bridge.$on('OneToTwoEvent', function(msg){
+                console.log('收到来自1的信息：'+msg);
+                that.msg = msg;
+            })
+        },
+        methods: {
+            sendData: function(){
+                bridge.$emit('TwoToOneEvent','Hello 1, I am 2')
+            }
+        },
+    });
+
+    new Vue({el: '#app'})
+</script>
+</body>
+</html>
+
+

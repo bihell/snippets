@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔壁王校长的栗子</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="form-horizontal">
+            <!-- 如果一个组件的参数再 Vue 代码中使用小驼峰标识的，那么再 HTML 中，对应的参数需要是「小写」和「-」混编模式 -->
+            <label-text ref="username" label-name="用户名：" text-id="username"></label-text>
+            <label-text ref="comment" label-name="备注：" text-id="comment"></label-text>
+            <div class="form-group">
+                    <div class="col-sm-8 text-center">
+                        <input type="button" value="添加" class="btn btn-primary" @click="addUser">
+                        <input type="reset" value="取消" class="btn btn-danger" @click='cancelAdd'>
+                    </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- 数据表格 -->
+        <user-table :users-list="usersList"></user-table>
+    </div>
+</div>
+<script>
+    // 1.把 label input-text 独立出来成为组件
+    // 2.当添加或者取消时，使用 ref 获得组件内部的信息。
+    // 3.把 usertable 独立出来成为组件
+    Vue.component('label-text',{
+        template: `
+            <div class="form-group">
+                <label :for="textId" class="col-sm-2 control-label">{{labelName}}</label>
+                <div class="col-sm-8">
+                    <input :id="textId" type="text" class="form-control" v-model="inputText">
+                </div>
+            </div>
+        `,
+        data: function(){
+            return {
+                inputText: ''
+            };
+        },
+        props: [
+            'labelName',
+            'textId'
+        ]
+    })
+
+    Vue.component('user-table',{
+        template: `
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">用户名</th>
+                <th class="text-center">备注</th>
+                <th class="text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-show="usersList.length===0">
+                <td colspan="4" class="text-center text-danger">
+                    暂时没有数据
+                </td>
+            </tr>
+            <tr class="text-center" v-for="(item,index) in usersList">
+                <td>{{index+1}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.comment}}</td>
+                <td>
+                    <input type="button" class="btn btn-warning btn-sm" value="删除" @click="deleteUser(index)">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        `,
+        data: function(){
+            return {
+                inputText: ''
+            };
+        },
+        props: [
+            'usersList'
+        ],
+        methods: {
+            deleteUser(index){
+                var t = confirm('Yes?');
+                if(t){
+                    this.usersList.splice(index,1);
+                }
+            }
+        }
+    })
+
+
+    let m = {
+        // username: '',
+        // comment: '',
+        usersList: []
+        // 为了对步骤4进行验证，缺省有数据。
+        // usersList: [
+        //     {
+        //         username: '隔壁王校长',
+        //         comment: '我要学 Vue.js'
+        //     },
+        //     {
+        //         username: '隔壁李校长',
+        //         comment: '我要学 React'
+        //     }
+        // ]
+
+    };
+
+    let vm = new Vue({
+        el: ".container",
+        data: m,
+        methods: {
+            addUser: function () {
+                if(this.$refs.username.inputText != ''){
+                    this.usersList.push({
+                        username: this.$refs.username.inputText,
+                        comment: this.$refs.comment.inputText
+                    });
+
+                    this.$refs.username.inputText='';
+                    this.$refs.comment.inputText='';
+                }
+            },
+            cancelAdd: function(){
+                this.$refs.username.inputText='';
+                this.$refs.comment.inputText='';
+            }
+        }
+    });
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔壁王校长的栗子</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+<script>
+    // 父组件
+    Vue.component('parent',{
+        template:`
+            <div>
+                <ul v-show="isSwitchOn">
+                    <li v-for="item in array">{{item}}</li>
+                </ul>
+                <child ref="mySon"></child>
+            </div>
+        `,
+        data: function(){
+            return {
+                isSwitchOn: true,
+                array: [5,10,25,50]
+            };
+        }
+    }); 
+    
+    // 子组件
+    Vue.component('child',{
+        template:`
+            <div>
+                <input type="button" value="显示/不显示" @click="showOrNot"/>
+                <input type="button" value=" 添加" @click="addItem"/>
+            </div>
+        `,
+        methods:{
+            showOrNot: function(){
+                this.$parent.isSwitchOn = !this.$parent.isSwitchOn 
+            },
+            addItem: function(){
+                this.$parent.array.push(25);
+            }
+        }
+    });
+
+  new Vue({el: '#app'})
+</script>
+</body>
+</html>
+
+

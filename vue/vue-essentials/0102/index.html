@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="container mt-4">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue/Bootstrap Template</title>
+  
+  
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <div class="container" id="app">
+ <div class="form-inline mr-auto">
+  <label class="font-weight-bold mr-2" for="formMax">max</label>
+   <input type="text" id="formMax" class="form-control w-25" v-model="maximum">  
+ </div>
+ <input type="range" class="custom-range" min="0" max="200" v-model="maximum">
+  <div class="row d-flex mb-3 align-items-center"
+       v-for="item in products"
+       v-if="item.price<=Number(maximum)">
+   <div class="col-sm-4">
+    <img class="img-fluid d-block" :src="item.image" :alt="item.name">
+   </div>
+   <div class="col">
+     <h3 class="text-info">{{ item.name }}</h3>
+     <p class="mb-0">{{ item.description }}</p>
+     <div class="h5 float-right">${{ Number(item.price) }}</div>     
+    </div>
+  </div>
+</div>
+  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+
+  
+
+    <script  src="./script.js"></script>
+
+
+
+
+</body>
+
+</html>

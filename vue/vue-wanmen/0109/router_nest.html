@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔壁王校长的栗子</title>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+    <!-- 1.引入router -->
+    <script src="../bower_components/vue-router/dist/vue-router.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <style>
+        .base {
+            width: 320px;
+            height: 400px;
+            background-color: #ddd;
+            border: 3px  solid #1b6583;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body> 
+<div id="app">
+    <!-- 2.在 HTML 中调用 router组件，不可改 -->
+    <router-view></router-view>
+</div>
+<script>
+    // 参数接收方
+    var myMain = Vue.component('my-main',{
+        template:`
+            <div class="base">
+                <h1>主页</h1>
+                <router-link to="sub1">sub1</router-link>
+                <router-link to='sub2'>sub2</router-link>
+                <router-view></router-view>
+            </div>
+        `
+    });
+
+   var mySub1 = Vue.component('my-main-1',{
+       template:`
+            <div class="base">
+                <h1>附页 -1 </h1>
+            </div>
+            `
+        });
+
+   var mySub2 = Vue.component('my-main-2',{
+       template:`
+            <div class="base">
+                <h1>附页 -2 </h1>
+            </div>
+            `
+   });
+
+   var notFound = Vue.component('not-found',{
+        template:`
+            <div class="base">
+                <h4> 404 page Not Found </h4>
+                <router-link to="/main">返回登录页</router-link>
+            </div>
+        `
+        }
+    )
+
+    const myRoutes = [
+        {path:'',component: myMain},
+        {path:'/main',component: myMain,
+            children: [
+                {path: '/sub1',component: mySub1},
+                {path: '/sub2',component: mySub2}
+            ]
+        },
+        {path:'*',component: notFound} // 异常处理
+    ];
+
+    const  myRouter = new VueRouter({
+        routes: myRoutes
+    })
+
+    new Vue({
+        el:"#app",
+        router: myRouter
+    }
+    );
+
+    
+</script> 
+</body>
+</html>
+
+

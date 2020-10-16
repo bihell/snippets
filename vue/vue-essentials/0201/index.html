@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="container mt-4">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue/Bootstrap Template</title>
+  
+  
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <div class="container" id="app">
+
+ <p>
+  <strong>Bound:</strong><br>
+  <span>{{name}}</span>
+ </p>
+
+ <p>
+  <strong>Parsed:</strong><br>
+  <span v-html="name"></span>
+ </p>
+ 
+ 
+ <p>
+  <strong>Unchangeable:</strong><br>
+  <span v-once>{{name}}</span>
+ </p>
+
+ 
+ <h5>Text</h5>
+ <textarea class="form-control" rows="3"
+   v-model="name"></textarea>
+</div>
+  <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+
+  
+
+    <script  src="./script.js"></script>
+
+
+
+
+</body>
+
+</html>
