@@ -1,80 +1,3 @@
-[Java 9 中的 GC 调优基础](https://weekly.manong.io/bounce?nid=187&aid=11026&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvjlyla)
-[如何在大量的数据中判断一个数是否存在？](https://github.com/doocs/advanced-java/blob/master/docs/big-data/find-a-number-if-exists.md)
-[JpressProjects/jpress](https://github.com/JpressProjects/jpress) | JPress，一个类似 WordPress 的系统，使用 JFinal 和 Jboot 开发。jpress 官网的所有功能也是用 jpress 自身搭建的... | 2.0k | JavaScript | 11/30 |
-[PI-REC](https://github.com/youyuge34/PI-REC)：PI-REC 该项目通过与 AI 结合的方式，帮你快速将手绘草稿转为成品图，随便画几笔就能转成完整画像，简直堪称手残党的福音！
-| 118 | [yujiangshui/about-me](https://github.com/yujiangshui/about-me) | 个人网页简历的源代码 | 143 | CSS | 02/19 |
-[deep-photo-styletransfer](https://github.com/luanfujun/deep-photo-styletransfer)：一个基于深度学习的开源项目，利用了深度卷积网络来进行摄影风格转换，瞬间切换图片风格，实在是强。
-[EasyScheduler](https://github.com/analysys/EasyScheduler "EasyScheduler")\*\* ： Easy Scheduler 是一个分布式工作流任务调度系统，主要解决“复杂任务依赖但无法直接监控任务健康状态”的问题。Easy Scheduler 以 DAG 方式组装任务，可以实时监控任务的运行状态。同时，它支持重试，重新运行等操作... 。
-[idea 运行 maven 多模块工程遇到的坑](https://segmentfault.com/a/1190000021287865)
-[浙江移动数据中台的建设和应用实践](https://www.infoq.cn/article/aCYQ3sUe19qMjdvsYwDW?utm_source=rss&utm_medium=article)
-
-- [**RPC**](https://github.com/dunwu/javatech/blob/master/docs/soa/) - [Dubbo](https://github.com/dunwu/javatech/blob/master/docs/soa/dubbo.md)
-  [LogoDiy](https://github.com/sherlonWang/logodiy)：一 �� 简单的在线 Logo 制作工具
-  [frontend-bootcamp](https://github.com/microsoft/frontend-bootcamp) | 微软这两天刚开源的前端练习资料 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HiCpnhwN0)
-  [ImageAlpha](https://pngmini.com/) - 压缩 PNG 图片，去掉无效的透明。[![Open-Source Software][oss icon]](https://github.com/pornel/ImageAlpha) ![Freeware][freeware icon]
-  [如何保证消息的可靠性传输？（如何处理消息丢失的问题）]https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/how-to-ensure-the-reliable-transmission-of-messages.md)
-  [19920625lsg/spring-boot-online-exam](https://github.com/19920625lsg/spring-boot-online-exam) | 基于 Spring Boot 的在线考试系统(预览地址 http://129.211.88.191 ，账户分别是 admin、teacher、student，密码是 admin123) | 206 | Vue | 11/20 |
-  [Redis 面试总结](https://dunwu.github.io/db-tutorial/nosql/redis/redis-interview.html) 💯
-  [Java 容器之 Set](https://github.com/dunwu/javacore/blob/master/docs/container/java-container-set.md) - 关键词：`Set`、`HashSet`、`TreeSet`、`LinkedHashSet`、`EmumSet`
-  [Node.js 实现远程桌面监控](https://juejin.im/post/5d18d4c36fb9a07ecb0bbe7b?utm_date=0701&utm_source=wb&utm_type=article)
-  [Akka 系列（五）：Java 和 Scala 中的 Future](https://weekly.manong.io/bounce?nid=174&aid=10101&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyn5cz7)
-
-3. **[Spring-Cloud-Admin](https://github.com/wxiaoqi/Spring-Cloud-Admin "Spring-Cloud-Admin")** ：Cloud-Admin 是国内首个基于 Spring Cloud 微服务化开发平台，具有统一授权、认证后台管理系统，其中包含具备用户管理、资源权限管理、网关 API 管理等多个模块，支持多业务系统并行开发，可以作为后端服务的开发脚手架。代码简洁，架构清晰，适合学习和直接项目中使用。核心技术采用 Spring Boot2 以及 Spring Cloud Gateway 相关核心组件，前端采用 vue-element-admin 组件。
-   [ttygif](https://github.com/icholy/ttygif) - 将终端录制转换为 GIF 动画。
-   [解密阿里线上问题诊断工具 Arthas 和 jvm-sandbox](CaseStudy/排查工具/解密阿里线上问题诊断工具Arthas和jvm-sandbox.md)
-   [2019 年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总。](https://github.com/0voice/interview_internal_reference)
-   [javaSwing/NeteaseCloudWebApp](https://github.com/javaSwing/NeteaseCloudWebApp) This is a vue for NeteaseCloud projects!
-   [shell909090/goproxy](https://github.com/shell909090/goproxy) | 基于 go 写的隧道代理服务器。 | 1.1k | Go | 11/24 |
-   | 109 | [hhyo/Archery](https://github.com/hhyo/Archery) | SQL 审核查询平台 | 1.1k | Python | 12/01 |
-   [什么是对象存储？](http://www.getnas.com/what-is-oss/)
-   [Jiiiiiin/jiiiiiin-security](https://github.com/Jiiiiiin/jiiiiiin-security):基于 SpringCloud 微服务架构的开源网银（个人网上银行简化版）系统
-   [Vid2vid](https://github.com/NVIDIA/vid2vid)：由 NVIDIA 团队开源的一个实现了用于高分辨率照片级真实视频到视频转换的方法，支持语义标签贴图转换为照片般逼真的视频、合成人们从边缘地图谈话、以及从姿势转换成人体
-   Bg6CwL3Iy0g)
-   [一个 Java 中操作字符串的类库](https://weekly.manong.io/bounce?nid=184&aid=10851&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fizvu5m)
-   [yascmf/base](https://github.com/yascmf/base) | YASCMF 基础开发版（YASCMF/BASE） | 164 | HTML | 02/18 |
-   [wechat_jump_game](https://github.com/wangshub/wechat_jump_game)： 微信《跳一跳》Python 辅助
-   [Java 和 Python 的算法和数据结构面试问题](http://developer.51cto.com/art/201906/597662.htm)
-
-### 常见问题案例
-
-[我用 React 和 Vue 构建了同款应用，对比看看](https://news.51cto.com/art/202009/625237.htm)
-[lianjia-scrawler](https://github.com/XuefengHuang/lianjia-scrawler)：该项目提供一个链家网全国房源爬虫工具，数据存储目前支持 Mysql
-[halo](https://github.com/halo-dev/halo) | 一款个人独立博客系统，该系统部署简单快捷，并提供 Api 接口拓展行强，支持多款云存储，支持多款主题，支持 Web 端、 App 端管理后台，随时随地记录你的想法 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/Hx3PscZMt)
-[异步技巧之 CompletableFuture](https://github.com/javagrowing/JGrowing/blob/master/Java%E5%9F%BA%E7%A1%80/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E5%B9%B6%E5%8F%91%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7/%E5%BC%82%E6%AD%A5%E6%8A%80%E5%B7%A7%E4%B9%8BCompletableFuture.md)
-[gavinjzx/luckyDraw](https://github.com/gavinjzx/luckyDraw) | 公司年会抽奖程序，在浏览器下直接执行。按 F11 进全屏模式效果最佳。 | 62 | CSS | 01/14 |
-[longbeidou/taobaokev3](https://github.com/longbeidou/taobaokev3) | 淘宝客网站的第三个版本，代码全部开源。 | 276 | PHP | 03/25 |
-[willenfoo / center](https://gitee.com/willenfoo/center):使用 kisso、mybatis-plus 做的系统管理中心系统
-[Java 8 被动迭代式特性介绍 (周明耀)](https://weekly.manong.io/bounce?nid=87&aid=3537&url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Fjava%2Fj-lo-java8-iterator%2Findex.html%3Fca%3Ddrs-)
-[手把手教你，使用 JWT 实现单点登录 | Just Do Java](http://www.justdojava.com/2020/05/08/springboot-jwt/)
-[大数据组件 All-in-One 的 Docker 镜像](https://weekly.manong.io/bounce?nid=290&aid=18402&url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffhrjx8w)
-[awolfly9/IPProxyTool](https://github.com/awolfly9/IPProxyTool) | python ip proxy tool scrapy crawl. 抓取大量免费代理 ip，提取有效 ip 使用 | 1.5k | Python | 10/21 |
-[mysql 忘记密码，该怎么办？](http://www.justdojava.com/2019/07/27/mysql-pwd/)
-[easychen/lianmilite](https://github.com/easychen/lianmilite) | 莲米粒是一个基于 PHP+MySQL+微信小程序技术栈的、拥有用户登入、发布、修改、删除和转发信息、以及私信聊天模块的信息流应用。 | 211 | PHP | 08/[alibaba/Sentinel](https://github.com/alibaba/Sentinel) | A lightweight powerful flow control component enabling reliability and monitoring for microservices. (轻量级的流量控制、熔断降级 Java 库) | 9.9k | Java | 12/02 |
-[spider-flow](https://gitee.com/jmxd/spider-flow) 新一代爬虫平台，以图形化方式定义爬虫流程，不写代码即可完成爬虫'
-[[译] Java HashMap 原理探究](https://weekly.manong.io/bounce?nid=123&aid=6610&url=http%3A%2F%2Fwww.jointforce.com%2Fjfperiodical%2Farticle%2F2037)
-[Auto：Google 的 Java 代码生成器](https://weekly.manong.io/bounce?nid=114&aid=5947&url=https%3A%2F%2Fgithub.com%2Fgoogle%2Fauto%2F)
-[我的 Java 后端书架](https://weekly.manong.io/bounce?nid=140&aid=7778&url=https%3A%2F%2Ftoutiao.io%2Fk%2Flz7sik)
-[Tinyhttpd](https://github.com/EZLippi/Tinyhttpd)：一个不到 500 行的超轻量型 HTTP Server，可以用来理解服务器程序的原理和本质。快看 C 语言 的入门级项目！
-[visualgo.net](https://visualgo.net/zh)：数据结构和算法动态可视化
-[Beipy/BeipyVideoResolution](https://github.com/Beipy/BeipyVideoResolution) | 北漂鱼解析开源视频播放框架，响应式布局！ | 557 | PHP | 06/12 |
-[计算机网络](https://github.com/CyC2018/CS-Notes/blob/master/notes/计算机网络%20-%20目录.md)
-[pjialin/py12306](https://github.com/pjialin/py12306):🚂 12306 购票助手，支持分布式，多账号，多任务购票以及 Web 页面管理
-[Tencent/weui](https://github.com/Tencent/weui) WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信 Web 开发量身设计，可以令用户的使用感知更加统一。包含 button、cell、dialog、 progress、 toast、article、actionsheet、icon 等各式元素。
-[Dash 视频串流技术](https://weekly.manong.io/bounce?nid=235&aid=14409&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvpjeht)
-[Java 并发——基石篇（中）](https://www.infoq.cn/article/BpWRQGe-TUUbMmZ5rqtC?utm_source=rss&utm_medium=article)
-[zoujingli/WeChatDeveloper](https://github.com/zoujingli/WeChatDeveloper) | 【新】微信服务号+微信小程序+微信支付+支付宝支付 | 663 | PHP | 11/25 |
-[luokr.com](https://github.com/alvan/luokr.com)：Python Tornado 写的开源网站——螺壳网
-[rap2-delos](https://github.com/thx/rap2-delos)：阿里妈妈前端团队出品的开源 Api 接口管理工具 RAP 第二代
-| 39 | [eolinker/goku-api-gateway](https://github.com/eolinker/goku-api-gateway) | A Powerful HTTP API Gateway in pure golang！Goku API Gateway （中文名：悟空 API 网关）是一个基于 Golang 开发的微服务网关，能够实现高性能 HTTP API 转发、服务编排、多租户管理、API 访问权限控制等目的，拥有强大的自定义插件系统可以自行扩展，并且提供友好的图形化配置界面，能够快速帮助企业进行 API 服务治理、提高 API 服务的稳定性和安全性。 | 1.5k | Go | 11/28 |
-[EasyBridge：一分钟实现 Java 与 JavaScirpt 相互调用](https://weekly.manong.io/bounce?nid=212&aid=12882&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwqcwgb)
-[深度解读 Java 线程池设计思想及源码实现](https://weekly.manong.io/bounce?nid=184&aid=10793&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fseyr4y)
-[Filter 和 Listener](https://github.com/dunwu/java-tutorial/blob/master/docs/javaee/javaee-filter-listener.md)
-[使用 React(with hooks)构建一个电影搜索应用](https://www.freecodecamp.org/news/how-to-build-a-movie-search-app-using-react-hooks-24eb72ddfaf7/)
-[Java 8 Stream findFirst() and findAny()](https://mkyong.com/java8/java-8-stream-findfirst-and-findany/)
-[algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer)：算法可视化工具。你可以自由选择自己想学习的算法，每个算法它都清晰描绘了其原理和运作过程
-[hub.js](https://github.com/yyued/hub.js)：仅 6KB 通过简单的 API & 自由组合的链式写法，轻松订阅管理各类事件流。
-[Voyage：Java 实现的基于 Netty 的轻量、高性能分布式 RPC 服务框架](https://weekly.manong.io/bounce?nid=161&aid=9215&url=https%3A%2F%2Ftoutiao.io%2Fk%2Faclw19)
-[git-tips](https://github.com/521xueweihan/git-tips) | 分享一些 Git 相关的使用技巧 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HpgFF42m1)
 [goalert](https://github.com/target/goalert)：一个基于 Go 语言实现的报警和处理报警系统。它以发请求或者手动添加方式进行告警，支持短信、电话、发邮件等通知方式。集成了一个看板，基本上算是开箱即用。
 [hs-web/hsweb-framework](https://github.com/hs-web/hsweb-framework) | hsweb (haʊs wɛb) 是一个用于快速搭建企业后台管理系统的基础项目
 [CyC2018/Markdown-Resume](https://github.com/CyC2018/Markdown-Resume) | ⭐️ Markdown 简历模版 | 636 | HTML | 10/30 |
@@ -1432,3 +1355,40 @@
   [2019.12.27 第四十期 - 阿里开源工程 Velocity Spring Boot](https://www.bilibili.com/video/av80903598)
   [TheKingOfDuck/fuzzDicts](https://github.com/TheKingOfDuck/fuzzDicts) | Web Pentesting Fuzz 字典
   [Exrick/x-boot](https://github.com/Exrick/x-boot):基于 Spring Boot 2.x 的前后端分离开发平台 X-Boot 前端：Vue+iView Admin 后端：Spring Boot 2.x/Spring Security/JWT/Spring Data JPA+Mybatis-Plus/Redis/Elasticsearch/Activiti 分布式限流/同步锁/验证码/SnowFlake 雪花算法 ID 生成 动态权限管理 数据权限 工作流 代码生成 日志记录 定时任务 第三方社交账号、短信登录 单点登录
+  [如何在大量的数据中判断一个数是否存在？](https://github.com/doocs/advanced-java/blob/master/docs/big-data/find-a-number-if-exists.md)
+  [JpressProjects/jpress](https://github.com/JpressProjects/jpress) | JPress，一个类似 WordPress 的系统，使用 JFinal 和 Jboot 开发。jpress 官网的所有功能也是用 jpress 自身搭建的... | 2.0k | JavaScript | 11/30 |
+  [PI-REC](https://github.com/youyuge34/PI-REC)：PI-REC 该项目通过与 AI 结合的方式，帮你快速将手绘草稿转为成品图，随便画几笔就能转成完整画像，简直堪称手残党的福音！
+  [yujiangshui/about-me](https://github.com/yujiangshui/about-me) | 个人网页简历的源代码 | 143 | CSS | 02/19 |
+  [EasyScheduler](https://github.com/analysys/EasyScheduler "EasyScheduler")\*\* ： Easy Scheduler 是一个分布式工作流任务调度系统，主要解决“复杂任务依赖但无法直接监控任务健康状态”的问题。Easy Scheduler 以 DAG 方式组装任务，可以实时监控任务的运行状态。同时，它支持重试，重新运行等操作... 。
+  [LogoDiy](https://github.com/sherlonWang/logodiy)：简单的在线 Logo 制作工具
+  [ImageAlpha](https://pngmini.com/) - 压缩 PNG 图片，去掉无效的透明。[![Open-Source Software][oss icon]](https://github.com/pornel/ImageAlpha) ![Freeware][freeware icon]
+  [如何保证消息的可靠性传输？（如何处理消息丢失的问题）]https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/how-to-ensure-the-reliable-transmission-of-messages.md)
+  [19920625lsg/spring-boot-online-exam](https://github.com/19920625lsg/spring-boot-online-exam) | 基于 Spring Boot 的在线考试系统(预览地址 http://129.211.88.191 ，账户分别是 admin、teacher、student，密码是 admin123) | 206 | Vue | 11/20 |
+  [Redis 面试总结](https://dunwu.github.io/db-tutorial/nosql/redis/redis-interview.html) 💯
+  [Node.js 实现远程桌面监控](https://juejin.im/post/5d18d4c36fb9a07ecb0bbe7b?utm_date=0701&utm_source=wb&utm_type=article)
+  **[Spring-Cloud-Admin](https://github.com/wxiaoqi/Spring-Cloud-Admin "Spring-Cloud-Admin")** ：Cloud-Admin 是国内首个基于 Spring Cloud 微服务化开发平台，具有统一授权、认证后台管理系统，其中包含具备用户管理、资源权限管理、网关 API 管理等多个模块，支持多业务系统并行开发，可以作为后端服务的开发脚手架。代码简洁，架构清晰，适合学习和直接项目中使用。核心技术采用 Spring Boot2 以及 Spring Cloud Gateway 相关核心组件，前端采用 vue-element-admin 组件。
+  [解密阿里线上问题诊断工具 Arthas 和 jvm-sandbox](CaseStudy/排查工具/解密阿里线上问题诊断工具Arthas和jvm-sandbox.md)
+  [2019 年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总。](https://github.com/0voice/interview_internal_reference)
+  [javaSwing/NeteaseCloudWebApp](https://github.com/javaSwing/NeteaseCloudWebApp) This is a vue for NeteaseCloud projects!
+  [shell909090/goproxy](https://github.com/shell909090/goproxy) | 基于 go 写的隧道代理服务器。 | 1.1k | Go | 11/24 |
+  [hhyo/Archery](https://github.com/hhyo/Archery) | SQL 审核查询平台 | 1.1k | Python | 12/01 |
+  [Vid2vid](https://github.com/NVIDIA/vid2vid)：由 NVIDIA 团队开源的一个实现了用于高分辨率照片级真实视频到视频转换的方法，支持语义标签贴图转换为照片般逼真的视频、合成人们从边缘地图谈话、以及从姿势转换成人体
+  [wechat_jump_game](https://github.com/wangshub/wechat_jump_game)： 微信《跳一跳》Python 辅助
+  [Java 和 Python 的算法和数据结构面试问题](http://developer.51cto.com/art/201906/597662.htm)
+  [我用 React 和 Vue 构建了同款应用，对比看看](https://news.51cto.com/art/202009/625237.htm)
+  [lianjia-scrawler](https://github.com/XuefengHuang/lianjia-scrawler)：该项目提供一个链家网全国房源爬虫工具，数据存储目前支持 Mysql
+  [gavinjzx/luckyDraw](https://github.com/gavinjzx/luckyDraw) | 公司年会抽奖程序，在浏览器下直接执行。按 F11 进全屏模式效果最佳。 | 62 | CSS | 01/14 |
+  [awolfly9/IPProxyTool](https://github.com/awolfly9/IPProxyTool) | python ip proxy tool scrapy crawl. 抓取大量免费代理 ip，提取有效 ip 使用 | 1.5k | Python | 10/21 |
+  [mysql 忘记密码，该怎么办？](http://www.justdojava.com/2019/07/27/mysql-pwd/)
+  [spider-flow](https://gitee.com/jmxd/spider-flow) 新一代爬虫平台，以图形化方式定义爬虫流程，不写代码即可完成爬虫'
+  [Auto：Google 的 Java 代码生成器](https://weekly.manong.io/bounce?nid=114&aid=5947&url=https%3A%2F%2Fgithub.com%2Fgoogle%2Fauto%2F)
+  [visualgo.net](https://visualgo.net/zh)：数据结构和算法动态可视化
+  [luokr.com](https://github.com/alvan/luokr.com)：Python Tornado 写的开源网站——螺壳网
+  [rap2-delos](https://github.com/thx/rap2-delos)：阿里妈妈前端团队出品的开源 Api 接口管理工具 RAP 第二代
+  [eolinker/goku-api-gateway](https://github.com/eolinker/goku-api-gateway) | A Powerful HTTP API Gateway in pure golang！Goku API Gateway （中文名：悟空 API 网关）是一个基于 Golang 开发的微服务网关，能够实现高性能 HTTP API 转发、服务编排、多租户管理、API 访问权限控制等目的，拥有强大的自定义插件系统可以自行扩展，并且提供友好的图形化配置界面，能够快速帮助企业进行 API 服务治理、提高 API 服务的稳定性和安全性。 | 1.5k | Go | 11/28 |
+  [使用 React(with hooks)构建一个电影搜索应用](https://www.freecodecamp.org/news/how-to-build-a-movie-search-app-using-react-hooks-24eb72ddfaf7/)
+  [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer)：算法可视化工具。你可以自由选择自己想学习的算法，每个算法它都清晰描绘了其原理和运作过程
+  [hub.js](https://github.com/yyued/hub.js)：仅 6KB 通过简单的 API & 自由组合的链式写法，轻松订阅管理各类事件流。
+  [基于 Flink+ClickHouse 打造轻量级点击流实时数仓](https://www.jianshu.com/p/bedead165403)
+  [Guava 快速入门](https://zhuanlan.zhihu.com/p/20637960)
+  [几种缓存更新的设计方法，值得一看](https://developer.51cto.com/art/202010/628923.htm)
