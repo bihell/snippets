@@ -1,179 +1,163 @@
-[gifify](https://github.com/vvo/gifify)：款将视频转换成 GIF 图的工具，支持任何格式的视频以及选取某个时间段转换
-[Manjaro 计算机视觉开发环境配置](https://weekly.manong.io/bounce?nid=300&aid=18988&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu5k7j6p)
-[15 个经典的 Spring 面试常见问题](https://www.itcodemonkey.com/article/15029.html)
-[Vue 全站缓存之 vue-router-then 实现原理](https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0utz5a&aid=13828&nid=226)
-[一套基础自动化部署搭建过程](https://segmentfault.com/a/1190000019729005)
-[javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) | 包含了多种基于 JavaScript 的算法与数据结构，每种算法和数据结构都有自己的 README，包含相关说明和链接，以便进一步阅读 (还有 YouTube 视频) | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IkeuAhZGz)
-[cx-extractor-python](https://github.com/chrislinan/cx-extractor-python)：这是一个对网页正文进行抽取的工具。 [cx-extractor](https://github.com/chrislinan/cx-extractor/blob/master/%E5%9F%BA%E4%BA%8E%E8%A1%8C%E5%9D%97%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%9A%E7%94%A8%E7%BD%91%E9%A1%B5%E6%AD%A3%E6%96%87%E6%8A%BD%E5%8F%96%E7%AE%97%E6%B3%95.pdf) 算法的 python 版本，改进了原有算法，使其支持中英文，对新闻类网页正文抽取效果较好。
-[[译] 构建高性能 Java 持久层的 14 个建议](https://weekly.manong.io/bounce?nid=125&aid=6751&url=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000005840435)
-[nmxiaowei/avue](https://github.com/nmxiaowei/avue) | Avue.js2.0 是基于现有的 element-ui 库进行的二次封装，简化一些繁琐的操作，核心理念为数据驱动视图
+[wiki](https://github.com/Requarks/wiki)：NodeJS+Git+Markdown 实现轻松搭建 wiki。对于团队内部的知识分享是一个不错的选择。
 
-- [Docker 教程](https://dunwu.github.io/linux-tutorial/docker/) 📚
-  [shimohq/chinese-programmer-wrong-pronunciation](https://github.com/shimohq/chinese-programmer-wrong-pronunciation) | 中国程序员容易发音错误的单词 | 10.1k | - | 10/24 |
-  [Java 后端技术概览](https://weekly.manong.io/bounce?nid=214&aid=12981&url=https%3A%2F%2Ftoutiao.io%2Fk%2F31cmf7)
-  [Bigo 的 Java 面试，我挂在了第三轮技术面上.........](https://segmentfault.com/a/1190000021709836)
-  [设计模式（45 种）](https://github.com/guanguans/notes/blob/master/设计模式（45种）.md)
-  [bmfe/eros](https://github.com/bmfe/eros) | 📱 一套 Vue 代码，两端原生应用 ，或许可以叫我 weex-native。 | 1.9k | Vue | 03/04 |
-  [Java 序列化](https://github.com/dunwu/javacore/blob/master/docs/io/java-serialization.md) - 关键词：`Serializable`、`Externalizable`、`ObjectInputStream`、`ObjectOutputStream`、`transient`
-  [Spring Boot 工程集成全局唯一 ID 生成器 Vesta](https://github.com/hansonwang99/Spring-Boot-In-Action/tree/master/springbt_vesta)
-  [aimerforreimu/auxpi](https://github.com/aimerforreimu/auxpi) | 🍭 集合多家 API 的新一代图床 | 2.0k | Go | 09/24 |
-  [Spring Remoting 的 Thrift 实现（Java） (飒然 Hang)](https://weekly.manong.io/bounce?nid=76&aid=2643&url=https%3A%2F%2Fgithub.com%2Fsuperhj1987%2Fspring-remoting-thrift)
-  [huginn](https://github.com/huginn/huginn) | 一个开源的自动化工具，类似 IFTTT 的开源版应用，可通过开发者设定的某个事件来触发具体操作。比如你可以设定当 GitHubDaily 发送一条微博后，自动给你推送一封邮件提醒："这货又发微博了" | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IkMhdyx5S)
-  [grade](https://github.com/benhowdle89/grade) | 一个 JavaScript 库 Grade.js，主要功能是从图片中提取两种主色，并生成互补渐变的背景 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HuK3xidhE)
-  [reddit](https://github.com/reddit/reddit)：reddit.com 网站的源码，通过这个项目，可以学习 Python 在构建大型项目中的使用、项目结构、代码风格、Python 技巧的使用方法等。
-  [java-core-learning-example](https://weekly.manong.io/bounce?nid=93&aid=4095&url=https%3A%2F%2Fgithub.com%2FJeffLi1993%2Fjava-core-learning-example)
-  [腾讯云 ClickHouse 如何实现自动化的数据均衡？](https://www.infoq.cn/article/mFqxEHjZUejlOwFpQCS9?utm_source=rss&utm_medium=article)
-  | 39 | [jobbole/awesome-python-cn](https://github.com/jobbole/awesome-python-cn) | Python 资源大全中文版，包括：Web 框架、网络爬虫、模板引擎、数据库、数据可视化、图片处理等，由伯乐在线持续更新。 | 17.3k | Makefile | 08/25 |
-  [seq2seq-couplet](https://github.com/wb14123/seq2seq-couplet)：一个有趣的对对联工具，用深度学习对对联。
-  [一道“史上最难”java 面试题引发的线程安全思考](https://github.com/javagrowing/JGrowing/blob/master/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/%E4%B8%80%E9%81%93%E2%80%9C%E5%8F%B2%E4%B8%8A%E6%9C%80%E9%9A%BE%E2%80%9Djava%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E6%80%9D%E8%80%83.md)
-  [outline](https://github.com/outline/outline) 成长团队的最快维基和知识库。美观，功能丰富，兼容性强而且还是开源的。
-  [flutter-tutorials](https://github.com/FilledStacks/flutter-tutorials)：南非一位移动开发者做的 Flutter 教程，内含视频讲解与源码
-  [TinyPNG4Mac](https://github.com/kyleduo/TinyPNG4Mac) | 开源的图片无损压缩客户端 TinyPNG4Mac，该工具提供了 PNG 图片的 “几乎无损” 压缩服务，你可以通过简单的拖拽完成对 PNG 图片的压缩，无需打开浏览器，无需手动下载图片 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HnW69rZjW)
-  [Java 并发思考：导读 & 总结篇](https://www.jianshu.com/p/9ed8e51c3ed1?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
-  [Docker](https://github.com/CyC2018/CS-Notes/blob/master/notes/Docker.md)
-  [leeguandong/Interview-code-practice-python](https://github.com/leeguandong/Interview-code-practice-python) | 面试题 | 1.2k | Python | 10/28 |
-  [分库分表之后，id 主键如何处理？](https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/database-shard-global-id-generate.md)
-  [「干货」用 Vue + Echarts 打造你的专属可视化界面（下）](https://segmentfault.com/a/1190000020866216)
-  | 61 | [yanyiwu/gojieba](https://github.com/yanyiwu/gojieba) | "结巴"中文分词的 Golang 版本 | 909 | Go | 10/24 |
-  [CheckChe0803 / flink-recommandSystem-demo](https://github.com/CheckChe0803/flink-recommandSystem-demo):🚁🚀 基于 Flink 实现的商品实时推荐系统。flink 统计商品热度，放入 redis 缓存，分析日志信息，将画像标签和实时记录放入 Hbase。在用户发起推荐请求后，根据用户画像重排序热度榜，并结合协同过滤和标签两个推荐模块为新生成的榜单的每一个产品添加关联产品，最后返回新的用户列表。
-  [CyC2018/Markdown-Resume](https://github.com/CyC2018/Markdown-Resume) | ⭐️ Markdown 简历模版 | 636 | HTML | 10/30 |
-  [dive](https://github.com/wagoodman/dive)：用来探索 docker 镜像每一层文件系统，以及发现缩小镜像体积方法的命令行工具。
-  [Jack-Lee-Hiter/AlgorithmsByPython](https://github.com/Jack-Lee-Hiter/AlgorithmsByPython) | 算法/数据结构/Python/剑指 offer/机器学习/leetcode | 2.1k | Python | 10/13 |
-  [[译] 15 个顶级 Java 多线程面试题及回答（赵峰）](https://weekly.manong.io/bounce?nid=32&aid=1079&url=http%3A%2F%2Fifeve.com%2F15-java-faq%2F)
-  [iOS 音视频采集与编码](https://weekly.manong.io/bounce?nid=179&aid=10436&url=https%3A%2F%2Ftoutiao.io%2Fk%2F2cgte7)
-  [chyroc/WechatSogou](https://github.com/chyroc/WechatSogou) | 基于搜狗微信搜索的微信公众号爬虫接口 | 4.2k | Python | 10/23 |
-  [lxyisme/vue-musicApp](https://github.com/lxyisme/vue-musicApp) 使用 vue 全家桶制作的音乐播放器
-  | 181 | [issue9/identicon](https://github.com/issue9/identicon) | Go 语言版 identicon 头像产生工具 | 171 | Go | 09/06 |
-  [symphony](https://github.com/b3log/symphony)：一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）平台。
-  [rclone](https://github.com/ncw/rclone)：Golang 版的 rsync，与 rsync 不同的是 rclone 可以将文件同步到各种云服务的存储桶或 CDN 服务上
-  [interesting-python](https://github.com/Alfred1984/interesting-python)：有趣的 Python 爬虫和数据分析小项目，可以用 Python 实现有趣的小项目，内容包括 Python 爬虫、Python 数据分析、机器学习、深度学习等
-  [bailicangdu/vue2-manage](https://github.com/bailicangdu/vue2-manage) | 基于 vue + element-ui 的后台管理系统 | 8.2k | Vue | 01/25 |
-  [记录一些有趣算法题目的 Java 实现](https://weekly.manong.io/bounce?nid=108&aid=5459&url=https%3A%2F%2Fgithub.com%2Frayeaster%2Falgo)
-  [spring-boot-elasticsearch](https://github.com/ityouknow/spring-boot-examples/tree/master/spring-boot-elasticsearch) ：Spring Boot elasticsearch 示例
-  [huangruiLearn / flutter_hrlweibo](https://github.com/huangruiLearn/flutter_hrlweibo) Flutter 仿微博客户端
-  [powerdong/Music-player](https://github.com/powerdong/Music-player) | 高仿网易云音乐——在线预览 | 166 | Vue | 11/29 |
-  [基于 Apache Flink 的爱奇艺实时计算平台建设实践](https://www.infoq.cn/article/ldTrg5m5wU9MVBmYsuzV?utm_source=rss&utm_medium=article)
-  [Kafka produce 源码分析](https://github.com/crossoverJie/JCSprout/blob/master/MD/kafka/kafka-product.md)
-  [JiaGou-XiaoGe/webappchat](https://gitee.com/JiaGou-XiaoGe/webappchat)Spring Boot mybatis mysql 后台商城 h5 小程序
-  [IOC 的实现原理—反射与工厂模式](https://blog.csdn.net/fuzhongmin05/article/details/61614873)
-  [alyssaxuu/flowy](https://github.com/alyssaxuu/flowy) 这是一个 JavaScript 库，能够帮助你轻松创建漂亮的流程图。
-  [Bindian9710 / Spider-Crack_Login_Js](https://github.com/Bindian9710/Spider-Crack_Login_Js) 爬虫需要登陆网站的密码 js 解密、python 解密 大众点评|中国移动|新浪微博|汽车之家|Steam|中华英才网|拼多多|36 氪... 欢迎 Star
-  [2019.09.27 第三十三期 - InfoQ 2019 中国（大陆） Java 发展趋势报告解读](https://www.bilibili.com/video/av69203663)
-  | 42 | [xkcoding/spring-boot-demo](https://github.com/xkcoding/spring-boot-demo) | spring boot demo 是一个用来深度学习并实战 spring boot 的项目，目前总共包含 63 个集成 demo，已经完成 52 个。 该项目已成功集成 actuator(监控)、admin(可视化监控)、logback(日志)、aopLog(通过 AOP 记录 web 请求日志)、统一异常处理(json 级别和页面级别)、freemarker(模板引擎)、thymeleaf(模板引擎)、Beetl(模板引擎)、Enjoy(模板引擎)、JdbcTemplate(通用 JDBC 操作数据库)、JPA(强大的 ORM 框架)、mybatis(强大的 ORM 框架)、通用 Mapper(快速操作 Mybati ... | 7.4k | Java | 11/06 |
-  [如何统计不同电话号码的个数？](https://github.com/doocs/advanced-java/blob/master/docs/big-data/count-different-phone-numbers.md)
-  [alberliu/gim](https://github.com/alberliu/gim) | golang 写的 IM 服务器 | 516 | Go | 11/29 |
-  [ouyanghuiyu / chineseocr_lite](https://github.com/ouyanghuiyu/chineseocr_lite) 超轻量级中文 ocr，支持竖排文字识别
-  [基于 SpringBoot 从零构建博客网站 - 设计可扩展上传模块和开发修改头像密码功能](https://www.cnblogs.com/atcloud/p/11188320.html)
-  [InterviewMap](https://github.com/InterviewMap/CS-Interview-Knowledge-Map)：一份打造最好的面试图谱，图谱涉及的知识点有基础，有深入，也有源码解析，内容也不仅仅局限于前端
-  [papercss](https://github.com/papercss/papercss) 手绘风格的 CSS 库
-  [zhaohaodang/vue-WeChat](https://github.com/zhaohaodang/vue-WeChat) 🔥 一款基于 Vue2.0 高仿微信 App 的单页应用
-  [newpanjing/simpleui](https://github.com/newpanjing/simpleui) | A modern theme based on vue+element-ui for django admin.一款基于 vue+element-ui 的 django admin 现代化主题。全球 1800+网站都在使用！喜欢可以点个 star✨ | 999 | Python | 11/[MyPerf4J：针对高并发、低延迟应用设计的高性能且无侵入的实时 Java 方法性能监控和统计工具](https://weekly.manong.io/bounce?nid=225&aid=13774&url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffn4v62)
-  [CarGuo/GSYVideoPlayer](https://github.com/CarGuo/GSYVideoPlayer) | 视频播放器（IJKplayer、ExoPlayer、MediaPlayer），HTTPS，支持弹幕，支持滤镜、水印、gif 截图，片头广告、中间广告，多个同时播放，支持基本的拖动，声音、亮度调节，支持边播边缓存，支持视频自带 rotation 的旋转（90
-  [vue-bnhcp：基于 Vue + Nuxt 打造的 O2O 教育商城系统](https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxw6d2i&aid=10940&nid=185)
-  Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 https://www.cnblogs.com/smartloli/p/12499142.html
-  | 39 | [IFmiss/vue-music](https://github.com/IFmiss/vue-music) | 基于 vue2.0 的网易云音乐播放器，api 来自于 NeteaseCloudMusicApi，v2.0 为最新版本 | 808 | Vue | 03/30 |
-  [Tiger：声称最快的 Java 依赖注入框架](https://weekly.manong.io/bounce?nid=135&aid=7491&url=http%3A%2F%2Ftoutiao.io%2Fj%2Fuiz2q3)
-  [Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)：2018/2019/校招/春招/秋招/算法/机器学习(Machine Learning)/深度学习(Deep Learning)/自然语言处理(NLP)/C/C++/Python/面试
-  [master-coder-ll / v2ray-web-manager](https://github.com/master-coder-ll/v2ray-web-manager) v2ray-web-manager 是一个 tls+ws+v2ray 一端口多用户的解决方案；同时增加了流量控制/账号管理/限速等功能。key word: v2ray admin
-  [comicgen](https://github.com/gramener/comicgen) | 一个很有趣的库，在线制作漫画人物并可将制作的人物图片放在你的网站中 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HEKGTl4Vv)
-  [bbfamily/abu](https://github.com/bbfamily/abu) | 阿布量化交易系统(股票，期权，期货，比特币，机器学习) 基于 python 的开源量化交易，量化投资架构 | 5.6k | Python | 09/22 |
-  [spring-boot-mail](https://gitee.com/52itstyle/spring-boot-mail)：邮件发送服务，文本、附件、模版多种实现，队列，线程定时任务功能 http://blog.52itstyle.vip
-  [xuxueli/xxl-job](https://github.com/xuxueli/xxl-job) | A lightweight distributed task scheduling framework.（分布式任务调度平台 XXL-JOB） | 11.2k | Java | 11/27 |
-  [WeiYe-Jing / datax-web](https://github.com/WeiYe-Jing/datax-web) DataX 集成可视化页面，选择数据源即可一键生成数据同步任务，支持批量创建 RDBMS 数据同步任务，集成开源调度系统，支持分布式、增量同步数据、实时查看运行日志、监控执行器资源、KILL 运行进程、数据源信息加密等。
-  [macrozheng / mall](https://github.com/macrozheng/mall) mall 项目是一套电商系统，包括前台商城系统及后台管理系统，基于 SpringBoot+MyBatis 实现，采用 Docker 容器化部署。 前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。 后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。
-  [awesome-java-cn](https://github.com/jobbole/awesome-java-cn) | 一份 Java 资源大全中文版，内容包括构建工具、数据库、框架、模板、安全等等 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/Hgqjrv3qk)
+[MrDoc](https://github.com/zmister2016/MrDoc) 一个基于 Python 开发的在线文档系统。支持 Markdown 语法、文集分类、科学公式、流程图、思维导图等内容。清爽的阅读界面，还可以把内容打包导出为 Markdown 文件、EPUB 文件、PDF 文件。适合作为个人和小型团队的私有文档服务
+[aimerforreimu/auxpi](https://github.com/aimerforreimu/auxpi) | 🍭 集合多家 API 的新一代图床 | 2.0k | Go | 09/24 |
+[Spring Remoting 的 Thrift 实现（Java） (飒然 Hang)](https://weekly.manong.io/bounce?nid=76&aid=2643&url=https%3A%2F%2Fgithub.com%2Fsuperhj1987%2Fspring-remoting-thrift)
+[huginn](https://github.com/huginn/huginn) | 一个开源的自动化工具，类似 IFTTT 的开源版应用，可通过开发者设定的某个事件来触发具体操作。比如你可以设定当 GitHubDaily 发送一条微博后，自动给你推送一封邮件提醒："这货又发微博了" | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IkMhdyx5S)
+[grade](https://github.com/benhowdle89/grade) | 一个 JavaScript 库 Grade.js，主要功能是从图片中提取两种主色，并生成互补渐变的背景 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HuK3xidhE)
+[reddit](https://github.com/reddit/reddit)：reddit.com 网站的源码，通过这个项目，可以学习 Python 在构建大型项目中的使用、项目结构、代码风格、Python 技巧的使用方法等。
+[java-core-learning-example](https://weekly.manong.io/bounce?nid=93&aid=4095&url=https%3A%2F%2Fgithub.com%2FJeffLi1993%2Fjava-core-learning-example)
+[腾讯云 ClickHouse 如何实现自动化的数据均衡？](https://www.infoq.cn/article/mFqxEHjZUejlOwFpQCS9?utm_source=rss&utm_medium=article)
+| 39 | [jobbole/awesome-python-cn](https://github.com/jobbole/awesome-python-cn) | Python 资源大全中文版，包括：Web 框架、网络爬虫、模板引擎、数据库、数据可视化、图片处理等，由伯乐在线持续更新。 | 17.3k | Makefile | 08/25 |
+[seq2seq-couplet](https://github.com/wb14123/seq2seq-couplet)：一个有趣的对对联工具，用深度学习对对联。
+[一道“史上最难”java 面试题引发的线程安全思考](https://github.com/javagrowing/JGrowing/blob/master/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/%E4%B8%80%E9%81%93%E2%80%9C%E5%8F%B2%E4%B8%8A%E6%9C%80%E9%9A%BE%E2%80%9Djava%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E6%80%9D%E8%80%83.md)
+[outline](https://github.com/outline/outline) 成长团队的最快维基和知识库。美观，功能丰富，兼容性强而且还是开源的。
+[flutter-tutorials](https://github.com/FilledStacks/flutter-tutorials)：南非一位移动开发者做的 Flutter 教程，内含视频讲解与源码
+[TinyPNG4Mac](https://github.com/kyleduo/TinyPNG4Mac) | 开源的图片无损压缩客户端 TinyPNG4Mac，该工具提供了 PNG 图片的 “几乎无损” 压缩服务，你可以通过简单的拖拽完成对 PNG 图片的压缩，无需打开浏览器，无需手动下载图片 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HnW69rZjW)
+[Java 并发思考：导读 & 总结篇](https://www.jianshu.com/p/9ed8e51c3ed1?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[Docker](https://github.com/CyC2018/CS-Notes/blob/master/notes/Docker.md)
+[leeguandong/Interview-code-practice-python](https://github.com/leeguandong/Interview-code-practice-python) | 面试题 | 1.2k | Python | 10/28 |
+[分库分表之后，id 主键如何处理？](https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/database-shard-global-id-generate.md)
+[「干货」用 Vue + Echarts 打造你的专属可视化界面（下）](https://segmentfault.com/a/1190000020866216)
+| 61 | [yanyiwu/gojieba](https://github.com/yanyiwu/gojieba) | "结巴"中文分词的 Golang 版本 | 909 | Go | 10/24 |
+[CheckChe0803 / flink-recommandSystem-demo](https://github.com/CheckChe0803/flink-recommandSystem-demo):🚁🚀 基于 Flink 实现的商品实时推荐系统。flink 统计商品热度，放入 redis 缓存，分析日志信息，将画像标签和实时记录放入 Hbase。在用户发起推荐请求后，根据用户画像重排序热度榜，并结合协同过滤和标签两个推荐模块为新生成的榜单的每一个产品添加关联产品，最后返回新的用户列表。
+[CyC2018/Markdown-Resume](https://github.com/CyC2018/Markdown-Resume) | ⭐️ Markdown 简历模版 | 636 | HTML | 10/30 |
+[dive](https://github.com/wagoodman/dive)：用来探索 docker 镜像每一层文件系统，以及发现缩小镜像体积方法的命令行工具。
+[Jack-Lee-Hiter/AlgorithmsByPython](https://github.com/Jack-Lee-Hiter/AlgorithmsByPython) | 算法/数据结构/Python/剑指 offer/机器学习/leetcode | 2.1k | Python | 10/13 |
+[[译] 15 个顶级 Java 多线程面试题及回答（赵峰）](https://weekly.manong.io/bounce?nid=32&aid=1079&url=http%3A%2F%2Fifeve.com%2F15-java-faq%2F)
+[iOS 音视频采集与编码](https://weekly.manong.io/bounce?nid=179&aid=10436&url=https%3A%2F%2Ftoutiao.io%2Fk%2F2cgte7)
+[chyroc/WechatSogou](https://github.com/chyroc/WechatSogou) | 基于搜狗微信搜索的微信公众号爬虫接口 | 4.2k | Python | 10/23 |
+[lxyisme/vue-musicApp](https://github.com/lxyisme/vue-musicApp) 使用 vue 全家桶制作的音乐播放器
+| 181 | [issue9/identicon](https://github.com/issue9/identicon) | Go 语言版 identicon 头像产生工具 | 171 | Go | 09/06 |
+[symphony](https://github.com/b3log/symphony)：一款用 Java 实现的现代化社区（论坛/BBS/社交网络/博客）平台。
+[rclone](https://github.com/ncw/rclone)：Golang 版的 rsync，与 rsync 不同的是 rclone 可以将文件同步到各种云服务的存储桶或 CDN 服务上
+[interesting-python](https://github.com/Alfred1984/interesting-python)：有趣的 Python 爬虫和数据分析小项目，可以用 Python 实现有趣的小项目，内容包括 Python 爬虫、Python 数据分析、机器学习、深度学习等
+[bailicangdu/vue2-manage](https://github.com/bailicangdu/vue2-manage) | 基于 vue + element-ui 的后台管理系统 | 8.2k | Vue | 01/25 |
+[记录一些有趣算法题目的 Java 实现](https://weekly.manong.io/bounce?nid=108&aid=5459&url=https%3A%2F%2Fgithub.com%2Frayeaster%2Falgo)
+[spring-boot-elasticsearch](https://github.com/ityouknow/spring-boot-examples/tree/master/spring-boot-elasticsearch) ：Spring Boot elasticsearch 示例
+[huangruiLearn / flutter_hrlweibo](https://github.com/huangruiLearn/flutter_hrlweibo) Flutter 仿微博客户端
+[powerdong/Music-player](https://github.com/powerdong/Music-player) | 高仿网易云音乐——在线预览 | 166 | Vue | 11/29 |
+[基于 Apache Flink 的爱奇艺实时计算平台建设实践](https://www.infoq.cn/article/ldTrg5m5wU9MVBmYsuzV?utm_source=rss&utm_medium=article)
+[Kafka produce 源码分析](https://github.com/crossoverJie/JCSprout/blob/master/MD/kafka/kafka-product.md)
+[JiaGou-XiaoGe/webappchat](https://gitee.com/JiaGou-XiaoGe/webappchat)Spring Boot mybatis mysql 后台商城 h5 小程序
+[IOC 的实现原理—反射与工厂模式](https://blog.csdn.net/fuzhongmin05/article/details/61614873)
+[alyssaxuu/flowy](https://github.com/alyssaxuu/flowy) 这是一个 JavaScript 库，能够帮助你轻松创建漂亮的流程图。
+[Bindian9710 / Spider-Crack_Login_Js](https://github.com/Bindian9710/Spider-Crack_Login_Js) 爬虫需要登陆网站的密码 js 解密、python 解密 大众点评|中国移动|新浪微博|汽车之家|Steam|中华英才网|拼多多|36 氪... 欢迎 Star
+[2019.09.27 第三十三期 - InfoQ 2019 中国（大陆） Java 发展趋势报告解读](https://www.bilibili.com/video/av69203663)
+| 42 | [xkcoding/spring-boot-demo](https://github.com/xkcoding/spring-boot-demo) | spring boot demo 是一个用来深度学习并实战 spring boot 的项目，目前总共包含 63 个集成 demo，已经完成 52 个。 该项目已成功集成 actuator(监控)、admin(可视化监控)、logback(日志)、aopLog(通过 AOP 记录 web 请求日志)、统一异常处理(json 级别和页面级别)、freemarker(模板引擎)、thymeleaf(模板引擎)、Beetl(模板引擎)、Enjoy(模板引擎)、JdbcTemplate(通用 JDBC 操作数据库)、JPA(强大的 ORM 框架)、mybatis(强大的 ORM 框架)、通用 Mapper(快速操作 Mybati ... | 7.4k | Java | 11/06 |
+[如何统计不同电话号码的个数？](https://github.com/doocs/advanced-java/blob/master/docs/big-data/count-different-phone-numbers.md)
+[alberliu/gim](https://github.com/alberliu/gim) | golang 写的 IM 服务器 | 516 | Go | 11/29 |
+[ouyanghuiyu / chineseocr_lite](https://github.com/ouyanghuiyu/chineseocr_lite) 超轻量级中文 ocr，支持竖排文字识别
+[基于 SpringBoot 从零构建博客网站 - 设计可扩展上传模块和开发修改头像密码功能](https://www.cnblogs.com/atcloud/p/11188320.html)
+[InterviewMap](https://github.com/InterviewMap/CS-Interview-Knowledge-Map)：一份打造最好的面试图谱，图谱涉及的知识点有基础，有深入，也有源码解析，内容也不仅仅局限于前端
+[papercss](https://github.com/papercss/papercss) 手绘风格的 CSS 库
+[zhaohaodang/vue-WeChat](https://github.com/zhaohaodang/vue-WeChat) 🔥 一款基于 Vue2.0 高仿微信 App 的单页应用
+[newpanjing/simpleui](https://github.com/newpanjing/simpleui) | A modern theme based on vue+element-ui for django admin.一款基于 vue+element-ui 的 django admin 现代化主题。全球 1800+网站都在使用！喜欢可以点个 star✨ | 999 | Python | 11/[MyPerf4J：针对高并发、低延迟应用设计的高性能且无侵入的实时 Java 方法性能监控和统计工具](https://weekly.manong.io/bounce?nid=225&aid=13774&url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffn4v62)
+[CarGuo/GSYVideoPlayer](https://github.com/CarGuo/GSYVideoPlayer) | 视频播放器（IJKplayer、ExoPlayer、MediaPlayer），HTTPS，支持弹幕，支持滤镜、水印、gif 截图，片头广告、中间广告，多个同时播放，支持基本的拖动，声音、亮度调节，支持边播边缓存，支持视频自带 rotation 的旋转（90
+[vue-bnhcp：基于 Vue + Nuxt 打造的 O2O 教育商城系统](https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxw6d2i&aid=10940&nid=185)
+Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 https://www.cnblogs.com/smartloli/p/12499142.html
+| 39 | [IFmiss/vue-music](https://github.com/IFmiss/vue-music) | 基于 vue2.0 的网易云音乐播放器，api 来自于 NeteaseCloudMusicApi，v2.0 为最新版本 | 808 | Vue | 03/30 |
+[Tiger：声称最快的 Java 依赖注入框架](https://weekly.manong.io/bounce?nid=135&aid=7491&url=http%3A%2F%2Ftoutiao.io%2Fj%2Fuiz2q3)
+[Algorithm_Interview_Notes-Chinese](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)：2018/2019/校招/春招/秋招/算法/机器学习(Machine Learning)/深度学习(Deep Learning)/自然语言处理(NLP)/C/C++/Python/面试
+[master-coder-ll / v2ray-web-manager](https://github.com/master-coder-ll/v2ray-web-manager) v2ray-web-manager 是一个 tls+ws+v2ray 一端口多用户的解决方案；同时增加了流量控制/账号管理/限速等功能。key word: v2ray admin
+[comicgen](https://github.com/gramener/comicgen) | 一个很有趣的库，在线制作漫画人物并可将制作的人物图片放在你的网站中 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HEKGTl4Vv)
+[bbfamily/abu](https://github.com/bbfamily/abu) | 阿布量化交易系统(股票，期权，期货，比特币，机器学习) 基于 python 的开源量化交易，量化投资架构 | 5.6k | Python | 09/22 |
+[spring-boot-mail](https://gitee.com/52itstyle/spring-boot-mail)：邮件发送服务，文本、附件、模版多种实现，队列，线程定时任务功能 http://blog.52itstyle.vip
+[xuxueli/xxl-job](https://github.com/xuxueli/xxl-job) | A lightweight distributed task scheduling framework.（分布式任务调度平台 XXL-JOB） | 11.2k | Java | 11/27 |
+[WeiYe-Jing / datax-web](https://github.com/WeiYe-Jing/datax-web) DataX 集成可视化页面，选择数据源即可一键生成数据同步任务，支持批量创建 RDBMS 数据同步任务，集成开源调度系统，支持分布式、增量同步数据、实时查看运行日志、监控执行器资源、KILL 运行进程、数据源信息加密等。
+[macrozheng / mall](https://github.com/macrozheng/mall) mall 项目是一套电商系统，包括前台商城系统及后台管理系统，基于 SpringBoot+MyBatis 实现，采用 Docker 容器化部署。 前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。 后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。
+[awesome-java-cn](https://github.com/jobbole/awesome-java-cn) | 一份 Java 资源大全中文版，内容包括构建工具、数据库、框架、模板、安全等等 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/Hgqjrv3qk)
 
-  [**spring-boot-22-updownload**](https://github.com/niaobulashi/spring-boot-learning/tree/master/spring-boot-22-updownload)：Spring Boot2(十四)：单文件上传/下载，文件批量上传
-  [06.Java 虚拟机问题(10 个)](https://juejin.im/post/5c235468e51d4524384a8492)
-  [SqLite 入门指南](https://dunwu.github.io/db-tutorial/sql/sqlite.html)
-  [visualgo.net](https://visualgo.net/zh)：数据结构和算法动态可视化
-  [Scylla](https://github.com/imWildCat/scylla)：一款高质量的免费代理 IP 池工具，仅支持 Python 3.6。[中文文档](https://scylla.wildcat.io/zh/latest/)，特性如下：
-  [cycz / jdBuyMask](https://github.com/cycz/jdBuyMask) 京东监控口罩有货爬虫，自动下单爬虫，口罩爬虫
-  [iOS 直播视频数据采集、硬编码保存 h264 文件](https://www.jianshu.com/p/337830891996?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
-  [awesome-python-login-model](https://github.com/CriseLYJ/awesome-python-login-model)：该项目收集了各大网站登陆方式和部分网站的爬虫程序。登陆方式实现包含 selenium 登录、通过抓包直接模拟登录等。有助于新手研究、编写爬虫
-  [在 WebView 中如何让 JS 与 Java 安全地互相调用 (pedant)](https://weekly.manong.io/bounce?nid=50&aid=1595&url=http%3A%2F%2Fwww.pedant.cn%2F2014%2F07%2F04%2Fwebview-js-java-interface-research%2F)
-  [SpringBoot+WebSocket+Netty 实现消息推送 - 掘金](https://juejin.im/post/5e82ba62f265da47ac497e41)
-  [c10342/player](https://github.com/c10342/player) | electron-vue 视频播放器 | 152 | CSS | 11/02 |
-  [端到端一致性，流系统 Spark/Flink/Kafka/DataFlow 对比总结](https://weekly.manong.io/bounce?nid=276&aid=17385&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzy1vawh)
-  [系列文章：Java 多线程编程模式实战指南之 Active Object 模式 (黄文海)](https://weekly.manong.io/bounce?nid=52&aid=1659&url=http%3A%2F%2Fwww.infoq.com%2Fcn%2Farticles%2FJava-multithreaded-programming-mode-active-object-part1)
-  [大型系统核心技术](https://github.com/dunwu/blog/blob/master/source/_posts/design/architecture/system-core-technologies.md)
-  [二分查找的总结-6 种变形](<https://github.com/ZXZxin/ZXBlog/blob/master/Algorithm/DataStructure/Algorithm/DataStructure/Algorithm/BinarySearch/二分查找的总结(6种变形).md>)
-  [如何运用 JVM 知识提高编程水平](https://weekly.manong.io/bounce?nid=140&aid=7779&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq7alid)
-  [Java 工程师如何斩获高薪？300 分钟搞懂 Spring Cloud](https://weekly.manong.io/bounce?nid=300&aid=19025&url=https%3A%2F%2Ft.lagou.com%2F3R08RuRuRU210)
-  [Docker 基础](https://github.com/ZXZxin/ZXBlog/blob/master/Tools/Docker/Docker.md)
-  [vue-amap：基于 Vue 2.0 和高德地图的地图组件](https://zhuanlan.zhihu.com/p/24633626?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
-  [macrozheng/mall](https://github.com/macrozheng/mall) | mall 项目是一套电商系统，包括前台商城系统及后台管理系统，基于 SpringBoot+MyBatis 实现。 前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。 后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。 | 25.7k | Java | 12/01 |
-  [lianjia-scrawler](https://github.com/XuefengHuang/lianjia-scrawler)：该项目提供一个链家网全国房源爬虫工具，数据存储目前支持 Mysql
-  [zhihudaily-vue：知乎日报 Web 版](https://weekly.manong.io/bounce?url=https%3A%2F%2Fgithub.com%2Fyatessss%2Fzhihudaily-vue&aid=6941&nid=127)
-  [Redis AOF 和 RDB 持久化策略原理](https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/Redis_持久化.md)
+[**spring-boot-22-updownload**](https://github.com/niaobulashi/spring-boot-learning/tree/master/spring-boot-22-updownload)：Spring Boot2(十四)：单文件上传/下载，文件批量上传
+[06.Java 虚拟机问题(10 个)](https://juejin.im/post/5c235468e51d4524384a8492)
+[SqLite 入门指南](https://dunwu.github.io/db-tutorial/sql/sqlite.html)
+[visualgo.net](https://visualgo.net/zh)：数据结构和算法动态可视化
+[Scylla](https://github.com/imWildCat/scylla)：一款高质量的免费代理 IP 池工具，仅支持 Python 3.6。[中文文档](https://scylla.wildcat.io/zh/latest/)，特性如下：
+[cycz / jdBuyMask](https://github.com/cycz/jdBuyMask) 京东监控口罩有货爬虫，自动下单爬虫，口罩爬虫
+[iOS 直播视频数据采集、硬编码保存 h264 文件](https://www.jianshu.com/p/337830891996?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[awesome-python-login-model](https://github.com/CriseLYJ/awesome-python-login-model)：该项目收集了各大网站登陆方式和部分网站的爬虫程序。登陆方式实现包含 selenium 登录、通过抓包直接模拟登录等。有助于新手研究、编写爬虫
+[在 WebView 中如何让 JS 与 Java 安全地互相调用 (pedant)](https://weekly.manong.io/bounce?nid=50&aid=1595&url=http%3A%2F%2Fwww.pedant.cn%2F2014%2F07%2F04%2Fwebview-js-java-interface-research%2F)
+[SpringBoot+WebSocket+Netty 实现消息推送 - 掘金](https://juejin.im/post/5e82ba62f265da47ac497e41)
+[c10342/player](https://github.com/c10342/player) | electron-vue 视频播放器 | 152 | CSS | 11/02 |
+[端到端一致性，流系统 Spark/Flink/Kafka/DataFlow 对比总结](https://weekly.manong.io/bounce?nid=276&aid=17385&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzy1vawh)
+[系列文章：Java 多线程编程模式实战指南之 Active Object 模式 (黄文海)](https://weekly.manong.io/bounce?nid=52&aid=1659&url=http%3A%2F%2Fwww.infoq.com%2Fcn%2Farticles%2FJava-multithreaded-programming-mode-active-object-part1)
+[大型系统核心技术](https://github.com/dunwu/blog/blob/master/source/_posts/design/architecture/system-core-technologies.md)
+[二分查找的总结-6 种变形](<https://github.com/ZXZxin/ZXBlog/blob/master/Algorithm/DataStructure/Algorithm/DataStructure/Algorithm/BinarySearch/二分查找的总结(6种变形).md>)
+[如何运用 JVM 知识提高编程水平](https://weekly.manong.io/bounce?nid=140&aid=7779&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq7alid)
+[Java 工程师如何斩获高薪？300 分钟搞懂 Spring Cloud](https://weekly.manong.io/bounce?nid=300&aid=19025&url=https%3A%2F%2Ft.lagou.com%2F3R08RuRuRU210)
+[Docker 基础](https://github.com/ZXZxin/ZXBlog/blob/master/Tools/Docker/Docker.md)
+[vue-amap：基于 Vue 2.0 和高德地图的地图组件](https://zhuanlan.zhihu.com/p/24633626?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[macrozheng/mall](https://github.com/macrozheng/mall) | mall 项目是一套电商系统，包括前台商城系统及后台管理系统，基于 SpringBoot+MyBatis 实现。 前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。 后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。 | 25.7k | Java | 12/01 |
+[lianjia-scrawler](https://github.com/XuefengHuang/lianjia-scrawler)：该项目提供一个链家网全国房源爬虫工具，数据存储目前支持 Mysql
+[zhihudaily-vue：知乎日报 Web 版](https://weekly.manong.io/bounce?url=https%3A%2F%2Fgithub.com%2Fyatessss%2Fzhihudaily-vue&aid=6941&nid=127)
+[Redis AOF 和 RDB 持久化策略原理](https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/Redis_持久化.md)
 
-  [kkFileView](https://github.com/kekingcn/kkFileView) 基于 Spring boot 打造的多类型文件在线预览项目。支持多种文件例如：doc、ppt、xls、mp4、txt 等，功能强大便于快速开发和二次开发
-  [oh-bear/2life](https://github.com/oh-bear/2life) | 💌 双生：遇见另一半的美好：）（React Native） | 349 | HTML | 04/20 |
-  [清风丶 / Crown](https://gitee.com/cancerGit/Crown):Crown 以 SpringBoot2 为基础，打造一个快速开发的 Web 应用脚手架。
-  [vuex + keep-alive 实现 tab 标签页面缓存](https://juejin.im/post/5d9da25e51882576e440937f)
-  [kangvcar/InfoSpider](https://github.com/kangvcar/InfoSpider) INFO-SPIDER 是一个集众多数据源于一身的爬虫工具箱 🧰，旨在安全快捷的帮助用户拿回自己的数据，工具代码开源，流程透明。支持数据源包括 GitHub、QQ 邮箱、网易邮箱、阿里邮箱、新浪邮箱、Hotmail 邮箱、Outlook 邮箱、京东、淘宝、支付宝、中国移动、中国联通、中国电信、知乎、哔哩哔哩、网易云音乐、QQ 好友、QQ 群、生成朋友圈相册、浏览器浏览历史、12306、博客园、CSDN 博客、开源中国博客、简书。
-  [cloudfavorites/favorites-web](https://github.com/cloudfavorites/favorites-web) | 云收藏 Spring Boot 2.X 开源项目 | 3.6k | HTML | 08/22 |
-  [java-design-patterns](https://github.com/iluwatar/java-design-patterns "java-design-patterns")\*\* ： Design patterns implemented in Java。
-  [any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
-  [到底 vuex 是什么？](https://segmentfault.com/a/1190000007516967?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
-  [Spring Boot 配置文件中的花样，看这一篇足矣！](https://www.cnblogs.com/didispace/p/11002732.html)
-  [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
-  [amplitudejs](https://github.com/521dimensions/amplitudejs)：一个开源的 HTML5 音频播放器
-  [MrDoc](https://github.com/zmister2016/MrDoc) 一个基于 Python 开发的在线文档系统。支持 Markdown 语法、文集分类、科学公式、流程图、思维导图等内容。清爽的阅读界面，还可以把内容打包导出为 Markdown 文件、EPUB 文件、PDF 文件。适合作为个人和小型团队的私有文档服务
-  [termtosvg](https://github.com/nbedos/termtosvg)：Python 写的终端记录器。通过命令 `termtosvg` 运行该工具，然后在终端执行你要展示的命令，最终输入 exit 命令结束录制，本地会生成一份 SVG 动画，可用于分享、展示终端操作。
-  [dyq086/wepy-mall](https://github.com/dyq086/wepy-mall) | 微信小程序--基于 wepy 商城(微店)微信小程序 欢迎学习交流 wxYuHanStore | 2.8k | JavaScript | 09/17 |
-  [spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill)：从 0 到 1 构建分布式秒杀系统，脱离案例讲架构都是耍流氓 https://blog.52itstyle.vip/archives/2853/
-  [wepy](https://github.com/Tencent/wepy)：微信官方的开源项目，该项目是为了让小程序支持组件化开发的框架
-  [wb14123/seq2seq-couplet](https://github.com/wb14123/seq2seq-couplet) | Play couplet with seq2seq model. 用深度学习对对联。 | 3.5k | Python | 10/09 |
-  [gridstudio](https://github.com/ricklamers/gridstudio) 一个后端采用 Go 语言的电子表格 Web 应用程序，支持 Python 编程语言处理数据，结果运行即可见。它旨在提供一个集成的工作流程，用于加载、清理、操作和可视化数据。可在线使用，对于用 Python 等处理数据的数据工程师而言，就是一款神器。之前就很好奇石墨文档怎么做的，这下可以学习下了，电子表单是一个比较复杂的问题，该项目有很多可以学习的地方。
-  [server](https://github.com/wildfirechat/server "server")\*\* ： 野火 IM 是一套跨平台、核心功能开源的即时通讯解决方案。
-  [Java 调优 CheatSheet](https://weekly.manong.io/bounce?nid=160&aid=9090&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgd2qv2)
-  [redis-faina](https://github.com/facebookarchive/redis-faina)：Redis 性能分析器。提供两种模式分析模式：命令实时、读取日志。其原理是使用 Redis MONITOR 命令，将该命令的结果通过管道传递给 redis-faina 脚本，脚本将返回的信息解析，并汇成总成统计信息。
-  [手把手教你锤面试官 02——设计模式轻松答](https://xie.infoq.cn/article/48e63f65a08e5efbe57043472?utm_source=rss&utm_medium=article)
-  |[islenbo/autossh](https://github.com/islenbo/autossh) | No password ssh client for Mac/Linux
-  [smuyyh/BookReader](https://github.com/smuyyh/BookReader) | :closed_book: "任阅" 网络小说阅读器，3D 翻页效果、txt/pdf/epub 书籍阅读、Wifi 传书~ | 5.4k | Java | 06/25 |
-  [如何从 0 到 1 参与 Flink 社区？ - InfoQ 写作平台](https://xie.infoq.cn/article/ead9cf4b534f0cfe9892e94c1)
-  [[译] Java 火焰图](https://weekly.manong.io/bounce?nid=131&aid=7165&url=http%3A%2F%2Ftoutiao.io%2Fj%2Fcczdou)
-  [bootstrap-vue/bootstrap-vue](https://bootstrap-vue.js.org/) 从名字就能看出来它与 Bootstrap 的关系，BootstrapVue 将 Vue 和最流行的 CSS 库相结合，它是 Bootstrap 4 组件的实现，也是 Vue 的一个具有 WAI-ARIA 无障碍网页访问技术的网格系统。
-  [ysrc/xunfeng](https://github.com/ysrc/xunfeng) | 巡风是一款适用于企业内网的漏洞快速应急，巡航扫描系统。 | 2.5k | Python | 11/14 |
+[kkFileView](https://github.com/kekingcn/kkFileView) 基于 Spring boot 打造的多类型文件在线预览项目。支持多种文件例如：doc、ppt、xls、mp4、txt 等，功能强大便于快速开发和二次开发
+[oh-bear/2life](https://github.com/oh-bear/2life) | 💌 双生：遇见另一半的美好：）（React Native） | 349 | HTML | 04/20 |
+[清风丶 / Crown](https://gitee.com/cancerGit/Crown):Crown 以 SpringBoot2 为基础，打造一个快速开发的 Web 应用脚手架。
+[vuex + keep-alive 实现 tab 标签页面缓存](https://juejin.im/post/5d9da25e51882576e440937f)
+[kangvcar/InfoSpider](https://github.com/kangvcar/InfoSpider) INFO-SPIDER 是一个集众多数据源于一身的爬虫工具箱 🧰，旨在安全快捷的帮助用户拿回自己的数据，工具代码开源，流程透明。支持数据源包括 GitHub、QQ 邮箱、网易邮箱、阿里邮箱、新浪邮箱、Hotmail 邮箱、Outlook 邮箱、京东、淘宝、支付宝、中国移动、中国联通、中国电信、知乎、哔哩哔哩、网易云音乐、QQ 好友、QQ 群、生成朋友圈相册、浏览器浏览历史、12306、博客园、CSDN 博客、开源中国博客、简书。
+[cloudfavorites/favorites-web](https://github.com/cloudfavorites/favorites-web) | 云收藏 Spring Boot 2.X 开源项目 | 3.6k | HTML | 08/22 |
+[java-design-patterns](https://github.com/iluwatar/java-design-patterns "java-design-patterns")\*\* ： Design patterns implemented in Java。
+[any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
+[到底 vuex 是什么？](https://segmentfault.com/a/1190000007516967?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[Spring Boot 配置文件中的花样，看这一篇足矣！](https://www.cnblogs.com/didispace/p/11002732.html)
+[手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
+[amplitudejs](https://github.com/521dimensions/amplitudejs)：一个开源的 HTML5 音频播放器
+[termtosvg](https://github.com/nbedos/termtosvg)：Python 写的终端记录器。通过命令 `termtosvg` 运行该工具，然后在终端执行你要展示的命令，最终输入 exit 命令结束录制，本地会生成一份 SVG 动画，可用于分享、展示终端操作。
+[dyq086/wepy-mall](https://github.com/dyq086/wepy-mall) | 微信小程序--基于 wepy 商城(微店)微信小程序 欢迎学习交流 wxYuHanStore | 2.8k | JavaScript | 09/17 |
+[spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill)：从 0 到 1 构建分布式秒杀系统，脱离案例讲架构都是耍流氓 https://blog.52itstyle.vip/archives/2853/
+[wepy](https://github.com/Tencent/wepy)：微信官方的开源项目，该项目是为了让小程序支持组件化开发的框架
+[wb14123/seq2seq-couplet](https://github.com/wb14123/seq2seq-couplet) | Play couplet with seq2seq model. 用深度学习对对联。 | 3.5k | Python | 10/09 |
+[gridstudio](https://github.com/ricklamers/gridstudio) 一个后端采用 Go 语言的电子表格 Web 应用程序，支持 Python 编程语言处理数据，结果运行即可见。它旨在提供一个集成的工作流程，用于加载、清理、操作和可视化数据。可在线使用，对于用 Python 等处理数据的数据工程师而言，就是一款神器。之前就很好奇石墨文档怎么做的，这下可以学习下了，电子表单是一个比较复杂的问题，该项目有很多可以学习的地方。
+[server](https://github.com/wildfirechat/server "server")\*\* ： 野火 IM 是一套跨平台、核心功能开源的即时通讯解决方案。
+[Java 调优 CheatSheet](https://weekly.manong.io/bounce?nid=160&aid=9090&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgd2qv2)
+[redis-faina](https://github.com/facebookarchive/redis-faina)：Redis 性能分析器。提供两种模式分析模式：命令实时、读取日志。其原理是使用 Redis MONITOR 命令，将该命令的结果通过管道传递给 redis-faina 脚本，脚本将返回的信息解析，并汇成总成统计信息。
+[手把手教你锤面试官 02——设计模式轻松答](https://xie.infoq.cn/article/48e63f65a08e5efbe57043472?utm_source=rss&utm_medium=article)
+|[islenbo/autossh](https://github.com/islenbo/autossh) | No password ssh client for Mac/Linux
+[smuyyh/BookReader](https://github.com/smuyyh/BookReader) | :closed_book: "任阅" 网络小说阅读器，3D 翻页效果、txt/pdf/epub 书籍阅读、Wifi 传书~ | 5.4k | Java | 06/25 |
+[如何从 0 到 1 参与 Flink 社区？ - InfoQ 写作平台](https://xie.infoq.cn/article/ead9cf4b534f0cfe9892e94c1)
+[[译] Java 火焰图](https://weekly.manong.io/bounce?nid=131&aid=7165&url=http%3A%2F%2Ftoutiao.io%2Fj%2Fcczdou)
+[bootstrap-vue/bootstrap-vue](https://bootstrap-vue.js.org/) 从名字就能看出来它与 Bootstrap 的关系，BootstrapVue 将 Vue 和最流行的 CSS 库相结合，它是 Bootstrap 4 组件的实现，也是 Vue 的一个具有 WAI-ARIA 无障碍网页访问技术的网格系统。
+[ysrc/xunfeng](https://github.com/ysrc/xunfeng) | 巡风是一款适用于企业内网的漏洞快速应急，巡航扫描系统。 | 2.5k | Python | 11/14 |
 
-  [monicahq/monica](https://github.com/monicahq/monica) Personal CRM. Remember everything about your friends and family. https://www.monicahq.com
-  [SJK：JVM 排查工具箱](https://weekly.manong.io/bounce?nid=200&aid=12026&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fahpp15)
-  [share.js](https://github.com/overtrue/share.js)：一键分享到微博、QQ 空间、QQ 好友、微信、腾讯微博、豆瓣等社交网站的 JavaScript 项目。
-  [ItChat](https://github.com/littlecodersh/ItChat)：开源的微信个人号 SDK，提供了丰富的功能。从而使得 Python 调用微信、发送消息、传输文件等操作只需要编写极少的代码
-  [JingYeoh/FragmentRigger](https://github.com/JingYeoh/FragmentRigger) | :boom:A powerful library powered by AOP to manage Fragments.（一个基于 AOP 设计的 Fragment 管理框架） | 2.1k | Java | 09/18 |
-  [vue 制作抓娃娃机 - 掘金](https://juejin.im/post/5e9818a351882573bd5f4aaf)
-  [浅析如何设计一个亿级网关](https://github.com/javagrowing/JGrowing/blob/master/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%B5%85%E6%9E%90%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E4%BA%BF%E7%BA%A7%E7%BD%91%E5%85%B3.md)
-  [docui](https://github.com/skanehira/docui)：终端 Docker 管理工具，自带一个终端界面。使用该工具可以方便的通过界面管理 docker 不用再记那些命令。
-  [michaelliao/sinaweibopy](https://github.com/michaelliao/sinaweibopy) | 新浪微博 Python SDK | 1.2k | Python | 05/02 |
-  [NetCloud](https://github.com/Lyrichu/NetCloud)：NetCloud——一个完善的网易云音乐综合爬虫 Python 库
-  [推荐一款阿里开源的 Java 诊断工具，好用到爆！](https://segmentfault.com/a/1190000019925820)
-  [分布式 ID](https://github.com/dunwu/blog/blob/master/source/_posts/theory/distributed-id-theory.md) - 关键词：`UUID`、`自增序列`、`雪花算法`、`Leaf`
-  [手摸手教你搭建 Shiro 安全框架](https://niaobulashi.com/archives/springboot-shiro.html)
-  [mysql 忘记密码，该怎么办？](http://www.justdojava.com/2019/07/27/mysql-pwd/)
-  [基于 Vue + axios + WebApi + NPOI 导出 Excel 文件](https://www.cnblogs.com/xyb0226/p/10976819.html)
-  [insoxin/qrpay](https://github.com/insoxin/qrpay) | 五合一收款码在线生成
-  [weeshop/WeeShop](https://github.com/weeshop/WeeShop) | 优雅易用的微信小程序商城，PHP 商城。 基于 Laravel 的基因，来自 Symfony 的底层技术，来自 Drupal Commerce 的核心技术，由 Drupal 中国开源社区维护。QQ 群：714023327 | 203 | PHP | 11/23 |
-  [hotkeys](https://github.com/jaywcjlove/hotkeys)：一个强健的 Javascript 库用于捕获键盘输入和输入的组合键。它没有依赖，压缩只有 3kb 左右。
-  [Spring Boot 2.0 深度实践之系列总览](https://www.imooc.com/learn/1058)
-  [axhello/douyu-vue](https://github.com/axhello/douyu-vue) | 用 vue 写的斗鱼手机端页面 | 214 | Vue | 01/19 |
-  [正则表达式](https://github.com/frank-lam/fullstack-tutorial/blob/master/notes/正则表达式.md)
-  [jkchao/typescript-book-chinese](https://github.com/jkchao/typescript-book-chinese) | TypeScript Deep Dive 中文版 | 2.5k | JavaScript | 11/30 |
-  [SpringBoot 第二十一篇：整合 ActiveMQ](https://www.cnblogs.com/yanfei1819/p/11190048.html)
-  [深入理解 Java 垃圾回收机制 (Sunnier)](https://weekly.manong.io/bounce?nid=76&aid=2615&url=http%3A%2F%2Fwww.cnblogs.com%2Fsunniest%2Fp%2F4575144.html)
-  [slick](https://github.com/kenwheeler/slick)：实现了几乎所有效果的轮播图插件
+[monicahq/monica](https://github.com/monicahq/monica) Personal CRM. Remember everything about your friends and family. https://www.monicahq.com
+[SJK：JVM 排查工具箱](https://weekly.manong.io/bounce?nid=200&aid=12026&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fahpp15)
+[share.js](https://github.com/overtrue/share.js)：一键分享到微博、QQ 空间、QQ 好友、微信、腾讯微博、豆瓣等社交网站的 JavaScript 项目。
+[ItChat](https://github.com/littlecodersh/ItChat)：开源的微信个人号 SDK，提供了丰富的功能。从而使得 Python 调用微信、发送消息、传输文件等操作只需要编写极少的代码
+[JingYeoh/FragmentRigger](https://github.com/JingYeoh/FragmentRigger) | :boom:A powerful library powered by AOP to manage Fragments.（一个基于 AOP 设计的 Fragment 管理框架） | 2.1k | Java | 09/18 |
+[vue 制作抓娃娃机 - 掘金](https://juejin.im/post/5e9818a351882573bd5f4aaf)
+[浅析如何设计一个亿级网关](https://github.com/javagrowing/JGrowing/blob/master/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%B5%85%E6%9E%90%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E4%BA%BF%E7%BA%A7%E7%BD%91%E5%85%B3.md)
+[docui](https://github.com/skanehira/docui)：终端 Docker 管理工具，自带一个终端界面。使用该工具可以方便的通过界面管理 docker 不用再记那些命令。
+[michaelliao/sinaweibopy](https://github.com/michaelliao/sinaweibopy) | 新浪微博 Python SDK | 1.2k | Python | 05/02 |
+[NetCloud](https://github.com/Lyrichu/NetCloud)：NetCloud——一个完善的网易云音乐综合爬虫 Python 库
+[推荐一款阿里开源的 Java 诊断工具，好用到爆！](https://segmentfault.com/a/1190000019925820)
+[分布式 ID](https://github.com/dunwu/blog/blob/master/source/_posts/theory/distributed-id-theory.md) - 关键词：`UUID`、`自增序列`、`雪花算法`、`Leaf`
+[手摸手教你搭建 Shiro 安全框架](https://niaobulashi.com/archives/springboot-shiro.html)
+[mysql 忘记密码，该怎么办？](http://www.justdojava.com/2019/07/27/mysql-pwd/)
+[基于 Vue + axios + WebApi + NPOI 导出 Excel 文件](https://www.cnblogs.com/xyb0226/p/10976819.html)
+[insoxin/qrpay](https://github.com/insoxin/qrpay) | 五合一收款码在线生成
+[weeshop/WeeShop](https://github.com/weeshop/WeeShop) | 优雅易用的微信小程序商城，PHP 商城。 基于 Laravel 的基因，来自 Symfony 的底层技术，来自 Drupal Commerce 的核心技术，由 Drupal 中国开源社区维护。QQ 群：714023327 | 203 | PHP | 11/23 |
+[hotkeys](https://github.com/jaywcjlove/hotkeys)：一个强健的 Javascript 库用于捕获键盘输入和输入的组合键。它没有依赖，压缩只有 3kb 左右。
+[Spring Boot 2.0 深度实践之系列总览](https://www.imooc.com/learn/1058)
+[axhello/douyu-vue](https://github.com/axhello/douyu-vue) | 用 vue 写的斗鱼手机端页面 | 214 | Vue | 01/19 |
+[正则表达式](https://github.com/frank-lam/fullstack-tutorial/blob/master/notes/正则表达式.md)
+[jkchao/typescript-book-chinese](https://github.com/jkchao/typescript-book-chinese) | TypeScript Deep Dive 中文版 | 2.5k | JavaScript | 11/30 |
+[SpringBoot 第二十一篇：整合 ActiveMQ](https://www.cnblogs.com/yanfei1819/p/11190048.html)
+[深入理解 Java 垃圾回收机制 (Sunnier)](https://weekly.manong.io/bounce?nid=76&aid=2615&url=http%3A%2F%2Fwww.cnblogs.com%2Fsunniest%2Fp%2F4575144.html)
+[slick](https://github.com/kenwheeler/slick)：实现了几乎所有效果的轮播图插件
 
-  [H5 视频播放解决方案](https://weekly.manong.io/bounce?nid=178&aid=10389&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnota49)
-  [Micro8](https://github.com/Micropoor/Micro8)：一份开源的渗透攻击教程，适用于初中级安全从业人员，乙方安全测试，甲方安全自检，网络安全爱好者
-  [JLiteSpider：轻量级 Java 爬虫接口](https://github.com/luohaha/JLiteSpider)
-  [awolfly9/IPProxyTool](https://github.com/awolfly9/IPProxyTool) | python ip proxy tool scrapy crawl. 抓取大量免费代理 ip，提取有效 ip 使用 | 1.5k | Python | 10/21 |
-  [你必须掌握的 Python 数据分析工具之 Pandas](https://weekly.manong.io/bounce?nid=294&aid=18661&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fufn1fww)
-  [Git 分支和版本回退](https://github.com/ZXZxin/ZXBlog/blob/master/Tools/Git/Git_2_分支和版本回退.md)
-  | 34 | [jindongwang/transferlearning](https://github.com/jindongwang/transferlearning) | Everything about Transfer Learning and Domain Adaptation--迁移学习 | 4.3k | Python | 12/01 |
-  [Java LinkedHashMap 源码解析 (jiacai2050)](https://weekly.manong.io/bounce?nid=88&aid=3655&url=http%3A%2F%2Fliujiacai.net%2Fblog%2F2015%2F09%2F12%2Fjava-linkedhashmap%2F%3Fhmsr%3Dtoutiao.io%26utm_medium%3Dtoutiao.io%26utm_source%3Dtoutiao.io)
-  [从 0 到 1 学习 Flink：Data Source 介绍](https://weekly.manong.io/bounce?nid=240&aid=14761&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzunepg)
-  [ctripcorp/apollo](https://github.com/ctripcorp/apollo) | Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。 | 18.6k | Java | 12/01 |
-  [如何实现 MySQL 的读写分离？MySQL 主从复制原理是啥？如何解决 MySQL 主从同步的延时问题？](https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/mysql-read-write-separation.md)
+[H5 视频播放解决方案](https://weekly.manong.io/bounce?nid=178&aid=10389&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnota49)
+[Micro8](https://github.com/Micropoor/Micro8)：一份开源的渗透攻击教程，适用于初中级安全从业人员，乙方安全测试，甲方安全自检，网络安全爱好者
+[JLiteSpider：轻量级 Java 爬虫接口](https://github.com/luohaha/JLiteSpider)
+[awolfly9/IPProxyTool](https://github.com/awolfly9/IPProxyTool) | python ip proxy tool scrapy crawl. 抓取大量免费代理 ip，提取有效 ip 使用 | 1.5k | Python | 10/21 |
+[你必须掌握的 Python 数据分析工具之 Pandas](https://weekly.manong.io/bounce?nid=294&aid=18661&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fufn1fww)
+[Git 分支和版本回退](https://github.com/ZXZxin/ZXBlog/blob/master/Tools/Git/Git_2_分支和版本回退.md)
+| 34 | [jindongwang/transferlearning](https://github.com/jindongwang/transferlearning) | Everything about Transfer Learning and Domain Adaptation--迁移学习 | 4.3k | Python | 12/01 |
+[Java LinkedHashMap 源码解析 (jiacai2050)](https://weekly.manong.io/bounce?nid=88&aid=3655&url=http%3A%2F%2Fliujiacai.net%2Fblog%2F2015%2F09%2F12%2Fjava-linkedhashmap%2F%3Fhmsr%3Dtoutiao.io%26utm_medium%3Dtoutiao.io%26utm_source%3Dtoutiao.io)
+[从 0 到 1 学习 Flink：Data Source 介绍](https://weekly.manong.io/bounce?nid=240&aid=14761&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzunepg)
+[ctripcorp/apollo](https://github.com/ctripcorp/apollo) | Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。 | 18.6k | Java | 12/01 |
+[如何实现 MySQL 的读写分离？MySQL 主从复制原理是啥？如何解决 MySQL 主从同步的延时问题？](https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/mysql-read-write-separation.md)
 
 - [代码坏味道之代码臃肿](https://github.com/dunwu/blog/blob/master/source/_posts/design/refactor/代码坏味道之代码臃肿.md)
   [vue-recyclerview：Vue 超大数据列表解决方案](https://weekly.manong.io/bounce?nid=170&aid=9843&url=https%3A%2F%2Ftoutiao.io%2Fk%2F854f49)
@@ -1037,7 +1021,6 @@
   [JustAuth](https://github.com/justauth/JustAuth) | 史上最全的整合第三方登录的 Java 开源库，集成了二十多家国内外常用第三方平台，且提供简单易用的 API 让你快速接入 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/I3vtXALCc)
   [nodeclub](https://github.com/cnodejs/nodeclub)：Nodeclub 是使用 Node.js 和 MongoDB 开发的社区系统
   [数据集索引](https://hyper.ai/datasets)：我们收集并汇聚了 247 个多家公开数据集资源，整理并提供相应的存储服务
-  [wiki](https://github.com/Requarks/wiki)：NodeJS+Git+Markdown 实现轻松搭建 wiki。对于团队内部的知识分享是一个不错的选择。
   [Spring Boot 项目利用 MyBatis Generator 进行数据层代码自动生成](https://www.codesheep.cn/2019/02/14/mybatis-generator/)
   [Java 故障排查](https://github.com/dunwu/javacore/blob/master/docs/jvm/troubleshooting.md) - 关键词：CPU、内存、磁盘、网络、GC
   [基于 Spring Boot 实现图片上传/加水印一把梭操作](https://github.com/hansonwang99/Spring-Boot-In-Action/tree/master/springbt_watermark)
@@ -1106,7 +1089,6 @@
   [细说 Java 泛型及其应用](https://weekly.manong.io/bounce?nid=257&aid=15912&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcirkjz)
   | 100 | [zhaoyingjun/chatbot](https://github.com/zhaoyingjun/chatbot) | 一个可以自己进行训练的中文聊天机器人， 根据自己的语料训练出自己想要的聊天机器人，可以用于智能客服、在线问答、智能聊天等场景。目前包含 seq2seq 和 seqGAN 版本，后续增加 tf2.0 版本。 | 1.2k | Python | 11/30 |
   [使用 Git，要常备后悔药](http://developer.51cto.com/art/202007/620528.htm)
-  [mylxsw/wizard](https://github.com/mylxsw/wizard) | Wizard 是基于 Laravel 开发框架开发的一款开源项目（API）文档管理工具。 | 555 | PHP | 11/25 |
   [front-end-collect](https://github.com/foru17/front-end-collect) | 有位开发者在 GitHub 上整理了一批前端开发相关的优质网站、博客、教程、书籍等内容 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/Hv1l76MM3)
   [yangzongzhuan/RuoYi](https://github.com/yangzongzhuan/RuoYi) (RuoYi)官方仓库 基于 SpringBoot 的权限管理系统 易读易懂、界面简洁美观。 核心技术采用 Spring、MyBatis、Shiro 没有任何其它重度依赖。直接运行即可用
   [vue 打包优化大小
@@ -1295,7 +1277,6 @@
   [Java 里如何实现线程间通信？](https://weekly.manong.io/bounce?nid=163&aid=9309&url=https%3A%2F%2Ftoutiao.io%2Fk%2F2shjmm)
   [Java 线程池的理论与实践](https://www.jianshu.com/p/0478e283cfef?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
   [FeeiCN/ESD](https://github.com/FeeiCN/ESD) | Enumeration sub domains(枚举子域名) | 545 | Python | 07/05 |
-  [wizard](https://github.com/mylxsw/wizard)：一款基于 Laravel 开发框架的开源文档管理系统。目前已经在多家公司部署使用，支持：Markdown、Swagger 文档管理，公司内部的统一身份认证系统（LDAP）等功能
   [JVM 中的守护线程](https://weekly.manong.io/bounce?nid=244&aid=14972&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhbgl7h)
   [React hooks + Mobx + typescript + EggJs 从 0 到 1 打造一款仿网易云音乐 APP（一） - 掘金](https://juejin.im/post/5eb03584e51d454de10eb031)
   [saucxs/watermark-dom](https://github.com/saucxs/watermark-dom) watermark.js 是网站的水印组件，降低数据泄密风险。1、版本，2、水印插件-使用，3、水印插件-testTool（测试工具），4、内置方法，5、支持各种属性配置使用，等等。欢迎访问： http://www.chengxinsong.cn/home
@@ -1412,5 +1393,18 @@
   [screenshoteer](https://github.com/vladocar/screenshoteer)：使用命令行一键截取网页图片
   [xgplayer](https://github.com/bytedance/xgplayer)：由字节跳动西瓜视频开源的带解析器、能节省流量的 HTML5 视频播放器。可以作为 H5 组件、Vue、React 组件单独使用。它根据组件化的原则设计了一个独立的、可分离的 UI 组件。更重要的是，它不仅在 UI 层具有灵活性，而且在功能上也很大胆：它摆脱了视频加载、缓冲和格式支持。在播放器端加载视频、解析视频、转换格式，让不支持分段播放的 MP4 动态支持，这样就无须转换源视频的格式，服务器端也无其他开销。
   [HTML5 的 JavaScript 客户端 PDF 解决方案——jsPDF](http://developer.51cto.com/art/201909/602608.htm)
-[renrenio/renren-security](https://github.com/renrenio/renren-security) | 采用 Spring、MyBatis、Shiro 框架，开发的一套权限系统，极低门槛，拿来即用。设计之初，就非常注重安全性，为企业系统保驾护航，让一切都变得如此简单。【QQ 群：324780204、145799952】 | 1.6k | JavaScript | 10/29 |
-[gtop](https://github.com/aksakalli/gtop) | 一个使用 Node.js 实现的终端系统监控面板 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HllUSdvDU)
+  [renrenio/renren-security](https://github.com/renrenio/renren-security) | 采用 Spring、MyBatis、Shiro 框架，开发的一套权限系统，极低门槛，拿来即用。设计之初，就非常注重安全性，为企业系统保驾护航，让一切都变得如此简单。【QQ 群：324780204、145799952】 | 1.6k | JavaScript | 10/29 |
+  [gtop](https://github.com/aksakalli/gtop) | 一个使用 Node.js 实现的终端系统监控面板 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HllUSdvDU)
+  [Java 从零实现属于你的 Redis 分布式锁](https://developer.51cto.com/art/202010/628964.htm)
+  [BiliExp](https://github.com/happy888888/BiliExp) B 站辅助脚本:投币, 签到, 抽奖等日常操作(云函数), 漫画下载,视频番剧下载。发布专栏,视频。
+  [gifify](https://github.com/vvo/gifify)：款将视频转换成 GIF 图的工具，支持任何格式的视频以及选取某个时间段转换
+  [15 个经典的 Spring 面试常见问题](https://www.itcodemonkey.com/article/15029.html)
+  [Vue 全站缓存之 vue-router-then 实现原理](https://wanyaxing.com/blog/20180726075542.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+  [一套基础自动化部署搭建过程](https://segmentfault.com/a/1190000019729005)
+  [cx-extractor-python](https://github.com/chrislinan/cx-extractor-python)：这是一个对网页正文进行抽取的工具。
+  [shimohq/chinese-programmer-wrong-pronunciation](https://github.com/shimohq/chinese-programmer-wrong-pronunciation) | 中国程序员容易发音错误的单词 | 10.1k | - | 10/24 |
+  [Bigo 的 Java 面试，我挂在了第三轮技术面上.........](https://segmentfault.com/a/1190000021709836)
+  [【图文并茂，点赞收藏哦！】重学巩固你的 Vuejs 知识体系（下）](https://segmentfault.com/a/1190000037524837)
+  [优雅的在 vue 中使用 TypeScript](https://segmentfault.com/a/1190000021633958)
+  [强大的 IDEA 代码生成器，学会用，真香！](https://developer.51cto.com/art/202010/629093.htm)
+  [Vue 3 的组合 API 如何请求数据？](https://developer.51cto.com/art/202010/629096.htm)
