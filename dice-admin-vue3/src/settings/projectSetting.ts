@@ -7,7 +7,7 @@ import { isProdMode } from '/@/utils/env';
 // ! 改动后需要清空浏览器缓存
 const setting: ProjectConfig = {
   // Whether to show the configuration button
-  showSettingButton: true,
+  showSettingButton: false,
   // 权限模式
   permissionMode: PermissionModeEnum.ROLE,
   // 网站灰色模式，用于可能悼念的日期开启
