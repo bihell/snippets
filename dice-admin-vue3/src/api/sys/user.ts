@@ -8,7 +8,7 @@ import {
 
 enum Api {
   // Login = '/login',
-  Login = '/admin/auth/login',
+  Login = '/auth/login',
   GetUserInfoById = '/getUserInfoById',
   GetPermCodeByUserId = '/getPermCodeByUserId',
 }
