@@ -92,10 +92,18 @@ class User extends VuexModule {
   async login(params: LoginParams, goHome = true): Promise<GetUserInfoByUserIdModel | null> {
     try {
       const data = await loginApi(params);
-      const { token, userId } = data;
+      const { token } = data;
       // get user info
-      const userInfo = await this.getUserInfoAction({ userId });
-
+      // const userInfo = await this.getUserInfoAction({ userId });
+      const userInfo = {
+        desc: 'manager',
+        password: '123456',
+        realName: 'dice',
+        role: { roleName: 'Super Admin', value: 'super' },
+        token: token,
+        userId: '1',
+        username: 'dice',
+      };
       // save token
       this.commitTokenState(token);
 
