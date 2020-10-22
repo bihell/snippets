@@ -92,10 +92,9 @@ class User extends VuexModule {
   async login(params: LoginParams, goHome = true): Promise<GetUserInfoByUserIdModel | null> {
     try {
       const data = await loginApi(params);
-      const { token } = data;
-      // console.log(token);
+      const { token, userId } = data;
       // get user info
-      // const userInfo = await this.getUserInfoAction({ userId });
+      const userInfo = await this.getUserInfoAction({ userId });
 
       // save token
       this.commitTokenState(token);
@@ -108,7 +107,7 @@ class User extends VuexModule {
             appStore.commitPageLoadingState(false);
           }, 30);
         }));
-      return null;
+      return userInfo;
     } catch (error) {
       return null;
     }

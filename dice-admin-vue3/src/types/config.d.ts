@@ -47,6 +47,8 @@ export interface HeaderSetting {
   // 显示文档按钮
   showDoc: boolean;
   showGithub: boolean;
+  // 显示消息中心按钮
+  showNotice: boolean;
 }
 export interface ProjectConfig {
   // 是否显示配置按钮
@@ -82,6 +84,8 @@ export interface ProjectConfig {
   lockTime: number;
   // 显示面包屑
   showBreadCrumb: boolean;
+  // 显示面包屑图标
+  showBreadCrumbIcon: boolean;
   // 使用error-handler-plugin
   useErrorHandle: boolean;
 

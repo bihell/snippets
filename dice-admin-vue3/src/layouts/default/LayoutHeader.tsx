@@ -20,18 +20,17 @@ import { GITHUB_URL } from '/@/settings/siteSetting';
 import LockAction from './actions/LockActionItem';
 import { useModal } from '/@/components/Modal/index';
 import { errorStore } from '/@/store/modules/error';
-import { useGo } from '/@/hooks/web/usePage';
 import { useWindowSizeFn } from '/@/hooks/event/useWindowSize';
+import NoticeAction from './actions/notice/NoticeActionItem.vue';
 
 export default defineComponent({
   name: 'DefaultLayoutHeader',
   setup() {
     const widthRef = ref(200);
-    const { refreshPage } = useTabs();
+    const { refreshPage, addTab } = useTabs();
     const [register, { openModal }] = useModal();
     const { toggleFullscreen, isFullscreenRef } = useFullscreen();
 
-    const go = useGo();
     const getProjectConfigRef = computed(() => {
       return appStore.getProjectConfig;
     });
@@ -71,7 +70,7 @@ export default defineComponent({
 
     function handleToErrorList() {
       errorStore.commitErrorListCountState(0);
-      go('/exception/error-log');
+      addTab('/exception/error-log', true);
     }
 
     /**
@@ -85,9 +84,17 @@ export default defineComponent({
       const {
         useErrorHandle,
         showLogo,
-        headerSetting: { theme: headerTheme, useLockPage, showRedo, showGithub, showFullScreen },
+        headerSetting: {
+          theme: headerTheme,
+          useLockPage,
+          showRedo,
+          showGithub,
+          showFullScreen,
+          showNotice,
+        },
         menuSetting: { mode, type: menuType, split: splitMenu, topMenuAlign },
         showBreadCrumb,
+        showBreadCrumbIcon,
       } = getProjectConfig;
 
       const isSidebarType = menuType === MenuTypeEnum.SIDEBAR;
@@ -100,7 +107,7 @@ export default defineComponent({
                 {showLogo && !isSidebarType && <Logo class={`layout-header__logo`} />}
 
                 {mode !== MenuModeEnum.HORIZONTAL && showBreadCrumb && !splitMenu && (
-                  <LayoutBreadcrumb />
+                  <LayoutBreadcrumb showIcon={showBreadCrumbIcon} />
                 )}
                 {unref(showTopMenu) && (
                   <div
@@ -162,6 +169,16 @@ export default defineComponent({
                       ),
                     }}
                   </Tooltip>
+                )}
+                {showNotice && (
+                  <div>
+                    <Tooltip>
+                      {{
+                        title: () => '消息通知',
+                        default: () => <NoticeAction />,
+                      }}
+                    </Tooltip>
+                  </div>
                 )}
                 {showRedo && (
                   <Tooltip>

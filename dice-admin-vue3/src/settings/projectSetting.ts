@@ -7,7 +7,7 @@ import { isProdMode } from '/@/utils/env';
 // ! 改动后需要清空浏览器缓存
 const setting: ProjectConfig = {
   // Whether to show the configuration button
-  showSettingButton: false,
+  showSettingButton: true,
   // 权限模式
   permissionMode: PermissionModeEnum.ROLE,
   // 网站灰色模式，用于可能悼念的日期开启
@@ -39,6 +39,8 @@ const setting: ProjectConfig = {
     showDoc: true,
     //  是否显示github
     showGithub: true,
+    // 显示消息中心按钮
+    showNotice: true,
   },
   // 菜单配置
   menuSetting: {
@@ -92,6 +94,8 @@ const setting: ProjectConfig = {
   lockTime: 0,
   // 显示面包屑
   showBreadCrumb: true,
+  // 显示面包屑图标
+  showBreadCrumbIcon: false,
 
   // 使用error-handler-plugin
   useErrorHandle: isProdMode(),
