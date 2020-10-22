@@ -1,5 +1,3 @@
-[wiki](https://github.com/Requarks/wiki)：NodeJS+Git+Markdown 实现轻松搭建 wiki。对于团队内部的知识分享是一个不错的选择。
-
 [MrDoc](https://github.com/zmister2016/MrDoc) 一个基于 Python 开发的在线文档系统。支持 Markdown 语法、文集分类、科学公式、流程图、思维导图等内容。清爽的阅读界面，还可以把内容打包导出为 Markdown 文件、EPUB 文件、PDF 文件。适合作为个人和小型团队的私有文档服务
 [aimerforreimu/auxpi](https://github.com/aimerforreimu/auxpi) | 🍭 集合多家 API 的新一代图床 | 2.0k | Go | 09/24 |
 [Spring Remoting 的 Thrift 实现（Java） (飒然 Hang)](https://weekly.manong.io/bounce?nid=76&aid=2643&url=https%3A%2F%2Fgithub.com%2Fsuperhj1987%2Fspring-remoting-thrift)
@@ -1410,3 +1408,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [Vue 3 的组合 API 如何请求数据？](https://developer.51cto.com/art/202010/629096.htm)
   [zerosoul/rc-bullets](https://github.com/zerosoul/rc-bullets) 基于 CSS3 Animation，使用 React 构建的弹幕组件
   [GoAccess (A Real-Time Apache and Nginx) Web Server Log Analyzer](https://www.tecmint.com/goaccess-a-real-time-apache-and-nginx-web-server-log-analyzer/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+tecmint+%28Tecmint%3A+Linux+Howto%27s+Guide%29)
+  [【线上排查实战】AOP 切面执行顺序你真的了解吗](https://xie.infoq.cn/article/afd133033bb55243ff650ef4d?utm_source=rss&utm_medium=article)
+  [Nginx 在运维领域中的应用，看这一篇就够了](https://xie.infoq.cn/article/a382209f243d386709c52c265?utm_source=rss&utm_medium=article)

@@ -93,6 +93,7 @@ class User extends VuexModule {
     try {
       const data = await loginApi(params);
       const { token } = data;
+      // console.log(token);
       // get user info
       // const userInfo = await this.getUserInfoAction({ userId });
 
