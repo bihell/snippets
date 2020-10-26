@@ -1382,3 +1382,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [还在用 livy 吗？大数据连接器 Linkis 开源啦](https://github.com/WeBankFinTech/Linkis/blob/master/docs/zh_CN/README.md?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [字节跳动基于 Flink 的 MQ-Hive 实时数据集成](https://www.infoq.cn/article/9uuDtYzzprpqSSb0x9hk?utm_source=rss&utm_medium=article)
 [ymm-tech/gods-pen](https://github.com/ymm-tech/gods-pen) 基于 vue 的高扩展在线网页制作平台，可自定义组件，可添加脚本，可数据统计。A mobile page builder/editor
+[Java 开发人员必知的常用类库，这些你都知道吗？](http://developer.51cto.com/art/202010/629680.htm)
+[除了 JDK、CGLIB，还有 3 种类代理方式](http://developer.51cto.com/art/202010/629670.htm)
+[请避开 Java Stream 流式编程常见的坑](http://developer.51cto.com/art/202010/629653.htm)
+[gao-sun/eul](https://github.com/gao-sun/eul) macOS status monitoring app written in SwiftUI.
