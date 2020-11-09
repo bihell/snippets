@@ -214,7 +214,7 @@
 [bestaone/HiAuth](https://github.com/bestaone/HiAuth) | HiAuth 是一个开源的基于 Oauth2 协议的认证、授权系统。 | 185 | Vue | 05/21 |
 [u014427391/jeeplatform](https://github.com/u014427391/jeeplatform) | 一款企业信息化开发基础平台，拟集成 OA(办公自动化)、SCM(供应链系统)、ERP(企业资源管理系统)、CMS(内容管理系统)、CRM(客户关系管理系统)等企业系统的通用业务功能 JeePlatform 项目是一款以 Spring Framework 为核心框架，集 ORM 框架 Mybatis，Web 层框架 SpringMVC 和多种开源组件框架而成的一款通用基础平台，代码已经捐赠给开源中国社区 | 1.1k | JavaScript | 11/23 |
 [React hooks + Mobx + typescript + EggJs 从 0 到 1 打造一款仿网易云音乐 APP（一） - 掘金](https://juejin.im/post/5eb03584e51d454de10eb031)
-[Jack-Cherish/python-spider](https://github.com/Jack-Cherish/python-spider) | :rainbow:Python3 网络爬虫实战 | 9.5k | Python | 11/26 |
+[Jack-Cherish/python-spider](https://github.com/Jack-Cherish/python-spider) Python3网络爬虫实战：淘宝、京东、网易云、B站、12306、抖音、笔趣阁、漫画小说下载、音乐电影下载等。
 [ix64/unlock-music](https://github.com/ix64/unlock-music) Unlock encrypted music file in browser. 在浏览器中解锁加密的音乐文件。
 [ymm-tech/gods-pen](https://github.com/ymm-tech/gods-pen) 基于 vue 的高扩展在线网页制作平台，可自定义组件，可添加脚本，可数据统计。A mobile page builder/editor
 [zhangdaiscott / jeecg-boot](https://github.com/zhangdaiscott/jeecg-boot) 一款基于代码生成器的 JAVA 快速开发平台，开源界“小普元”超越传统商业企业级开发平台！采用前后端分离架构：SpringBoot 2.x，Ant Design&Vue，Mybatis-plus，Shiro，JWT。强大的代码生成器让前后端代码一键生成，无需写任何代码! 引领新的开发模式(OnlineCoding 模式-> 代码生成器模式-> 手工 MERGE 智能开发)，帮助 Java 项目解决 70%的重复工作，让开发更多关注业务逻辑。既能快速提高开发效率，帮助公司节省成本，同时又不失灵活性。JeecgBoot 还独创在线开发模式（No 代码）：在线表单配置（表单设计器）、移动配置能力、在线工作流配置（流程设计器）、在线报表配置、在线图表配置、插件能力（可插拔）等等
@@ -683,3 +683,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [yoki123/ncmdump](https://github.com/yoki123/ncmdump) | netease cloud music copyright protection file dump(golang 版本网易云音乐 ncm 文件格式转换) | 685 | Go | 11/05 |
 [RedditOS](https://github.com/Dimillian/RedditOS) A SwiftUI Reddit client for macOS
 [ouyanghuiyu / chineseocr_lite](https://github.com/ouyanghuiyu/chineseocr_lite) 超轻量级中文 ocr，支持竖排文字识别
+[core](https://github.com/home-assistant/core) Home Assistant是一个运行在Python 3上的家庭自动化平台。可以连接各种家庭智能设备——灯、开关、门、风扇、响铃、温湿度计、音响、安防监控设备、智能电表等等，该项目非常非常适合在Raspberry Pi或本地服务器上运行。
