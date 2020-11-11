@@ -1,21 +1,4 @@
-[Vue 3 的组合 API 如何请求数据？](https://developer.51cto.com/art/202010/629096.htm)
 
-
-
-
-[从编译和运行的角度再议 Java 乱码问题](https://developer.ibm.com/zh/articles/java-random-code-from-the-perspective-of-compilation/)
-[huginn](https://github.com/huginn/huginn) | 一个开源的自动化工具，类似 IFTTT 的开源版应用，可通过开发者设定的某个事件来触发具体操作。比如你可以设定当 GitHubDaily 发送一条微博后，自动给你推送一封邮件提醒："这货又发微博了" | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IkMhdyx5S)
-[Auto：Google 的 Java 代码生成器](https://github.com/google/auto/)
-[nodeppt](https://github.com/ksky521/nodeppt)：可能是迄今为止最好的网页版演示库
-[sh](https://github.com/amoffat/sh)：sh 是一个成熟，用于替代 subprocess，它允许你调用任何程序，就像它是一个函数，支持 Python2.6 - 3.5
-[Hadoop-2.6.0-chd5.4.8 在 CentOS 7 minimal 搭建全过程](https://weekly.manong.io/bounce?nid=103&aid=5032&url=http%3A%2F%2Fwww.whynotac.tech%2F2016%2F01%2F12%2Fhadoop%2F)
-[FunctionClub/V2ray.Fun](https://github.com/FunctionClub/V2ray.Fun) | 正在开发的全新 V2ray.Fun | 1.6k | CSS | 08/05 |
-这可能是把 JDK 监控和故障处理工具总结的最完整的一篇文章了 - 51CTO.COM https://news.51cto.com/art/202002/611404.htm
-[michaelliao/sinaweibopy](https://github.com/michaelliao/sinaweibopy) | 新浪微博 Python SDK | 1.2k | Python | 05/02 |
-[joplin](https://github.com/laurent22/joplin) joplin 是一个免费的，开源的笔记和待办事项的应用程序，可以处理笔记本组织成的大量笔记。笔记是可搜索的，可以直接从应用程序复制，标记和修改，也可以从自己的文本编辑器进行修改。笔记采用 Markdown 格式。通过.enex 文件从 Evernote 导出的 Notes 可以导入到 Joplin 中，包括格式化内容(转换为 Markdown)，资源(图像，附件等)和完整的元数据(地理位置，更新时间，创建时间等) 。
-[基于 Vue 全家桶、Lumen 开发的 Web 评教系统](https://github.com/gd4Ark/teacher-scoring-system?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
-[any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
-[screenshoteer](https://github.com/vladocar/screenshoteer)：使用命令行一键截取网页图片
 [YAPI](https://github.com/YMFE/yapi)：分享一个高效、易用、功能强大、可视化的 API 管理平台 - YAPI。拥有可内网部署、扁平化权限设计、类似 Postman 的接口调试、支持 Postman
 [Bindian9710 / Spider-Crack_Login_Js](https://github.com/Bindian9710/Spider-Crack_Login_Js) 爬虫需要登陆网站的密码 js 解密、python 解密 大众点评|中国移动|新浪微博|汽车之家|Steam|中华英才网|拼多多|36 氪... 欢迎 Star
 [[手把手系列之] Jenkins+Docker 自动化部署 vue 项目](https://segmentfault.com/a/1190000020868116)
@@ -683,3 +666,18 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [fxsjy/jieba](https://github.com/fxsjy/jieba) | 结巴中文分词 | 21.0k | Python | 11/26 |
 [Bash 脚本实现每次登录到 Shell 时可以查看 Linux 系统信息](https://linux.cn/article-11645-1.html?utm_source=rss&utm_medium=rss)
 [基于 Hadoop 生态 Spark Streaming 的大数据实时流处理平台的搭建](http://www.tianshangkun.com/2018/01/26/%E5%9F%BA%E4%BA%8EHadoop%E7%94%9F%E6%80%81SparkStreaming%E7%9A%84%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%97%B6%E6%B5%81%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[hroptatyr/dateutils](https://github.com/hroptatyr/dateutils) nifty command line date and time utilities; fast date calculations and conversion in the shell www.fresse.org/dateutils/
+[Vue 3 的组合 API 如何请求数据？](https://developer.51cto.com/art/202010/629096.htm)
+[从编译和运行的角度再议 Java 乱码问题](https://developer.ibm.com/zh/articles/java-random-code-from-the-perspective-of-compilation/)
+[Auto：Google 的 Java 代码生成器](https://github.com/google/auto/)
+[nodeppt](https://github.com/ksky521/nodeppt)：可能是迄今为止最好的网页版演示库
+[sh](https://github.com/amoffat/sh)：sh 是一个成熟，用于替代 subprocess，它允许你调用任何程序，就像它是一个函数，支持 Python2.6 - 3.5
+[Hadoop-2.6.0-chd5.4.8 在 CentOS 7 minimal 搭建全过程](https://weekly.manong.io/bounce?nid=103&aid=5032&url=http%3A%2F%2Fwww.whynotac.tech%2F2016%2F01%2F12%2Fhadoop%2F)
+[FunctionClub/V2ray.Fun](https://github.com/FunctionClub/V2ray.Fun) | 正在开发的全新 V2ray.Fun | 1.6k | CSS | 08/05 |
+这可能是把 JDK 监控和故障处理工具总结的最完整的一篇文章了 - 51CTO.COM https://news.51cto.com/art/202002/611404.htm
+[michaelliao/sinaweibopy](https://github.com/michaelliao/sinaweibopy) | 新浪微博 Python SDK | 1.2k | Python | 05/02 |
+[基于 Vue 全家桶、Lumen 开发的 Web 评教系统](https://github.com/gd4Ark/teacher-scoring-system?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[joplin](https://github.com/laurent22/joplin) joplin 是一个免费的，开源的笔记和待办事项的应用程序，可以处理笔记本组织成的大量笔记。笔记是可搜索的，可以直接从应用程序复制，标记和修改，也可以从自己的文本编辑器进行修改。笔记采用 Markdown 格式。通过.enex 文件从 Evernote 导出的 Notes 可以导入到 Joplin 中，包括格式化内容(转换为 Markdown)，资源(图像，附件等)和完整的元数据(地理位置，更新时间，创建时间等) 。
+[any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
+[screenshoteer](https://github.com/vladocar/screenshoteer)：使用命令行一键截取网页图片
+[Flink1.11+Hive批流一体数仓](https://www.infoq.cn/article/Yj5zE53NzNmM7bPFRaLz?utm_source=rss&utm_medium=article)
