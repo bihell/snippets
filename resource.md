@@ -681,3 +681,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
 [screenshoteer](https://github.com/vladocar/screenshoteer)：使用命令行一键截取网页图片
 [Flink1.11+Hive批流一体数仓](https://www.infoq.cn/article/Yj5zE53NzNmM7bPFRaLz?utm_source=rss&utm_medium=article)
+[Spring事务失效的 8 大原因，这次可以吊打面试官了](https://developer.51cto.com/art/202011/631712.htm)
