@@ -1,10 +1,4 @@
 
-
-[CB-ysx/pageDesign](https://github.com/CB-ysx/pageDesign) | 网页版海报排版设计 | 272 | Vue | 03/03 |
-[redis-memory-analyzer](https://github.com/gamenet/redis-memory-analyzer) Redis 实时内存分析工具。我比较好奇它是怎么实时获取 redis 中 key 的情况和信息，就看了下源码 scanner.py 文件。发现是采用 scan_iter 方法，控制扫描 key 返回的量。然后通过 yield 减少内存占用量，最后再加上 register_script 方法调用 Lua 脚本或 pipeline 方法提高获取 key 信息的效率。分析后感觉这个工具可适用在数据量较大的情况，实时性要求在秒或者分钟级的场景下
-[在线工具](https://tool.lu/) | 一批实用的在线工具
-[gavinjzx/luckyDraw](https://github.com/gavinjzx/luckyDraw) | 公司年会抽奖程序，在浏览器下直接执行。按 F11 进全屏模式效果最佳。 | 62 | CSS | 01/14 |
-[cycz / jdBuyMask](https://github.com/cycz/jdBuyMask) 京东监控口罩有货爬虫，自动下单爬虫，口罩爬虫
 [liangxiaojuan/vue-Meizi](https://github.com/liangxiaojuan/vue-Meizi) | vue 最新实战项目，vue2 + vuex + webpack + es6 干货多多，新手福利 | 1.3k | JavaScript | 07/28 |
 [kingsic/SGQRCode](https://github.com/kingsic/SGQRCode) | The easy to use QRCode scan library for iOS【iOS 原生二维码生成与扫描 -> 高仿微信】 | 1.4k | Objective-C | 10/01 |
 [linlinjava/litemall](https://github.com/linlinjava/litemall) | 又一个小商城。litemall = Spring Boot 后端 + Vue 管理员前端 + 微信小程序用户前端 + Vue 用户移动端 | 10.3k | Java | 12/01 |
@@ -691,3 +685,10 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [huguijian/webIM](https://github.com/huguijian/webIM) | 基于 SWOOLE 的在线聊天 WebIM
 [Node.js 实现远程桌面监控](https://juejin.im/post/5d18d4c36fb9a07ecb0bbe7b?utm_date=0701&utm_source=wb&utm_type=article)
 [ip2region](https://github.com/lionsoul2014/ip2region)：IP 到地区的映射库，速度快（毫秒级）、准确性高（99.9%），妈妈再也不用担心我的 IP 地址定位；
+[CB-ysx/pageDesign](https://github.com/CB-ysx/pageDesign) | 网页版海报排版设计 | 272 | Vue | 03/03 |
+[redis-memory-analyzer](https://github.com/gamenet/redis-memory-analyzer) Redis 实时内存分析工具。我比较好奇它是怎么实时获取 redis 中 key 的情况和信息，就看了下源码 scanner.py 文件。发现是采用 scan_iter 方法，控制扫描 key 返回的量。然后通过 yield 减少内存占用量，最后再加上 register_script 方法调用 Lua 脚本或 pipeline 方法提高获取 key 信息的效率。分析后感觉这个工具可适用在数据量较大的情况，实时性要求在秒或者分钟级的场景下
+[在线工具](https://tool.lu/) | 一批实用的在线工具
+[gavinjzx/luckyDraw](https://github.com/gavinjzx/luckyDraw) | 公司年会抽奖程序，在浏览器下直接执行。按 F11 进全屏模式效果最佳。 | 62 | CSS | 01/14 |
+[cycz / jdBuyMask](https://github.com/cycz/jdBuyMask) 京东监控口罩有货爬虫，自动下单爬虫，口罩爬虫
+[Hoppscotch](https://github.com/hoppscotch/hoppscotch) Hoppscotch是一个免费开源的API请求构建器。除了REST API支持外，它还支持GraphQL。它能够轻松快捷地为你的API生成文档。它是高度可配置的，提供身份验证，这绝对是你必备的工具之一。
+[iHateRegex](https://github.com/geongeorge/i-hate-regex) iHateRegex提供了正则表达式的可视化表示，你可以在“测试”区域中使用字符串测试正则表达式，并将可视化效果嵌入到你的站点中去，比如用户名、邮箱、日期、电话等，你只需要键入类型，它就会返回给你对应的表达式和演示字符。
