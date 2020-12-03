@@ -1,33 +1,4 @@
-
-[liangxiaojuan/vue-Meizi](https://github.com/liangxiaojuan/vue-Meizi) | vue 最新实战项目，vue2 + vuex + webpack + es6 干货多多，新手福利 | 1.3k | JavaScript | 07/28 |
-[kingsic/SGQRCode](https://github.com/kingsic/SGQRCode) | The easy to use QRCode scan library for iOS【iOS 原生二维码生成与扫描 -> 高仿微信】 | 1.4k | Objective-C | 10/01 |
-[linlinjava/litemall](https://github.com/linlinjava/litemall) | 又一个小商城。litemall = Spring Boot 后端 + Vue 管理员前端 + 微信小程序用户前端 + Vue 用户移动端 | 10.3k | Java | 12/01 |
-[spring-boot-pay](https://gitee.com/52itstyle/spring-boot-pay)：支付服务：支付宝，微信，银联详细代码案例；支付 API 文档、持续更新中 https://blog.52itstyle.vip/
-[lybenson/bilibili-vue](https://github.com/lybenson/bilibili-vue) | 前端 vue+后端 koa，全栈式开发 bilibili 首页 | 1.9k | Vue | 11/03 |
-[用 Python 给自己 DIY 一款小说阅读器，你要不看看？](https://www.itcodemonkey.com/article/15388.html)
-[toapi](https://github.com/gaojiuli/toapi)：该项目做的事儿是通过简单的配置把目标网页的内容爬下来，缓存结果后提供成 API 的一条龙服务。
-[cloudfavorites/favorites-web](https://github.com/cloudfavorites/favorites-web) | 云收藏 Spring Boot 2.X 开源项目 | 3.6k | HTML | 08/22 |
-[Docker 实战之 Kafka 集群](https://segmentfault.com/a/1190000021914463)
-[cnbattle/douyin](https://github.com/cnbattle/douyin) | 抖音推荐列表视频爬虫方案
-[oui：基于 Vue 的 OpenWrt 后台管理 UI 框架](https://github.com/zhaojh329/oui)
-[style2paints](https://github.com/lllyasviel/style2paints)：style2paints 是一款 AI 驱动的线稿上色工具 ，可根据用户上传的自定义色彩给线稿进行上色
-[yanjunhui/chat](https://github.com/yanjunhui/chat) | 微信企业号发送监控 for OpenFalcon | 186 | Go | 02/27 |
-[bullteam/zeus-admin](https://github.com/bullteam/zeus-admin) | Zeus 基于 Golang Gin +casbin，致力于做企业统一权限&账号中心管理系统。包含账号管理，数据权限，功能权限，应用管理，多数据库适配，可 docker 一键运行。社区活跃，版本迭代快，加群免费技术支持。 | 120 | Vue | 11/24 |
-[iptv](https://github.com/iptv-org/iptv) | 牛逼了，这个 GitHub 项目收集了全球 8000 多个公共的 IPTV 频道，领域覆盖历史、教育、商业、电影、音乐... | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IjjVBszJL)
-[github1586/nuxt-bnhcp](https://github.com/github1586/nuxt-bnhcp) | nuxt、express、vue、mysql、redis、nginx、socket.io (实战商城) | 1.6k | Vue | 11/06 |
-[HanLP 中文分词 Solr 插件（Java） (hankcs)](https://weekly.manong.io/bounce?nid=85&aid=3415&url=https%3A%2F%2Fgithub.com%2Fhankcs%2Fhanlp-solr-plugin)
-[Vue2.0LOL](https://github.com/arronf2e/Vue2.0LOL)：vue2.0 版英雄联盟助手
-[iammapping/wedding](https://github.com/iammapping/wedding) | 婚礼大屏互动，微信请柬一站式解决方案 | 2.6k | JavaScript | 11/02 |
-[huichen/wukong](https://github.com/huichen/wukong) | 高度可定制的全文搜索引擎 | 3.4k | Go | 08/21 |
-| 40 | [zuoqing1988/ZQCNN](https://github.com/zuoqing1988/ZQCNN) | 一款比 mini-caffe 更快的 Forward 库，觉得好用请点星啊，400 星公布快速人脸检测模型，500 星公布 106 点 landmark，600 星公布人头检测模型，700 星公布人脸检测套餐（六种 pnet
-[lazydocker](http://news.51cto.com/art/201907/598815.htm)：一个用于 Docker 和 docker-compose 的简单终端 UI
 [learn_python3_spider](https://github.com/wistbean/learn_python3_spider) | 一份从 0 到 1 学习 Python 爬虫教程，内容含有如何抓包，各种爬虫常用的模块使用，实战教程，最后还教你如何反爬虫 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HDZypo4a5)
-[CRMEB](https://github.com/crmeb/CRMEB) CRMEB 系统就是集客户关系管理+营销电商系统，能够真正帮助企业基于微信公众号、小程序、wap、pc、app 等，实现会员管理、数据分析
-[CheckChe0803 / flink-recommandSystem-demo](https://github.com/CheckChe0803/flink-recommandSystem-demo):🚁🚀 基于 Flink 实现的商品实时推荐系统。flink 统计商品热度，放入 redis 缓存，分析日志信息，将画像标签和实时记录放入 Hbase。在用户发起推荐请求后，根据用户画像重排序热度榜，并结合协同过滤和标签两个推荐模块为新生成的榜单的每一个产品添加关联产品，最后返回新的用户列表。
-[Tencent/bk-bcs](https://github.com/Tencent/bk-bcs) | 蓝鲸智云容器管理平台(BlueKing Container Service) | 173 | Go | 11/29 |
-[SpringBoot+WebSocket+Netty 实现消息推送 - 掘金](https://juejin.im/post/5e82ba62f265da47ac497e41)
-[alibaba/easyexcel](https://github.com/alibaba/easyexcel) | 快速、简单避免 OOM 的 java 处理 Excel 工具 | 11.4k | Java | 11/24 |
-[DevilYuan](https://github.com/moyuanz/DevilYuan)：一个由 Python 编写的可视化股票量化系统，支持选股，历史数据自动下载，策略回测及参数优化，实盘交易和常用的统计功能
 [xingag/spider_python](https://github.com/xingag/spider_python) python 爬虫
 [从零开始写一个 Web 视频播放器](https://webfe.kujiale.com/web-video-player/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [rclone](https://github.com/ncw/rclone)：Golang 版的 rsync，与 rsync 不同的是 rclone 可以将文件同步到各种云服务的存储桶或 CDN 服务上
@@ -692,3 +663,26 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [cycz / jdBuyMask](https://github.com/cycz/jdBuyMask) 京东监控口罩有货爬虫，自动下单爬虫，口罩爬虫
 [Hoppscotch](https://github.com/hoppscotch/hoppscotch) Hoppscotch是一个免费开源的API请求构建器。除了REST API支持外，它还支持GraphQL。它能够轻松快捷地为你的API生成文档。它是高度可配置的，提供身份验证，这绝对是你必备的工具之一。
 [iHateRegex](https://github.com/geongeorge/i-hate-regex) iHateRegex提供了正则表达式的可视化表示，你可以在“测试”区域中使用字符串测试正则表达式，并将可视化效果嵌入到你的站点中去，比如用户名、邮箱、日期、电话等，你只需要键入类型，它就会返回给你对应的表达式和演示字符。
+[liangxiaojuan/vue-Meizi](https://github.com/liangxiaojuan/vue-Meizi) | vue 最新实战项目，vue2 + vuex + webpack + es6 干货多多，新手福利 | 1.3k | JavaScript | 07/28 |
+[kingsic/SGQRCode](https://github.com/kingsic/SGQRCode) | The easy to use QRCode scan library for iOS【iOS 原生二维码生成与扫描 -> 高仿微信】 | 1.4k | Objective-C | 10/01 |
+[linlinjava/litemall](https://github.com/linlinjava/litemall) | 又一个小商城。litemall = Spring Boot 后端 + Vue 管理员前端 + 微信小程序用户前端 + Vue 用户移动端 | 10.3k | Java | 12/01 |
+[spring-boot-pay](https://gitee.com/52itstyle/spring-boot-pay)：支付服务：支付宝，微信，银联详细代码案例；支付 API 文档、持续更新中 https://blog.52itstyle.vip/
+[lybenson/bilibili-vue](https://github.com/lybenson/bilibili-vue) | 前端 vue+后端 koa，全栈式开发 bilibili 首页 | 1.9k | Vue | 11/03 |
+[用 Python 给自己 DIY 一款小说阅读器，你要不看看？](https://www.itcodemonkey.com/article/15388.html)
+[oui：基于 Vue 的 OpenWrt 后台管理 UI 框架](https://github.com/zhaojh329/oui)
+[style2paints](https://github.com/lllyasviel/style2paints)：style2paints 是一款 AI 驱动的线稿上色工具 ，可根据用户上传的自定义色彩给线稿进行上色
+[yanjunhui/chat](https://github.com/yanjunhui/chat) | 微信企业号发送监控 for OpenFalcon | 186 | Go | 02/27 |
+[iptv](https://github.com/iptv-org/iptv) | 牛逼了，这个 GitHub 项目收集了全球 8000 多个公共的 IPTV 频道，领域覆盖历史、教育、商业、电影、音乐... | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IjjVBszJL)
+[github1586/nuxt-bnhcp](https://github.com/github1586/nuxt-bnhcp) | nuxt、express、vue、mysql、redis、nginx、socket.io (实战商城) | 1.6k | Vue | 11/06 |
+[HanLP 中文分词 Solr 插件（Java） (hankcs)](https://weekly.manong.io/bounce?nid=85&aid=3415&url=https%3A%2F%2Fgithub.com%2Fhankcs%2Fhanlp-solr-plugin)
+[Vue2.0LOL](https://github.com/arronf2e/Vue2.0LOL)：vue2.0 版英雄联盟助手
+[iammapping/wedding](https://github.com/iammapping/wedding) | 婚礼大屏互动，微信请柬一站式解决方案 | 2.6k | JavaScript | 11/02 |
+[huichen/wukong](https://github.com/huichen/wukong) | 高度可定制的全文搜索引擎 | 3.4k | Go | 08/21 |
+[CheckChe0803 / flink-recommandSystem-demo](https://github.com/CheckChe0803/flink-recommandSystem-demo):🚁🚀 基于 Flink 实现的商品实时推荐系统。flink 统计商品热度，放入 redis 缓存，分析日志信息，将画像标签和实时记录放入 Hbase。在用户发起推荐请求后，根据用户画像重排序热度榜，并结合协同过滤和标签两个推荐模块为新生成的榜单的每一个产品添加关联产品，最后返回新的用户列表。
+[CRMEB](https://github.com/crmeb/CRMEB) CRMEB 系统就是集客户关系管理+营销电商系统，能够真正帮助企业基于微信公众号、小程序、wap、pc、app 等，实现会员管理、数据分析
+[Tencent/bk-bcs](https://github.com/Tencent/bk-bcs) | 蓝鲸智云容器管理平台(BlueKing Container Service) | 173 | Go | 11/29 |
+[SpringBoot+WebSocket+Netty 实现消息推送 - 掘金](https://juejin.im/post/5e82ba62f265da47ac497e41)
+[alibaba/easyexcel](https://github.com/alibaba/easyexcel) | 快速、简单避免 OOM 的 java 处理 Excel 工具 | 11.4k | Java | 11/24 |
+[DevilYuan](https://github.com/moyuanz/DevilYuan)：一个由 Python 编写的可视化股票量化系统，支持选股，历史数据自动下载，策略回测及参数优化，实盘交易和常用的统计功能
+[小明用 Python 开发一个 【暴力破解压缩文件 zip 密码】，省了 250 块钱](https://vip.fxxkpython.com/?p=6171)
+[Python 逆向抓取 APP 数据](https://vip.fxxkpython.com/?p=6135)
