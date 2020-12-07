@@ -655,7 +655,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [skywalking](https://github.com/apache/skywalking "skywalking")\*\* : 针对分布式系统的应用性能监控，尤其是针对微服务、云原生和面向容器的分布式系统架构。
 [huguijian/webIM](https://github.com/huguijian/webIM) | 基于 SWOOLE 的在线聊天 WebIM
 [Node.js 实现远程桌面监控](https://juejin.im/post/5d18d4c36fb9a07ecb0bbe7b?utm_date=0701&utm_source=wb&utm_type=article)
-[ip2region](https://github.com/lionsoul2014/ip2region)：IP 到地区的映射库，速度快（毫秒级）、准确性高（99.9%），妈妈再也不用担心我的 IP 地址定位；
 [CB-ysx/pageDesign](https://github.com/CB-ysx/pageDesign) | 网页版海报排版设计 | 272 | Vue | 03/03 |
 [redis-memory-analyzer](https://github.com/gamenet/redis-memory-analyzer) Redis 实时内存分析工具。我比较好奇它是怎么实时获取 redis 中 key 的情况和信息，就看了下源码 scanner.py 文件。发现是采用 scan_iter 方法，控制扫描 key 返回的量。然后通过 yield 减少内存占用量，最后再加上 register_script 方法调用 Lua 脚本或 pipeline 方法提高获取 key 信息的效率。分析后感觉这个工具可适用在数据量较大的情况，实时性要求在秒或者分钟级的场景下
 [在线工具](https://tool.lu/) | 一批实用的在线工具
@@ -686,3 +685,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [DevilYuan](https://github.com/moyuanz/DevilYuan)：一个由 Python 编写的可视化股票量化系统，支持选股，历史数据自动下载，策略回测及参数优化，实盘交易和常用的统计功能
 [小明用 Python 开发一个 【暴力破解压缩文件 zip 密码】，省了 250 块钱](https://vip.fxxkpython.com/?p=6171)
 [Python 逆向抓取 APP 数据](https://vip.fxxkpython.com/?p=6135)
+[takenote](https://github.com/taniarascia/takenote) A web-based notes app for developers. (Demo only)
+[soul](https://github.com/dromara/soul) High-Performance Java API Gateway
+[edex-ui](https://github.com/GitSquared/edex-ui) A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.
+[porn-vault](https://github.com/porn-vault/porn-vault) 💋 Manage your ever-growing porn collection. Using Vue & GraphQL
