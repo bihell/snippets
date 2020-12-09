@@ -106,3 +106,78 @@ const router = createRouter({
 });
 ```
 
+# src/router/menus/modules/blog.ts
+
+```
+import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
+const menu: MenuModule = {
+  orderNo: 0,
+  menu: {
+    path: '/blog',
+    name: t('routes.blog.blog'),
+    children: [
+      {
+        path: 'article',
+        name: t('routes.blog.article'),
+      },
+    ],
+  },
+};
+export default menu;
+
+```
+
+# src/locales/lang/en/routes/blog.ts
+
+```
+export default {
+  blog: 'Blog',
+
+  article: 'Article',
+};
+```
+
+# src/locales/lang/zh_CN/routes/blog.ts
+
+```
+export default {
+  blog: '博客',
+
+  article: '文章列表',
+};
+```
+
+# src/router/routes/modules/blog.ts
+
+```
+import type { AppRouteModule } from '/@/router/types';
+
+import { LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
+
+const tree: AppRouteModule = {
+  path: '/blog',
+  name: 'Blog',
+  component: LAYOUT,
+  redirect: '/blog/article',
+  meta: {
+    icon: 'carbon:blog',
+    title: t('routes.blog.blog'),
+  },
+  children: [
+    {
+      path: 'article',
+      name: 'article',
+      component: () => import('/@/views/demo/tree/index.vue'),
+      meta: {
+        title: t('routes.blog.article'),
+      },
+    },
+  ],
+};
+
+export default tree;
+```
+
