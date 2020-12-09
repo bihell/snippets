@@ -1,24 +1,17 @@
 @import (reference) '../../../design/index.less';
 
 .multiple-tabs {
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  z-index: 10;
+  height: @multiple-height + 2;
+  padding: 0 0 2px 0;
+  margin-left: -1px;
+  line-height: @multiple-height + 2;
+  background: @white;
+  box-shadow: 0 1px 2px 0 rgba(29, 35, 41, 0.05);
 
   .ant-tabs-small {
     height: @multiple-height;
   }
-
-  // .ant-tabs:not(.ant-tabs-card) {
-  //   .ant-tabs-nav-container {
-  //     height: @multiple-height;
-  //     background: @white;
-  //   }
-
-  //   .ant-tabs-tab {
-  //     font-size: 14px;
-  //     line-height: 1.5515;
-  //     background: @white;
-  //   }
-  // }
 
   .ant-tabs.ant-tabs-card {
     .ant-tabs-card-bar {
@@ -26,7 +19,7 @@
       margin: 0;
       background: @white;
       border: 0;
-      box-shadow: 0 4px 26px 1px rgba(0, 0, 0, 0.08);
+      box-shadow: none;
 
       .ant-tabs-nav-container {
         height: @multiple-height;
@@ -35,16 +28,32 @@
 
       .ant-tabs-tab {
         height: calc(@multiple-height - 2px);
-        font-size: 14px;
+        padding-right: 12px;
         line-height: calc(@multiple-height - 2px);
         color: @text-color-call-out;
         background: @white;
-        border: 1px solid @border-color-shallow-dark;
-        border-radius: 4px 4px 0 0;
+        border: 1px solid darken(@border-color-light, 8%);
         transition: none;
 
+        &:hover {
+          .ant-tabs-close-x {
+            opacity: 1;
+          }
+        }
+
         .ant-tabs-close-x {
+          width: 8px;
+          height: 12px;
+          font-size: 12px;
           color: inherit;
+          opacity: 0;
+          transition: none;
+
+          &:hover {
+            svg {
+              width: 0.75em;
+            }
+          }
         }
 
         > div {
@@ -56,44 +65,33 @@
         svg {
           fill: @text-color-base;
         }
-
-        &::before {
-          position: absolute;
-          top: -2px;
-          right: 0;
-          left: 0;
-          height: 4px;
-          background-color: @primary-color;
-          border-radius: 16px 6px 0 0;
-          content: '';
-          transform: scaleX(0);
-          transform-origin: bottom right;
-        }
-
-        &:hover::before {
-          transform: scaleX(1);
-          transition: transform 0.4s ease;
-          transform-origin: bottom left;
-        }
       }
 
       .ant-tabs-tab-active {
-        height: calc(@multiple-height - 3px);
+        position: relative;
+        padding-left: 26px;
         color: @white;
-        // background: @primary-color;
-        background: linear-gradient(
-          118deg,
-          rgba(@primary-color, 0.8),
-          rgba(@primary-color, 1)
-        ) !important;
+        background: fade(@primary-color, 100%);
         border: 0;
-        box-shadow: 0 0 6px 1px rgba(@primary-color, 0.4);
 
         &::before {
-          display: none;
+          position: absolute;
+          top: calc(50% - 3px);
+          left: 8px;
+          width: 6px;
+          height: 6px;
+          background: #fff;
+          border-radius: 50%;
+          content: '';
+          transition: none;
+        }
+
+        .ant-tabs-close-x {
+          opacity: 1;
         }
 
         svg {
+          width: 0.7em;
           fill: @white;
         }
       }
@@ -101,12 +99,10 @@
 
     .ant-tabs-nav > div:nth-child(1) {
       padding: 0 10px;
-    }
 
-    .ant-tabs-tab-prev,
-    .ant-tabs-tab-next {
-      color: @border-color-dark;
-      background: @white;
+      .ant-tabs-tab {
+        margin-right: 3px !important;
+      }
     }
   }
 
@@ -115,20 +111,19 @@
       font-size: 12px;
 
       svg {
-        width: 0.8em;
-      }
-    }
-
-    &:hover {
-      .anticon-close {
-        color: @white;
+        width: 0.6em;
       }
     }
   }
-}
 
-.ant-tabs-extra-content {
-  line-height: @multiple-height;
+  .ant-tabs-extra-content {
+    margin-top: 2px;
+    line-height: @multiple-height !important;
+  }
+
+  .ant-dropdown-trigger {
+    display: inline-flex;
+  }
 }
 
 .multiple-tabs-content {
@@ -137,10 +132,14 @@
     width: @multiple-height;
     height: @multiple-height;
     line-height: @multiple-height;
-    color: @primary-color;
+    color: #999;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    border-left: 1px solid #eee;
+
+    &:hover {
+      color: @text-color-base;
+    }
 
     span[role='img'] {
       transform: rotate(90deg);
@@ -150,8 +149,10 @@
   &__content {
     display: inline-block;
     width: 100%;
-    padding-left: 10px;
+    height: @multiple-height - 2;
+    padding-left: 0;
     margin-left: -10px;
+    font-size: 12px;
     cursor: pointer;
     user-select: none;
   }

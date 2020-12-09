@@ -1,7 +1,10 @@
-import { defineComponent, computed, ref, unref } from 'vue';
-import { Descriptions } from 'ant-design-vue';
-import { CollapseContainer, CollapseContainerOptions } from '/@/components/Container/index';
 import type { DescOptions, DescInstance, DescItem } from './types';
+
+import { defineComponent, computed, ref, unref, CSSProperties } from 'vue';
+import { Descriptions } from 'ant-design-vue';
+import { DescriptionsProps } from 'ant-design-vue/es/descriptions/index';
+import { CollapseContainer, CollapseContainerOptions } from '/@/components/Container/index';
+
 import descProps from './props';
 
 import { isFunction } from '/@/utils/is';
@@ -11,134 +14,137 @@ import { deepMerge } from '/@/utils';
 
 const prefixCls = 'description';
 export default defineComponent({
+  name: 'Description',
   props: descProps,
   emits: ['register'],
   setup(props, { attrs, slots, emit }) {
-    // props来自设置
     const propsRef = ref<Partial<DescOptions> | null>(null);
-    // 自定义title组件：获得title
+
+    // Custom title component: get title
     const getMergeProps = computed(() => {
       return {
         ...props,
-        ...unref(propsRef),
-      };
+        ...(unref(propsRef) as any),
+      } as DescOptions;
     });
+
     const getProps = computed(() => {
       const opt = {
-        ...props,
-        ...(unref(propsRef) || {}),
+        ...unref(getMergeProps),
         title: undefined,
       };
-      return opt;
+      return opt as DescOptions;
     });
+
     /**
-     * @description: 是否使用标题
+     * @description: Whether to setting title
      */
-    const useWrapper = computed(() => {
-      return !!unref(getMergeProps).title;
-    });
+    const useWrapper = computed(() => !!unref(getMergeProps).title);
+
     /**
-     * @description: 获取配置Collapse
+     * @description: Get configuration Collapse
      */
     const getCollapseOptions = computed(
       (): CollapseContainerOptions => {
         return {
-          // 默认不能展开
+          // Cannot be expanded by default
           canExpand: false,
           ...unref(getProps).collapseOptions,
         };
       }
     );
+
+    const getDescriptionsProps = computed(() => {
+      return { ...attrs, ...unref(getProps) } as DescriptionsProps;
+    });
+
     /**
      * @description:设置desc
      */
     function setDescProps(descProps: Partial<DescOptions>): void {
-      // 保留上一次的setDrawerProps
+      // Keep the last setDrawerProps
       const mergeProps = deepMerge(unref(propsRef) || {}, descProps);
       propsRef.value = cloneDeep(mergeProps);
     }
-    const methods: DescInstance = {
-      setDescProps,
-    };
-    emit('register', methods);
 
-    // 防止换行
+    // Prevent line breaks
     function renderLabel({ label, labelMinWidth, labelStyle }: DescItem) {
       if (!labelStyle && !labelMinWidth) {
         return label;
       }
-      return (
-        <div
-          style={{
-            ...labelStyle,
 
-            minWidth: `${labelMinWidth}px`,
-          }}
-        >
-          {label}
-        </div>
-      );
+      const labelStyles: CSSProperties = {
+        ...labelStyle,
+
+        minWidth: `${labelMinWidth}px `,
+      };
+      return <div style={labelStyles}>{label}</div>;
     }
 
     function renderItem() {
       const { schema } = unref(getProps);
       return unref(schema).map((item) => {
         const { render, field, span, show, contentMinWidth } = item;
-        const { data } = unref(getProps) as any;
+        const { data } = unref(getProps) as DescOptions;
+
         if (show && isFunction(show) && !show(data)) {
           return null;
         }
+
         const getContent = () =>
-          isFunction(render)
-            ? render(data && data[field], data)
-            : unref(data) && unref(data)[field];
+          isFunction(render) ? render(data?.[field], data) : unref(data) && unref(data)[field];
 
         const width = contentMinWidth;
         return (
           <Descriptions.Item label={renderLabel(item)} key={field} span={span}>
-            {() =>
-              contentMinWidth ? (
-                <div
-                  style={{
-                    minWidth: `${width}px`,
-                  }}
-                >
-                  {getContent()}
-                </div>
-              ) : (
-                getContent()
-              )
-            }
+            {() => {
+              if (!contentMinWidth) {
+                return getContent();
+              }
+              const style: CSSProperties = {
+                minWidth: `${width}px`,
+              };
+              return <div style={style}>{getContent()}</div>;
+            }}
           </Descriptions.Item>
         );
       });
     }
+
     const renderDesc = () => {
       return (
-        <Descriptions class={`${prefixCls}`} {...{ ...attrs, ...unref(getProps) }}>
+        <Descriptions class={`${prefixCls}`} {...(unref(getDescriptionsProps) as any)}>
           {() => renderItem()}
         </Descriptions>
       );
     };
+
     const renderContainer = () => {
       const content = props.useCollapse ? renderDesc() : <div>{renderDesc()}</div>;
-      // 减少dom层级
-      return props.useCollapse ? (
-        <CollapseContainer
-          title={unref(getMergeProps).title}
-          canExpan={unref(getCollapseOptions).canExpand}
-          helpMessage={unref(getCollapseOptions).helpMessage}
-        >
+      // Reduce the dom level
+
+      if (!props.useCollapse) {
+        return content;
+      }
+
+      const { canExpand, helpMessage } = unref(getCollapseOptions);
+      const { title } = unref(getMergeProps);
+
+      return (
+        <CollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
           {{
             default: () => content,
             action: () => getSlot(slots, 'action'),
           }}
         </CollapseContainer>
-      ) : (
-        content
       );
     };
 
+    const methods: DescInstance = {
+      setDescProps,
+    };
+
+    emit('register', methods);
     return () => (unref(useWrapper) ? renderContainer() : renderDesc());
   },
 });

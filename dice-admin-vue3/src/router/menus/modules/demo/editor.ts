@@ -1,26 +1,28 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
   orderNo: 500,
   menu: {
-    name: '编辑器',
+    name: t('routes.demo.editor.editor'),
     path: '/editor',
     children: [
       {
         path: 'markdown',
-        name: 'markdown编辑器',
+        name: t('routes.demo.editor.markdown'),
       },
       {
         path: 'tinymce',
-        name: '富文本',
+        name: t('routes.demo.editor.tinymce'),
         children: [
           {
             path: 'index',
-            name: '基础使用',
+            name: t('routes.demo.editor.tinymceBasic'),
           },
-          // {
-          //   path: 'editor',
-          //   name: '嵌入form使用',
-          // },
+          {
+            path: 'editor',
+            name: t('routes.demo.editor.tinymceForm'),
+          },
         ],
       },
     ],

@@ -1,79 +1,39 @@
-import { defineComponent, computed, unref, ref } from 'vue';
-import { BasicDrawer } from '/@/components/Drawer/index';
-import { Divider, Switch, Tooltip, InputNumber, Select } from 'ant-design-vue';
-import Button from '/@/components/Button/index.vue';
-import { MenuModeEnum, MenuTypeEnum, MenuThemeEnum, TopMenuAlignEnum } from '/@/enums/menuEnum';
-import { ContentEnum, RouterTransitionEnum } from '/@/enums/appEnum';
-import { CopyOutlined, RedoOutlined, CheckOutlined } from '@ant-design/icons-vue';
-import { appStore } from '/@/store/modules/app';
-import { userStore } from '/@/store/modules/user';
-import { ProjectConfig } from '/@/types/config';
-
-import { useMessage } from '/@/hooks/web/useMessage';
-import { useCopyToClipboard } from '/@/hooks/web/useCopyToClipboard';
+import type { ProjectConfig } from '/@/types/config';
 
 import defaultSetting from '/@/settings/projectSetting';
 
-import mixImg from '/@/assets/images/layout/menu-mix.svg';
-import sidebarImg from '/@/assets/images/layout/menu-sidebar.svg';
-import menuTopImg from '/@/assets/images/layout/menu-top.svg';
+import { defineComponent, computed, unref, FunctionalComponent } from 'vue';
+import { BasicDrawer } from '/@/components/Drawer/index';
+import { Divider, Switch, Tooltip, InputNumber, Select } from 'ant-design-vue';
+import { Button } from '/@/components/Button';
+import { CopyOutlined, RedoOutlined, CheckOutlined } from '@ant-design/icons-vue';
+
+import { MenuTypeEnum } from '/@/enums/menuEnum';
+import { appStore } from '/@/store/modules/app';
+
+import { useMessage } from '/@/hooks/web/useMessage';
+import { useCopyToClipboard } from '/@/hooks/web/useCopyToClipboard';
+import { useRootSetting } from '/@/hooks/setting/useRootSetting';
+import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
+import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
+import { useMultipleTabSetting } from '/@/hooks/setting/useMultipleTabSetting';
+import { useTransitionSetting } from '/@/hooks/setting/useTransitionSetting';
+import { useI18n } from '/@/hooks/web/useI18n';
+
 import { updateColorWeak, updateGrayMode } from '/@/setup/theme';
 
-const themeOptions = [
-  {
-    value: MenuThemeEnum.LIGHT,
-    label: '亮色',
-    key: MenuThemeEnum.LIGHT,
-  },
-  {
-    value: MenuThemeEnum.DARK,
-    label: '暗色',
-    key: MenuThemeEnum.DARK,
-  },
-];
-const contentModeOptions = [
-  {
-    value: ContentEnum.FULL,
-    label: '流式',
-    key: ContentEnum.FULL,
-  },
-  {
-    value: ContentEnum.FIXED,
-    label: '定宽',
-    key: ContentEnum.FIXED,
-  },
-];
-const topMenuAlignOptions = [
-  {
-    value: TopMenuAlignEnum.CENTER,
-    label: '居中',
-    key: TopMenuAlignEnum.CENTER,
-  },
-  {
-    value: TopMenuAlignEnum.START,
-    label: '居左',
-    key: TopMenuAlignEnum.START,
-  },
-  {
-    value: TopMenuAlignEnum.END,
-    label: '居右',
-    key: TopMenuAlignEnum.END,
-  },
-];
+import { baseHandler } from './handler';
 
-const routerTransitionOptions = [
-  RouterTransitionEnum.ZOOM_FADE,
-  RouterTransitionEnum.FADE,
-  RouterTransitionEnum.ZOOM_OUT,
-  RouterTransitionEnum.SIDE_FADE,
-  RouterTransitionEnum.FADE_BOTTOM,
-].map((item) => {
-  return {
-    label: item,
-    value: item,
-    key: item,
-  };
-});
+import {
+  HandlerEnum,
+  contentModeOptions,
+  topMenuAlignOptions,
+  menuTriggerOptions,
+  routerTransitionOptions,
+  menuTypeList,
+} from './enum';
+
+import { HEADER_PRESET_BG_COLOR_LIST, SIDE_BAR_BG_COLOR_LIST } from '/@/settings/colorSetting';
 
 interface SwitchOptions {
   config?: DeepPartial<ProjectConfig>;
@@ -83,538 +43,447 @@ interface SwitchOptions {
 }
 
 interface SelectConfig {
-  options?: SelectOptions;
+  options?: LabelValueOptions;
   def?: any;
   disabled?: boolean;
   handler?: Fn;
 }
 
+interface ThemePickerProps {
+  colorList: string[];
+  handler: Fn;
+  def: string;
+}
+
+const { createSuccessModal, createMessage } = useMessage();
+const { t } = useI18n();
+
+/**
+ * Menu type Picker comp
+ */
+const MenuTypePicker: FunctionalComponent = () => {
+  const { getIsHorizontal, getMenuType } = useMenuSetting();
+  return (
+    <div class={`setting-drawer__siderbar`}>
+      {menuTypeList.map((item) => {
+        const { title, type: ItemType, mode, src } = item;
+        return (
+          <Tooltip title={title} placement="bottom" key={title}>
+            {{
+              default: () => (
+                <div
+                  onClick={baseHandler.bind(null, HandlerEnum.CHANGE_LAYOUT, {
+                    mode: mode,
+                    type: ItemType,
+                    split: unref(getIsHorizontal) ? false : undefined,
+                  })}
+                >
+                  <CheckOutlined
+                    class={['check-icon', unref(getMenuType) === ItemType ? 'active' : '']}
+                  />
+                  <img src={src} />
+                </div>
+              ),
+            }}
+          </Tooltip>
+        );
+      })}
+    </div>
+  );
+};
+
+const ThemePicker: FunctionalComponent<ThemePickerProps> = (props) => {
+  return (
+    <div class={`setting-drawer__theme-item`}>
+      {props.colorList.map((color) => {
+        return (
+          <span
+            onClick={() => props.handler?.(color)}
+            key={color}
+            class={[props.def === color ? 'active' : '']}
+            style={{
+              background: color,
+            }}
+          >
+            <CheckOutlined class="icon" />
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+/**
+ * FooterButton component
+ */
+const FooterButton: FunctionalComponent = () => {
+  const { getRootSetting } = useRootSetting();
+  function handleCopy() {
+    const { isSuccessRef } = useCopyToClipboard(JSON.stringify(unref(getRootSetting), null, 2));
+    unref(isSuccessRef) &&
+      createSuccessModal({
+        title: t('layout.setting.operatingTitle'),
+        content: t('layout.setting.operatingContent'),
+      });
+  }
+  function handleResetSetting() {
+    try {
+      appStore.commitProjectConfigState(defaultSetting);
+      const { colorWeak, grayMode } = defaultSetting;
+      // updateTheme(themeColor);
+      updateColorWeak(colorWeak);
+      updateGrayMode(grayMode);
+      createMessage.success(t('layout.setting.resetSuccess'));
+    } catch (error) {
+      createMessage.error(error);
+    }
+  }
+
+  function handleClearAndRedo() {
+    localStorage.clear();
+    appStore.resumeAllState();
+    location.reload();
+  }
+
+  return (
+    <div class="setting-drawer__footer">
+      <Button type="primary" block onClick={handleCopy}>
+        {() => (
+          <>
+            <CopyOutlined class="mr-2" />
+            {t('layout.setting.copyBtn')}
+          </>
+        )}
+      </Button>
+      <Button block class="mt-2" onClick={handleResetSetting} color="warning">
+        {() => (
+          <>
+            <RedoOutlined class="mr-2" />
+            {t('layout.setting.resetBtn')}
+          </>
+        )}
+      </Button>
+      <Button block class="mt-2" onClick={handleClearAndRedo} color="error">
+        {() => (
+          <>
+            <RedoOutlined class="mr-2" />
+            {t('layout.setting.clearBtn')}
+          </>
+        )}
+      </Button>
+    </div>
+  );
+};
+
 export default defineComponent({
   name: 'SettingDrawer',
   setup(_, { attrs }) {
-    const { createSuccessModal, createMessage } = useMessage();
+    const {
+      getContentMode,
+      getShowFooter,
+      getShowBreadCrumb,
+      getShowBreadCrumbIcon,
+      getShowLogo,
+      getFullContent,
+      getColorWeak,
+      getGrayMode,
+    } = useRootSetting();
 
-    const getProjectConfigRef = computed(() => {
-      return appStore.getProjectConfig;
-    });
+    const {
+      getOpenPageLoading,
+      getBasicTransition,
+      getEnableTransition,
+      getOpenNProgress,
+    } = useTransitionSetting();
 
-    const getIsHorizontalRef = computed(() => {
-      return unref(getProjectConfigRef).menuSetting.mode === MenuModeEnum.HORIZONTAL;
-    });
+    const {
+      getIsHorizontal,
+      getShowMenu,
+      getMenuType,
+      getTrigger,
+      getCollapsedShowTitle,
+      getMenuFixed,
+      getCollapsed,
+      getShowSearch,
+      getCanDrag,
+      getTopMenuAlign,
+      getAccordion,
+      getMenuWidth,
+      getMenuBgColor,
+      getIsTopMenu,
+      getSplit,
+    } = useMenuSetting();
 
-    const getShowHeaderRef = computed(() => {
-      return unref(getProjectConfigRef).headerSetting.show;
-    });
+    const { getShowHeader, getFixed: getHeaderFixed, getHeaderBgColor } = useHeaderSetting();
+
+    const { getShowMultipleTab, getShowQuick } = useMultipleTabSetting();
 
     const getShowMenuRef = computed(() => {
-      return unref(getProjectConfigRef).menuSetting.show && !unref(getIsHorizontalRef);
+      return unref(getShowMenu) && !unref(getIsHorizontal);
     });
-
-    const getShowTabsRef = computed(() => {
-      return unref(getProjectConfigRef).multiTabsSetting.show;
-    });
-
-    function handleCopy() {
-      const { isSuccessRef } = useCopyToClipboard(
-        JSON.stringify(unref(getProjectConfigRef), null, 2)
-      );
-      unref(isSuccessRef) &&
-        createSuccessModal({
-          title: '操作成功',
-          content: '复制成功,请到 src/settings/projectSetting.ts 中修改配置！',
-        });
-    }
 
     function renderSidebar() {
-      const {
-        headerSetting: { theme: headerTheme },
-        menuSetting: { type, theme: menuTheme, split },
-      } = unref(getProjectConfigRef);
-
-      const typeList = ref([
-        {
-          title: '左侧菜单模式',
-          mode: MenuModeEnum.INLINE,
-          type: MenuTypeEnum.SIDEBAR,
-          src: sidebarImg,
-        },
-        {
-          title: '混合模式',
-          mode: MenuModeEnum.INLINE,
-          type: MenuTypeEnum.MIX,
-          src: mixImg,
-        },
-
-        {
-          title: '顶部菜单模式',
-          mode: MenuModeEnum.HORIZONTAL,
-          type: MenuTypeEnum.TOP_MENU,
-          src: menuTopImg,
-        },
-      ]);
-      return [
-        <div class={`setting-drawer__siderbar`}>
-          {unref(typeList).map((item) => {
-            const { title, type: ItemType, mode, src } = item;
-            return (
-              <Tooltip title={title} placement="bottom" key={title}>
-                {{
-                  default: () => (
-                    <div
-                      onClick={baseHandler.bind(null, 'layout', {
-                        mode: mode,
-                        type: ItemType,
-                        split: unref(getIsHorizontalRef) ? false : undefined,
-                      })}
-                    >
-                      <CheckOutlined class={['check-icon', type === ItemType ? 'active' : '']} />
-                      <img src={src} />
-                    </div>
-                  ),
-                }}
-              </Tooltip>
-            );
+      return (
+        <>
+          <MenuTypePicker />
+          {renderSwitchItem(t('layout.setting.splitMenu'), {
+            handler: (e) => {
+              baseHandler(HandlerEnum.MENU_SPLIT, e);
+            },
+            def: unref(getSplit),
+            disabled: !unref(getShowMenuRef) || unref(getMenuType) !== MenuTypeEnum.MIX,
           })}
-        </div>,
-        renderSwitchItem('分割菜单', {
-          handler: (e) => {
-            baseHandler('splitMenu', e);
-          },
-          def: split,
-          disabled: !unref(getShowMenuRef),
-        }),
-        renderSelectItem('顶栏主题', {
-          handler: (e) => {
-            baseHandler('headerMenu', e);
-          },
-          def: headerTheme,
-          options: themeOptions,
-          disabled: !unref(getShowHeaderRef),
-        }),
-        renderSelectItem('菜单主题', {
-          handler: (e) => {
-            baseHandler('menuTheme', e);
-          },
-          def: menuTheme,
-          options: themeOptions,
-          disabled: !unref(getShowMenuRef),
-        }),
-      ];
+        </>
+      );
     }
+
+    function renderTheme() {
+      return (
+        <>
+          <Divider>{() => t('layout.setting.headerTheme')}</Divider>
+          <ThemePicker
+            colorList={HEADER_PRESET_BG_COLOR_LIST}
+            def={unref(getHeaderBgColor)}
+            handler={(e) => {
+              baseHandler(HandlerEnum.HEADER_THEME, e);
+            }}
+          />
+          <Divider>{() => t('layout.setting.sidebarTheme')}</Divider>
+          <ThemePicker
+            colorList={SIDE_BAR_BG_COLOR_LIST}
+            def={unref(getMenuBgColor)}
+            handler={(e) => {
+              baseHandler(HandlerEnum.MENU_THEME, e);
+            }}
+          />
+        </>
+      );
+    }
+
     /**
      * @description:
      */
     function renderFeatures() {
-      const {
-        contentMode,
-        headerSetting: { fixed },
-        menuSetting: {
-          hasDrag,
-          collapsed,
-          showSearch,
-          menuWidth,
-          topMenuAlign,
-          collapsedShowTitle,
-        } = {},
-      } = appStore.getProjectConfig;
       return [
-        renderSwitchItem('侧边菜单拖拽', {
+        renderSwitchItem(t('layout.setting.menuDrag'), {
           handler: (e) => {
-            baseHandler('hasDrag', e);
+            baseHandler(HandlerEnum.MENU_HAS_DRAG, e);
           },
-          def: hasDrag,
+          def: unref(getCanDrag),
           disabled: !unref(getShowMenuRef),
         }),
-        renderSwitchItem('侧边菜单搜索', {
+        renderSwitchItem(t('layout.setting.menuSearch'), {
           handler: (e) => {
-            baseHandler('showSearch', e);
+            baseHandler(HandlerEnum.MENU_SHOW_SEARCH, e);
           },
-          def: showSearch,
+          def: unref(getShowSearch),
           disabled: !unref(getShowMenuRef),
         }),
-        renderSwitchItem('折叠菜单', {
+        renderSwitchItem(t('layout.setting.menuAccordion'), {
           handler: (e) => {
-            baseHandler('collapsed', e);
+            baseHandler(HandlerEnum.MENU_ACCORDION, e);
           },
-          def: collapsed,
+          def: unref(getAccordion),
           disabled: !unref(getShowMenuRef),
         }),
-        renderSwitchItem('折叠菜单显示名称', {
+        renderSwitchItem(t('layout.setting.menuCollapse'), {
           handler: (e) => {
-            baseHandler('collapsedShowTitle', e);
+            baseHandler(HandlerEnum.MENU_COLLAPSED, e);
           },
-          def: collapsedShowTitle,
-          disabled: !unref(getShowMenuRef) || !collapsed,
+          def: unref(getCollapsed),
+          disabled: !unref(getShowMenuRef),
+        }),
+        renderSwitchItem(t('layout.setting.collapseMenuDisplayName'), {
+          handler: (e) => {
+            baseHandler(HandlerEnum.MENU_COLLAPSED_SHOW_TITLE, e);
+          },
+          def: unref(getCollapsedShowTitle),
+          disabled: !unref(getShowMenuRef) || !unref(getCollapsed),
+        }),
+        renderSwitchItem(t('layout.setting.fixedHeader'), {
+          handler: (e) => {
+            baseHandler(HandlerEnum.HEADER_FIXED, e);
+          },
+          def: unref(getHeaderFixed),
+          disabled: !unref(getShowHeader),
+        }),
+        renderSwitchItem(t('layout.setting.fixedSideBar'), {
+          handler: (e) => {
+            baseHandler(HandlerEnum.MENU_FIXED, e);
+          },
+          def: unref(getMenuFixed),
+          disabled: !unref(getShowMenuRef),
+        }),
+        renderSelectItem(t('layout.setting.topMenuLayout'), {
+          handler: (e) => {
+            baseHandler(HandlerEnum.MENU_TOP_ALIGN, e);
+          },
+          def: unref(getTopMenuAlign),
+          options: topMenuAlignOptions,
+          disabled: !unref(getShowHeader) || (!unref(getIsTopMenu) && !unref(getSplit)),
+        }),
+        renderSelectItem(t('layout.setting.menuCollapseButton'), {
+          handler: (e) => {
+            baseHandler(HandlerEnum.MENU_TRIGGER, e);
+          },
+          disabled: !unref(getShowMenuRef),
+          def: unref(getTrigger),
+          options: menuTriggerOptions,
         }),
 
-        renderSwitchItem('固定header', {
+        renderSelectItem(t('layout.setting.contentMode'), {
           handler: (e) => {
-            baseHandler('headerFixed', e);
+            baseHandler(HandlerEnum.CONTENT_MODE, e);
           },
-          def: fixed,
-          disabled: !unref(getShowHeaderRef),
-        }),
-        renderSelectItem('顶部菜单布局', {
-          handler: (e) => {
-            baseHandler('topMenuAlign', e);
-          },
-          def: topMenuAlign,
-          options: topMenuAlignOptions,
-          disabled: !unref(getShowHeaderRef),
-        }),
-        renderSelectItem('内容区域宽度', {
-          handler: (e) => {
-            baseHandler('contentMode', e);
-          },
-          def: contentMode,
+          def: unref(getContentMode),
           options: contentModeOptions,
         }),
         <div class={`setting-drawer__cell-item`}>
-          <span>自动锁屏</span>
+          <span>{t('layout.setting.autoScreenLock')}</span>
           <InputNumber
-            style="width:120px"
+            style="width:126px"
             size="small"
             min={0}
-            onChange={(e) => {
-              baseHandler('lockTime', e);
+            onChange={(e: any) => {
+              baseHandler(HandlerEnum.LOCK_TIME, e);
             }}
             defaultValue={appStore.getProjectConfig.lockTime}
             formatter={(value: string) => {
               if (parseInt(value) === 0) {
-                return '0(不自动锁屏)';
+                return `0(${t('layout.setting.notAutoScreenLock')})`;
               }
-              return `${value}分钟`;
+              return `${value}${t('layout.setting.minute')}`;
             }}
           />
         </div>,
         <div class={`setting-drawer__cell-item`}>
-          <span>菜单展开宽度</span>
+          <span>{t('layout.setting.expandedMenuWidth')}</span>
           <InputNumber
-            style="width:120px"
+            style="width:126px"
             size="small"
             max={600}
             min={100}
             step={10}
             disabled={!unref(getShowMenuRef)}
-            defaultValue={menuWidth}
+            defaultValue={unref(getMenuWidth)}
             formatter={(value: string) => `${parseInt(value)}px`}
-            onChange={(e) => {
-              baseHandler('menuWidth', e);
+            onChange={(e: any) => {
+              baseHandler(HandlerEnum.MENU_WIDTH, e);
             }}
           />
         </div>,
       ];
     }
-    function renderTransition() {
-      const { routerTransition, openRouterTransition, openPageLoading } = appStore.getProjectConfig;
 
-      return (
-        <>
-          {renderSwitchItem('页面切换loading', {
-            handler: (e) => {
-              baseHandler('openPageLoading', e);
-            },
-            def: openPageLoading,
-          })}
-          {renderSwitchItem('切换动画', {
-            handler: (e) => {
-              baseHandler('openRouterTransition', e);
-            },
-            def: openRouterTransition,
-          })}
-          {renderSelectItem('路由动画', {
-            handler: (e) => {
-              baseHandler('routerTransition', e);
-            },
-            def: routerTransition,
-            options: routerTransitionOptions,
-            disabled: !openRouterTransition,
-          })}
-        </>
-      );
-    }
     function renderContent() {
-      const {
-        grayMode,
-        colorWeak,
-        fullContent,
-        showLogo,
-        headerSetting: { show: showHeader },
-        menuSetting: { show: showMenu },
-        multiTabsSetting: { show: showMultiple, showQuick, showIcon: showTabIcon },
-        showBreadCrumb,
-        showBreadCrumbIcon,
-      } = unref(getProjectConfigRef);
       return [
-        renderSwitchItem('面包屑', {
+        renderSwitchItem(t('layout.setting.breadcrumb'), {
           handler: (e) => {
-            baseHandler('showBreadCrumb', e);
+            baseHandler(HandlerEnum.SHOW_BREADCRUMB, e);
           },
-          def: showBreadCrumb,
-          disabled: !unref(getShowHeaderRef),
+          def: unref(getShowBreadCrumb),
+          disabled: !unref(getShowHeader),
         }),
-        renderSwitchItem('面包屑图标', {
+        renderSwitchItem(t('layout.setting.breadcrumbIcon'), {
           handler: (e) => {
-            baseHandler('showBreadCrumbIcon', e);
+            baseHandler(HandlerEnum.SHOW_BREADCRUMB_ICON, e);
           },
-          def: showBreadCrumbIcon,
-          disabled: !unref(getShowHeaderRef),
+          def: unref(getShowBreadCrumbIcon),
+          disabled: !unref(getShowHeader),
         }),
-        renderSwitchItem('标签页', {
+        renderSwitchItem(t('layout.setting.tabs'), {
           handler: (e) => {
-            baseHandler('showMultiple', e);
+            baseHandler(HandlerEnum.TABS_SHOW, e);
           },
-          def: showMultiple,
+          def: unref(getShowMultipleTab),
         }),
-        renderSwitchItem('标签页快捷按钮', {
+        renderSwitchItem(t('layout.setting.tabsQuickBtn'), {
           handler: (e) => {
-            baseHandler('showQuick', e);
+            baseHandler(HandlerEnum.TABS_SHOW_QUICK, e);
           },
-          def: showQuick,
-          disabled: !unref(getShowTabsRef),
+          def: unref(getShowQuick),
+          disabled: !unref(getShowMultipleTab),
         }),
-        renderSwitchItem('标签页图标', {
+
+        renderSwitchItem(t('layout.setting.sidebar'), {
           handler: (e) => {
-            baseHandler('showTabIcon', e);
+            baseHandler(HandlerEnum.MENU_SHOW_SIDEBAR, e);
           },
-          def: showTabIcon,
-          disabled: !unref(getShowTabsRef),
+          def: unref(getShowMenu),
+          disabled: unref(getIsHorizontal),
         }),
-        renderSwitchItem('左侧菜单', {
+        renderSwitchItem(t('layout.setting.header'), {
           handler: (e) => {
-            baseHandler('showSidebar', e);
+            baseHandler(HandlerEnum.HEADER_SHOW, e);
           },
-          def: showMenu,
-          disabled: unref(getIsHorizontalRef),
-        }),
-        renderSwitchItem('顶栏', {
-          handler: (e) => {
-            baseHandler('showHeader', e);
-          },
-          def: showHeader,
+          def: unref(getShowHeader),
         }),
         renderSwitchItem('Logo', {
           handler: (e) => {
-            baseHandler('showLogo', e);
+            baseHandler(HandlerEnum.SHOW_LOGO, e);
           },
-          def: showLogo,
+          def: unref(getShowLogo),
         }),
-        renderSwitchItem('全屏内容', {
+        renderSwitchItem(t('layout.setting.footer'), {
           handler: (e) => {
-            baseHandler('fullContent', e);
+            baseHandler(HandlerEnum.SHOW_FOOTER, e);
           },
-          def: fullContent,
+          def: unref(getShowFooter),
         }),
-        renderSwitchItem('灰色模式', {
+        renderSwitchItem(t('layout.setting.fullContent'), {
           handler: (e) => {
-            baseHandler('grayMode', e);
+            baseHandler(HandlerEnum.FULL_CONTENT, e);
           },
-          def: grayMode,
+          def: unref(getFullContent),
         }),
-        renderSwitchItem('色弱模式', {
+        renderSwitchItem(t('layout.setting.grayMode'), {
           handler: (e) => {
-            baseHandler('colorWeak', e);
+            baseHandler(HandlerEnum.GRAY_MODE, e);
           },
-          def: colorWeak,
+          def: unref(getGrayMode),
+        }),
+        renderSwitchItem(t('layout.setting.colorWeak'), {
+          handler: (e) => {
+            baseHandler(HandlerEnum.COLOR_WEAK, e);
+          },
+          def: unref(getColorWeak),
         }),
       ];
     }
-    function baseHandler(event: string, value: any) {
-      let config: DeepPartial<ProjectConfig> = {};
-      if (event === 'layout') {
-        const { mode, type, split } = value;
-        const splitOpt = split === undefined ? { split } : {};
-        config = {
-          menuSetting: {
-            mode,
-            type,
-            collapsed: false,
-            ...splitOpt,
-          },
-        };
-      }
-      if (event === 'hasDrag') {
-        config = {
-          menuSetting: {
-            hasDrag: value,
-          },
-        };
-      }
-      if (event === 'openPageLoading') {
-        config = {
-          openPageLoading: value,
-        };
-      }
-      if (event === 'topMenuAlign') {
-        config = {
-          menuSetting: {
-            topMenuAlign: value,
-          },
-        };
-      }
-      if (event === 'showBreadCrumb') {
-        config = {
-          showBreadCrumb: value,
-        };
-      }
-      if (event === 'showBreadCrumbIcon') {
-        config = {
-          showBreadCrumbIcon: value,
-        };
-      }
-      if (event === 'collapsed') {
-        config = {
-          menuSetting: {
-            collapsed: value,
-          },
-        };
-      }
-      if (event === 'menuWidth') {
-        config = {
-          menuSetting: {
-            menuWidth: value,
-          },
-        };
-      }
-      if (event === 'collapsedShowTitle') {
-        config = {
-          menuSetting: {
-            collapsedShowTitle: value,
-          },
-        };
-      }
-      if (event === 'lockTime') {
-        config = {
-          lockTime: value,
-        };
-      }
-      if (event === 'showQuick') {
-        config = {
-          multiTabsSetting: {
-            showQuick: value,
-          },
-        };
-      }
-      if (event === 'showTabIcon') {
-        config = {
-          multiTabsSetting: {
-            showIcon: value,
-          },
-        };
-      }
-      if (event === 'contentMode') {
-        config = {
-          contentMode: value,
-        };
-      }
-      if (event === 'menuTheme') {
-        config = {
-          menuSetting: {
-            theme: value,
-          },
-        };
-      }
-      if (event === 'splitMenu') {
-        config = {
-          menuSetting: {
-            split: value,
-          },
-        };
-      }
-      if (event === 'showMultiple') {
-        config = {
-          multiTabsSetting: {
-            show: value,
-          },
-        };
-      }
-      if (event === 'headerMenu') {
-        config = {
-          headerSetting: {
-            theme: value,
-          },
-        };
-      }
-      if (event === 'grayMode') {
-        config = {
-          grayMode: value,
-        };
-        updateGrayMode(value);
-      }
-      if (event === 'colorWeak') {
-        config = {
-          colorWeak: value,
-        };
-        updateColorWeak(value);
-      }
-      if (event === 'showLogo') {
-        config = {
-          showLogo: value,
-        };
-      }
-      if (event === 'showSearch') {
-        config = {
-          menuSetting: {
-            showSearch: value,
-          },
-        };
-      }
-      if (event === 'showSidebar') {
-        config = {
-          menuSetting: {
-            show: value,
-          },
-        };
-      }
-      if (event === 'openRouterTransition') {
-        config = {
-          openRouterTransition: value,
-        };
-      }
-      if (event === 'routerTransition') {
-        config = {
-          routerTransition: value,
-        };
-      }
-      if (event === 'headerFixed') {
-        config = {
-          headerSetting: {
-            fixed: value,
-          },
-        };
-      }
-      if (event === 'fullContent') {
-        config = {
-          fullContent: value,
-        };
-      }
-      if (event === 'showHeader') {
-        config = {
-          headerSetting: {
-            show: value,
-          },
-        };
-      }
-      appStore.commitProjectConfigState(config);
-    }
 
-    function handleResetSetting() {
-      try {
-        appStore.commitProjectConfigState(defaultSetting);
-        const { colorWeak, grayMode } = defaultSetting;
-        // updateTheme(themeColor);
-        updateColorWeak(colorWeak);
-        updateGrayMode(grayMode);
-        createMessage.success('重置成功！');
-      } catch (error) {
-        createMessage.error(error);
-      }
-    }
+    function renderTransition() {
+      return (
+        <>
+          {renderSwitchItem(t('layout.setting.progress'), {
+            handler: (e) => {
+              baseHandler(HandlerEnum.OPEN_PROGRESS, e);
+            },
+            def: unref(getOpenNProgress),
+          })}
+          {renderSwitchItem(t('layout.setting.switchLoading'), {
+            handler: (e) => {
+              baseHandler(HandlerEnum.OPEN_PAGE_LOADING, e);
+            },
+            def: unref(getOpenPageLoading),
+          })}
 
-    function handleClearAndRedo() {
-      localStorage.clear();
-      userStore.resumeAllState();
-      location.reload();
+          {renderSwitchItem(t('layout.setting.switchAnimation'), {
+            handler: (e) => {
+              baseHandler(HandlerEnum.OPEN_ROUTE_TRANSITION, e);
+            },
+            def: unref(getEnableTransition),
+          })}
+
+          {renderSelectItem(t('layout.setting.animationType'), {
+            handler: (e) => {
+              baseHandler(HandlerEnum.ROUTER_TRANSITION, e);
+            },
+            def: unref(getBasicTransition),
+            options: routerTransitionOptions,
+            disabled: !unref(getEnableTransition),
+          })}
+        </>
+      );
     }
 
     function renderSelectItem(text: string, config?: SelectConfig) {
@@ -623,12 +492,11 @@ export default defineComponent({
       return (
         <div class={`setting-drawer__cell-item`}>
           <span>{text}</span>
-          {/* @ts-ignore */}
           <Select
             {...opt}
             disabled={disabled}
             size="small"
-            style={{ width: '120px' }}
+            style={{ width: '126px' }}
             onChange={(e) => {
               handler && handler(e);
             }}
@@ -647,55 +515,37 @@ export default defineComponent({
           <Switch
             {...opt}
             disabled={disabled}
-            onChange={(e) => {
+            onChange={(e: any) => {
               handler && handler(e);
             }}
-            checkedChildren="开"
-            unCheckedChildren="关"
+            checkedChildren={t('layout.setting.on')}
+            unCheckedChildren={t('layout.setting.off')}
           />
         </div>
       );
     }
+
     return () => (
-      <BasicDrawer {...attrs} title="项目配置" width={300} wrapClassName="setting-drawer">
+      <BasicDrawer
+        {...attrs}
+        title={t('layout.setting.drawerTitle')}
+        width={330}
+        wrapClassName="setting-drawer"
+      >
         {{
           default: () => (
             <>
-              <Divider>{() => '导航栏模式'}</Divider>
+              <Divider>{() => t('layout.setting.navMode')}</Divider>
               {renderSidebar()}
-              <Divider>{() => '界面功能'}</Divider>
+              {renderTheme()}
+              <Divider>{() => t('layout.setting.interfaceFunction')}</Divider>
               {renderFeatures()}
-              <Divider>{() => '界面显示'}</Divider>
+              <Divider>{() => t('layout.setting.interfaceDisplay')}</Divider>
               {renderContent()}
-              <Divider>{() => '切换动画'}</Divider>
+              <Divider>{() => t('layout.setting.animation')}</Divider>
               {renderTransition()}
               <Divider />
-              <div class="setting-drawer__footer">
-                <Button type="primary" block onClick={handleCopy}>
-                  {() => (
-                    <>
-                      <CopyOutlined class="mr-2" />
-                      拷贝
-                    </>
-                  )}
-                </Button>
-                <Button block class="mt-2" onClick={handleResetSetting} color="warning">
-                  {() => (
-                    <>
-                      <RedoOutlined class="mr-2" />
-                      重置
-                    </>
-                  )}
-                </Button>
-                <Button block class="mt-2" onClick={handleClearAndRedo} color="error">
-                  {() => (
-                    <>
-                      <RedoOutlined class="mr-2" />
-                      清空缓存并返回登录页
-                    </>
-                  )}
-                </Button>
-              </div>
+              <FooterButton />
             </>
           ),
         }}

@@ -25,19 +25,26 @@ export function useItemLabelWidth(schemaItemRef: Ref<FormSchema>, propsRef: Ref<
     const { labelCol = {}, wrapperCol = {} } = schemaItem.itemProps || {};
     const { labelWidth, disabledLabelWidth } = schemaItem;
 
-    const { labelWidth: globalLabelWidth } = unref(propsRef) as any;
-    // 如果全局有设置labelWidth, 则所有item使用
-    if ((!globalLabelWidth && !labelWidth) || disabledLabelWidth) {
+    const {
+      labelWidth: globalLabelWidth,
+      labelCol: globalLabelCol,
+      wrapperCol: globWrapperCol,
+    } = unref(propsRef) as any;
+
+    // If labelWidth is set globally, all items setting
+    if ((!globalLabelWidth && !labelWidth && !globalLabelCol) || disabledLabelWidth) {
       return { labelCol, wrapperCol };
     }
     let width = labelWidth || globalLabelWidth;
+    const col = { ...globalLabelCol, ...labelCol };
+    const wrapCol = { ...globWrapperCol, ...wrapperCol };
 
     if (width) {
       width = isNumber(width) ? `${width}px` : width;
     }
     return {
-      labelCol: { style: { width }, span: 1, ...labelCol },
-      wrapperCol: { style: { width: `calc(100% - ${width})` }, span: 23, ...wrapperCol },
+      labelCol: { style: { width }, ...col },
+      wrapperCol: { style: { width: `calc(100% - ${width})` }, ...wrapCol },
     };
   });
 }

@@ -80,8 +80,8 @@ export function getMultipleHeaderColumns(): BasicColumn[] {
           dataIndex: 'no',
           width: 120,
           filters: [
-            { text: 'Male', value: 'male' },
-            { text: 'Female', value: 'female' },
+            { text: 'Male', value: 'male', children: [] },
+            { text: 'Female', value: 'female', children: [] },
           ],
         },
 
@@ -125,8 +125,8 @@ export function getCustomHeaderColumns(): BasicColumn[] {
       dataIndex: 'no',
       width: 120,
       filters: [
-        { text: 'Male', value: 'male' },
-        { text: 'Female', value: 'female' },
+        { text: 'Male', value: 'male', children: [] },
+        { text: 'Female', value: 'female', children: [] },
       ],
     },
     {
@@ -190,8 +190,8 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       dataIndex: 'no',
       colSpan: 0,
       filters: [
-        { text: 'Male', value: 'male' },
-        { text: 'Female', value: 'female' },
+        { text: 'Male', value: 'male', children: [] },
+        { text: 'Female', value: 'female', children: [] },
       ],
       customRender: renderContent,
     },
@@ -239,12 +239,10 @@ export function getFormConfig(): Partial<FormProps> {
             {
               label: '选项1',
               value: '1',
-              key: '1',
             },
             {
               label: '选项2',
               value: '2',
-              key: '2',
             },
           ],
         },

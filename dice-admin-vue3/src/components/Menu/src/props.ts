@@ -1,7 +1,8 @@
 import type { Menu } from '/@/router/types';
 import type { PropType } from 'vue';
 
-import { MenuModeEnum, MenuTypeEnum, MenuThemeEnum } from '/@/enums/menuEnum';
+import { MenuModeEnum, MenuTypeEnum } from '/@/enums/menuEnum';
+import { ThemeEnum } from '/@/enums/appEnum';
 export const basicProps = {
   items: {
     type: Array as PropType<Menu[]>,
@@ -11,19 +12,12 @@ export const basicProps = {
     type: Boolean as PropType<boolean>,
     default: false,
   },
+
   collapsedShowTitle: {
     type: Boolean as PropType<boolean>,
     default: false,
   },
-  flatItems: {
-    type: Array as PropType<Menu[]>,
-    default: () => [],
-  },
-  // 是否显示搜索框
-  search: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+
   // 最好是4 倍数
   inlineIndent: {
     type: Number as PropType<number>,
@@ -34,28 +28,32 @@ export const basicProps = {
     type: String as PropType<MenuModeEnum>,
     default: MenuModeEnum.INLINE,
   },
+  showLogo: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
   type: {
     type: String as PropType<MenuTypeEnum>,
     default: MenuTypeEnum.MIX,
   },
   theme: {
     type: String as PropType<string>,
-    default: MenuThemeEnum.DARK,
-  },
-  showLogo: {
-    type: Boolean as PropType<boolean>,
-    default: false,
+    default: ThemeEnum.DARK,
   },
   inlineCollapsed: {
     type: Boolean as PropType<boolean>,
     default: false,
   },
-  isAppMenu: {
+
+  isHorizontal: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
+  accordion: {
     type: Boolean as PropType<boolean>,
     default: true,
   },
   beforeClickFn: {
-    type: Function as PropType<Fn>,
-    default: null,
+    type: Function as PropType<(key: string) => Promise<boolean>>,
   },
 };

@@ -1,40 +1,67 @@
-import type { Router } from 'vue-router';
+import { RouteLocationNormalized, Router } from 'vue-router';
 
 import { Modal, notification } from 'ant-design-vue';
-import { AxiosCanceler } from '/@/utils/http/axios/axiosCancel';
-import { createPageTitleGuard } from './pageTitleGuard';
+
 import { createProgressGuard } from './progressGuard';
 import { createPermissionGuard } from './permissionGuard';
 import { createPageLoadingGuard } from './pageLoadingGuard';
-import { useSetting } from '/@/hooks/core/useSetting';
-import { getIsOpenTab, setCurrentTo } from '/@/utils/helper/routeHelper';
 
-const { projectSetting } = useSetting();
+import { useGlobSetting, useProjectSetting } from '/@/hooks/setting';
+
+import { getRoute } from '/@/router/helper/routeHelper';
+import { setTitle } from '/@/utils/browser';
+import { AxiosCanceler } from '/@/utils/http/axios/axiosCancel';
+
+import { tabStore } from '/@/store/modules/tab';
+import { useI18n } from '/@/hooks/web/useI18n';
+import { REDIRECT_NAME } from '/@/router/constant';
+
+const { closeMessageOnSwitch, removeAllHttpPending } = useProjectSetting();
+const globSetting = useGlobSetting();
+
+const body = document.body;
+
+const isHash = (href: string) => {
+  return /^#/.test(href);
+};
+
 export function createGuard(router: Router) {
-  const { openNProgress, closeMessageOnSwitch, removeAllHttpPending } = projectSetting;
-  let axiosCanceler: AxiosCanceler | null;
+  let axiosCanceler: Nullable<AxiosCanceler>;
   if (removeAllHttpPending) {
     axiosCanceler = new AxiosCanceler();
   }
+  const loadedPageMap = new Map<string, boolean>();
+
   router.beforeEach(async (to) => {
-    const isOpen = getIsOpenTab(to.fullPath);
-    to.meta.inTab = isOpen;
+    to.meta.loaded = !!loadedPageMap.get(to.path);
+    // Notify routing changes
+    tabStore.commitLastChangeRouteState(getRoute(to));
+
     try {
       if (closeMessageOnSwitch) {
         Modal.destroyAll();
         notification.destroy();
       }
-      // TODO Some special interfaces require long connections
       // Switching the route will delete the previous request
       removeAllHttpPending && axiosCanceler!.removeAllPending();
     } catch (error) {
       console.warn('basic guard error:' + error);
     }
-    setCurrentTo(to);
     return true;
   });
-  openNProgress && createProgressGuard(router);
-  createPermissionGuard(router);
-  createPageTitleGuard(router);
+
+  router.afterEach((to) => {
+    // scroll top
+    isHash((to as RouteLocationNormalized & { href: string })?.href) && body.scrollTo(0, 0);
+
+    loadedPageMap.set(to.path, true);
+
+    const { t } = useI18n();
+
+    // change html title
+    to.name !== REDIRECT_NAME && setTitle(t(to.meta.title), globSetting.title);
+  });
   createPageLoadingGuard(router);
+  createProgressGuard(router);
+  createPermissionGuard(router);
 }

@@ -1,37 +1,40 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
   orderNo: 40,
   menu: {
     path: '/form',
-    name: 'Form',
+    name: t('routes.demo.form.form'),
+
     children: [
       {
         path: 'basic',
-        name: '基础表单',
+        name: t('routes.demo.form.basic'),
       },
       {
         path: 'useForm',
-        name: 'useForm',
+        name: t('routes.demo.form.useForm'),
       },
       {
         path: 'refForm',
-        name: 'RefForm',
+        name: t('routes.demo.form.refForm'),
       },
       {
         path: 'advancedForm',
-        name: '可收缩表单',
+        name: t('routes.demo.form.advancedForm'),
       },
       {
         path: 'ruleForm',
-        name: '表单校验',
+        name: t('routes.demo.form.ruleForm'),
       },
       {
         path: 'dynamicForm',
-        name: '动态表单',
+        name: t('routes.demo.form.dynamicForm'),
       },
       {
         path: 'customerForm',
-        name: '自定义组件',
+        name: t('routes.demo.form.customerForm'),
       },
     ],
   },

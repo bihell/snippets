@@ -1,70 +1,104 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
   orderNo: 30,
   menu: {
-    name: '组件',
+    name: t('routes.demo.comp.comp'),
     path: '/comp',
+    tag: {
+      dot: true,
+    },
     children: [
       {
         path: 'basic',
-        name: '基础组件',
+        name: t('routes.demo.comp.basic'),
       },
       {
         path: 'countTo',
-        name: '数字动画',
+        name: t('routes.demo.comp.countTo'),
+      },
+      {
+        path: 'transition',
+        name: t('routes.demo.comp.transition'),
       },
 
       {
-        path: 'scroll',
-        name: '滚动组件',
-        children: [
-          {
-            path: 'basic',
-            name: '基础示例',
-          },
-          {
-            path: 'action',
-            name: '函数操作示例',
-          },
-          {
-            path: 'virtualScroll',
-            name: '虚拟滚动',
-          },
-        ],
-      },
-      {
         path: 'modal',
-        name: '弹窗扩展',
+        name: t('routes.demo.comp.modal'),
       },
       {
         path: 'drawer',
-        name: '抽屉扩展',
+        name: t('routes.demo.comp.drawer'),
       },
       {
         path: 'desc',
-        name: '详情组件',
+        name: t('routes.demo.comp.desc'),
       },
       {
-        path: 'verify',
-        name: '验证组件',
+        path: 'qrcode',
+        name: t('routes.demo.comp.qrcode'),
+      },
+      {
+        path: 'strength-meter',
+        name: t('routes.demo.comp.strength'),
+      },
+      {
+        path: 'upload',
+        name: t('routes.demo.comp.upload'),
+      },
+      {
+        path: 'loading',
+        name: t('routes.demo.comp.loading'),
+        tag: {
+          content: 'new',
+        },
+      },
+      {
+        path: 'scroll',
+        name: t('routes.demo.comp.scroll'),
         children: [
           {
-            path: 'drag',
-            name: '拖拽校验',
+            path: 'basic',
+            name: t('routes.demo.comp.scrollBasic'),
           },
           {
-            path: 'rotate',
-            name: '图片还原校验',
+            path: 'action',
+            name: t('routes.demo.comp.scrollAction'),
+          },
+          {
+            path: 'virtualScroll',
+            name: t('routes.demo.comp.virtualScroll'),
           },
         ],
       },
       {
-        path: 'qrcode',
-        name: '二维码组件',
+        path: 'lazy',
+        name: t('routes.demo.comp.lazy'),
+        children: [
+          {
+            path: 'basic',
+            name: t('routes.demo.comp.lazyBasic'),
+          },
+          {
+            path: 'transition',
+            name: t('routes.demo.comp.lazyTransition'),
+          },
+        ],
       },
       {
-        path: 'strength-meter',
-        name: '密码强度组件',
+        path: 'verify',
+        name: t('routes.demo.comp.verify'),
+        children: [
+          {
+            path: 'drag',
+            name: t('routes.demo.comp.verifyDrag'),
+          },
+          {
+            path: 'rotate',
+            name: t('routes.demo.comp.verifyRotate'),
+          },
+        ],
       },
     ],
   },

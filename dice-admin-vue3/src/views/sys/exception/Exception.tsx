@@ -1,3 +1,5 @@
+import './exception.less';
+
 import type { PropType } from 'vue';
 
 import { Result, Button } from 'ant-design-vue';
@@ -6,22 +8,21 @@ import { defineComponent, ref, computed, unref } from 'vue';
 import { ExceptionEnum } from '/@/enums/exceptionEnum';
 
 import netWorkImg from '/@/assets/images/exception/net-work.png';
-import error404 from '/@/assets/images/exception/404.png';
-import error500 from '/@/assets/images/exception/500.png';
 import notDataImg from '/@/assets/images/no-data.png';
 
 import { useRoute } from 'vue-router';
 
 import { useGo, useRedo } from '/@/hooks/web/usePage';
 import { PageEnum } from '/@/enums/pageEnum';
+import { useI18n } from '/@/hooks/web/useI18n';
 
-import './exception.less';
 interface MapValue {
   title: string;
   subTitle: string;
   btnText?: string;
   icon?: string;
   handler?: Fn;
+  status?: string;
 }
 
 export default defineComponent({
@@ -48,9 +49,12 @@ export default defineComponent({
   },
   setup(props) {
     const statusMapRef = ref(new Map<string | number, MapValue>());
+
     const { query } = useRoute();
     const go = useGo();
     const redo = useRedo();
+    const { t } = useI18n();
+
     const getStatus = computed(() => {
       const { status: routeStatus } = query;
       const { status } = props;
@@ -63,50 +67,55 @@ export default defineComponent({
       }
     );
 
+    const backLoginI18n = t('sys.exception.backLogin');
+    const backHomeI18n = t('sys.exception.backHome');
+
+    unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_ACCESS, {
+      title: '403',
+      status: `${ExceptionEnum.PAGE_NOT_ACCESS}`,
+      subTitle: t('sys.exception.subTitle403'),
+      btnText: props.full ? backLoginI18n : backHomeI18n,
+      handler: () => (props.full ? go(PageEnum.BASE_LOGIN) : go()),
+    });
+
     unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_FOUND, {
       title: '404',
-      subTitle: '抱歉，您访问的页面不存在!',
-      btnText: props.full ? '返回登录' : '返回首页',
+      status: `${ExceptionEnum.PAGE_NOT_FOUND}`,
+      subTitle: t('sys.exception.subTitle404'),
+      btnText: props.full ? backLoginI18n : backHomeI18n,
       handler: () => (props.full ? go(PageEnum.BASE_LOGIN) : go()),
-      icon: error404,
     });
 
     unref(statusMapRef).set(ExceptionEnum.ERROR, {
       title: '500',
-      subTitle: '抱歉，服务器出现异常!',
-      btnText: '返回首页',
+      status: `${ExceptionEnum.ERROR}`,
+      subTitle: t('sys.exception.subTitle500'),
+      btnText: backHomeI18n,
       handler: () => go(),
-      icon: error500,
     });
 
     unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_DATA, {
-      title: '当前页面无数据',
+      title: t('sys.exception.noDataTitle'),
       subTitle: '',
-      btnText: '刷新',
+      btnText: t('sys.exception.redo'),
       handler: () => redo(),
       icon: notDataImg,
     });
 
     unref(statusMapRef).set(ExceptionEnum.NET_WORK_ERROR, {
-      title: '网络错误',
-      subTitle: '抱歉，您的网络连接已断开,请检查您的网络!',
-      btnText: '刷新',
+      title: t('sys.exception.networkErrorTitle'),
+      subTitle: t('sys.exception.networkErrorSubTitle'),
+      btnText: 'Refresh',
       handler: () => redo(),
       icon: netWorkImg,
     });
 
-    unref(statusMapRef).set(ExceptionEnum.PAGE_TIMEOUT, {
-      title: '页面加载失败',
-      subTitle: '抱歉，您的页面加载出错或者过久未响应,请检查您的网络!',
-      btnText: '刷新',
-      handler: () => redo(),
-      icon: netWorkImg,
-    });
     return () => {
-      const { title, subTitle, btnText, icon, handler } = unref(getMapValue) || {};
+      const { title, subTitle, btnText, icon, handler, status } = unref(getMapValue) || {};
       return (
         <Result
           class="exception "
+          status={status as any}
           title={props.title || title}
           sub-title={props.subTitle || subTitle}
         >
@@ -117,7 +126,7 @@ export default defineComponent({
                   {() => btnText}
                 </Button>
               ),
-            icon: () => icon && <img src={icon} />,
+            icon: () => (icon ? <img src={icon} /> : null),
           }}
         </Result>
       );

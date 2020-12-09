@@ -1,43 +1,51 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { getParentLayout, LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/comp',
-    name: 'Comp',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/comp/basic',
-    meta: {
-      icon: 'ant-design:table-outlined',
-      title: '组件',
-    },
+const comp: AppRouteModule = {
+  path: '/comp',
+  name: 'Comp',
+  component: LAYOUT,
+  redirect: '/comp/basic',
+  meta: {
+    icon: 'ic:outline-settings-input-component',
+    title: t('routes.demo.comp.comp'),
   },
 
-  routes: [
+  children: [
     {
-      path: '/basic',
+      path: 'basic',
       name: 'BasicDemo',
       component: () => import('/@/views/demo/comp/button/index.vue'),
       meta: {
-        title: '基础组件',
+        title: t('routes.demo.comp.basic'),
       },
     },
     {
-      path: '/countTo',
+      path: 'transition',
+      name: 'transitionDemo',
+      component: () => import('/@/views/demo/comp/transition/index.vue'),
+      meta: {
+        title: t('routes.demo.comp.transition'),
+      },
+    },
+    {
+      path: 'countTo',
       name: 'CountTo',
       component: () => import('/@/views/demo/comp/count-to/index.vue'),
       meta: {
-        title: '数字动画',
+        title: t('routes.demo.comp.countTo'),
       },
     },
 
     {
-      path: '/scroll',
+      path: 'scroll',
       name: 'ScrollDemo',
       redirect: '/comp/scroll/basic',
+      component: getParentLayout('ScrollDemo'),
       meta: {
-        title: '滚动组件',
+        title: t('routes.demo.comp.scroll'),
       },
       children: [
         {
@@ -45,7 +53,7 @@ export default {
           name: 'BasicScrollDemo',
           component: () => import('/@/views/demo/comp/scroll/index.vue'),
           meta: {
-            title: '基础滚动',
+            title: t('routes.demo.comp.scrollBasic'),
           },
         },
         {
@@ -53,7 +61,7 @@ export default {
           name: 'ActionScrollDemo',
           component: () => import('/@/views/demo/comp/scroll/Action.vue'),
           meta: {
-            title: '滚动函数',
+            title: t('routes.demo.comp.scrollAction'),
           },
         },
         {
@@ -61,43 +69,71 @@ export default {
           name: 'VirtualScrollDemo',
           component: () => import('/@/views/demo/comp/scroll/VirtualScroll.vue'),
           meta: {
-            title: '虚拟滚动',
+            title: t('routes.demo.comp.virtualScroll'),
           },
         },
       ],
     },
 
     {
-      path: '/modal',
+      path: 'modal',
       name: 'ModalDemo',
       component: () => import('/@/views/demo/comp/modal/index.vue'),
       meta: {
-        title: '弹窗扩展',
+        title: t('routes.demo.comp.modal'),
       },
     },
     {
-      path: '/drawer',
+      path: 'drawer',
       name: 'DrawerDemo',
       component: () => import('/@/views/demo/comp/drawer/index.vue'),
       meta: {
-        title: '抽屉扩展',
+        title: t('routes.demo.comp.drawer'),
       },
     },
     {
-      path: '/desc',
+      path: 'desc',
       name: 'DescDemo',
       component: () => import('/@/views/demo/comp/desc/index.vue'),
       meta: {
-        title: '详情组件',
+        title: t('routes.demo.comp.desc'),
       },
     },
 
     {
-      path: '/verify',
+      path: 'lazy',
+      name: 'LazyDemo',
+      component: getParentLayout('LazyDemo'),
+      redirect: '/comp/lazy/basic',
+      meta: {
+        title: t('routes.demo.comp.lazy'),
+      },
+      children: [
+        {
+          path: 'basic',
+          name: 'BasicLazyDemo',
+          component: () => import('/@/views/demo/comp/lazy/index.vue'),
+          meta: {
+            title: t('routes.demo.comp.lazyBasic'),
+          },
+        },
+        {
+          path: 'transition',
+          name: 'BasicTransitionDemo',
+          component: () => import('/@/views/demo/comp/lazy/Transition.vue'),
+          meta: {
+            title: t('routes.demo.comp.lazyTransition'),
+          },
+        },
+      ],
+    },
+    {
+      path: 'verify',
       name: 'VerifyDemo',
+      component: getParentLayout('VerifyDemo'),
       redirect: '/comp/verify/drag',
       meta: {
-        title: '验证组件',
+        title: t('routes.demo.comp.verify'),
       },
       children: [
         {
@@ -105,7 +141,7 @@ export default {
           name: 'VerifyDragDemo',
           component: () => import('/@/views/demo/comp/verify/index.vue'),
           meta: {
-            title: '拖拽校验',
+            title: t('routes.demo.comp.verifyDrag'),
           },
         },
         {
@@ -113,7 +149,7 @@ export default {
           name: 'VerifyRotateDemo',
           component: () => import('/@/views/demo/comp/verify/Rotate.vue'),
           meta: {
-            title: '图片还原',
+            title: t('routes.demo.comp.verifyRotate'),
           },
         },
       ],
@@ -121,20 +157,38 @@ export default {
     //
 
     {
-      path: '/qrcode',
+      path: 'qrcode',
       name: 'QrCodeDemo',
       component: () => import('/@/views/demo/comp/qrcode/index.vue'),
       meta: {
-        title: '二维码组件',
+        title: t('routes.demo.comp.qrcode'),
       },
     },
     {
-      path: '/strength-meter',
+      path: 'strength-meter',
       name: 'StrengthMeterDemo',
       component: () => import('/@/views/demo/comp/strength-meter/index.vue'),
       meta: {
-        title: '密码强度组件',
+        title: t('routes.demo.comp.strength'),
+      },
+    },
+    {
+      path: 'upload',
+      name: 'UploadDemo',
+      component: () => import('/@/views/demo/comp/upload/index.vue'),
+      meta: {
+        title: t('routes.demo.comp.upload'),
+      },
+    },
+    {
+      path: 'loading',
+      name: 'LoadingDemo',
+      component: () => import('/@/views/demo/comp/loading/index.vue'),
+      meta: {
+        title: t('routes.demo.comp.loading'),
       },
     },
   ],
-} as AppRouteModule;
+};
+
+export default comp;

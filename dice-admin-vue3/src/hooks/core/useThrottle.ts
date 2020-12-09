@@ -1,8 +1,20 @@
-import type {
-  DebounceAndThrottleOptions,
-  DebounceAndThrottleProcedureResult,
-  DebounceAndThrottleProcedure,
-} from './types';
+export interface DebounceAndThrottleOptions {
+  // 立即执行
+  immediate?: boolean;
+
+  // 是否为debounce
+  debounce?: boolean;
+  // 只执行一次
+  once?: boolean;
+}
+export type CancelFn = () => void;
+
+export type DebounceAndThrottleProcedure<T extends unknown[]> = (...args: T) => unknown;
+
+export type DebounceAndThrottleProcedureResult<T extends unknown[]> = [
+  DebounceAndThrottleProcedure<T>,
+  CancelFn
+];
 
 import { isFunction } from '/@/utils/is';
 export function throttle<T extends unknown[]>(
@@ -15,7 +27,7 @@ export function throttle<T extends unknown[]>(
   }
   let { immediate = false } = options;
   const { once = false, debounce = false } = options;
-  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  let timeoutId: Nullable<TimeoutHandle>;
   // Has it been cancelled
   let cancelled: boolean | null = false;
   /**
@@ -24,7 +36,7 @@ export function throttle<T extends unknown[]>(
   function clearTimer() {
     if (timeoutId) {
       window.clearTimeout(timeoutId);
-      timeoutId = undefined;
+      timeoutId = null;
     }
   }
   /** cancel exec */
@@ -51,7 +63,7 @@ export function throttle<T extends unknown[]>(
       const callNow = !timeoutId;
       if (callNow) {
         exec();
-        timeoutId = undefined;
+        timeoutId = null;
       }
     } else {
       debounce && clearTimer();

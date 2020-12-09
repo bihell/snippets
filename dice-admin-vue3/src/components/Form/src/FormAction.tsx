@@ -1,30 +1,23 @@
+import type { ColEx } from './types/index';
+
 import { defineComponent, unref, computed, PropType } from 'vue';
 import { Form, Col } from 'ant-design-vue';
-import type { ColEx } from './types/index';
+import { Button } from '/@/components/Button';
+import { BasicArrow } from '/@/components/Basic/index';
+
 import { getSlot } from '/@/utils/helper/tsxHelper';
-import Button from '/@/components/Button/index.vue';
-import { UpOutlined, DownOutlined } from '@ant-design/icons-vue';
+import { useI18n } from '/@/hooks/web/useI18n';
+import { propTypes } from '/@/utils/propTypes';
+
+const { t } = useI18n();
 
 export default defineComponent({
   name: 'BasicFormAction',
-  emits: ['toggle-advanced'],
   props: {
-    show: {
-      type: Boolean,
-      default: true,
-    },
-    showResetButton: {
-      type: Boolean,
-      default: true,
-    },
-    showSubmitButton: {
-      type: Boolean,
-      default: true,
-    },
-    showAdvancedButton: {
-      type: Boolean,
-      default: true,
-    },
+    show: propTypes.bool.def(true),
+    showResetButton: propTypes.bool.def(true),
+    showSubmitButton: propTypes.bool.def(true),
+    showAdvancedButton: propTypes.bool.def(true),
     resetButtonOptions: {
       type: Object as PropType<any>,
       default: {},
@@ -37,29 +30,22 @@ export default defineComponent({
       type: Object as PropType<any>,
       default: {},
     },
-    actionSpan: {
-      type: Number,
-      default: 6,
-    },
-    isAdvanced: {
-      type: Boolean,
-      default: false,
-    },
-    hideAdvanceBtn: {
-      type: Boolean,
-      default: false,
-    },
+    actionSpan: propTypes.number.def(6),
+    isAdvanced: propTypes.bool,
+    hideAdvanceBtn: propTypes.bool,
   },
+  emits: ['toggle-advanced'],
   setup(props, { slots, emit }) {
     const getResetBtnOptionsRef = computed(() => {
       return {
-        text: '重置',
+        text: t('component.form.resetButton'),
         ...props.resetButtonOptions,
       };
     });
+
     const getSubmitBtnOptionsRef = computed(() => {
       return {
-        text: '查询',
+        text: t('component.form.submitButton'),
         // htmlType: 'submit',
         ...props.submitButtonOptions,
       };
@@ -80,61 +66,75 @@ export default defineComponent({
     function toggleAdvanced() {
       emit('toggle-advanced');
     }
+
+    function renderAdvanceButton() {
+      const { showAdvancedButton, hideAdvanceBtn, isAdvanced } = props;
+
+      if (!showAdvancedButton || !!hideAdvanceBtn) {
+        return null;
+      }
+      return (
+        <Button type="default" class="mr-2" onClick={toggleAdvanced}>
+          {() => (
+            <>
+              {isAdvanced ? t('component.form.putAway') : t('component.form.unfold')}
+              <BasicArrow expand={!isAdvanced} top />
+            </>
+          )}
+        </Button>
+      );
+    }
+
+    function renderResetButton() {
+      const { showResetButton } = props;
+      if (!showResetButton) {
+        return null;
+      }
+      return (
+        <Button type="default" class="mr-2" {...unref(getResetBtnOptionsRef)}>
+          {() => unref(getResetBtnOptionsRef).text}
+        </Button>
+      );
+    }
+
+    function renderSubmitButton() {
+      const { showSubmitButton } = props;
+      if (!showSubmitButton) {
+        return null;
+      }
+      return (
+        <Button type="primary" {...unref(getSubmitBtnOptionsRef)}>
+          {() => unref(getSubmitBtnOptionsRef).text}
+        </Button>
+      );
+    }
+
     return () => {
       if (!props.show) {
-        return;
+        return null;
       }
-      const {
-        showAdvancedButton,
-        hideAdvanceBtn,
-        isAdvanced,
-        showResetButton,
-        showSubmitButton,
-      } = props;
+
       return (
-        <>
-          <Col {...unref(actionColOpt)} style={{ textAlign: 'right' }}>
-            {() => (
-              <Form.Item>
-                {() => (
-                  <>
-                    {getSlot(slots, 'advanceBefore')}
-                    {showAdvancedButton && !hideAdvanceBtn && (
-                      <Button type="default" class="mr-2" onClick={toggleAdvanced}>
-                        {() => (
-                          <>
-                            {isAdvanced ? '收起' : '展开'}
-                            {isAdvanced ? (
-                              <UpOutlined class="advanced-icon" />
-                            ) : (
-                              <DownOutlined class="advanced-icon" />
-                            )}
-                          </>
-                        )}
-                      </Button>
-                    )}
+        <Col {...unref(actionColOpt)} style={{ textAlign: 'right' }}>
+          {() => (
+            <Form.Item>
+              {() => (
+                <>
+                  {getSlot(slots, 'advanceBefore')}
+                  {renderAdvanceButton()}
 
-                    {getSlot(slots, 'resetBefore')}
-                    {showResetButton && (
-                      <Button type="default" class="mr-2" {...unref(getResetBtnOptionsRef)}>
-                        {() => unref(getResetBtnOptionsRef).text}
-                      </Button>
-                    )}
+                  {getSlot(slots, 'resetBefore')}
+                  {renderResetButton()}
 
-                    {getSlot(slots, 'submitBefore')}
-                    {showSubmitButton && (
-                      <Button type="primary" {...unref(getSubmitBtnOptionsRef)}>
-                        {() => unref(getSubmitBtnOptionsRef).text}
-                      </Button>
-                    )}
+                  {getSlot(slots, 'submitBefore')}
+                  {renderSubmitButton()}
 
-                    {getSlot(slots, 'submitAfter')}
-                  </>
-                )}
-              </Form.Item>
-            )}
-          </Col>
-        </>
+                  {getSlot(slots, 'submitAfter')}
+                </>
+              )}
+            </Form.Item>
+          )}
+        </Col>
       );
     };
   },

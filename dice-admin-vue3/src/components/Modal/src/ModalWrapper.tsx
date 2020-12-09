@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
 import type { ModalWrapperProps } from './types';
+import type { CSSProperties } from 'vue';
 
 import {
   defineComponent,
@@ -13,82 +13,85 @@ import {
   onUnmounted,
 } from 'vue';
 import { Spin } from 'ant-design-vue';
-import { ScrollContainer } from '/@/components/Container/index';
 
-import { useWindowSizeFn } from '/@/hooks/event/useWindowSize';
-import { useTimeout } from '/@/hooks/core/useTimeout';
+import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
 
 import { getSlot } from '/@/utils/helper/tsxHelper';
 import { useElResize } from '/@/hooks/event/useElResize';
+import { propTypes } from '/@/utils/propTypes';
+import { createModalContext } from './useModalContext';
+
 export default defineComponent({
   name: 'ModalWrapper',
-  emits: ['heightChange', 'getExtHeight'],
   props: {
-    loading: {
-      type: Boolean as PropType<boolean>,
-      default: false,
-    },
-    modalHeaderHeight: {
-      type: Number as PropType<number>,
-      default: 50,
-    },
-    modalFooterHeight: {
-      type: Number as PropType<number>,
-      default: 70,
-    },
-    minHeight: {
-      type: Number as PropType<number>,
-      default: 200,
-    },
-    footerOffset: {
-      type: Number as PropType<number>,
-      default: 0,
-    },
-    visible: {
-      type: Boolean as PropType<boolean>,
-      default: false,
-    },
-    fullScreen: {
-      type: Boolean as PropType<boolean>,
-      default: false,
-    },
+    loading: propTypes.bool,
+    modalHeaderHeight: propTypes.number.def(50),
+    modalFooterHeight: propTypes.number.def(54),
+    minHeight: propTypes.number.def(200),
+    footerOffset: propTypes.number.def(0),
+    visible: propTypes.bool,
+    fullScreen: propTypes.bool,
   },
+  emits: ['heightChange', 'getExtHeight'],
   setup(props: ModalWrapperProps, { slots, emit }) {
-    const wrapperRef = ref<HTMLElement | null>(null);
-    const spinRef = ref<any>(null);
+    const wrapperRef = ref<ElRef>(null);
+    const spinRef = ref<ComponentRef>(null);
     const realHeightRef = ref(0);
 
-    const wrapStyle = computed(() => {
-      return {
-        minHeight: `${props.minHeight}px`,
-        overflow: 'hidden',
-      };
+    let stopElResizeFn: Fn = () => {};
+
+    useWindowSizeFn(setModalHeight);
+
+    createModalContext({
+      redoModalHeight: setModalHeight,
     });
 
-    // 重试次数
-    let tryCount = 0;
+    const wrapStyle = computed(
+      (): CSSProperties => {
+        return {
+          minHeight: `${props.minHeight}px`,
+          height: `${unref(realHeightRef)}px`,
+          overflow: 'auto',
+        };
+      }
+    );
+
+    watchEffect(() => {
+      setModalHeight();
+    });
+
+    watch(
+      () => props.fullScreen,
+      (v) => {
+        !v && setModalHeight();
+      }
+    );
+
+    onMounted(() => {
+      const { modalHeaderHeight, modalFooterHeight } = props;
+      emit('getExtHeight', modalHeaderHeight + modalFooterHeight);
+      listenElResize();
+    });
+
+    onUnmounted(() => {
+      stopElResizeFn && stopElResizeFn();
+    });
+
     async function setModalHeight() {
       // 解决在弹窗关闭的时候监听还存在,导致再次打开弹窗没有高度
       // 加上这个,就必须在使用的时候传递父级的visible
-      if (!props.visible) {
-        return;
-      }
+      if (!props.visible) return;
       const wrapperRefDom = unref(wrapperRef);
-      if (!wrapperRefDom) {
-        return;
-      }
+      if (!wrapperRefDom) return;
       const bodyDom = wrapperRefDom.parentElement;
-      if (!bodyDom) {
-        return;
-      }
+      if (!bodyDom) return;
       bodyDom.style.padding = '0';
       await nextTick();
 
       try {
         const modalDom = bodyDom.parentElement && bodyDom.parentElement.parentElement;
-        if (!modalDom) {
-          return;
-        }
+        if (!modalDom) return;
+
         const modalRect = getComputedStyle(modalDom).top;
         const modalTop = Number.parseInt(modalRect);
         let maxHeight =
@@ -104,30 +107,22 @@ export default defineComponent({
         }
         await nextTick();
         const spinEl = unref(spinRef);
-        if (!spinEl) {
-          useTimeout(() => {
-            // retry
-            if (tryCount < 3) {
-              setModalHeight();
-            }
-            tryCount++;
-          }, 10);
-          return;
-        }
-        tryCount = 0;
 
-        const realHeight = (spinEl.$el.querySelector('.ant-spin-container') as HTMLElement)
-          .scrollHeight;
+        if (!spinEl) return;
 
-        //  16为 p-2和m-2  加起来为4,基础4, 4*4=16
-        // 32 padding
+        const spinContainerEl = spinEl.$el.querySelector('.ant-spin-container') as HTMLElement;
+        if (!spinContainerEl) return;
+
+        const realHeight = spinContainerEl.scrollHeight;
+
         if (props.fullScreen) {
           realHeightRef.value =
-            window.innerHeight - props.modalFooterHeight - props.modalHeaderHeight - 26;
+            window.innerHeight - props.modalFooterHeight - props.modalHeaderHeight;
         } else {
           realHeightRef.value = realHeight > maxHeight ? maxHeight : realHeight + 16 + 30;
         }
         emit('heightChange', unref(realHeightRef));
+
         nextTick(() => {
           const el = spinEl.$el;
           if (el) {
@@ -138,49 +133,27 @@ export default defineComponent({
         console.log(error);
       }
     }
+
     function listenElResize() {
       const wrapper = unref(wrapperRef);
       if (!wrapper) return;
+
       const container = wrapper.querySelector('.ant-spin-container');
       if (!container) return;
+
       const [start, stop] = useElResize(container, () => {
         setModalHeight();
       });
+      stopElResizeFn = stop;
       start();
-      onUnmounted(() => {
-        stop();
-      });
     }
-    nextTick(() => {});
-    watchEffect(() => {
-      setModalHeight();
-    });
-    watch(
-      () => props.fullScreen,
-      (v) => {
-        !v && setModalHeight();
-      }
-    );
-
-    onMounted(() => {
-      const { modalHeaderHeight, modalFooterHeight } = props;
-      emit('getExtHeight', modalHeaderHeight + modalFooterHeight);
-      listenElResize();
-    });
-
-    useWindowSizeFn(setModalHeight);
 
     return () => {
-      const height = unref(realHeightRef);
       return (
         <div ref={wrapperRef} style={unref(wrapStyle)}>
-          <ScrollContainer>
-            {() => (
-              <Spin ref={spinRef} spinning={props.loading} style={{ height: `${height}px` }}>
-                {() => getSlot(slots)}
-              </Spin>
-            )}
-          </ScrollContainer>
+          <Spin ref={spinRef} spinning={props.loading}>
+            {() => getSlot(slots)}
+          </Spin>
         </div>
       );
     };

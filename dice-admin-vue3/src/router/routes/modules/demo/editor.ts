@@ -1,33 +1,32 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { getParentLayout, LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/editor',
-    name: 'Editor',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/editor/markdown',
-    meta: {
-      icon: 'ant-design:table-outlined',
-      title: '编辑器',
-    },
+const editor: AppRouteModule = {
+  path: '/editor',
+  name: 'Editor',
+  component: LAYOUT,
+  redirect: '/editor/markdown',
+  meta: {
+    icon: 'carbon:table-split',
+    title: t('routes.demo.editor.editor'),
   },
-
-  routes: [
+  children: [
     {
-      path: '/markdown',
+      path: 'markdown',
       name: 'MarkdownDemo',
       component: () => import('/@/views/demo/editor/Markdown.vue'),
       meta: {
-        title: 'markdown编辑器',
+        title: t('routes.demo.editor.markdown'),
       },
     },
     {
-      path: '/tinymce',
+      path: 'tinymce',
+      component: getParentLayout('TinymceDemo'),
       name: 'TinymceDemo',
       meta: {
-        title: '富文本',
+        title: t('routes.demo.editor.tinymce'),
       },
       redirect: '/editor/tinymce/index',
       children: [
@@ -36,19 +35,20 @@ export default {
           name: 'TinymceBasicDemo',
           component: () => import('/@/views/demo/editor/tinymce/index.vue'),
           meta: {
-            title: '基础使用',
+            title: t('routes.demo.editor.tinymceBasic'),
           },
         },
-        // TODO
-        // {
-        //   path: 'editor',
-        //   name: 'TinymceFormDemo',
-        //   component: () => import('/@/views/demo/comp/tinymce/Editor.vue'),
-        //   meta: {
-        //     title: '嵌入form使用',
-        //   },
-        // },
+        {
+          path: 'editor',
+          name: 'TinymceFormDemo',
+          component: () => import('/@/views/demo/editor/tinymce/Editor.vue'),
+          meta: {
+            title: t('routes.demo.editor.tinymceForm'),
+          },
+        },
       ],
     },
   ],
-} as AppRouteModule;
+};
+
+export default editor;

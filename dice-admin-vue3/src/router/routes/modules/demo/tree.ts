@@ -1,42 +1,43 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/tree',
-    name: 'TreeDemo',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/tree/basic',
-    meta: {
-      icon: 'clarity:tree-view-line',
-      title: 'Tree',
-    },
+const tree: AppRouteModule = {
+  path: '/tree',
+  name: 'TreeDemo',
+  component: LAYOUT,
+  redirect: '/tree/basic',
+  meta: {
+    icon: 'clarity:tree-view-line',
+    title: t('routes.demo.tree.tree'),
   },
-  routes: [
+  children: [
     {
-      path: '/basic',
+      path: 'basic',
       name: 'BasicTreeDemo',
       component: () => import('/@/views/demo/tree/index.vue'),
       meta: {
-        title: '基础树',
+        title: t('routes.demo.tree.basic'),
       },
     },
     {
-      path: '/editTree',
+      path: 'editTree',
       name: 'EditTreeDemo',
       component: () => import('/@/views/demo/tree/EditTree.vue'),
       meta: {
-        title: '右键示例',
+        title: t('routes.demo.tree.editTree'),
       },
     },
     {
-      path: '/actionTree',
+      path: 'actionTree',
       name: 'ActionTreeDemo',
       component: () => import('/@/views/demo/tree/ActionTree.vue'),
       meta: {
-        title: '函数操作示例',
+        title: t('routes.demo.tree.actionTree'),
       },
     },
   ],
-} as AppRouteModule;
+};
+
+export default tree;

@@ -1,126 +1,98 @@
-import { defineComponent, unref, onMounted, computed } from 'vue';
-import { Layout, BackTop } from 'ant-design-vue';
-import LayoutHeader from './LayoutHeader';
-
-import { appStore } from '/@/store/modules/app';
-import LayoutContent from './LayoutContent';
-import LayoutSideBar from './LayoutSideBar';
-import SettingBtn from './setting/index.vue';
-import MultipleTabs from './multitabs/index';
-import { FullLoading } from '/@/components/Loading/index';
-
-import { MenuModeEnum, MenuTypeEnum } from '/@/enums/menuEnum';
-import { useFullContent } from '/@/hooks/web/useFullContent';
-
-import LockPage from '/@/views/sys/lock/index.vue';
-import { registerGlobComp } from '/@/components/registerGlobComp';
-
 import './index.less';
+
+import { defineComponent, unref, computed, ref } from 'vue';
+import { Layout, BackTop } from 'ant-design-vue';
+import LayoutHeader from './header/LayoutHeader';
+
+import LayoutContent from './content';
+import LayoutFooter from './footer';
+import LayoutLockPage from './lock';
+import LayoutSideBar from './sider';
+import SettingBtn from './setting/index.vue';
+import LayoutMultipleHeader from './header/LayoutMultipleHeader';
+
+import { MenuModeEnum } from '/@/enums/menuEnum';
+
+import { useRouter } from 'vue-router';
+import { useFullContent } from '/@/hooks/web/useFullContent';
+import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
+import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
+import { useRootSetting } from '/@/hooks/setting/useRootSetting';
+import { createLayoutContext } from './useLayoutContext';
+
+import { registerGlobComp } from '/@/components/registerGlobComp';
+import { createBreakpointListen } from '/@/hooks/event/useBreakpoint';
+import { isMobile } from '/@/utils/is';
 export default defineComponent({
   name: 'DefaultLayout',
   setup() {
-    // ! 在这里才注册全局组件
-    // ! 可以减少首屏代码体积
-    // default layout是在登录后才加载的。所以不会打包到首屏去
+    const { currentRoute } = useRouter();
+    const headerRef = ref<ComponentRef>(null);
+    const isMobileRef = ref(false);
+
+    createLayoutContext({ fullHeader: headerRef, isMobile: isMobileRef });
+
+    createBreakpointListen(() => {
+      isMobileRef.value = isMobile();
+    });
+
+    // ! Only register global components here
+    // ! Can reduce the size of the first screen code
+    // default layout It is loaded after login. So it won’t be packaged to the first screen
     registerGlobComp();
 
-    // 获取项目配置
+    const { getShowFullHeaderRef } = useHeaderSetting();
+
+    const { getUseOpenBackTop, getShowSettingButton, getShowFooter } = useRootSetting();
+
+    const { getShowMenu, getMenuMode, getSplit } = useMenuSetting();
+
     const { getFullContent } = useFullContent();
 
-    const getProjectConfigRef = computed(() => {
-      return appStore.getProjectConfig;
-    });
-    const getLockMainScrollStateRef = computed(() => {
-      return appStore.getLockMainScrollState;
-    });
-
-    const showHeaderRef = computed(() => {
-      const {
-        headerSetting: { show },
-      } = unref(getProjectConfigRef);
-      return show;
-    });
-    const isShowMixHeaderRef = computed(() => {
-      const {
-        menuSetting: { type },
-      } = unref(getProjectConfigRef);
-      return type !== MenuTypeEnum.SIDEBAR && unref(showHeaderRef);
+    const getShowLayoutFooter = computed(() => {
+      return unref(getShowFooter) && !unref(currentRoute).meta?.hiddenFooter;
     });
 
     const showSideBarRef = computed(() => {
-      const {
-        menuSetting: { show, mode },
-      } = unref(getProjectConfigRef);
-      return show && mode !== MenuModeEnum.HORIZONTAL && !unref(getFullContent);
-    });
-
-    // const { currentRoute } = useRouter();
-    onMounted(() => {
-      // Each refresh will request the latest user information, if you don’t need it, you can delete it
-      // userStore.getUserInfoAction({ userId: userStore.getUserInfoState.userId });
-    });
-
-    // Get project configuration
-    // const { getFullContent } = useFullContent(currentRoute);
-    function getTarget(): any {
-      const {
-        headerSetting: { fixed },
-      } = unref(getProjectConfigRef);
-      return document.querySelector(`.default-layout__${fixed ? 'main' : 'content'}`);
-    }
-    return () => {
-      const { getPageLoading, getLockInfo } = appStore;
-      const {
-        openPageLoading,
-        useOpenBackTop,
-        showSettingButton,
-        multiTabsSetting: { show: showTabs },
-        headerSetting: { fixed },
-      } = unref(getProjectConfigRef);
-      // const fixedHeaderCls = fixed ? ('fixed' + getLockMainScrollState ? ' lock' : '') : '';
-      const fixedHeaderCls = fixed
-        ? 'fixed' + (unref(getLockMainScrollStateRef) ? ' lock' : '')
-        : '';
-      const { isLock } = getLockInfo;
       return (
-        <Layout class="default-layout relative">
+        unref(getSplit) ||
+        (unref(getShowMenu) &&
+          unref(getMenuMode) !== MenuModeEnum.HORIZONTAL &&
+          !unref(getFullContent))
+      );
+    });
+
+    function renderFeatures() {
+      return (
+        <>
+          <LayoutLockPage />
+          {/* back top */}
+          {unref(getUseOpenBackTop) && <BackTop target={() => document.body} />}
+          {/* open setting drawer */}
+          {unref(getShowSettingButton) && <SettingBtn />}
+        </>
+      );
+    }
+
+    return () => {
+      return (
+        <Layout class="default-layout">
           {() => (
             <>
-              {isLock && <LockPage />}
+              {renderFeatures()}
 
-              {!unref(getFullContent) && unref(isShowMixHeaderRef) && unref(showHeaderRef) && (
-                <LayoutHeader />
-              )}
-
-              {showSettingButton && <SettingBtn />}
+              {unref(getShowFullHeaderRef) && <LayoutHeader fixed={true} ref={headerRef} />}
 
               <Layout>
                 {() => (
                   <>
                     {unref(showSideBarRef) && <LayoutSideBar />}
-                    <Layout class={[`default-layout__content`, fixedHeaderCls]}>
+                    <Layout class="default-layout__main">
                       {() => (
                         <>
-                          {!unref(getFullContent) &&
-                            !unref(isShowMixHeaderRef) &&
-                            unref(showHeaderRef) && <LayoutHeader />}
-
-                          {showTabs && !unref(getFullContent) && (
-                            <Layout.Header class={`default-layout__tabs`}>
-                              {() => <MultipleTabs />}
-                            </Layout.Header>
-                          )}
-
-                          {useOpenBackTop && <BackTop target={getTarget} />}
-
-                          <div class={[`default-layout__main`, fixedHeaderCls]}>
-                            {openPageLoading && (
-                              <FullLoading
-                                class={[`default-layout__loading`, !getPageLoading && 'hidden']}
-                              />
-                            )}
-                            <LayoutContent />
-                          </div>
+                          <LayoutMultipleHeader />
+                          <LayoutContent />
+                          {unref(getShowLayoutFooter) && <LayoutFooter />}
                         </>
                       )}
                     </Layout>

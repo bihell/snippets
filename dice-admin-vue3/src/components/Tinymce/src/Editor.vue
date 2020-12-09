@@ -1,6 +1,6 @@
 <template>
   <div class="tinymce-container" :style="{ width: containerWidth }">
-    <textarea :id="tinymceId" visibility="hidden" ref="elRef"></textarea>
+    <textarea :id="tinymceId" ref="elRef" :style="{ visibility: 'hidden' }"></textarea>
   </div>
 </template>
 
@@ -8,7 +8,6 @@
   import {
     defineComponent,
     computed,
-    onMounted,
     nextTick,
     ref,
     unref,
@@ -23,6 +22,8 @@
   import { useScript } from '/@/hooks/web/useScript';
   import { snowUuid } from '/@/utils/uuid';
   import { bindHandlers } from './helper';
+  import lineHeight from './lineHeight';
+  import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
 
   const CDN_URL = 'https://cdn.bootcdn.net/ajax/libs/tinymce/5.5.1';
 
@@ -34,11 +35,8 @@
     emits: ['change', 'update:modelValue'],
     setup(props, { emit, attrs }) {
       const editorRef = ref<any>(null);
+      const tinymceId = ref<string>(snowUuid('tiny-vue'));
       const elRef = ref<Nullable<HTMLElement>>(null);
-
-      const tinymceId = computed(() => {
-        return snowUuid('tiny-vue');
-      });
 
       const tinymceContent = computed(() => {
         return props.modelValue;
@@ -53,13 +51,14 @@
       });
 
       const initOptions = computed(() => {
-        const { height, menubar } = props;
+        const { height, options } = props;
         return {
           selector: `#${unref(tinymceId)}`,
+          base_url: CDN_URL,
+          suffix: '.min',
           height: height,
           toolbar: toolbar,
-          theme: 'silver',
-          menubar: menubar,
+          menubar: 'file edit insert view format table',
           plugins: plugins,
           // 语言包
           language_url: 'resource/tinymce/langs/zh_CN.js',
@@ -70,6 +69,9 @@
           advlist_bullet_styles: 'square',
           advlist_number_styles: 'default',
           object_resizing: false,
+          fontsize_formats: '10px 11px 12px 14px 16px 18px 20px 24px 36px 48px',
+          lineheight_formats: '1 1.5 1.75 2.0 3.0 4.0 5.0',
+          ...options,
           setup: (editor: any) => {
             editorRef.value = editor;
             editor.on('init', (e: Event) => initSetup(e));
@@ -89,8 +91,7 @@
           editor.setMode(attrs.disabled ? 'readonly' : 'design');
         }
       );
-
-      onMounted(() => {
+      onMountedOrActivated(() => {
         nextTick(() => {
           init();
         });
@@ -112,11 +113,18 @@
 
       function init() {
         toPromise().then(() => {
-          initEditor();
+          setTimeout(() => {
+            initEditor();
+          }, 0);
         });
       }
 
       function initEditor() {
+        getTinymce().PluginManager.add('lineHeight', lineHeight(getTinymce()));
+        const el = unref(elRef);
+        if (el) {
+          el.style.visibility = '';
+        }
         getTinymce().init(unref(initOptions));
       }
 
@@ -130,36 +138,48 @@
         bindHandlers(e, attrs, unref(editorRef));
       }
 
+      function setValue(editor: any, val: string, prevVal: string) {
+        if (
+          editor &&
+          typeof val === 'string' &&
+          val !== prevVal &&
+          val !== editor.getContent({ format: attrs.outputFormat })
+        ) {
+          editor.setContent(val);
+        }
+      }
+
       function bindModelHandlers(editor: any) {
         const modelEvents = attrs.modelEvents ? attrs.modelEvents : null;
         const normalizedEvents = Array.isArray(modelEvents) ? modelEvents.join(' ') : modelEvents;
         watch(
           () => props.modelValue,
           (val: string, prevVal: string) => {
-            if (
-              editor &&
-              typeof val === 'string' &&
-              val !== prevVal &&
-              val !== editor.getContent({ format: attrs.outputFormat })
-            ) {
-              editor.setContent(val);
-            }
+            setValue(editor, val, prevVal);
+          }
+        );
+
+        watch(
+          () => props.value,
+          (val: string, prevVal: string) => {
+            setValue(editor, val, prevVal);
+          },
+          {
+            immediate: true,
           }
         );
 
         editor.on(normalizedEvents ? normalizedEvents : 'change keyup undo redo', () => {
-          emit('update:modelValue', editor.getContent({ format: attrs.outputFormat }));
+          const content = editor.getContent({ format: attrs.outputFormat });
+          emit('update:modelValue', content);
+          emit('change', content);
         });
       }
 
-      function handleChange(value: string) {
-        emit('change', value);
-      }
       return {
         containerWidth,
         initOptions,
         tinymceContent,
-        handleChange,
         tinymceScriptSrc,
         elRef,
         tinymceId,

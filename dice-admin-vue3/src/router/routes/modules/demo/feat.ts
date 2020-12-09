@@ -1,109 +1,117 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/feat',
-    name: 'FeatDemo',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/feat/icon',
-    meta: {
-      icon: 'ic:outline-featured-play-list',
-      title: '页面功能',
-    },
+const feat: AppRouteModule = {
+  path: '/feat',
+  name: 'FeatDemo',
+  component: LAYOUT,
+  redirect: '/feat/icon',
+  meta: {
+    icon: 'ic:outline-featured-play-list',
+    title: t('routes.demo.feat.feat'),
   },
-
-  routes: [
+  children: [
     {
-      path: '/icon',
+      path: 'icon',
       name: 'IconDemo',
-      component: () => import('/@/views/demo/comp/icon/index.vue'),
+      component: () => import('/@/views/demo/feat/icon/index.vue'),
       meta: {
-        title: '图标',
+        title: t('routes.demo.feat.icon'),
       },
     },
     {
-      path: '/tabs',
+      path: 'tabs',
       name: 'TabsDemo',
       component: () => import('/@/views/demo/feat/tabs/index.vue'),
       meta: {
-        title: '标签页操作',
+        title: t('routes.demo.feat.tabs'),
       },
     },
 
     {
-      path: '/context-menu',
+      path: 'context-menu',
       name: 'ContextMenuDemo',
       component: () => import('/@/views/demo/feat/context-menu/index.vue'),
       meta: {
-        title: '右键菜单',
+        title: t('routes.demo.feat.contextMenu'),
       },
     },
     {
-      path: '/click-out-side',
-      name: 'ClickOutSideDemo',
-      component: () => import('/@/views/demo/comp/click-out-side/index.vue'),
+      path: 'download',
+      name: 'DownLoadDemo',
+      component: () => import('/@/views/demo/feat/download/index.vue'),
       meta: {
-        title: 'ClickOutSide组件',
+        title: t('routes.demo.feat.download'),
       },
     },
     {
-      path: '/img-preview',
+      path: 'click-out-side',
+      name: 'ClickOutSideDemo',
+      component: () => import('/@/views/demo/feat/click-out-side/index.vue'),
+      meta: {
+        title: t('routes.demo.feat.clickOutSide'),
+      },
+    },
+    {
+      path: 'img-preview',
       name: 'ImgPreview',
       component: () => import('/@/views/demo/feat/img-preview/index.vue'),
       meta: {
-        title: '图片预览',
+        title: t('routes.demo.feat.imgPreview'),
       },
     },
     {
-      path: '/copy',
+      path: 'copy',
       name: 'CopyDemo',
       component: () => import('/@/views/demo/feat/copy/index.vue'),
       meta: {
-        title: '剪切板',
+        title: t('routes.demo.feat.copy'),
       },
     },
     {
-      path: '/msg',
+      path: 'msg',
       name: 'MsgDemo',
       component: () => import('/@/views/demo/feat/msg/index.vue'),
       meta: {
-        title: '消息提示',
+        title: t('routes.demo.feat.msg'),
       },
     },
     {
-      path: '/i18n',
-      name: 'I18nDemo',
-      component: () => import('/@/views/demo/feat/i18n/index.vue'),
-      meta: {
-        title: '国际化',
-      },
-    },
-    {
-      path: '/watermark',
+      path: 'watermark',
       name: 'WatermarkDemo',
       component: () => import('/@/views/demo/feat/watermark/index.vue'),
       meta: {
-        title: '水印',
+        title: t('routes.demo.feat.watermark'),
       },
     },
     {
-      path: '/full-screen',
+      path: 'full-screen',
       name: 'FullScreenDemo',
       component: () => import('/@/views/demo/feat/full-screen/index.vue'),
       meta: {
-        title: '全屏',
+        title: t('routes.demo.feat.fullScreen'),
       },
     },
     {
-      path: '/testTab/:id',
+      path: 'error-log',
+      name: 'ErrorLog',
+      component: () => import('/@/views/sys/error-log/index.vue'),
+      meta: {
+        title: t('routes.demo.feat.errorLog'),
+      },
+    },
+    {
+      path: 'testTab/:id',
       name: 'TestTab',
       component: () => import('/@/views/demo/feat/tab-params/index.vue'),
       meta: {
-        title: 'Tab带参',
+        title: t('routes.demo.feat.tab'),
         carryParam: true,
       },
     },
   ],
-} as AppRouteModule;
+};
+
+export default feat;

@@ -1,63 +1,28 @@
 import type { AppRouteRecordRaw, AppRouteModule } from '/@/router/types';
 
-import { DEFAULT_LAYOUT_COMPONENT, PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '../constant';
-import { genRouteModule } from '/@/utils/helper/routeHelper';
+import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '../constant';
+
 import modules from 'globby!/@/router/routes/modules/**/*.@(ts)';
 
-// import dashboard from './modules/dashboard';
-// demo
-// import exceptionDemo from './modules/demo/exception';
-// import iframeDemo from './modules/demo/iframe';
-// import compDemo from './modules/demo/comp';
-// import permissionDemo from './modules/demo/permission';
-// import featDemo from './modules/demo/feat';
-// import chartsDemo from './modules/demo/charts';
-// import tableDemo from './modules/demo/table';
-// import formDemo from './modules/demo/form';
-// import treeDemo from './modules/demo/tree';
+import { t } from '/@/hooks/web/useI18n';
 
-const routeModuleList: AppRouteModule[] = [
-  // exceptionDemo,
-  // dashboard,
-  // iframeDemo,
-  // compDemo,
-  // featDemo,
-  // permissionDemo,
-  // chartsDemo,
-  // tableDemo,
-  // formDemo,
-  // treeDemo,
-];
+const routeModuleList: AppRouteModule[] = [];
 
 Object.keys(modules).forEach((key) => {
-  routeModuleList.push(modules[key]);
+  const mod = Array.isArray(modules[key]) ? [...modules[key]] : [modules[key]];
+  routeModuleList.push(...mod);
 });
 
-export const asyncRoutes = [
-  REDIRECT_ROUTE,
-  PAGE_NOT_FOUND_ROUTE,
-  ...genRouteModule(routeModuleList),
-];
-// 主框架根路由
-export const RootRoute: AppRouteRecordRaw = {
-  path: '/',
-  name: 'Root',
-  component: DEFAULT_LAYOUT_COMPONENT,
-  redirect: '/dashboard',
-  meta: {
-    title: 'Root',
-  },
-  children: [],
-};
+export const asyncRoutes = [PAGE_NOT_FOUND_ROUTE, ...routeModuleList];
 
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
   component: () => import('/@/views/sys/login/Login.vue'),
   meta: {
-    title: '登录',
+    title: t('routes.basic.login'),
   },
 };
 
 // 基础路由 不用权限
-export const basicRoutes = [LoginRoute, RootRoute];
+export const basicRoutes = [LoginRoute, REDIRECT_ROUTE];

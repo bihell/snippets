@@ -6,12 +6,22 @@
     <DetailModal :info="rowInfoRef" @register="registerModal" />
     <BasicTable @register="register" class="error-handle-table">
       <template #toolbar>
-        <a-button @click="fireVueError" type="primary"> 点击触发vue错误 </a-button>
-        <a-button @click="fireResourceError" type="primary"> 点击触发resource错误 </a-button>
-        <a-button @click="fireAjaxError" type="primary"> 点击触发ajax错误 </a-button>
+        <a-button @click="fireVueError" type="primary">
+          {{ t('sys.errorLog.fireVueError') }}
+        </a-button>
+        <a-button @click="fireResourceError" type="primary">
+          {{ t('sys.errorLog.fireResourceError') }}
+        </a-button>
+        <a-button @click="fireAjaxError" type="primary">
+          {{ t('sys.errorLog.fireAjaxError') }}
+        </a-button>
       </template>
       <template #action="{ record }">
-        <TableAction :actions="[{ label: '详情', onClick: handleDetail.bind(null, record) }]" />
+        <TableAction
+          :actions="[
+            { label: t('sys.errorLog.tableActionDesc'), onClick: handleDetail.bind(null, record) },
+          ]"
+        />
       </template>
     </BasicTable>
   </div>
@@ -21,9 +31,11 @@
   import { defineComponent, watch, ref, nextTick } from 'vue';
 
   import DetailModal from './DetailModal.vue';
-  import { useModal } from '/@/components/Modal/index';
-
   import { BasicTable, useTable, TableAction } from '/@/components/Table/index';
+
+  import { useModal } from '/@/components/Modal/index';
+  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useI18n } from '/@/hooks/web/useI18n';
 
   import { errorStore, ErrorInfo } from '/@/store/modules/error';
 
@@ -32,6 +44,7 @@
   import { getColumns } from './data';
 
   import { cloneDeep } from 'lodash-es';
+  import { isDevMode } from '/@/utils/env';
 
   export default defineComponent({
     name: 'ErrorHandler',
@@ -39,19 +52,21 @@
     setup() {
       const rowInfoRef = ref<ErrorInfo>();
       const imgListRef = ref<string[]>([]);
+
+      const { t } = useI18n();
+
       const [register, { setTableData }] = useTable({
-        titleHelpMessage: '只在`/src/settings/projectSetting.ts` 内的useErrorHandle=true时生效！',
-        title: '错误日志列表',
+        title: t('sys.errorLog.tableTitle'),
         columns: getColumns(),
         actionColumn: {
           width: 80,
-          title: '操作',
+          title: 'Action',
           dataIndex: 'action',
           slots: { customRender: 'action' },
         },
       });
-
       const [registerModal, { openModal }] = useModal();
+
       watch(
         () => errorStore.getErrorInfoState,
         (list) => {
@@ -63,7 +78,10 @@
           immediate: true,
         }
       );
-
+      const { createMessage } = useMessage();
+      if (isDevMode()) {
+        createMessage.info(t('sys.errorLog.enableMessage'));
+      }
       // 查看详情
       function handleDetail(row: ErrorInfo) {
         rowInfoRef.value = row;
@@ -91,6 +109,7 @@
         fireAjaxError,
         imgListRef,
         rowInfoRef,
+        t,
       };
     },
   });

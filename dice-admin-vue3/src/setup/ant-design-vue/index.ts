@@ -1,14 +1,19 @@
 // Load on demand
-
+// This module only introduces components globally before login
 import type { App } from 'vue';
 
-import { Form, Input } from 'ant-design-vue';
+import {
+  // need
+  Form,
+  Input,
+  Row,
+  Col,
+  Spin,
+} from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
-import './spin';
-
 export function setupAntd(app: App<Element>) {
-  // 这两个组件在登录也就用。全局注册
-  app.use(Form);
-  app.use(Input);
+  // need
+  // Here are the components required before registering and logging in
+  app.use(Form).use(Input).use(Row).use(Col).use(Spin);
 }

@@ -2,39 +2,29 @@ import type { RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
 
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { scrollWaiter } from '../utils/scrollWaiter';
 
 import { createGuard } from './guard/';
 
 import { basicRoutes } from './routes/';
+import { scrollBehavior } from './scrollBehaviour';
+
+export const hashRouter = createWebHashHistory();
 
 // app router
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: hashRouter,
   routes: basicRoutes as RouteRecordRaw[],
-  scrollBehavior: async (to, from, savedPosition) => {
-    await scrollWaiter.wait();
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      if (to.matched.every((record, i) => from.matched[i] !== record)) {
-        return { left: 0, top: 0 };
-      }
-      return false;
-    }
-  },
+  strict: true,
+  scrollBehavior: scrollBehavior,
 });
+
 // reset router
 export function resetRouter() {
-  const resetWhiteNameList = [
-    'Login',
-    'Root',
-    // 'FullErrorPage'
-  ];
+  const resetWhiteNameList = ['Login'];
   router.getRoutes().forEach((route) => {
     const { name } = route;
     if (name && !resetWhiteNameList.includes(name as string)) {
-      router.removeRoute(name);
+      router.hasRoute(name) && router.removeRoute(name);
     }
   });
 }
@@ -45,21 +35,8 @@ export function setupRouter(app: App<Element>) {
   createGuard(router);
 }
 
-// // hmr
-// if (import.meta.hot) {
-//   let removeRoutes: (() => void)[] = [];
+// router.onError((error) => {
+//   console.error(error);
+// });
 
-//   for (let route of routes) {
-//     removeRoutes.push(router.addRoute(route as RouteRecordRaw));
-//   }
-
-//   import.meta.hot?.acceptDeps('./routes.ts', ({ routes }) => {
-//     for (let removeRoute of removeRoutes) removeRoute();
-//     removeRoutes = [];
-//     for (let route of routes) {
-//       removeRoutes.push(router.addRoute(route));
-//     }
-//     router.replace('');
-//   });
-// }
 export default router;

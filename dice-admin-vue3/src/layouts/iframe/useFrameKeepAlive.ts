@@ -1,15 +1,33 @@
+import type { AppRouteRecordRaw } from '/@/router/types';
+
 import { computed, toRaw, unref } from 'vue';
-
-import { tabStore } from '/@/store/modules/tab';
-import { appStore } from '/@/store/modules/app';
-
-import { AppRouteRecordRaw } from '/@/router/types';
 import { useRouter } from 'vue-router';
 import router from '/@/router';
+
+import { tabStore } from '/@/store/modules/tab';
+
 import { unique } from '/@/utils';
+
+import { useMultipleTabSetting } from '/@/hooks/setting/useMultipleTabSetting';
 
 export function useFrameKeepAlive() {
   const { currentRoute } = useRouter();
+  const { getShowMultipleTab } = useMultipleTabSetting();
+
+  const getFramePages = computed(() => {
+    const ret =
+      getAllFramePages((toRaw(router.getRoutes()) as unknown) as AppRouteRecordRaw[]) || [];
+    return ret;
+  });
+
+  const getOpenTabList = computed((): string[] => {
+    return tabStore.getTabsState.reduce((prev: string[], next) => {
+      if (next.meta && Reflect.has(next.meta, 'frameSrc')) {
+        prev.push(next.name as string);
+      }
+      return prev;
+    }, []);
+  });
 
   function getAllFramePages(routes: AppRouteRecordRaw[]): AppRouteRecordRaw[] {
     let res: AppRouteRecordRaw[] = [];
@@ -27,28 +45,14 @@ export function useFrameKeepAlive() {
   }
 
   function showIframe(item: AppRouteRecordRaw) {
-    return item.path === unref(currentRoute).path;
+    return item.name === unref(currentRoute).name;
   }
-  const getFramePages = computed(() => {
-    const ret =
-      getAllFramePages((toRaw(router.getRoutes()) as unknown) as AppRouteRecordRaw[]) || [];
-    return ret;
-  });
 
-  const getOpenTabList = computed((): string[] => {
-    return tabStore.getTabsState.reduce((prev: string[], next) => {
-      if (next.meta && Reflect.has(next.meta, 'frameSrc')) {
-        prev.push(next.path!);
-      }
-      return prev;
-    }, []);
-  });
-
-  function hasRenderFrame(path: string) {
-    const {
-      multiTabsSetting: { show },
-    } = appStore.getProjectConfig;
-    return show ? unref(getOpenTabList).includes(path) : true;
+  function hasRenderFrame(name: string) {
+    if (!unref(getShowMultipleTab)) {
+      return true;
+    }
+    return unref(getOpenTabList).includes(name);
   }
   return { hasRenderFrame, getFramePages, showIframe, getAllFramePages };
 }

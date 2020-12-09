@@ -1,21 +1,23 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
   orderNo: 1000,
   menu: {
-    name: '外部页面',
+    name: t('routes.demo.iframe.frame'),
     path: '/frame',
     children: [
       {
         path: 'antv',
-        name: 'antVue文档(内嵌)',
+        name: t('routes.demo.iframe.antv'),
       },
       {
         path: 'doc',
-        name: '项目文档(内嵌)',
+        name: t('routes.demo.iframe.doc'),
       },
       {
-        path: 'docExternal',
-        name: '项目文档(外链)',
+        path: 'https://vvbin.cn/doc-next/',
+        name: t('routes.demo.iframe.docExternal'),
       },
     ],
   },

@@ -1,15 +1,30 @@
 import type { PropType } from 'vue';
 import type { PaginationProps } from './types/pagination';
-import type { BasicColumn, FetchSetting, TableSetting } from './types/table';
-import type { TableCustomRecord, TableRowSelection } from 'ant-design-vue/types/table/table';
-import type { FormProps } from '/@/components/Form/index';
-import { FETCH_SETTING } from './const';
+import type {
+  BasicColumn,
+  FetchSetting,
+  TableSetting,
+  SorterResult,
+  TableCustomRecord,
+  TableRowSelection,
+} from './types/table';
+import type { FormProps } from '/@/components/Form';
+import { DEFAULT_SORT_FN, FETCH_SETTING } from './const';
 
 // 注释看 types/table
 export const basicProps = {
   tableSetting: {
     type: Object as PropType<TableSetting>,
   },
+  inset: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
+  sortFn: {
+    type: Function as PropType<(sortInfo: SorterResult) => any>,
+    default: DEFAULT_SORT_FN,
+  },
+
   showTableSetting: {
     type: Boolean as PropType<boolean>,
     default: false,
@@ -117,7 +132,7 @@ export const basicProps = {
     default: 0,
   },
   rowSelection: {
-    type: Object as PropType<TableRowSelection<any> | null>,
+    type: Object as PropType<TableRowSelection | null>,
     default: null,
   },
   title: {

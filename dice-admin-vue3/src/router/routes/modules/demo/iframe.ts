@@ -1,49 +1,48 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { LAYOUT } from '/@/router/constant';
 const IFrame = () => import('/@/views/sys/iframe/FrameBlank.vue');
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/frame',
-    name: 'Frame',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/frame/antv',
-    meta: {
-      icon: 'mdi:page-next-outline',
-      title: '外部页面',
-    },
+const iframe: AppRouteModule = {
+  path: '/frame',
+  name: 'Frame',
+  component: LAYOUT,
+  redirect: '/frame/antv',
+  meta: {
+    icon: 'mdi:page-next-outline',
+    title: t('routes.demo.iframe.frame'),
   },
 
-  routes: [
+  children: [
     {
-      path: '/antv',
+      path: 'antv',
       name: 'Antv',
       component: IFrame,
       meta: {
         frameSrc: 'https://2x.antdv.com/docs/vue/introduce-cn/',
-        title: 'antVue文档(内嵌)',
-        afterCloseLoading: true,
+        title: t('routes.demo.iframe.antv'),
       },
     },
     {
-      path: '/doc',
+      path: 'doc',
       name: 'Doc',
       component: IFrame,
       meta: {
         frameSrc: 'https://vvbin.cn/doc-next/',
-        title: '项目文档(内嵌)',
-        afterCloseLoading: true,
+        title: t('routes.demo.iframe.doc'),
       },
     },
     {
-      path: '/docExternal',
+      path: 'https://vvbin.cn/doc-next/',
       name: 'DocExternal',
       component: IFrame,
       meta: {
-        externalLink: 'https://vvbin.cn/doc-next/',
-        title: '项目文档(外链)',
+        externalLink: true,
+        title: t('routes.demo.iframe.docExternal'),
       },
     },
   ],
-} as AppRouteModule;
+};
+
+export default iframe;

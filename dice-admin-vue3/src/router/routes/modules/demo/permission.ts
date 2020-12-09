@@ -1,82 +1,91 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { getParentLayout, LAYOUT } from '/@/router/constant';
 import { RoleEnum } from '/@/enums/roleEnum';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/permission',
-    name: 'Permission',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/permission/front/page',
-    meta: {
-      icon: 'carbon:user-role',
-      title: '权限管理',
-    },
+const permission: AppRouteModule = {
+  path: '/permission',
+  name: 'Permission',
+  component: LAYOUT,
+  redirect: '/permission/front/page',
+  meta: {
+    icon: 'carbon:user-role',
+    title: t('routes.demo.permission.permission'),
   },
 
-  routes: [
+  children: [
     {
-      path: '/front',
+      path: 'front',
       name: 'PermissionFrontDemo',
+      component: getParentLayout('PermissionFrontDemo'),
       meta: {
-        title: '基于前端权限',
+        title: t('routes.demo.permission.front'),
       },
       children: [
         {
           path: 'page',
+          name: 'FrontPageAuth',
           component: () => import('/@/views/demo/permission/front/index.vue'),
           meta: {
-            title: '页面权限',
+            title: t('routes.demo.permission.frontPage'),
           },
         },
         {
           path: 'btn',
+          name: 'FrontBtnAuth',
           component: () => import('/@/views/demo/permission/front/Btn.vue'),
           meta: {
-            title: '按钮权限',
+            title: t('routes.demo.permission.frontBtn'),
           },
         },
         {
           path: 'auth-pageA',
+          name: 'FrontAuthPageA',
           component: () => import('/@/views/demo/permission/front/AuthPageA.vue'),
           meta: {
-            title: '权限测试页A',
+            title: t('routes.demo.permission.frontTestA'),
             roles: [RoleEnum.SUPER],
           },
         },
         {
           path: 'auth-pageB',
+          name: 'FrontAuthPageB',
           component: () => import('/@/views/demo/permission/front/AuthPageB.vue'),
           meta: {
-            title: '权限测试页B',
+            title: t('routes.demo.permission.frontTestB'),
             roles: [RoleEnum.TEST],
           },
         },
       ],
     },
     {
-      path: '/back',
+      path: 'back',
       name: 'PermissionBackDemo',
+      component: getParentLayout('PermissionBackDemo'),
       meta: {
-        title: '基于后台权限',
+        title: t('routes.demo.permission.back'),
       },
       children: [
         {
           path: 'page',
+          name: 'BackAuthPage',
           component: () => import('/@/views/demo/permission/back/index.vue'),
           meta: {
-            title: '页面权限',
+            title: t('routes.demo.permission.backPage'),
           },
         },
         {
           path: 'btn',
+          name: 'BackAuthBtn',
           component: () => import('/@/views/demo/permission/back/Btn.vue'),
           meta: {
-            title: '按钮权限',
+            title: t('routes.demo.permission.backBtn'),
           },
         },
       ],
     },
   ],
-} as AppRouteModule;
+};
+
+export default permission;

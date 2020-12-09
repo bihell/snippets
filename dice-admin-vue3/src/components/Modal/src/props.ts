@@ -1,62 +1,39 @@
 import type { PropType } from 'vue';
+import { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
+
+import { useI18n } from '/@/hooks/web/useI18n';
+import { propTypes } from '/@/utils/propTypes';
+const { t } = useI18n();
+
 export const modalProps = {
-  visible: Boolean as PropType<boolean>,
+  visible: propTypes.bool,
   // open drag
-  draggable: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
-  centered: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  cancelText: {
-    type: String as PropType<string>,
-    default: '关闭',
-  },
-  okText: {
-    type: String as PropType<string>,
-    default: '保存',
-  },
+  draggable: propTypes.bool.def(true),
+  centered: propTypes.bool,
+  cancelText: propTypes.string.def(t('component.modal.cancelText')),
+  okText: propTypes.string.def(t('component.modal.okText')),
+
   closeFunc: Function as PropType<() => Promise<boolean>>,
 };
 
 export const basicProps = Object.assign({}, modalProps, {
   // Can it be full screen
-  canFullscreen: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+  canFullscreen: propTypes.bool.def(true),
   // After enabling the wrapper, the bottom can be increased in height
-  wrapperFooterOffset: {
-    type: Number as PropType<number>,
-    default: 0,
-  },
+  wrapperFooterOffset: propTypes.number.def(0),
   // Warm reminder message
   helpMessage: [String, Array] as PropType<string | string[]>,
-  // Whether to use wrapper
-  useWrapper: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
-  loading: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
+  // Whether to setting wrapper
+  useWrapper: propTypes.bool.def(true),
+  loading: propTypes.bool,
   /**
    * @description: Show close button
    */
-  showCancelBtn: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+  showCancelBtn: propTypes.bool.def(true),
   /**
    * @description: Show confirmation button
    */
-  showOkBtn: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+  showOkBtn: propTypes.bool.def(true),
 
   wrapperProps: Object as PropType<any>,
 
@@ -100,9 +77,9 @@ export const basicProps = Object.assign({}, modalProps, {
     default: 'primary',
   },
 
-  okButtonProps: Object as PropType<any>,
+  okButtonProps: Object as PropType<ButtonProps>,
 
-  cancelButtonProps: Object as PropType<any>,
+  cancelButtonProps: Object as PropType<ButtonProps>,
 
   title: {
     type: String as PropType<string>,

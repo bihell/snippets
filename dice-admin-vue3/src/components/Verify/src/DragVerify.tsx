@@ -1,11 +1,12 @@
 import { defineComponent, ref, computed, unref, reactive, watch, watchEffect } from 'vue';
-import { useTimeout } from '/@/hooks/core/useTimeout';
-import { useEvent } from '/@/hooks/event/useEvent';
+import { useTimeoutFn } from '/@/hooks/core/useTimeout';
+import { useEventListener } from '/@/hooks/event/useEventListener';
 import { basicProps } from './props';
 import { getSlot } from '/@/utils/helper/tsxHelper';
 import './DragVerify.less';
 import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
-import { tryTsxEmit } from '/@/utils/helper/vueHelper';
+import type { DragVerifyActionType } from './types';
+import { useExpose } from '/@/hooks/core/useExpose';
 export default defineComponent({
   name: 'BaseDargVerify',
   props: basicProps,
@@ -91,7 +92,7 @@ export default defineComponent({
       return (e as MouseEvent).pageX || (e as TouchEvent).touches[0].pageX;
     }
 
-    useEvent({
+    useEventListener({
       el: document,
       name: 'mouseup',
       listener: () => {
@@ -201,7 +202,7 @@ export default defineComponent({
       const contentEl = unref(contentElRef);
       if (!actionEl || !barEl || !contentEl) return;
       state.toLeft = true;
-      useTimeout(() => {
+      useTimeoutFn(() => {
         state.toLeft = false;
         actionEl.style.left = '0';
         barEl.style.width = '0';
@@ -210,8 +211,8 @@ export default defineComponent({
       contentEl.style.width = unref(getContentStyleRef).width;
     }
 
-    tryTsxEmit((instance) => {
-      instance.resume = resume;
+    useExpose<DragVerifyActionType>({
+      resume,
     });
 
     return () => {

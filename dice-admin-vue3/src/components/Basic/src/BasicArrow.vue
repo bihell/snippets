@@ -1,32 +1,39 @@
+<!--
+ * @Author: Vben
+ * @Description: Arrow component with animation
+-->
 <template>
   <span :class="getClass">
     <RightOutlined />
   </span>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-
   import { defineComponent, computed } from 'vue';
-
   import { RightOutlined } from '@ant-design/icons-vue';
+  import { propTypes } from '/@/utils/propTypes';
 
   export default defineComponent({
-    name: 'BaseArrow',
+    name: 'BasicArrow',
     components: { RightOutlined },
     props: {
       // Expand contract, expand by default
-      expand: {
-        type: Boolean as PropType<boolean>,
-        default: true,
-      },
+      expand: propTypes.bool,
+      top: propTypes.bool,
+      bottom: propTypes.bool,
+      inset: propTypes.bool,
     },
     setup(props) {
       const getClass = computed(() => {
-        const preCls = 'base-arrow';
-        const cls = [preCls];
-
-        props.expand && cls.push(`${preCls}__active`);
-        return cls;
+        const { expand, top, bottom, inset } = props;
+        return [
+          'base-arrow',
+          {
+            'base-arrow__active': expand,
+            top,
+            inset,
+            bottom,
+          },
+        ];
       });
 
       return {
@@ -37,20 +44,33 @@
 </script>
 <style lang="less" scoped>
   .base-arrow {
-    transform: rotate(-90deg);
+    display: inline-block;
+    transform: rotate(0deg);
     transition: all 0.3s ease 0.1s;
     transform-origin: center center;
 
-    &.right {
-      transform: rotate(0deg);
-
-      > span {
-        transition: all 0.3s ease 0.1s !important;
-      }
+    &.inset {
+      line-height: 0px;
     }
 
     &__active {
       transform: rotate(90deg);
+    }
+
+    &.top {
+      transform: rotate(-90deg);
+    }
+
+    &.bottom {
+      transform: rotate(90deg);
+    }
+
+    &.top.base-arrow__active {
+      transform: rotate(90deg);
+    }
+
+    &.bottom.base-arrow__active {
+      transform: rotate(-90deg);
     }
   }
 </style>

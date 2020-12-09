@@ -1,21 +1,24 @@
+import './ImgRotate.less';
+
 import type { MoveData, DragVerifyActionType } from './types';
 
 import { defineComponent, computed, unref, reactive, watch, ref, getCurrentInstance } from 'vue';
-import { useTimeout } from '/@/hooks/core/useTimeout';
+import { useTimeoutFn } from '/@/hooks/core/useTimeout';
 
 import BasicDragVerify from './DragVerify';
 
 import { hackCss } from '/@/utils/domUtils';
 
 import { rotateProps } from './props';
-import './ImgRotate.less';
+import { useI18n } from '/@/hooks/web/useI18n';
+
 export default defineComponent({
   name: 'ImgRotateDargVerify',
   inheritAttrs: false,
   props: rotateProps,
   emits: ['success', 'change', 'update:value'],
   setup(props, { emit, attrs }) {
-    const basicRef = ref<RefInstanceType<DragVerifyActionType>>(null);
+    const basicRef = ref<Nullable<DragVerifyActionType>>(null);
     const state = reactive({
       showTip: false,
       isPassing: false,
@@ -27,6 +30,7 @@ export default defineComponent({
       endTime: 0,
       draged: false,
     });
+    const { t } = useI18n();
 
     watch(
       () => state.isPassing,
@@ -86,7 +90,7 @@ export default defineComponent({
       if (Math.abs(randomRotate - currentRotate) >= (diffDegree || 20)) {
         state.imgStyle = hackCss('transform', `rotateZ(${randomRotate}deg)`);
         state.toOrigin = true;
-        useTimeout(() => {
+        useTimeoutFn(() => {
           state.toOrigin = false;
           state.showTip = true;
           //  时间与动画时间保持一致
@@ -109,7 +113,7 @@ export default defineComponent({
       }
       state.isPassing = false;
 
-      basicEl.$.resume();
+      basicEl.resume();
       handleImgOnLoad();
     }
 
@@ -142,11 +146,13 @@ export default defineComponent({
             />
             {state.showTip && (
               <span class={[`ir-dv-img__tip`, state.isPassing ? 'success' : 'error']}>
-                {state.isPassing ? `校验成功,耗时${time.toFixed(1)}秒！` : '验证失败！'}
+                {state.isPassing
+                  ? t('component.verify.time', { time: time.toFixed(1) })
+                  : t('component.verify.error')}
               </span>
             )}
             {!state.showTip && !state.draged && (
-              <span class={[`ir-dv-img__tip`, 'normal']}>点击图片可刷新</span>
+              <span class={[`ir-dv-img__tip`, 'normal']}>t('redoTip')</span>
             )}
           </div>
           <BasicDragVerify

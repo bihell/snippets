@@ -1,51 +1,52 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/excel',
-    name: 'Excel',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/excel/customExport',
-    meta: {
-      icon: 'mdi:microsoft-excel',
-      title: 'Excel',
-    },
+const excel: AppRouteModule = {
+  path: '/excel',
+  name: 'Excel',
+  component: LAYOUT,
+  redirect: '/excel/customExport',
+  meta: {
+    icon: 'mdi:microsoft-excel',
+    title: t('routes.demo.excel.excel'),
   },
 
-  routes: [
+  children: [
     {
-      path: '/customExport',
+      path: 'customExport',
       name: 'CustomExport',
       component: () => import('/@/views/demo/excel/CustomExport.vue'),
       meta: {
-        title: '选择导出格式',
+        title: t('routes.demo.excel.customExport'),
       },
     },
     {
-      path: '/jsonExport',
+      path: 'jsonExport',
       name: 'JsonExport',
       component: () => import('/@/views/demo/excel/JsonExport.vue'),
       meta: {
-        title: 'JSON数据导出',
+        title: t('routes.demo.excel.jsonExport'),
       },
     },
     {
-      path: '/arrayExport',
+      path: 'arrayExport',
       name: 'ArrayExport',
       component: () => import('/@/views/demo/excel/ArrayExport.vue'),
       meta: {
-        title: 'Array数据导出',
+        title: t('routes.demo.excel.arrayExport'),
       },
     },
     {
-      path: '/importExcel',
+      path: 'importExcel',
       name: 'ImportExcel',
       component: () => import('/@/views/demo/excel/ImportExcel.vue'),
       meta: {
-        title: '导入',
+        title: t('routes.demo.excel.importExcel'),
       },
     },
   ],
-} as AppRouteModule;
+};
+
+export default excel;

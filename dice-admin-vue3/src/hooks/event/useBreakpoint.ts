@@ -1,10 +1,16 @@
-import { ref, computed, Ref, unref } from 'vue';
-import { useEvent } from './useEvent';
+import { ref, computed, ComputedRef, unref } from 'vue';
+import { useEventListener } from '/@/hooks/event/useEventListener';
 import { screenMap, sizeEnum, screenEnum } from '/@/enums/breakpointEnum';
 
-let globalScreenRef: Ref<sizeEnum | undefined>;
-let globalWidthRef: Ref<number>;
-let globalRealWidthRef: Ref<number>;
+let globalScreenRef: ComputedRef<sizeEnum | undefined>;
+let globalWidthRef: ComputedRef<number>;
+let globalRealWidthRef: ComputedRef<number>;
+
+export interface CreateCallbackParams {
+  screen: ComputedRef<sizeEnum | undefined>;
+  width: ComputedRef<number>;
+  realWidth: ComputedRef<number>;
+}
 
 export function useBreakpoint() {
   return {
@@ -15,8 +21,8 @@ export function useBreakpoint() {
   };
 }
 
-// 只要调用一次即可
-export function createBreakpointListen(fn?: Fn) {
+// Just call it once
+export function createBreakpointListen(fn?: (opt: CreateCallbackParams) => void) {
   const screenRef = ref<sizeEnum>(sizeEnum.XL);
   const realWidthRef = ref(window.innerWidth);
 
@@ -43,11 +49,12 @@ export function createBreakpointListen(fn?: Fn) {
     realWidthRef.value = width;
   }
 
-  useEvent({
+  useEventListener({
     el: window,
     name: 'resize',
+
     listener: () => {
-      fn && fn();
+      resizeFn();
       getWindowWidth();
     },
   });
@@ -56,6 +63,17 @@ export function createBreakpointListen(fn?: Fn) {
   globalScreenRef = computed(() => unref(screenRef));
   globalWidthRef = computed((): number => screenMap.get(unref(screenRef)!)!);
   globalRealWidthRef = computed((): number => unref(realWidthRef));
+
+  function resizeFn() {
+    fn &&
+      fn({
+        screen: globalScreenRef,
+        width: globalWidthRef,
+        realWidth: globalRealWidthRef,
+      });
+  }
+
+  resizeFn();
   return {
     screenRef: globalScreenRef,
     screenEnum,

@@ -1,9 +1,323 @@
 ## Wip
 
+## (破坏性更新) Breaking changes
+
+- 路由重构, 不再支持以前的格式。改为支持 vue-router 最初的默认结构，具体格式可以参考示例更改。实现多级路由缓存，不再将路由转化为 2 级。
+- 重构面包屑，使用 antd 的面包屑组件。之前的组件已删除
+
+### ✨ Features
+
+- 还原 antdv 默认 loading，重构 `Loading` 组件，增加`useLoading`和`v-loading`指令。并增加示例
+- i18n 支持 vscode `i18n-ally`插件
+- 新增多级路由缓存示例
+- 打包代码拆分(试验)
+- 提取上传地址到全局变量，打包可以动态配置
+
+### ✨ Refactor
+
+- tree 组件 ref 函数调用删除 `$`
+
+### ⚡ Performance Improvements
+
+- 页面切换 loading 逻辑修改。对于已经加载过的页面不管有没有关闭,再次打开不会在显示 loading(已经打开过的页面再次打开速度比较快,可以不需要 loading,同理顶部进度条逻辑也一样)，刷新后恢复。
+
+### 🎫 Chores
+
+- 首屏 loading 修改
+- 升级`vue`到`3.0.4`
+- 升级`ant-design-vue`到`2.0.0-rc.3`
+- 重新引入`vueuse`
+- 移除 route meta 内的`afterCloseLoading`属性
+- 文档更新
+
+### 🐛 Bug Fixes
+
+- 修复表格 i18n 错误
+- 修复菜单图标大小不一致
+- 修复顶部菜单宽度计算问题
+- 修复表格 tabSetting 问题
+- 修复文件上传删除失效
+- 修复表格行编辑保存错误问题
+
+## 2.0.0-rc.12 (2020-11-30)
+
+## (破坏性更新) Breaking changes
+
+- ClickOutSide 组件引入方式由 `import ClickOutSide from '/@/components/ClickOutSide/index.vue'`变更为`import { ClickOutSide } from '/@/components/ClickOutSide'`
+- Button 组件引入方式由 `import Button from '/@/components/Button/index.vue'`变更为`import { Button } from '/@/components/Button'`
+- StrengthMeter 组件引入方式由 `import StrengthMeter from '/@/components/StrengthMeter'`变更为`import { StrengthMeter } from '/@/components/StrengthMeter'`
+- 除示例外加入全局国际化功能，支持中文与英文
+
+### ✨ Refactor
+
+- 重构整体 layout。更改代码实现方式。代码更精简
+- 配置项重构
+- 移除 messageSetting 配置
+- BasicTitle 组件 `showSpan`=> `span`
+
+### ✨ Features
+
+- 缓存可以配置是否加密,默认生产环境开启 Aes 加密
+- 新增标签页拖拽排序
+- 新增 LayoutFooter.默认显示，可以在配置内关闭
+
+### ⚡ Performance Improvements
+
+- 优化`Modal`组件全屏动画不流畅问题
+
+### 🐛 Bug Fixes
+
+- tree: 修复文本超出挡住操作按钮问题
+- useRedo: 修复通过 useRedo 刷新页面参数丢失问题
+- form: 修复表单校验先设置在校验及控制台错误信息问题
+- `modal`&`drawer` 修复组件传递数组参数问题
+- form: 修复`updateSchema`赋值含有`[]`时不生效
+- table: 修复表格 `TableAction` 图标显示问题
+- table: 修复表格列设置通过`setColumns`设置不显示
+
+### 🎫 Chores
+
+- 更新 antdv 到`2.0.0-rc.2`
+- 更新 vue 到`3.0.3`
+- 更新 vite 到`1.0.0.rc13`
+- 暂时删除 `@vueuse/core`.等稳定后在集成。目前不太稳定。
+
+## 2.0.0-rc.11 (2020-11-18)
+
+### ✨ Features
+
+- 新增 base64 文件流下载
+- 优化上传组件及示例
+- 新增可编辑行示例
+- 新增个人页
+- 新增表单页
+- 新增详情页
+- 将上传组件默认集成到 form
+
+### 🎫 Chores
+
+- 更新 antdv 到`2.0.0-rc.1`（暂时还原到 beta15,rc1 菜单卡顿太严重.）
+- 添加部分注释
+
+### ✨ Refactor
+
+- 移除`useModal`与`useDrawer`的`receiveDrawerDataRef`和`transferDrawerData`属性
+- `useModal`与`useDrawer`对应的`openModal`与`openDrawer`扩展第三个参数。用于再次打开触发回调
+
+### 🐛 Bug Fixes
+
+- 修复表单 inputNumber 校验错误
+- 修复表单默认值设置错误
+- 修复菜单折叠按钮隐藏时占位问题
+- 修复表单 baseColProps 不生效
+
+## 2.0.0-rc.10 (2020-11-13)
+
+### ✨ Refactor
+
+- 重构 hook,引入 `@vueuse`，删除其中已有的`hook`,优化现有的 hook
+- `useEvent` 更名->`useEventListener`
+- 表单`ComponentType`删除 `SelectOptGroup`,`SelectOption`,`Transfer`,`Radio`,四个类型。修改`RadioButtonGroup`组件
+
+### ✨ Features
+
+- 表单项的`componentsProps`支持函数类型
+- 菜单新增 tag 显示，支持 4 中类型颜色及 dot 圆点显示
+- 新增菜单及顶栏颜色选择配色
+- 增加示例结果页
+- 新增文件下载示例
+
+### ⚡ Wip
+
+- 上传组件(未完成，测试中...)
+
+### ⚡ Performance Improvements
+
+- 优化 settingDrawer 代码
+- 优化多标签页切换速度
+- 增加表单自定义及动态能力
+
+### 🐛 Bug Fixes
+
+- 修复多个富文本编辑器只显示一个
+- 修复登录过期后重新登录未跳转原来页面的
+- 修复 window 系统动态引入错误
+- 修复页面类型错误
+- 修复表单 switch 和 checkBox 单独使用报错
+
+## 2.0.0-rc.9 (2020-11-9)
+
+### ✨ Features
+
+- 菜单 trigger 可以选择位置
+- 增加富文本嵌入表单的示例
+- 表单组件 schema 增加 `required`属性。简化配置
+- openModal 和 openDrawer 第二个参数可以代替`transferModalData`传参到内部
+- 带参路由可以被缓存
+
+### ✨ Refactor
+
+- 重构由后台生成菜单的逻辑
+- Route Module 结构改造
+
+### ⚡ Performance Improvements
+
+- 菜单性能继续优化,更流畅
+- 优化懒加载组件及示例
+- layout 样式微调
+
+### 🎫 Chores
+
+- 删除菜单背景图
+- 更新`ant-design-vue`版本为`beta15`
+- 更新`vite`版本为`rc.9`
+- 异常页调整
+- `BasicTitle` 色块默认不显示
+
+### 🐛 Bug Fixes
+
+- 修复升级之后 table 类型问题
+- 修复分割菜单且左侧菜单没有数据时候，继续展示上一次子菜单的问题
+- 修复`useMessage`类型问题
+- 修复表单项设置`disabled`不生效问题
+- 修复`useECharts`在`resize`时不能自适应,报错
+- 修复`useWatermark`在清空后`resize`未删除
+- 修复表单校验问题
+- 修复多级表头配置不生效问题
+
+## 2.0.0-rc.8 (2020-11-2)
+
+### ✨ Features
+
+- 全局 loading 添加文本
+- 右键菜单支持多级
+
+### 🎫 Chores
+
+- 登录缓存从 sessionStorage 改为 LocalStorage
+
+### ⚡ Performance Improvements
+
+- 更新`ant-design-vue`到`beta.12`
+- Layout 界面布局样式调整
+- 优化懒加载组件
+- 优化表格渲染性能
+- 表单折叠搜索添图标添加动画
+- routeModule 可以忽略 layout 配置不写。方便配置一级菜单
+
+### 🐛 Bug Fixes
+
+- 修复表格类型错误
+- 修复 mock 分页工具错误
+- 修复表格开启搜索表单折叠问题
+- 修复表格 size 为 samll 时候，fixed 列样式问题
+- 修复多标签页关闭报错问题
+- 修复 message 类型错误
+
+## 2.0.0-rc.7 (2020-10-31)
+
+### ✨ Features
+
+- 表单组件现在支持直接传入 model 直接进行 set 操作，参考**组件->弹窗扩展->打开弹窗并传递数据**
+
+- modal 的 useModalInner 现在支持传入回调函数，用于接收外部`transferModalData`传进来的值，
+
+  - 用于处理打开弹窗对表单等组件的设置值。参考**组件->弹窗扩展->打开弹窗并传递数据**
+  - `receiveModalDataRef`这个值暂时保留。尽量少用。后续可能会删除。
+
+- drawer 的 useDrawerInner 现在支持传入回调函数，用于接收外部`transferModalData`传进来的值，
+  - 用于处理打开抽屉对表单等组件的设置值。参考**组件->抽屉扩展->打开抽屉并传递数据**
+  - `receiveModalDataRef`这个值暂时保留。尽量少用。后续可能会删除。
+
+### ✨ Refactor
+
+- 表单代码优化重构
+
+### ⚡ Performance Improvements
+
+- Modal slot 可以覆盖
+- 优化表格嵌入高度计算问题
+
+### 🎫 Chores
+
+- 添加部分注释
+- pwa 图标补充
+- types 类型调整
+- 升级`ant-design-vue`到`beta.11`,并修改带来的已知问题,部分问题发现后在解决
+
+### 🐛 Bug Fixes
+
+- 修复本地代理 post 接口到 https 地址超时错误
+- 修复 modal 在不显示 footer 的时候全屏高度计算问题
+- 修复表单重置未删除校验信息错误
+- 修复顶部菜单分割模式样式问题
+- 修复表格展开图标动画失效
+
+## 2.0.0-rc.6 (2020-10-28)
+
+### ✨ Features
+
+- 新增`pwa`功能，可在`.env.production`开启
+- Button 组件扩展 `preIcon`和`postIcon`属性用于在文本前后添加图标
+- 恢复面包屑显示图标功能
+
+### 🎫 Chores
+
+- 升级 vite 版本为`v1.0.0.rc8`
+- vite.config.ts 内部 plugins 抽取
+- build 目录结构调整
+- 依赖更新
+- 文档更新
+- 修改默认路由切换动画
+
+### ⚡ Performance Improvements
+
+- `setTitle`逻辑调整
+- 将系统用到的 sessionStorage 及 LocalStorage 缓存设置默认 `7` 天过期
+
+### ✨ Refactor
+
+- 独立出`vite-plugin-html`,并修改相关插入 html 的逻辑
+
+### 🐛 Bug Fixes
+
+- 修复热更新时多次注册组件警告问题
+- 修复登录后出现登录标签页
+- 修复路由切换参数消失问题
+- 修复 useMessage 图标样式问题
+
+## 2.0.0-rc.5 (2020-10-26)
+
+### ✨ Features
+
+- 更新组件文档
+- 面包屑支持显示图标
+- 新增 tinymce 富文本组件
+- 表单新增 submitOnReset 控制是否在重置时重新发起请求
+- 表格新增`sortFn`支持自定义排序
+- 新增动画组件及示例
+- 新增懒加载/延时加载组件及示例
+
+### ✨ Refactor
+
+- Drawer 组件的 detailType 修改为 isDetail
+
+### 🎫 Chores
+
+- 删除代码内的可选链语法
+- 表单重置逻辑修改
+- 关闭多标签页 tabs 动画
+- 升级 vite 版本为`v1.0.0.rc6`
+- 删除中文路径警告。rc6 已修复
+
 ### 🐛 Bug Fixes
 
 - 修复抽屉组件自动高度及显示 footer 显示问题
 - 修复表单查询后重置回默认值
+- 修复菜单没有子节点时显示折叠的问题
+- 修复面包屑显示样式问题
+- 修复 modal 在 destroyOnClose=true 时多次打开拖拽失效
+- 修复表格出现多个 action 列
 
 # 2.0.0-rc.4 (2020-10-21)
 

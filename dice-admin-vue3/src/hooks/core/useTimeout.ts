@@ -1,16 +1,14 @@
-import type { TimeoutFnResult, Fn } from './types';
+import { ref, watch } from 'vue';
+import { tryOnUnmounted } from '/@/utils/helper/vueHelper';
 
 import { isFunction } from '/@/utils/is';
-import { watch } from 'vue';
 
-import { useTimeoutRef } from '/@/hooks/core/useTimeoutRef';
-
-export function useTimeout(handle: Fn<any>, wait: number): TimeoutFnResult {
+export function useTimeoutFn(handle: Fn<any>, wait: number) {
   if (!isFunction(handle)) {
     throw new Error('handle is not Function!');
   }
 
-  const [readyRef, clear, runAgain] = useTimeoutRef(wait);
+  const { readyRef, stop, start } = useTimeoutRef(wait);
 
   watch(
     readyRef,
@@ -19,5 +17,27 @@ export function useTimeout(handle: Fn<any>, wait: number): TimeoutFnResult {
     },
     { immediate: false }
   );
-  return [clear, runAgain, readyRef];
+  return { readyRef, stop, start };
+}
+
+export function useTimeoutRef(wait: number) {
+  const readyRef = ref(false);
+
+  let timer: TimeoutHandle;
+  function stop(): void {
+    readyRef.value = false;
+    timer && window.clearTimeout(timer);
+  }
+  function start(): void {
+    stop();
+    timer = setTimeout(() => {
+      readyRef.value = true;
+    }, wait);
+  }
+
+  start();
+
+  tryOnUnmounted(stop);
+
+  return { readyRef, stop, start };
 }

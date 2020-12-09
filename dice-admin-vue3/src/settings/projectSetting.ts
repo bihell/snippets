@@ -1,134 +1,167 @@
 import type { ProjectConfig } from '/@/types/config';
 
-import { MenuTypeEnum, MenuThemeEnum, MenuModeEnum } from '/@/enums/menuEnum';
-import { ContentEnum, PermissionModeEnum, RouterTransitionEnum } from '/@/enums/appEnum';
-import { primaryColor } from '../../build/config/glob/lessModifyVars';
+import { MenuTypeEnum, MenuModeEnum, TriggerEnum } from '/@/enums/menuEnum';
+import { CacheTypeEnum } from '/@/enums/cacheEnum';
+import { ContentEnum, PermissionModeEnum, ThemeEnum, RouterTransitionEnum } from '/@/enums/appEnum';
+import { primaryColor } from '../../build/config/lessModifyVars';
 import { isProdMode } from '/@/utils/env';
-// ! 改动后需要清空浏览器缓存
+
+// ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {
   // Whether to show the configuration button
   showSettingButton: true,
-  // 权限模式
+
+  // Permission mode
   permissionMode: PermissionModeEnum.ROLE,
-  // 网站灰色模式，用于可能悼念的日期开启
-  grayMode: false,
-  // 色弱模式
-  colorWeak: false,
-  // 主题色
+
+  // Permission-related cache is stored in sessionStorage or localStorage
+  permissionCacheType: CacheTypeEnum.LOCAL,
+
+  // color
+  // TODO Theme color
   themeColor: primaryColor,
-  // 是否取消菜单,顶部,多标签页显示, 用于可能内嵌在别的系统内
+
+  // Website gray mode, open for possible mourning dates
+  grayMode: false,
+
+  // Color Weakness Mode
+  colorWeak: false,
+
+  // Whether to cancel the menu, the top, the multi-tab page display, for possible embedded in other systems
   fullContent: false,
+
   // content mode
   contentMode: ContentEnum.FULL,
-  // 是否显示logo
+
+  // Whether to display the logo
   showLogo: true,
 
+  // Whether to show footer
+  showFooter: true,
+
+  // locale setting
+  locale: {
+    show: true,
+    // Locale
+    lang: 'zh_CN',
+    // Default locale
+    fallback: 'zh_CN',
+    // available Locales
+    availableLocales: ['zh_CN', 'en'],
+  },
+
+  // Header configuration
   headerSetting: {
+    // header bg color
+    bgColor: '#ffffff',
+    // Fixed at the top
     fixed: true,
-    // 是否显示顶部
+    // Whether to show top
     show: true,
     // theme
-    theme: MenuThemeEnum.LIGHT,
-    // 开启锁屏功能
+    theme: ThemeEnum.LIGHT,
+    // Whether to enable the lock screen function
     useLockPage: true,
-    // 显示刷新按钮
+    // Whether to show the refresh button
     showRedo: true,
-    // 显示全屏按钮
+    // Whether to show the full screen button
     showFullScreen: true,
-    // 显示文档按钮
+    // Whether to show the document button
     showDoc: true,
-    //  是否显示github
-    showGithub: true,
-    // 显示消息中心按钮
+    // Whether to show the notification button
     showNotice: true,
   },
-  // 菜单配置
+
+  // Menu configuration
   menuSetting: {
-    // 菜单折叠
+    // sidebar menu bg color
+    bgColor: '#273352',
+    //  Whether to fix the left menu
+    fixed: true,
+    // Menu collapse
     collapsed: false,
-    // 折叠菜单时候是否显示菜单名
+    // Whether to display the menu name when folding the menu
     collapsedShowTitle: false,
-    // 是否可拖拽
-    hasDrag: true,
-    // 是否显示
+    // Whether it can be dragged
+    // Only limited to the opening of the left menu, the mouse has a drag bar on the right side of the menu
+    canDrag: false,
+    // Whether to show no dom
     show: true,
-    // 是否显示搜索框
-    showSearch: true,
-    // 菜单宽度
-    menuWidth: 180,
-    // 菜单模式
+    // Whether to show dom
+    hidden: true,
+    // Menu width
+    menuWidth: 210,
+    // Menu mode
     mode: MenuModeEnum.INLINE,
-    // 菜单类型
+    // Menu type
     type: MenuTypeEnum.SIDEBAR,
-    // 菜单主题
-    theme: MenuThemeEnum.DARK,
-    // 分割菜单
+    // Menu theme
+    theme: ThemeEnum.DARK,
+    // Split menu
     split: false,
-    // 顶部菜单布局
-    topMenuAlign: 'start',
+    // Top menu layout
+    topMenuAlign: 'center',
+    // Hide the search box when the menu is collapsed
+    collapsedShowSearch: false,
+    // Fold trigger position
+    trigger: TriggerEnum.HEADER,
+    // Turn on accordion mode, only show a menu
+    accordion: true,
   },
-  // 消息配置
-  messageSetting: {
-    // 弹窗title
-    title: '操作提示',
-    // 取消按钮的文子,
-    cancelText: '取消',
-    // 确认按钮的文字
-    okText: '确定',
-  },
-  // 多标签
+
+  // Multi-label
   multiTabsSetting: {
-    // 开启
+    // Turn on
     show: true,
-    // 开启快速操作
+    // Is it possible to drag and drop sorting tabs
+    canDrag: true,
+    // Turn on quick actions
     showQuick: true,
-    // 显示icon
-    showIcon: true,
-    // 标签页缓存最大数量
-    max: 12,
   },
-  // 是否开启KeepAlive缓存  开发时候最好关闭,不然每次都需要清除缓存
+
+  // Transition Setting
+  transitionSetting: {
+    //  Whether to open the page switching animation
+    // The disabled state will also disable pageLoadinng
+    enable: true,
+
+    // Route basic switching animation
+    basicTransition: RouterTransitionEnum.FADE_SIDE,
+
+    // Whether to open page switching loading
+    // Only open when enable=true
+    openPageLoading: true,
+
+    // Whether to open the top progress bar
+    openNProgress: false,
+  },
+
+  // Whether to enable KeepAlive cache is best to close during development, otherwise the cache needs to be cleared every time
   openKeepAlive: true,
 
-  // 自动锁屏时间，为0不锁屏。 单位分钟 默认0
+  // Automatic screen lock time, 0 does not lock the screen. Unit minute default 0
   lockTime: 0,
-  // 显示面包屑
+
+  // Whether to show breadcrumbs
   showBreadCrumb: true,
-  // 显示面包屑图标
+
+  // Whether to show the breadcrumb icon
   showBreadCrumbIcon: false,
 
-  // 使用error-handler-plugin
+  // Use error-handler-plugin
   useErrorHandle: isProdMode(),
 
-  //  开启页面切换动画
-  openRouterTransition: true,
-
-  // 路由切换动画
-  routerTransition: RouterTransitionEnum.ZOOM_FADE,
-
-  // 是否开启登录安全校验
-  openLoginVerify: true,
-
-  // 是否监听网络变化
-  listenNetWork: false,
-
-  // 是否开启页面切换loading
-  openPageLoading: true,
-
-  // 是否开启回到顶部
+  // Whether to open back to top
   useOpenBackTop: true,
 
-  // 开启顶部进度条
-  openNProgress: isProdMode(),
-
-  //  是否可以嵌入iframe页面
+  //  Is it possible to embed iframe pages
   canEmbedIFramePage: true,
 
-  // 切换界面的时候是否删除未关闭的message及notify
+  // Whether to delete unclosed messages and notify when switching the interface
   closeMessageOnSwitch: true,
 
-  // 切换界面的时候是否取消已经发送但是未响应的http请求。
-  // 如果开启,想对单独接口覆盖。可以在单独接口设置
+  // Whether to cancel the http request that has been sent but not responded when switching the interface.
+  // If it is enabled, I want to overwrite a single interface. Can be set in a separate interface
   removeAllHttpPending: true,
 };
 

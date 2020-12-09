@@ -31,6 +31,7 @@
 - [已完成功能](#已完成功能)
 - [正在开发的功能](#正在开发的功能)
 - [浏览器支持](#浏览器支持)
+- [插件](#插件-1)
 - [加入我们](#加入我们)
 
 ## 介绍
@@ -68,7 +69,7 @@
 ### 环境要求
 
 - `Node.js`: - 版本最好大于 `12.0.0`
-- `yarn` > `npm` > `cnpm`: - 包管理工具.
+- `yarn` : - 包管理工具.
 
 ### UI 框架
 
@@ -226,11 +227,13 @@ yarn clean:lib # 删除node_modules，兼容window系统
 - [x] 数据导入导出
 - [x] 系统性能优化
 - [x] 全局错误处理
+- [x] 富文本组件
+- [x] 上传组件
 
 ## 正在开发的功能
 
-- [ ] 上传组件
-- [ ] 富文本组件
+- [ ] 新分支全局国家化
+- [ ] 示例 page 页面
 - [ ] 主题配置
 - [ ] 黑暗主题
 - [ ] 打包 CDN
@@ -248,6 +251,13 @@ yarn clean:lib # 删除node_modules，兼容window系统
 | not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 更多浏览器可以查看 [Can I Use Es Module](https://caniuse.com/?search=ES%20Module)
+
+## 插件
+
+如果这些插件对你有帮助，可以给一个 star 支持下
+
+- [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock)
+- [vite-plugin-html](https://github.com/anncwb/vite-plugin-html)
 
 ## 加入我们
 

@@ -1,43 +1,45 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
-  orderNo: 20,
+  orderNo: 15,
   menu: {
-    name: '权限管理',
+    name: t('routes.demo.permission.permission'),
     path: '/permission',
     children: [
       {
         path: 'front',
-        name: '基于前端',
+        name: t('routes.demo.permission.front'),
         children: [
           {
             path: 'page',
-            name: '页面权限',
+            name: t('routes.demo.permission.frontPage'),
           },
           {
             path: 'btn',
-            name: '按钮权限',
+            name: t('routes.demo.permission.frontBtn'),
           },
           {
             path: 'auth-pageA',
-            name: '权限测试页A',
+            name: t('routes.demo.permission.frontTestA'),
           },
           {
             path: 'auth-pageB',
-            name: '权限测试页B',
+            name: t('routes.demo.permission.frontTestB'),
           },
         ],
       },
       {
         path: 'back',
-        name: '基于后台',
+        name: t('routes.demo.permission.back'),
         children: [
           {
             path: 'page',
-            name: '页面权限',
+            name: t('routes.demo.permission.backPage'),
           },
           {
             path: 'btn',
-            name: '按钮权限',
+            name: t('routes.demo.permission.backBtn'),
           },
         ],
       },

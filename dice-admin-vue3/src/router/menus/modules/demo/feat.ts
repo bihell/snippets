@@ -1,61 +1,68 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
-  orderNo: 10,
+  orderNo: 19,
   menu: {
-    name: '页面功能',
+    name: t('routes.demo.feat.feat'),
     path: '/feat',
+
     children: [
       {
         path: 'icon',
-        name: '图标',
+        name: t('routes.demo.feat.icon'),
       },
       {
         path: 'tabs',
-        name: '标签页操作',
+        name: t('routes.demo.feat.tabs'),
       },
       {
         path: 'context-menu',
-        name: '右键菜单',
+        name: t('routes.demo.feat.contextMenu'),
+      },
+      {
+        path: 'download',
+        name: t('routes.demo.feat.download'),
       },
       {
         path: 'click-out-side',
-        name: 'ClickOutSide',
+        name: t('routes.demo.feat.clickOutSide'),
       },
       {
         path: 'img-preview',
-        name: '图片预览',
-      },
-      {
-        path: 'i18n',
-        name: '国际化',
+        name: t('routes.demo.feat.imgPreview'),
       },
       {
         path: 'copy',
-        name: '剪切板',
+        name: t('routes.demo.feat.copy'),
       },
       {
         path: 'msg',
-        name: '消息提示',
+        name: t('routes.demo.feat.msg'),
       },
       {
         path: 'watermark',
-        name: '水印',
+        name: t('routes.demo.feat.watermark'),
       },
       {
         path: 'full-screen',
-        name: '全屏',
+        name: t('routes.demo.feat.fullScreen'),
+      },
+      {
+        path: 'error-log',
+        name: t('routes.demo.feat.errorLog'),
       },
       {
         path: 'testTab',
-        name: '带参Tab',
+        name: t('routes.demo.feat.tab'),
         children: [
           {
             path: 'id1',
-            name: '带参tab1',
+            name: t('routes.demo.feat.tab1'),
           },
           {
             path: 'id2',
-            name: '带参tab2',
+            name: t('routes.demo.feat.tab2'),
           },
         ],
       },

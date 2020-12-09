@@ -1,11 +1,16 @@
+import type { PaginationProps } from '../types/pagination';
+import type { BasicTableProps } from '../types/table';
+
 import { computed, unref, ref, ComputedRef } from 'vue';
-import { PaginationProps } from '../types/pagination';
-import { isBoolean } from '/@/utils/is';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
+
+import { isBoolean } from '/@/utils/is';
 
 import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
 import { useProps } from './useProps';
-import { BasicTableProps } from '../..';
+import { useI18n } from '/@/hooks/web/useI18n';
+
+const { t } = useI18n();
 export function usePagination(refProps: ComputedRef<BasicTableProps>) {
   const configRef = ref<PaginationProps>({});
   const { propsRef } = useProps(refProps);
@@ -20,7 +25,7 @@ export function usePagination(refProps: ComputedRef<BasicTableProps>) {
       pageSize: PAGE_SIZE,
       size: 'small',
       defaultPageSize: PAGE_SIZE,
-      showTotal: (total) => `共 ${total} 条数据`,
+      showTotal: (total) => t('component.table.total', { total }),
       showSizeChanger: true,
       pageSizeOptions: PAGE_SIZE_OPTIONS,
       itemRender: ({ page, type, originalElement }) => {

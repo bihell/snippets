@@ -15,6 +15,13 @@ export enum ThemeModeEnum {
   SEMI_DARK = 'semi-dark-mode',
 }
 
+// menu theme enum
+export enum ThemeEnum {
+  DARK = 'dark',
+
+  LIGHT = 'light',
+}
+
 /**
  * 权限模式
  */
@@ -29,7 +36,7 @@ export enum PermissionModeEnum {
 export enum RouterTransitionEnum {
   ZOOM_FADE = 'zoom-fade',
   ZOOM_OUT = 'zoom-out',
-  SIDE_FADE = 'slide-fade',
+  FADE_SIDE = 'fade-slide',
   FADE = 'fade',
   FADE_BOTTOM = 'fade-bottom',
 }

@@ -1,131 +1,140 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/table',
-    name: 'TableDemo',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/table/basic',
-    meta: {
-      icon: 'ant-design:table-outlined',
-      title: 'Table',
-    },
+const table: AppRouteModule = {
+  path: '/table',
+  name: 'TableDemo',
+  component: LAYOUT,
+  redirect: '/table/basic',
+  meta: {
+    icon: 'carbon:table-split',
+    title: t('routes.demo.table.table'),
   },
 
-  routes: [
+  children: [
     {
-      path: '/basic',
+      path: 'basic',
       name: 'TableBasicDemo',
       component: () => import('/@/views/demo/table/Basic.vue'),
       meta: {
-        title: '基础表格',
+        title: t('routes.demo.table.basic'),
       },
     },
     {
-      path: '/treeTable',
+      path: 'treeTable',
       name: 'TreeTableDemo',
       component: () => import('/@/views/demo/table/TreeTable.vue'),
       meta: {
-        title: '树形表格',
+        title: t('routes.demo.table.treeTable'),
       },
     },
     {
-      path: '/fetchTable',
+      path: 'fetchTable',
       name: 'FetchTableDemo',
       component: () => import('/@/views/demo/table/FetchTable.vue'),
       meta: {
-        title: '远程加载示例',
+        title: t('routes.demo.table.fetchTable'),
       },
     },
     {
-      path: '/fixedColumn',
+      path: 'fixedColumn',
       name: 'FixedColumnDemo',
       component: () => import('/@/views/demo/table/FixedColumn.vue'),
       meta: {
-        title: '固定列',
+        title: t('routes.demo.table.fixedColumn'),
       },
     },
     {
-      path: '/customerCell',
+      path: 'customerCell',
       name: 'CustomerCellDemo',
       component: () => import('/@/views/demo/table/CustomerCell.vue'),
       meta: {
-        title: '自定义列',
+        title: t('routes.demo.table.customerCell'),
       },
     },
     {
-      path: '/formTable',
+      path: 'formTable',
       name: 'FormTableDemo',
       component: () => import('/@/views/demo/table/FormTable.vue'),
       meta: {
-        title: '开启搜索区域',
+        title: t('routes.demo.table.formTable'),
       },
     },
     {
-      path: '/useTable',
+      path: 'useTable',
       name: 'UseTableDemo',
       component: () => import('/@/views/demo/table/UseTable.vue'),
       meta: {
-        title: 'UseTable',
+        title: t('routes.demo.table.useTable'),
       },
     },
     {
-      path: '/refTable',
+      path: 'refTable',
       name: 'RefTableDemo',
       component: () => import('/@/views/demo/table/RefTable.vue'),
       meta: {
-        title: 'RefTable',
+        title: t('routes.demo.table.refTable'),
       },
     },
     {
-      path: '/multipleHeader',
+      path: 'multipleHeader',
       name: 'MultipleHeaderDemo',
       component: () => import('/@/views/demo/table/MultipleHeader.vue'),
       meta: {
-        title: '多级表头',
+        title: t('routes.demo.table.multipleHeader'),
       },
     },
     {
-      path: '/mergeHeader',
+      path: 'mergeHeader',
       name: 'MergeHeaderDemo',
       component: () => import('/@/views/demo/table/MergeHeader.vue'),
       meta: {
-        title: '合并单元格',
+        title: t('routes.demo.table.mergeHeader'),
       },
     },
     {
-      path: '/expandTable',
+      path: 'expandTable',
       name: 'ExpandTableDemo',
       component: () => import('/@/views/demo/table/ExpandTable.vue'),
       meta: {
-        title: '可展开表格',
+        title: t('routes.demo.table.expandTable'),
       },
     },
     {
-      path: '/fixedHeight',
+      path: 'fixedHeight',
       name: 'FixedHeightDemo',
       component: () => import('/@/views/demo/table/FixedHeight.vue'),
       meta: {
-        title: '定高/头部自定义',
+        title: t('routes.demo.table.fixedHeight'),
       },
     },
     {
-      path: '/footerTable',
+      path: 'footerTable',
       name: 'FooterTableDemo',
       component: () => import('/@/views/demo/table/FooterTable.vue'),
       meta: {
-        title: '表尾行合计',
+        title: t('routes.demo.table.footerTable'),
       },
     },
     {
-      path: '/editCellTable',
+      path: 'editCellTable',
       name: 'EditCellTableDemo',
       component: () => import('/@/views/demo/table/EditCellTable.vue'),
       meta: {
-        title: '可编辑单元格',
+        title: t('routes.demo.table.editCellTable'),
+      },
+    },
+    {
+      path: 'editRowTable',
+      name: 'EditRowTableDemo',
+      component: () => import('/@/views/demo/table/EditRowTable.vue'),
+      meta: {
+        title: t('routes.demo.table.editRowTable'),
       },
     },
   ],
-} as AppRouteModule;
+};
+
+export default table;

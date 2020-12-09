@@ -1,14 +1,13 @@
 import type { Router, RouteRecordRaw } from 'vue-router';
 
-import { userStore } from '/@/store/modules/user';
+import { appStore } from '/@/store/modules/app';
 import { permissionStore } from '/@/store/modules/permission';
+
 import { PageEnum } from '/@/enums/pageEnum';
 import { getToken } from '/@/utils/auth';
-import {
-  // FULL_PAGE_NOT_FOUND_ROUTE,
-  PAGE_NOT_FOUND_ROUTE,
-} from '/@/router/constant';
-import { RootRoute } from '../routes/index';
+
+import { PAGE_NOT_FOUND_ROUTE } from '/@/router/constant';
+// import { RootRoute } from '../routes/index';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN;
 
@@ -41,8 +40,17 @@ export function createPermissionGuard(router: Router) {
         return;
       }
       // redirect login page
-      const redirectPath = to.path ? `${LOGIN_PATH}?redirect=${to.path}` : LOGIN_PATH;
-      next(redirectPath);
+      const redirectData: { path: string; replace: boolean; query?: { [key: string]: string } } = {
+        path: LOGIN_PATH,
+        replace: true,
+      };
+      if (to.path) {
+        redirectData.query = {
+          ...redirectData.query,
+          redirect: to.path,
+        };
+      }
+      next(redirectData);
       return;
     }
     if (permissionStore.getIsDynamicAddedRouteState) {
@@ -51,7 +59,8 @@ export function createPermissionGuard(router: Router) {
     }
     const routes = await permissionStore.buildRoutesAction();
     routes.forEach((route) => {
-      router.addRoute(RootRoute.name!, route as RouteRecordRaw);
+      // router.addRoute(RootRoute.name!, route as RouteRecordRaw);
+      router.addRoute(route as RouteRecordRaw);
     });
 
     const redirectPath = (from.query.redirect || to.path) as string;
@@ -60,10 +69,11 @@ export function createPermissionGuard(router: Router) {
     permissionStore.commitDynamicAddedRouteState(true);
     next(nextData);
   });
+
   router.afterEach((to) => {
     // Just enter the login page and clear the authentication information
     if (to.path === LOGIN_PATH) {
-      userStore.resumeAllState();
+      appStore.resumeAllState();
     }
   });
 }

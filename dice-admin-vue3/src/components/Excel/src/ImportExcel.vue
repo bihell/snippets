@@ -17,7 +17,7 @@
   import type { ExcelData } from './types';
   export default defineComponent({
     name: 'ImportExcel',
-    emits: ['success'],
+    emits: ['success', 'error'],
     setup(_, { emit }) {
       const inputRef = ref<HTMLInputElement | null>(null);
       const loadingRef = ref<Boolean>(false);
@@ -79,9 +79,10 @@
               /* DO SOMETHING WITH workbook HERE */
               const excelData = getExcelData(workbook);
               emit('success', excelData);
-              resolve();
+              resolve('');
             } catch (error) {
               reject(error);
+              emit('error');
             } finally {
               loadingRef.value = false;
             }
@@ -96,7 +97,7 @@
           // fix can't select the same excel
           inputRefDom.value = '';
         }
-        readerData(rawFile);
+        await readerData(rawFile);
       }
 
       /**
@@ -104,7 +105,7 @@
        */
       function handleInputClick(e: Event) {
         const files = e && (e.target as HTMLInputElement).files;
-        const rawFile = files && files[0]; // only use files[0]
+        const rawFile = files && files[0]; // only setting files[0]
         if (!rawFile) return;
         upload(rawFile);
       }

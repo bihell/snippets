@@ -1,106 +1,76 @@
-import { TabItem, tabStore } from '/@/store/modules/tab';
 import type { PropType } from 'vue';
-import { getScaleAction, TabContentProps } from './tab.data';
-
-import { defineComponent, unref, computed } from 'vue';
 import { Dropdown } from '/@/components/Dropdown/index';
-import Icon from '/@/components/Icon/index';
-import { DoubleRightOutlined } from '@ant-design/icons-vue';
-import { appStore } from '/@/store/modules/app';
 
-import { TabContentEnum } from './tab.data';
+import { defineComponent, unref, FunctionalComponent } from 'vue';
+
+import { TabContentProps } from './types';
+
+import { RightOutlined } from '@ant-design/icons-vue';
+
+import { TabContentEnum } from './types';
+
 import { useTabDropdown } from './useTabDropdown';
+import { useI18n } from '/@/hooks/web/useI18n';
+
+import { RouteLocationNormalized } from 'vue-router';
+
+const { t: titleT } = useI18n();
+
+const ExtraContent: FunctionalComponent = () => {
+  return (
+    <span class={`multiple-tabs-content__extra `}>
+      <RightOutlined />
+    </span>
+  );
+};
+
+const TabContent: FunctionalComponent<{ tabItem: RouteLocationNormalized; handler: Fn }> = (
+  props
+) => {
+  const { tabItem: { meta } = {} } = props;
+
+  return (
+    <div class={`multiple-tabs-content__content `} onContextmenu={props.handler(props.tabItem)}>
+      <span class="ml-1">{meta && titleT(meta.title)}</span>
+    </div>
+  );
+};
 
 export default defineComponent({
   name: 'TabContent',
   props: {
     tabItem: {
-      type: Object as PropType<TabItem>,
+      type: Object as PropType<RouteLocationNormalized>,
       default: null,
     },
+
     type: {
-      type: Number as PropType<number>,
+      type: Number as PropType<TabContentEnum>,
       default: TabContentEnum.TAB_TYPE,
-    },
-    trigger: {
-      type: Array as PropType<string[]>,
-      default: () => {
-        return ['contextmenu'];
-      },
     },
   },
   setup(props) {
-    const getProjectConfigRef = computed(() => {
-      return appStore.getProjectConfig;
-    });
-
-    const getIsScaleRef = computed(() => {
-      const {
-        menuSetting: { show: showMenu },
-        headerSetting: { show: showHeader },
-      } = unref(getProjectConfigRef);
-      return !showMenu && !showHeader;
-    });
-
-    function handleContextMenu(e: Event) {
-      if (!props.tabItem) return;
-      const tableItem = props.tabItem;
-      e.preventDefault();
-      const index = unref(tabStore.getTabsState).findIndex((tab) => tab.path === tableItem.path);
-
-      tabStore.commitCurrentContextMenuIndexState(index);
-      tabStore.commitCurrentContextMenuState(props.tabItem);
-    }
-
-    /**
-     * @description: 渲染图标
-     */
-    function renderIcon() {
-      const { tabItem } = props;
-      if (!tabItem) return;
-      const icon = tabItem.meta && tabItem.meta.icon;
-      if (!icon || !unref(getProjectConfigRef).multiTabsSetting.showIcon) return null;
-      return <Icon icon={icon} class="align-middle mb-1" />;
-    }
-    function renderTabContent() {
-      const { tabItem: { meta } = {} } = props;
-      return (
-        <div class={`multiple-tabs-content__content `} onContextmenu={handleContextMenu}>
-          {renderIcon()}
-          <span class="ml-1">{meta && meta.title}</span>
-        </div>
-      );
-    }
-    function renderExtraContent() {
-      return (
-        <span class={`multiple-tabs-content__extra `}>
-          <DoubleRightOutlined />
-        </span>
-      );
-    }
-
-    const { getDropMenuList, handleMenuEvent } = useTabDropdown(props as TabContentProps);
+    const {
+      getDropMenuList,
+      handleMenuEvent,
+      handleContextMenu,
+      getTrigger,
+      isTabs,
+    } = useTabDropdown(props as TabContentProps);
 
     return () => {
-      const { trigger, type } = props;
-      const {
-        multiTabsSetting: { showQuick },
-      } = unref(getProjectConfigRef);
-
-      const isTab = !showQuick ? true : type === TabContentEnum.TAB_TYPE;
-      const scaleAction = getScaleAction(
-        unref(getIsScaleRef) ? '缩小' : '放大',
-        unref(getIsScaleRef)
-      );
-      const dropMenuList = unref(getDropMenuList) || [];
-
       return (
         <Dropdown
-          dropMenuList={!isTab ? [scaleAction, ...dropMenuList] : dropMenuList}
-          trigger={isTab ? trigger : ['hover']}
+          dropMenuList={unref(getDropMenuList)}
+          trigger={unref(getTrigger)}
           onMenuEvent={handleMenuEvent}
         >
-          {() => (isTab ? renderTabContent() : renderExtraContent())}
+          {() => {
+            if (!unref(isTabs)) {
+              return <ExtraContent />;
+            }
+            return <TabContent handler={handleContextMenu} tabItem={props.tabItem} />;
+          }}
         </Dropdown>
       );
     };

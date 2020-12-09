@@ -4,7 +4,7 @@ import { VuexModule, getModule, Module, Mutation, Action } from 'vuex-module-dec
 
 import { formatToDateTime } from '/@/utils/dateUtil';
 import { ErrorTypeEnum } from '/@/enums/exceptionEnum';
-import { useSetting } from '/@/hooks/core/useSetting';
+import { useProjectSetting } from '/@/hooks/setting';
 
 export interface ErrorInfo {
   type: ErrorTypeEnum;
@@ -16,6 +16,7 @@ export interface ErrorInfo {
   url: string;
   time?: string;
 }
+
 export interface ErrorState {
   errorInfoState: ErrorInfo[] | null;
   errorListCountState: number;
@@ -25,7 +26,10 @@ const NAME = 'error';
 hotModuleUnregisterModule(NAME);
 @Module({ dynamic: true, namespaced: true, store, name: NAME })
 class Error extends VuexModule implements ErrorState {
+  // error log list
   errorInfoState: ErrorInfo[] = [];
+
+  // error log count
   errorListCountState = 0;
 
   get getErrorInfoState() {
@@ -53,8 +57,7 @@ class Error extends VuexModule implements ErrorState {
 
   @Action
   setupErrorHandle(error: any) {
-    const { projectSetting } = useSetting();
-    const { useErrorHandle } = projectSetting;
+    const { useErrorHandle } = useProjectSetting();
     if (!useErrorHandle) return;
 
     const errInfo: Partial<ErrorInfo> = {
@@ -75,5 +78,4 @@ class Error extends VuexModule implements ErrorState {
     this.commitErrorInfoState(errInfo as ErrorInfo);
   }
 }
-export { Error };
 export const errorStore = getModule<Error>(Error);

@@ -1,225 +1,240 @@
+import './index.less';
+
 import type { MenuState } from './types';
 import type { Menu as MenuType } from '/@/router/types';
 
-import { computed, defineComponent, unref, reactive, toRef, watch, onMounted, ref } from 'vue';
-import { basicProps } from './props';
+import {
+  computed,
+  defineComponent,
+  unref,
+  reactive,
+  watch,
+  toRefs,
+  ComputedRef,
+  ref,
+  CSSProperties,
+} from 'vue';
 import { Menu } from 'ant-design-vue';
-import { MenuModeEnum, MenuTypeEnum } from '/@/enums/menuEnum';
-import { menuStore } from '/@/store/modules/menu';
-import { getSlot } from '/@/utils/helper/tsxHelper';
-// import { ScrollContainer } from '/@/components/Container/index';
-import SearchInput from './SearchInput.vue';
-import './index.less';
-import { menuHasChildren } from './helper';
 import MenuContent from './MenuContent';
-import { useSearchInput } from './useSearchInput';
+// import { ScrollContainer } from '/@/components/Container';
+// import { BasicArrow } from '/@/components/Basic';
+
+import { MenuModeEnum, MenuTypeEnum } from '/@/enums/menuEnum';
+import { ThemeEnum } from '/@/enums/appEnum';
+
+import { appStore } from '/@/store/modules/app';
+
 import { useOpenKeys } from './useOpenKeys';
 import { useRouter } from 'vue-router';
+
 import { isFunction } from '/@/utils/is';
+import { getSlot } from '/@/utils/helper/tsxHelper';
+import { menuHasChildren } from './helper';
 import { getCurrentParentPath } from '/@/router/menus';
+
+import { basicProps } from './props';
+import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
+import { REDIRECT_NAME } from '/@/router/constant';
+import { tabStore } from '/@/store/modules/tab';
+import { useDesign } from '/@/hooks/web/useDesign';
 export default defineComponent({
   name: 'BasicMenu',
   props: basicProps,
   emits: ['menuClick'],
   setup(props, { slots, emit }) {
     const currentParentPath = ref('');
+    const isClickGo = ref(false);
+
     const menuState = reactive<MenuState>({
       defaultSelectedKeys: [],
       mode: props.mode,
-      theme: computed(() => props.theme),
+      theme: computed(() => props.theme) as ComputedRef<ThemeEnum>,
       openKeys: [],
-      searchValue: '',
       selectedKeys: [],
       collapsedOpenKeys: [],
     });
+
+    const { prefixCls } = useDesign('basic-menu');
+
+    const { items, mode, accordion } = toRefs(props);
+
+    const { getCollapsed, getIsHorizontal, getTopMenuAlign, getSplit } = useMenuSetting();
+
     const { currentRoute } = useRouter();
 
-    const { handleInputChange, handleInputClick } = useSearchInput({
-      flatMenusRef: toRef(props, 'flatItems'),
-      emit: emit,
+    const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(
       menuState,
-      handleMenuChange,
-    });
-
-    const { handleOpenChange, resetKeys, setOpenKeys } = useOpenKeys(
-      menuState,
-      toRef(props, 'items'),
-      toRef(props, 'flatItems'),
-      toRef(props, 'isAppMenu'),
-      toRef(props, 'mode')
+      items,
+      mode,
+      accordion
     );
 
-    const getOpenKeys = computed(() => {
-      if (props.isAppMenu) {
-        return menuStore.getCollapsedState ? menuState.collapsedOpenKeys : menuState.openKeys;
-      }
-      return menuState.openKeys;
-    });
-    // menu外层样式
-    const getMenuWrapStyle = computed((): any => {
-      const { showLogo, search } = props;
-      let offset = 0;
-      if (search) {
-        offset += 60;
-      }
-      if (showLogo) {
-        offset += 54;
-      }
-      return {
-        height: `calc(100% - ${offset - 30}px)`,
-        position: 'relative',
-        overflow: 'auto',
-      };
-    });
-
-    // 是否透明化左侧一级菜单
-    const transparentMenuClass = computed(() => {
+    const getMenuClass = computed(() => {
       const { type } = props;
       const { mode } = menuState;
-      if (
-        [MenuTypeEnum.MIX, MenuTypeEnum.SIDEBAR].includes(type) &&
-        mode !== MenuModeEnum.HORIZONTAL
-      ) {
-        return `basic-menu-bg__sidebar`;
-      }
-      if (
-        (type === MenuTypeEnum.TOP_MENU && mode === MenuModeEnum.HORIZONTAL) ||
-        props.appendClass
-      ) {
-        return `basic-menu-bg__sidebar-hor`;
-      }
-      return '';
+      return [
+        prefixCls,
+        `justify-${unref(getTopMenuAlign)}`,
+        {
+          [`${prefixCls}--hide-title`]: !unref(showTitle),
+          [`${prefixCls}--collapsed-show-title`]: props.collapsedShowTitle,
+          [`${prefixCls}__second`]:
+            !props.isHorizontal && appStore.getProjectConfig.menuSetting.split,
+          [`${prefixCls}__sidebar-hor`]:
+            type === MenuTypeEnum.TOP_MENU && mode === MenuModeEnum.HORIZONTAL,
+        },
+      ];
     });
 
+    const showTitle = computed(() => props.collapsedShowTitle && unref(getCollapsed));
+
+    const getInlineCollapseOptions = computed(() => {
+      const isInline = props.mode === MenuModeEnum.INLINE;
+
+      const inlineCollapseOptions: { inlineCollapsed?: boolean } = {};
+      if (isInline) {
+        inlineCollapseOptions.inlineCollapsed = unref(getCollapsed);
+      }
+      return inlineCollapseOptions;
+    });
+
+    const getWrapperStyle = computed(
+      (): CSSProperties => {
+        const isHorizontal = unref(getIsHorizontal);
+        return {
+          height: isHorizontal
+            ? `calc(100% + 1px)`
+            : `calc(100%  - ${props.showLogo ? '48px' : '0'})`,
+          overflowY: isHorizontal ? 'hidden' : 'auto',
+        };
+      }
+    );
+
     watch(
-      () => currentRoute.value.name,
-      (name: string) => {
-        name !== 'Redirect' && handleMenuChange();
-        getParentPath();
+      () => tabStore.getCurrentTab,
+      () => {
+        if (unref(currentRoute).name === REDIRECT_NAME) return;
+        handleMenuChange();
+        unref(getSplit) && getParentPath();
       }
     );
 
     watch(
       () => props.items,
       () => {
-        if (props.items) {
-          handleMenuChange();
-        }
+        handleMenuChange();
       },
       {
         immediate: true,
       }
     );
 
+    getParentPath();
+
     async function getParentPath() {
       const { appendClass } = props;
       if (!appendClass) return '';
       const parentPath = await getCurrentParentPath(unref(currentRoute).path);
+
       currentParentPath.value = parentPath;
     }
 
-    async function handleMenuClick(menu: MenuType) {
+    async function handleMenuClick({ key, keyPath }: { key: string; keyPath: string[] }) {
       const { beforeClickFn } = props;
       if (beforeClickFn && isFunction(beforeClickFn)) {
-        const flag = await beforeClickFn(menu);
-        if (!flag) {
-          return;
-        }
+        const flag = await beforeClickFn(key);
+        if (!flag) return;
       }
-      const { path } = menu;
-      menuState.selectedKeys = [path];
-      emit('menuClick', menu);
+      emit('menuClick', key);
+
+      isClickGo.value = true;
+      menuState.openKeys = keyPath;
+      menuState.selectedKeys = [key];
     }
+
     function handleMenuChange() {
-      const { flatItems } = props;
-      if (!unref(flatItems) || flatItems.length === 0) {
+      if (unref(isClickGo)) {
+        isClickGo.value = false;
         return;
       }
-      const findMenu = flatItems.find((menu) => menu.path === unref(currentRoute).path);
-      if (findMenu) {
-        if (menuState.mode !== MenuModeEnum.HORIZONTAL) {
-          setOpenKeys(findMenu);
-        }
-        menuState.selectedKeys = [findMenu.path];
-      } else {
-        resetKeys();
+      const path = unref(currentRoute).path;
+      if (menuState.mode !== MenuModeEnum.HORIZONTAL) {
+        setOpenKeys(path);
       }
+      menuState.selectedKeys = [path];
     }
 
-    const showTitle = computed(() => {
-      if (!props.isAppMenu) return true;
-      if (!props.collapsedShowTitle) {
-        return !menuStore.getCollapsedState;
-      }
-      return true;
-    });
+    // function renderExpandIcon({ key }: { key: string }) {
+    //   const isOpen = getOpenKeys.value.includes(key);
+    //   const collapsed = unref(getCollapsed);
+    //   return (
+    //     <BasicArrow
+    //       expand={isOpen}
+    //       bottom
+    //       inset
+    //       class={[
+    //         `${prefixCls}__expand-icon`,
+    //         {
+    //           [`${prefixCls}__expand-icon--collapsed`]: collapsed,
+    //         },
+    //       ]}
+    //     />
+    //   );
+    // }
 
-    // render menu item
-    function renderMenuItem(menuList?: MenuType[], index = 1) {
-      if (!menuList) {
-        return;
-      }
+    function renderItem(menu: MenuType, level = 1) {
+      return !menuHasChildren(menu) ? renderMenuItem(menu, level) : renderSubMenu(menu, level);
+    }
+
+    function renderMenuItem(menu: MenuType, level: number) {
       const { appendClass } = props;
-      const levelCls = `basic-menu-item__level${index} ${menuState.theme} `;
+      const isAppendActiveCls =
+        appendClass && level === 1 && menu.path === unref(currentParentPath);
 
-      return menuList.map((menu) => {
-        if (!menu) {
-          return null;
-        }
+      const levelCls = [
+        `${prefixCls}-item__level${level}`,
+        ` ${menuState.theme} `,
+        {
+          'top-active-menu': isAppendActiveCls,
+        },
+      ];
+      return (
+        <Menu.Item key={menu.path} class={levelCls}>
+          {() => [
+            <MenuContent
+              item={menu}
+              showTitle={unref(showTitle)}
+              isHorizontal={props.isHorizontal}
+            />,
+          ]}
+        </Menu.Item>
+      );
+    }
 
-        const isAppendActiveCls =
-          appendClass && index === 1 && menu.path === unref(currentParentPath);
-        // 没有子节点
-        if (!menuHasChildren(menu)) {
-          return (
-            <Menu.Item
-              key={menu.path}
-              class={`${levelCls}${isAppendActiveCls ? ' top-active-menu ' : ''}`}
-              onClick={handleMenuClick.bind(null, menu)}
-            >
-              {() => [
-                <MenuContent
-                  item={menu}
-                  level={index}
-                  showTitle={unref(showTitle)}
-                  searchValue={menuState.searchValue}
-                />,
-              ]}
-            </Menu.Item>
-          );
-        }
-        return (
-          <Menu.SubMenu key={menu.path} class={levelCls}>
-            {{
-              title: () => [
-                <MenuContent
-                  showTitle={unref(showTitle)}
-                  item={menu}
-                  level={index}
-                  searchValue={menuState.searchValue}
-                />,
-              ],
-              default: () => renderMenuItem(menu.children, index + 1),
-            }}
-          </Menu.SubMenu>
-        );
-      });
+    function renderSubMenu(menu: MenuType, level: number) {
+      const levelCls = `${prefixCls}-item__level${level} ${menuState.theme} `;
+      return (
+        <Menu.SubMenu key={menu.path} class={levelCls}>
+          {{
+            title: () => [
+              <MenuContent
+                showTitle={unref(showTitle)}
+                item={menu}
+                isHorizontal={props.isHorizontal}
+              />,
+            ],
+            // expandIcon: renderExpandIcon,
+            default: () => (menu.children || []).map((item) => renderItem(item, level + 1)),
+          }}
+        </Menu.SubMenu>
+      );
     }
 
     function renderMenu() {
-      const isInline = props.mode === MenuModeEnum.INLINE;
       const { selectedKeys, defaultSelectedKeys, mode, theme } = menuState;
 
-      const inlineCollapsedObj = isInline
-        ? props.isAppMenu
-          ? {
-              inlineCollapsed: menuStore.getCollapsedState,
-            }
-          : { inlineCollapsed: props.inlineCollapsed }
-        : {};
       return (
         <Menu
-          forceSubMenuRender={props.isAppMenu}
           selectedKeys={selectedKeys}
           defaultSelectedKeys={defaultSelectedKeys}
           mode={mode}
@@ -227,44 +242,25 @@ export default defineComponent({
           inlineIndent={props.inlineIndent}
           theme={unref(theme)}
           onOpenChange={handleOpenChange}
-          class={[
-            'basic-menu',
-            props.collapsedShowTitle && 'collapsed-show-title',
-            unref(transparentMenuClass),
-          ]}
-          {...inlineCollapsedObj}
+          class={unref(getMenuClass)}
+          onClick={handleMenuClick}
+          {...unref(getInlineCollapseOptions)}
         >
           {{
-            default: () => renderMenuItem(props.items, 1),
+            default: () => unref(items).map((item) => renderItem(item)),
           }}
         </Menu>
       );
     }
 
-    onMounted(async () => {
-      getParentPath();
-    });
     return () => {
-      const { getCollapsedState } = menuStore;
-      const { mode } = props;
-
-      return mode === MenuModeEnum.HORIZONTAL ? (
-        renderMenu()
-      ) : (
-        <section class={[`basic-menu-wrap`, !unref(showTitle) && 'hide-title']}>
-          {getSlot(slots, 'header')}
-          <SearchInput
-            class={!props.search ? 'hidden' : ''}
-            theme={props.theme}
-            onChange={handleInputChange}
-            onClick={handleInputClick}
-            collapsed={getCollapsedState}
-          />
-          <section style={unref(getMenuWrapStyle)} class="basic-menu__wrap">
+      return (
+        <>
+          {!unref(getIsHorizontal) && getSlot(slots, 'header')}
+          <div class={`${prefixCls}-wrapper`} style={unref(getWrapperStyle)}>
             {renderMenu()}
-            {/* <ScrollContainer>{() => renderMenu()}</ScrollContainer> */}
-          </section>
-        </section>
+          </div>
+        </>
       );
     };
   },

@@ -1,23 +1,22 @@
 import type { AppRouteModule } from '/@/router/types';
 
-import { PAGE_LAYOUT_COMPONENT } from '/@/router/constant';
+import { getParentLayout, LAYOUT } from '/@/router/constant';
+import { t } from '/@/hooks/web/useI18n';
 
-export default {
-  layout: {
-    path: '/charts',
-    name: 'Charts',
-    component: PAGE_LAYOUT_COMPONENT,
-    redirect: '/charts/apexChart',
-    meta: {
-      icon: 'ant-design:area-chart-outlined',
-      title: '图表库',
-    },
+const charts: AppRouteModule = {
+  path: '/charts',
+  name: 'Charts',
+  component: LAYOUT,
+  redirect: '/charts/apexChart',
+  meta: {
+    icon: 'vaadin:spline-area-chart',
+    title: t('routes.demo.charts.charts'),
   },
-
-  routes: [
+  children: [
     {
-      path: '/echarts',
+      path: 'echarts',
       name: 'Echarts',
+      component: getParentLayout('Echarts'),
       meta: {
         title: 'Echarts',
       },
@@ -27,7 +26,7 @@ export default {
           name: 'Map',
           component: () => import('/@/views/demo/echarts/Map.vue'),
           meta: {
-            title: '地图',
+            title: t('routes.demo.charts.map'),
           },
         },
         {
@@ -35,7 +34,7 @@ export default {
           name: 'Line',
           component: () => import('/@/views/demo/echarts/Line.vue'),
           meta: {
-            title: '折线图',
+            title: t('routes.demo.charts.line'),
           },
         },
         {
@@ -43,18 +42,20 @@ export default {
           name: 'Pie',
           component: () => import('/@/views/demo/echarts/Pie.vue'),
           meta: {
-            title: '饼图',
+            title: t('routes.demo.charts.pie'),
           },
         },
       ],
     },
     {
-      path: '/apexChart',
+      path: 'apexChart',
       name: 'ApexChart',
       meta: {
-        title: 'ApexChart',
+        title: t('routes.demo.charts.apexChart'),
       },
       component: () => import('/@/views/demo/echarts/apex/index.vue'),
     },
   ],
-} as AppRouteModule;
+};
+
+export default charts;

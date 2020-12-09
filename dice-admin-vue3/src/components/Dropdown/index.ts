@@ -1,2 +1,7 @@
-export { default as Dropdown } from './Dropdown';
-export * from './types';
+import Dropdown from './src/Dropdown';
+import { withInstall } from '../util';
+
+withInstall(Dropdown);
+export * from './src/types';
+
+export { Dropdown };

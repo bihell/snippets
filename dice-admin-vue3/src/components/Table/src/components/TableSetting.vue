@@ -4,27 +4,27 @@
 
     <Tooltip placement="top" v-if="getSetting.redo">
       <template #title>
-        <span>刷新</span>
+        <span>{{ t('component.table.settingRedo') }}</span>
       </template>
       <RedoOutlined @click="redo" />
     </Tooltip>
 
     <Tooltip placement="top" v-if="getSetting.size">
       <template #title>
-        <span>密度</span>
+        <span>{{ t('component.table.settingDens') }}</span>
       </template>
       <Dropdown placement="bottomCenter" :trigger="['click']">
         <ColumnHeightOutlined />
         <template #overlay>
           <Menu @click="handleTitleClick" selectable v-model:selectedKeys="selectedKeysRef">
             <MenuItem key="default">
-              <span>默认</span>
+              <span>{{ t('component.table.settingDensDefault') }}</span>
             </MenuItem>
             <MenuItem key="middle">
-              <span>中等</span>
+              <span>{{ t('component.table.settingDensMiddle') }}</span>
             </MenuItem>
             <MenuItem key="small">
-              <span>紧凑</span>
+              <span>{{ t('component.table.settingDensSmall') }}</span>
             </MenuItem>
           </Menu>
         </template>
@@ -33,7 +33,7 @@
 
     <Tooltip placement="top" v-if="getSetting.setting">
       <template #title>
-        <span>列设置</span>
+        <span>{{ t('component.table.settingColumn') }}</span>
       </template>
       <Popover
         placement="bottomLeft"
@@ -58,9 +58,11 @@
               v-model:checked="checkAll"
               @change="onCheckAllChange"
             >
-              列展示
+              {{ t('component.table.settingColumnShow') }}
             </Checkbox>
-            <a-button size="small" type="link" @click="reset">重置</a-button>
+            <a-button size="small" type="link" @click="reset">
+              {{ t('component.table.settingReset') }}</a-button
+            >
           </div>
         </template>
         <SettingOutlined />
@@ -69,7 +71,7 @@
 
     <Tooltip placement="top" v-if="getSetting.fullScreen">
       <template #title>
-        <span>全屏</span>
+        <span>{{ t('component.table.settingFullScreen') }}</span>
       </template>
       <FullscreenOutlined @click="handleFullScreen" v-if="!isFullscreenRef" />
       <FullscreenExitOutlined @click="handleFullScreen" v-else />
@@ -77,7 +79,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, reactive, toRefs, PropType, computed } from 'vue';
+  import { defineComponent, ref, reactive, toRefs, PropType, computed, watchEffect } from 'vue';
   import { injectTable } from '../hooks/useProvinceTable';
   import { Tooltip, Divider, Dropdown, Menu, Popover, Checkbox } from 'ant-design-vue';
   import {
@@ -90,6 +92,7 @@
   import { useFullscreen } from '/@/hooks/web/useFullScreen';
 
   import type { SizeType, TableSetting } from '../types/table';
+  import { useI18n } from '/@/hooks/web/useI18n';
 
   interface Options {
     label: string;
@@ -131,7 +134,7 @@
       const { toggleFullscreen, isFullscreenRef } = useFullscreen(table.wrapRef);
       const selectedKeysRef = ref<SizeType[]>([table.getSize()]);
 
-      let plainOptions: Options[] = [];
+      const plainOptions = ref<Options[]>([]);
       const state = reactive<State>({
         indeterminate: false,
         checkAll: true,
@@ -139,6 +142,14 @@
         defaultCheckList: [],
       });
 
+      const { t } = useI18n();
+
+      watchEffect(() => {
+        const columns = table.getColumns();
+        if (columns.length) {
+          init();
+        }
+      });
       function init() {
         let ret: Options[] = [];
         table.getColumns({ ignoreIndex: true, ignoreAction: true }).forEach((item) => {
@@ -147,7 +158,9 @@
             value: (item.dataIndex || item.title) as string,
           });
         });
-        plainOptions = ret;
+        if (!plainOptions.value.length) {
+          plainOptions.value = ret;
+        }
         const checkList = table
           .getColumns()
           .map((item) => item.dataIndex || item.title) as string[];
@@ -168,7 +181,7 @@
 
       function onCheckAllChange(e: ChangeEvent) {
         state.indeterminate = false;
-        const checkList = plainOptions.map((item) => item.value);
+        const checkList = plainOptions.value.map((item) => item.value);
         if (e.target.checked) {
           state.checkedList = checkList;
           table.setColumns(checkList);
@@ -179,8 +192,9 @@
       }
 
       function onChange(checkedList: string[]) {
-        state.indeterminate = !!checkedList.length && checkedList.length < plainOptions.length;
-        state.checkAll = checkedList.length === plainOptions.length;
+        const len = plainOptions.value.length;
+        state.indeterminate = !!checkedList.length && checkedList.length < len;
+        state.checkAll = checkedList.length === len;
         table.setColumns(checkedList);
       }
 
@@ -204,7 +218,6 @@
         }
       );
 
-      init();
       return {
         redo: () => table.reload(),
         handleTitleClick,
@@ -217,6 +230,7 @@
         reset,
         getSetting,
         ...toRefs(state),
+        t,
       };
     },
   });

@@ -1,26 +1,35 @@
 import { MenuModeEnum } from '/@/enums/menuEnum';
 import type { Menu as MenuType } from '/@/router/types';
 import type { MenuState } from './types';
-import type { Ref } from 'vue';
+
+import { computed, Ref, toRaw } from 'vue';
 
 import { unref } from 'vue';
-import { menuStore } from '/@/store/modules/menu';
-import { getAllParentPath } from '/@/utils/helper/menuHelper';
+import { es6Unique } from '/@/utils';
+import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
+import { getAllParentPath } from '/@/router/helper/menuHelper';
 
 export function useOpenKeys(
   menuState: MenuState,
   menus: Ref<MenuType[]>,
-  flatMenusRef: Ref<MenuType[]>,
-  isAppMenu: Ref<boolean>,
-  mode: Ref<MenuModeEnum>
+  mode: Ref<MenuModeEnum>,
+  accordion: Ref<boolean>
 ) {
-  /**
-   * @description:设置展开
-   */
-  function setOpenKeys(menu: MenuType) {
-    const flatMenus = unref(flatMenusRef);
-    menuState.openKeys = getAllParentPath(flatMenus, menu.path);
+  const { getCollapsed } = useMenuSetting();
+
+  function setOpenKeys(path: string) {
+    const menuList = toRaw(menus.value);
+    if (!unref(accordion)) {
+      menuState.openKeys = es6Unique([...menuState.openKeys, ...getAllParentPath(menuList, path)]);
+    } else {
+      menuState.openKeys = getAllParentPath(menuList, path);
+    }
   }
+
+  const getOpenKeys = computed(() => {
+    return unref(getCollapsed) ? menuState.collapsedOpenKeys : menuState.openKeys;
+  });
+
   /**
    * @description:  重置值
    */
@@ -30,7 +39,7 @@ export function useOpenKeys(
   }
 
   function handleOpenChange(openKeys: string[]) {
-    if (unref(mode) === MenuModeEnum.HORIZONTAL) {
+    if (unref(mode) === MenuModeEnum.HORIZONTAL || !unref(accordion)) {
       menuState.openKeys = openKeys;
     } else {
       const rootSubMenuKeys: string[] = [];
@@ -39,7 +48,7 @@ export function useOpenKeys(
           rootSubMenuKeys.push(path);
         }
       }
-      if (!menuStore.getCollapsedState || !unref(isAppMenu)) {
+      if (!unref(getCollapsed)) {
         const latestOpenKey = openKeys.find((key) => menuState.openKeys.indexOf(key) === -1);
         if (rootSubMenuKeys.indexOf(latestOpenKey as string) === -1) {
           menuState.openKeys = openKeys;
@@ -51,5 +60,5 @@ export function useOpenKeys(
       }
     }
   }
-  return { setOpenKeys, resetKeys, handleOpenChange };
+  return { setOpenKeys, resetKeys, getOpenKeys, handleOpenChange };
 }

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/anncwb/vue-vben-admin" target="_blank">
-    <img alt="VbenAdmin Logo" width="200" src="./.github/res/imgs/logo.png">
+    <img alt="VbenAdmin Logo" width="200" src="/anncwb/vue-vben-admin/raw/main/.github/res/imgs/logo.png">
   </a>
 </p>
 <h2 align="center">VUE VBEN ADMIN2.0</h2>
@@ -31,14 +31,11 @@
 - [Finished features](#finished-features)
 - [Developing features](#developing-features)
 - [Browser support](#browser-support)
+- [Plugins](#plugins)
 
 ## Introduction
 
-This branch is a 2.0 new branch which use vue3 to develop.
-
-You can also switch to 1.0 branch which use `vue2.6` , `vue-composition-api` and `vue-cli` to develop.
-
-The project is based on the vue3 style background management system implemented by `ant-design-vue`,`typescript`,`vue3.0`,`vite`,`tsx`.
+The project is based on the vue3 style background management system implemented by ʻant-design-vue`, `typescript`,`vue3.0`,`vite`,`tsx`,
 
 ## GitHub
 
@@ -109,17 +106,17 @@ The documentation for 2.0 hasn't started yet, it will be provided later.
 
 ## Install
 
-```js
-//  Make git case sensitive to file names
+```bash
+#  Make git case sensitive to file names
 git config core.ignorecase false
 
-// Pull code of the project
+# Pull code of the project
 git clone https://github.com/anncwb/vue-vben-admin.git vue-vben-admin-2.0
 
 cd vue-vben-admin-2.0
 
-// If you use other package management tool, you can install it by yourself
-// if you hasn't install yarn, please run: npm install -g yarn
+# If you use other package management tool, you can install it by yourself
+#  if you hasn't install yarn, please run: npm install -g yarn
 yarn install
 
 ```
@@ -228,11 +225,11 @@ yarn clean:lib # Delete node_modules, supported window
 - [x] System performance optimization
 - [x] Data import and export
 - [x] Global error handling
+- [x] Rich text component
+- [x] Upload component
 
 ## Developing features
 
-- [ ] Upload component
-- [ ] Rich text component
 - [ ] Theme configuration
 - [ ] Dark theme
 - [ ] Build CDN
@@ -250,3 +247,10 @@ Support modern browsers, Not currently supported ie11，Follow-up consideration 
 | not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 More browsers can view [Can I Use Es Module](https://caniuse.com/?search=ES%20Module)
+
+## Plugins
+
+If these plugins are helpful to you, you can give a star
+
+- [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock)
+- [vite-plugin-html](https://github.com/anncwb/vite-plugin-html)

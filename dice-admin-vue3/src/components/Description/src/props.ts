@@ -1,39 +1,31 @@
 import type { PropType } from 'vue';
+import type { CollapseContainerOptions } from '/@/components/Container';
 import type { DescItem } from './types';
 
+import { propTypes } from '/@/utils/propTypes';
 export default {
-  useCollapse: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
-  title: {
-    type: String as PropType<string>,
-    default: '',
-  },
-  size: {
-    type: String as PropType<'small' | 'default' | 'middle' | undefined>,
-    default: 'small',
-  },
-  bordered: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+  useCollapse: propTypes.bool.def(true),
+
+  title: propTypes.string.def(''),
+
+  size: propTypes.oneOf(['small', 'default', 'middle', undefined]).def('small'),
+
+  bordered: propTypes.bool.def(true),
+
   column: {
     type: [Number, Object] as PropType<number | any>,
     default: () => {
       return { xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 };
     },
   },
+
   collapseOptions: {
-    type: Object as PropType<any>,
+    type: Object as PropType<CollapseContainerOptions>,
     default: null,
   },
   schema: {
     type: Array as PropType<Array<DescItem>>,
     default: () => [],
   },
-  data: {
-    type: Object as PropType<any>,
-    default: null,
-  },
+  data: propTypes.object,
 };

@@ -1,71 +1,71 @@
-import { computed, defineComponent, unref, Transition, KeepAlive, toRaw } from 'vue';
+import type { FunctionalComponent } from 'vue';
 
-import { appStore } from '/@/store/modules/app';
-
-import { useTransition } from './useTransition';
-
+import { computed, defineComponent, unref, Transition, KeepAlive } from 'vue';
 import { RouterView, RouteLocation } from 'vue-router';
-import { tabStore } from '/@/store/modules/tab';
+
 import FrameLayout from '/@/layouts/iframe/index.vue';
 
-import { useSetting } from '/@/hooks/core/useSetting';
-// import { useRouter } from 'vue-router';
+import { useRootSetting } from '/@/hooks/setting/useRootSetting';
+
+import { useTransitionSetting } from '/@/hooks/setting/useTransitionSetting';
+import { useCache } from './useCache';
+import { useMultipleTabSetting } from '/@/hooks/setting/useMultipleTabSetting';
+
+interface DefaultContext {
+  Component: FunctionalComponent;
+  route: RouteLocation;
+}
+
 export default defineComponent({
   name: 'PageLayout',
   setup() {
-    // const { currentRoute } = useRouter();
-    const getProjectConfigRef = computed(() => {
-      return appStore.getProjectConfig;
-    });
-    const { openPageLoading } = unref(getProjectConfigRef);
+    const { getCaches } = useCache(true);
+    const { getShowMultipleTab } = useMultipleTabSetting();
 
-    let on = {};
-    if (openPageLoading) {
-      const { on: transitionOn } = useTransition();
-      on = transitionOn;
-    }
-    const { projectSetting } = useSetting();
+    const { getOpenKeepAlive, getCanEmbedIFramePage } = useRootSetting();
+
+    const { getBasicTransition, getEnableTransition } = useTransitionSetting();
+
+    const openCache = computed(() => unref(getOpenKeepAlive) && unref(getShowMultipleTab));
+
     return () => {
-      const {
-        routerTransition,
-        openRouterTransition,
-        openKeepAlive,
-        multiTabsSetting: { show, max },
-      } = unref(getProjectConfigRef);
-
-      const openCache = openKeepAlive && show;
-      const cacheTabs = toRaw(tabStore.getKeepAliveTabsState) as string[];
       return (
-        <div>
+        <>
           <RouterView>
             {{
-              default: ({ Component, route }: { Component: any; route: RouteLocation }) => {
-                // 已经位于tab内的不再显示动画
-                const name = route.meta.inTab ? 'fade' : null;
-                const Content = openCache ? (
-                  <KeepAlive max={max} include={cacheTabs}>
-                    <Component {...route.params} />
-                  </KeepAlive>
+              default: ({ Component, route }: DefaultContext) => {
+                // No longer show animations that are already in the tab
+                const cacheTabs = unref(getCaches);
+                const isInCache = cacheTabs.includes(route.name as string);
+                const name =
+                  isInCache && route.meta.loaded && unref(getEnableTransition)
+                    ? 'fade-slide'
+                    : null;
+
+                const renderComp = () => <Component key={route.fullPath} />;
+
+                const PageContent = unref(openCache) ? (
+                  <KeepAlive include={cacheTabs}>{renderComp()}</KeepAlive>
                 ) : (
-                  <Component {...route.params} />
+                  renderComp()
                 );
-                return openRouterTransition ? (
+
+                return unref(getEnableTransition) ? (
                   <Transition
-                    {...on}
-                    name={name || route.meta.transitionName || routerTransition}
+                    name={name || route.meta.transitionName || unref(getBasicTransition)}
                     mode="out-in"
                     appear={true}
                   >
-                    {() => Content}
+                    {() => PageContent}
                   </Transition>
                 ) : (
-                  Content
+                  PageContent
                 );
               },
             }}
           </RouterView>
-          {projectSetting.canEmbedIFramePage && <FrameLayout />}
-        </div>
+          {unref(getCanEmbedIFramePage) && <FrameLayout />}
+        </>
       );
     };
   },

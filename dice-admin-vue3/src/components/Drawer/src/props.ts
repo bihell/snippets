@@ -1,70 +1,37 @@
 import type { PropType } from 'vue';
-import { DrawerType } from './types';
-// import {DrawerProps} from './types'
+
+import { useI18n } from '/@/hooks/web/useI18n';
+import { propTypes } from '/@/utils/propTypes';
+const { t } = useI18n();
+
 export const footerProps = {
-  confirmLoading: Boolean as PropType<boolean>,
+  confirmLoading: propTypes.bool,
   /**
-   * @description: 显示关闭按钮
+   * @description: Show close button
    */
-  showCancelBtn: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+  showCancelBtn: propTypes.bool.def(true),
   cancelButtonProps: Object as PropType<any>,
-  cancelText: {
-    type: String as PropType<string>,
-    default: '关闭',
-  },
+  cancelText: propTypes.string.def(t('component.drawer.cancelText')),
   /**
-   * @description: 显示确认按钮
+   * @description: Show confirmation button
    */
-  showOkBtn: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
-  okButtonProps: Object as PropType<any>,
-  okText: {
-    type: String as PropType<string>,
-    default: '保存',
-  },
-  okType: {
-    type: String as PropType<string>,
-    default: 'primary',
-  },
-  showFooter: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
+  showOkBtn: propTypes.bool.def(true),
+  okButtonProps: propTypes.any,
+  okText: propTypes.string.def(t('component.drawer.okText')),
+  okType: propTypes.string.def('primary'),
+  showFooter: propTypes.bool,
   footerHeight: {
     type: [String, Number] as PropType<string | number>,
     default: 60,
   },
 };
 export const basicProps = {
-  drawerType: {
-    type: Number as PropType<number>,
-    default: DrawerType.DEFAULT,
-  },
-  title: {
-    type: String as PropType<string>,
-    default: '',
-  },
-  showDetailBack: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
-  visible: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  loading: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  maskClosable: {
-    type: Boolean as PropType<boolean>,
-    default: true,
-  },
+  isDetail: propTypes.bool,
+  title: propTypes.string.def(''),
+  showDetailBack: propTypes.bool.def(true),
+  visible: propTypes.bool,
+  loading: propTypes.bool,
+  maskClosable: propTypes.bool.def(true),
   getContainer: {
     type: [Object, String] as PropType<any>,
   },
@@ -76,10 +43,7 @@ export const basicProps = {
     type: [Function, Object] as PropType<any>,
     default: null,
   },
-  triggerWindowResize: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  destroyOnClose: Boolean as PropType<boolean>,
+  triggerWindowResize: propTypes.bool,
+  destroyOnClose: propTypes.bool,
   ...footerProps,
 };

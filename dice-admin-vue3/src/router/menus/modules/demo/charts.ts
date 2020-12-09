@@ -1,13 +1,15 @@
 import type { MenuModule } from '/@/router/types.d';
+import { t } from '/@/hooks/web/useI18n';
+
 const menu: MenuModule = {
   orderNo: 500,
   menu: {
-    name: '图表',
+    name: t('routes.demo.charts.charts'),
     path: '/charts',
     children: [
       {
         path: 'apexChart',
-        name: 'ApexChart',
+        name: t('routes.demo.charts.apexChart'),
       },
       {
         path: 'echarts',
@@ -15,15 +17,15 @@ const menu: MenuModule = {
         children: [
           {
             path: 'map',
-            name: '地图',
+            name: t('routes.demo.charts.map'),
           },
           {
             path: 'line',
-            name: '折线图',
+            name: t('routes.demo.charts.line'),
           },
           {
             path: 'pie',
-            name: '饼图',
+            name: t('routes.demo.charts.pie'),
           },
         ],
       },

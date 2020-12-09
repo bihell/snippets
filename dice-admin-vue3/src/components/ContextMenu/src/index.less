@@ -1,13 +1,41 @@
 @import (reference) '../../../design/index.less';
 
+@default-height: 42px !important;
+
+@small-height: 36px !important;
+
+@large-height: 36px !important;
+
+.item-style() {
+  li {
+    display: inline-block;
+    width: 100%;
+    height: @default-height;
+    margin: 0 !important;
+    line-height: @default-height;
+
+    span {
+      line-height: @default-height;
+    }
+
+    > div {
+      margin: 0 !important;
+    }
+
+    &:not(.ant-menu-item-disabled):hover {
+      color: @text-color-base;
+      background: #eee;
+    }
+  }
+}
+
 .context-menu {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1500;
+  z-index: 200;
   display: block;
   width: 156px;
-  min-width: 10rem;
   margin: 0;
   list-style: none;
   background-color: #fff;
@@ -18,32 +46,17 @@
   background-clip: padding-box;
   user-select: none;
 
-  &.hidden {
-    display: none !important;
+  .item-style();
+
+  .ant-divider {
+    margin: 0 0;
   }
 
-  &__item {
-    a {
-      display: inline-block;
-      width: 100%;
-      padding: 10px 14px;
-
-      &:hover {
-        color: @text-color-base;
-        background: #eee;
-      }
+  &__popup {
+    .ant-divider {
+      margin: 0 0;
     }
 
-    &.disabled {
-      a {
-        color: @disabled-color;
-        cursor: not-allowed;
-
-        &:hover {
-          color: @disabled-color;
-          background: unset;
-        }
-      }
-    }
+    .item-style();
   }
 }

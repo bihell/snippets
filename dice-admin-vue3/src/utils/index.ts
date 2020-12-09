@@ -1,3 +1,8 @@
+export const timestamp = () => +Date.now();
+import { isObject } from '/@/utils/is';
+export const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
+export const noop = () => {};
+export const now = () => Date.now();
 /**
  * @description:  Set ui mount node
  */
@@ -7,6 +12,7 @@ export function getPopupContainer(node?: HTMLElement): HTMLElement {
   }
   return document.body;
 }
+
 /**
  * Add the object as a parameter to the URL
  * @param baseUrl url
@@ -35,10 +41,7 @@ export function setObjToUrlParams(baseUrl: string, obj: any): string {
 export function deepMerge<T = any>(src: any, target: any): T {
   let key: string;
   for (key in target) {
-    src[key] =
-      src[key] && src[key].toString() === '[object Object]'
-        ? deepMerge(src[key], target[key])
-        : (src[key] = target[key]);
+    src[key] = isObject(src[key]) ? deepMerge(src[key], target[key]) : (src[key] = target[key]);
   }
   return src;
 }
@@ -59,4 +62,17 @@ export function unique<T = any>(arr: T[], key: string): T[] {
  */
 export function es6Unique<T>(arr: T[]): T[] {
   return Array.from(new Set(arr));
+}
+
+export function openWindow(
+  url: string,
+  opt?: { target?: TargetContext | string; noopener?: boolean; noreferrer?: boolean }
+) {
+  const { target = '__blank', noopener = true, noreferrer = true } = opt || {};
+  const feature: string[] = [];
+
+  noopener && feature.push('noopener=yes');
+  noreferrer && feature.push('noreferrer=yes');
+
+  window.open(url, target, feature.join(','));
 }

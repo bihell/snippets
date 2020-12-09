@@ -1,1 +1,5 @@
-export { default as VirtualScroll } from './src/index';
+import VirtualScroll from './src/index';
+import { withInstall } from '../util';
+
+withInstall(VirtualScroll);
+export { VirtualScroll };
