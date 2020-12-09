@@ -3,7 +3,7 @@ import type { AppRouteModule } from '/@/router/types';
 import { LAYOUT } from '/@/router/constant';
 import { t } from '/@/hooks/web/useI18n';
 
-const tree: AppRouteModule = {
+const blog: AppRouteModule = {
   path: '/blog',
   name: 'Blog',
   component: LAYOUT,
@@ -16,7 +16,7 @@ const tree: AppRouteModule = {
     {
       path: 'article',
       name: 'article',
-      component: () => import('/@/views/demo/tree/index.vue'),
+      component: () => import('/@/views/blog/Articles.vue'),
       meta: {
         title: t('routes.blog.article'),
       },
@@ -24,4 +24,4 @@ const tree: AppRouteModule = {
   ],
 };
 
-export default tree;
+export default blog;

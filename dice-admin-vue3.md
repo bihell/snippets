@@ -157,7 +157,7 @@ import type { AppRouteModule } from '/@/router/types';
 import { LAYOUT } from '/@/router/constant';
 import { t } from '/@/hooks/web/useI18n';
 
-const tree: AppRouteModule = {
+const blog: AppRouteModule = {
   path: '/blog',
   name: 'Blog',
   component: LAYOUT,
@@ -170,7 +170,7 @@ const tree: AppRouteModule = {
     {
       path: 'article',
       name: 'article',
-      component: () => import('/@/views/demo/tree/index.vue'),
+      component: () => import('/@/views/blog/Articles.vue'),
       meta: {
         title: t('routes.blog.article'),
       },
@@ -178,6 +178,48 @@ const tree: AppRouteModule = {
   ],
 };
 
-export default tree;
+export default blog;
+```
+
+# src/layouts/default/footer/index.tsx
+
+注释掉页脚
+
+```
+import './index.less';
+
+import { defineComponent } from 'vue';
+import { Layout } from 'ant-design-vue';
+//
+// import { GithubFilled } from '@ant-design/icons-vue';
+//
+// import { DOC_URL, GITHUB_URL, SITE_URL } from '/@/settings/siteSetting';
+// import { openWindow } from '/@/utils';
+//
+// import { useI18n } from '/@/hooks/web/useI18n';
+
+export default defineComponent({
+  name: 'LayoutContent',
+  setup() {
+    // const { t } = useI18n();
+    return () => {
+      return (
+        <Layout.Footer class="layout-footer">
+          {() => (
+            <>
+              {/*<div class="layout-footer__links">*/}
+              {/*  <a onClick={() => openWindow(SITE_URL)}>{t('layout.footer.onlinePreview')}</a>*/}
+              {/*  <GithubFilled onClick={() => openWindow(GITHUB_URL)} class="github" />*/}
+              {/*  <a onClick={() => openWindow(DOC_URL)}>{t('layout.footer.onlineDocument')}</a>*/}
+              {/*</div>*/}
+              {/*<div>Copyright &copy;2020 Vben Admin</div>*/}
+            </>
+          )}
+        </Layout.Footer>
+      );
+    };
+  },
+});
+
 ```
 
