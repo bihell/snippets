@@ -52,11 +52,6 @@
 
 
 
-[any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
-[screenshoteer](https://github.com/vladocar/screenshoteer)：使用命令行一键截取网页图片
-[Flink1.11+Hive批流一体数仓](https://www.infoq.cn/article/Yj5zE53NzNmM7bPFRaLz?utm_source=rss&utm_medium=article)
-[Spring事务失效的 8 大原因，这次可以吊打面试官了](https://developer.51cto.com/art/202011/631712.htm)
-[YAPI](https://github.com/YMFE/yapi)：分享一个高效、易用、功能强大、可视化的 API 管理平台 - YAPI。拥有可内网部署、扁平化权限设计、类似 Postman 的接口调试、支持 Postman
 [[手把手系列之] Jenkins+Docker 自动化部署 vue 项目](https://segmentfault.com/a/1190000020868116)
 [spug](https://github.com/openspug/spug)：使用 Python+Vue 实现的开源运维平台，前后端分离方便二次开发。该项目基于 Docker 镜像发布部署，方便安装和升级。支持运维常见功能：主机管理、任务计划管理、发布部署、监控告警等
 [awesome-resume-for-chinese](https://github.com/dyweb/awesome-resume-for-chinese) | 收集了一些适合中文的简历模板 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HwMllvEjG)
@@ -554,8 +549,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [TalkingData/inmap](https://github.com/TalkingData/inmap) | 大数据地理可视化 | 2.3k | JavaScript | 11/18 |
 [u014427391/jeeplatform](https://github.com/u014427391/jeeplatform) | 一款企业信息化开发基础平台，拟集成 OA(办公自动化)、SCM(供应链系统)、ERP(企业资源管理系统)、CMS(内容管理系统)、CRM(客户关系管理系统)等企业系统的通用业务功能 JeePlatform 项目是一款以 Spring Framework 为核心框架，集 ORM 框架 Mybatis，Web 层框架 SpringMVC 和多种开源组件框架而成的一款通用基础平台，代码已经捐赠给开源中国社区 | 1.1k | JavaScript | 11/23 |
 [React hooks + Mobx + typescript + EggJs 从 0 到 1 打造一款仿网易云音乐 APP（一） - 掘金](https://juejin.im/post/5eb03584e51d454de10eb031)
-
-
 [ix64/unlock-music](https://github.com/ix64/unlock-music) Unlock encrypted music file in browser. 在浏览器中解锁加密的音乐文件。
 [ymm-tech/gods-pen](https://github.com/ymm-tech/gods-pen) 基于 vue 的高扩展在线网页制作平台，可自定义组件，可添加脚本，可数据统计。A mobile page builder/editor
 [zhangdaiscott / jeecg-boot](https://github.com/zhangdaiscott/jeecg-boot) 一款基于代码生成器的 JAVA 快速开发平台，开源界“小普元”超越传统商业企业级开发平台！采用前后端分离架构：SpringBoot 2.x，Ant Design&Vue，Mybatis-plus，Shiro，JWT。强大的代码生成器让前后端代码一键生成，无需写任何代码! 引领新的开发模式(OnlineCoding 模式-> 代码生成器模式-> 手工 MERGE 智能开发)，帮助 Java 项目解决 70%的重复工作，让开发更多关注业务逻辑。既能快速提高开发效率，帮助公司节省成本，同时又不失灵活性。JeecgBoot 还独创在线开发模式（No 代码）：在线表单配置（表单设计器）、移动配置能力、在线工作流配置（流程设计器）、在线报表配置、在线图表配置、插件能力（可插拔）等等
@@ -698,3 +691,8 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [michaelliao/sinaweibopy](https://github.com/michaelliao/sinaweibopy) | 新浪微博 Python SDK | 1.2k | Python | 05/02 |
 [基于 Vue 全家桶、Lumen 开发的 Web 评教系统](https://github.com/gd4Ark/teacher-scoring-system?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [joplin](https://github.com/laurent22/joplin) joplin 是一个免费的，开源的笔记和待办事项的应用程序，可以处理笔记本组织成的大量笔记。笔记是可搜索的，可以直接从应用程序复制，标记和修改，也可以从自己的文本编辑器进行修改。笔记采用 Markdown 格式。通过.enex 文件从 Evernote 导出的 Notes 可以导入到 Joplin 中，包括格式化内容(转换为 Markdown)，资源(图像，附件等)和完整的元数据(地理位置，更新时间，创建时间等) 。
+[any86/any-rule](https://github.com/any86/any-rule) 正则大全图形界面=> https://any86.github.io/any-rule/
+[screenshoteer](https://github.com/vladocar/screenshoteer)：使用命令行一键截取网页图片
+[Flink1.11+Hive批流一体数仓](https://www.infoq.cn/article/Yj5zE53NzNmM7bPFRaLz?utm_source=rss&utm_medium=article)
+[Spring事务失效的 8 大原因，这次可以吊打面试官了](https://developer.51cto.com/art/202011/631712.htm)
+[YAPI](https://github.com/YMFE/yapi)：分享一个高效、易用、功能强大、可视化的 API 管理平台 - YAPI。拥有可内网部署、扁平化权限设计、类似 Postman 的接口调试、支持 Postman
