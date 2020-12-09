@@ -1,18 +1,16 @@
 import type { RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
 
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import { createGuard } from './guard/';
 
 import { basicRoutes } from './routes/';
 import { scrollBehavior } from './scrollBehaviour';
 
-export const hashRouter = createWebHashHistory();
-
 // app router
 const router = createRouter({
-  history: hashRouter,
+  history: createWebHistory('admin'),
   routes: basicRoutes as RouteRecordRaw[],
   strict: true,
   scrollBehavior: scrollBehavior,

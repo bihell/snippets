@@ -1,4 +1,4 @@
-#  .env.development
+#  	.env.development
 
 ```vue
 # Whether to open mock
@@ -20,7 +20,7 @@ import { loginApi } from '/@/api/sys/user';
 ```
 
 ```
-/**
+  /**
    * @description: login
    */
   @Action
@@ -28,6 +28,7 @@ import { loginApi } from '/@/api/sys/user';
     try {
       const data = await loginApi(params);
       const { token, userId } = data;
+
       // save token
       this.commitTokenState(token);
 
@@ -36,12 +37,7 @@ import { loginApi } from '/@/api/sys/user';
 
       // const name = FULL_PAGE_NOT_FOUND_ROUTE.name;
       // name && router.removeRoute(name);
-      goHome &&
-        (await router.push(PageEnum.BASE_HOME).then(() => {
-          setTimeout(() => {
-            appStore.commitPageLoadingState(false);
-          }, 30);
-        }));
+      goHome && router.push(PageEnum.BASE_HOME);
       return userInfo;
     } catch (error) {
       return null;
@@ -92,5 +88,21 @@ export enum ResultEnum {
   TIMEOUT = 401,
   TYPE = 'success',
 }
+```
+
+# src/router/index.ts
+
+```
+import { createRouter, createWebHistory } from 'vue-router';
+```
+
+```
+// app router
+const router = createRouter({
+  history: createWebHistory('admin'),
+  routes: basicRoutes as RouteRecordRaw[],
+  strict: true,
+  scrollBehavior: scrollBehavior,
+});
 ```
 
