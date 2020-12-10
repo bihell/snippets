@@ -1,4 +1,4 @@
-## Wip
+## 2.0.0-rc.13 (2020-12-10)
 
 ## (破坏性更新) Breaking changes
 
@@ -16,6 +16,7 @@
 ### ✨ Refactor
 
 - tree 组件 ref 函数调用删除 `$`
+- 锁屏界面重构美化，删除不必要的背景图片
 
 ### ⚡ Performance Improvements
 

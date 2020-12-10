@@ -24,9 +24,16 @@ import { loginApi } from '/@/api/sys/user';
    * @description: login
    */
   @Action
-  async login(params: LoginParams, goHome = true): Promise<GetUserInfoByUserIdModel | null> {
+  async login(
+    params: LoginParams & {
+      goHome?: boolean;
+      mode?: ErrorMessageMode;
+    }
+  ): Promise<GetUserInfoByUserIdModel | null> {
     try {
-      const data = await loginApi(params);
+      const { goHome = true, mode, ...loginParams } = params;
+      const data = await loginApi(loginParams, mode);
+
       const { token, userId } = data;
 
       // save token
@@ -37,7 +44,7 @@ import { loginApi } from '/@/api/sys/user';
 
       // const name = FULL_PAGE_NOT_FOUND_ROUTE.name;
       // name && router.removeRoute(name);
-      goHome && router.push(PageEnum.BASE_HOME);
+      goHome && router.replace(PageEnum.BASE_HOME);
       return userInfo;
     } catch (error) {
       return null;
@@ -73,7 +80,6 @@ enum Api {
   GetUserInfoById = '/getUserInfoById',
   GetPermCodeByUserId = '/getPermCodeByUserId',
 }
-
 ```
 
 # src/enums/httpEnum.ts
