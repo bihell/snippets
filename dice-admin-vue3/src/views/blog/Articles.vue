@@ -6,14 +6,14 @@
   import { BasicTable, useTable } from '/@/components/Table';
   import { getBasicColumns, getFormConfig } from './tableData';
 
-  import { demoListApi } from '/@/api/demo/table';
+  import { articleListApi } from '/@/api/blog/blog';
 
   export default defineComponent({
     components: { BasicTable },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
-        api: demoListApi,
+        api: articleListApi,
         columns: getBasicColumns(),
         useSearchForm: true,
         formConfig: getFormConfig(),
