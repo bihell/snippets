@@ -696,3 +696,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Flink1.11+Hive批流一体数仓](https://www.infoq.cn/article/Yj5zE53NzNmM7bPFRaLz?utm_source=rss&utm_medium=article)
 [Spring事务失效的 8 大原因，这次可以吊打面试官了](https://developer.51cto.com/art/202011/631712.htm)
 [YAPI](https://github.com/YMFE/yapi)：分享一个高效、易用、功能强大、可视化的 API 管理平台 - YAPI。拥有可内网部署、扁平化权限设计、类似 Postman 的接口调试、支持 Postman
+[jd-base](https://github.com/EvineDeng/jd-base) 京东薅羊毛脚本https://github.com/lxk0301/jd_scripts 的shell套壳工具
