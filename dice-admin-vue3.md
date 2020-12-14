@@ -2,10 +2,23 @@
 
 ```vue
 # Whether to open mock
-VITE_USE_MOCK = true
+VITE_USE_MOCK = false
+
+# public path
+VITE_PUBLIC_PATH = /
+
+# Cross-domain proxy, you can configure multiple
+VITE_PROXY=[["/api","http://localhost:3000"],["/upload","http://localhost:3001/upload"]]
+# VITE_PROXY=[["/api","https://vvbin.cn/test"]]
+
+# Delete console
+VITE_DROP_CONSOLE = false
 
 # Basic interface address SPA
-VITE_GLOB_API_URL=http://127.0.0.1:81
+VITE_GLOB_API_URL=http://127.0.0.1:9091
+
+# File upload address， optional
+VITE_GLOB_UPLOAD_URL=/upload
 
 # Interface prefix
 VITE_GLOB_API_URL_PREFIX=/v1/api/admin
@@ -44,7 +57,7 @@ import { loginApi } from '/@/api/sys/user';
 
       // const name = FULL_PAGE_NOT_FOUND_ROUTE.name;
       // name && router.removeRoute(name);
-      goHome && router.replace(PageEnum.BASE_HOME);
+      goHome && (await router.replace(PageEnum.BASE_HOME));
       return userInfo;
     } catch (error) {
       return null;
@@ -105,7 +118,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 ```
 // app router
 const router = createRouter({
-  history: createWebHistory('admin'),
+  history: createWebHistory(),
   routes: basicRoutes as RouteRecordRaw[],
   strict: true,
   scrollBehavior: scrollBehavior,
@@ -187,46 +200,11 @@ const blog: AppRouteModule = {
 export default blog;
 ```
 
-# src/layouts/default/footer/index.tsx
-
-注释掉页脚
+# src/settings/projectSetting.ts
 
 ```
-import './index.less';
-
-import { defineComponent } from 'vue';
-import { Layout } from 'ant-design-vue';
-//
-// import { GithubFilled } from '@ant-design/icons-vue';
-//
-// import { DOC_URL, GITHUB_URL, SITE_URL } from '/@/settings/siteSetting';
-// import { openWindow } from '/@/utils';
-//
-// import { useI18n } from '/@/hooks/web/useI18n';
-
-export default defineComponent({
-  name: 'LayoutContent',
-  setup() {
-    // const { t } = useI18n();
-    return () => {
-      return (
-        <Layout.Footer class="layout-footer">
-          {() => (
-            <>
-              {/*<div class="layout-footer__links">*/}
-              {/*  <a onClick={() => openWindow(SITE_URL)}>{t('layout.footer.onlinePreview')}</a>*/}
-              {/*  <GithubFilled onClick={() => openWindow(GITHUB_URL)} class="github" />*/}
-              {/*  <a onClick={() => openWindow(DOC_URL)}>{t('layout.footer.onlineDocument')}</a>*/}
-              {/*</div>*/}
-              {/*<div>Copyright &copy;2020 Vben Admin</div>*/}
-            </>
-          )}
-        </Layout.Footer>
-      );
-    };
-  },
-});
-
+  // Whether to show footer
+  showFooter: false,
 ```
 
 # src/views/blog/Articles.vue
@@ -354,5 +332,49 @@ export function getFormConfig(): Partial<FormProps> {
     ],
   };
 }
+```
+
+# src/api/model/baseModel.ts
+
+```
+export interface BasicFetchResult<T extends any> {
+  list: T;
+  total: number;
+}
+```
+
+# src/api/blog/model/blogModel.ts
+
+```
+import { BasicPageParams, BasicFetchResult } from '/@/api/model/baseModel';
+/**
+ * @description: Request list interface parameters
+ */
+export type ArticleListParams = BasicPageParams;
+
+export interface ArticleListItem {
+  createTime: string;
+  updateTime: string;
+  creator: number;
+  modifier: number;
+  deleted: number;
+  id: number;
+  title: string;
+  content: string;
+  hits: number;
+  tags: string;
+  category: string;
+  priority: number;
+  status: string;
+  type: string;
+  allowComment: boolean;
+  commentCount: number;
+}
+
+/**
+ * @description: Request list return value
+ */
+export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
+
 ```
 
