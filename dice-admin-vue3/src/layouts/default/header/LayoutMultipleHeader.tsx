@@ -3,7 +3,7 @@ import './LayoutMultipleHeader.less';
 import { defineComponent, unref, computed, ref, watch, nextTick, CSSProperties } from 'vue';
 
 import LayoutHeader from './LayoutHeader';
-import MultipleTabs from '../multitabs/index';
+import MultipleTabs from '../tabs/index.vue';
 
 import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
 import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
@@ -21,7 +21,7 @@ export default defineComponent({
 
     const injectValue = useLayoutContext();
 
-    const { getCalcContentWidth, getSplit } = useMenuSetting();
+    const { getCalcContentWidth } = useMenuSetting();
 
     const {
       getFixed,
@@ -56,8 +56,7 @@ export default defineComponent({
       (): CSSProperties => {
         const style: CSSProperties = {};
         if (unref(getFixed)) {
-          style.width =
-            unref(injectValue.isMobile) || unref(getSplit) ? '100%' : unref(getCalcContentWidth);
+          style.width = unref(injectValue.isMobile) ? '100%' : unref(getCalcContentWidth);
         }
         if (unref(getShowFullHeaderRef)) {
           style.top = `${unref(fullHeaderHeightRef)}px`;

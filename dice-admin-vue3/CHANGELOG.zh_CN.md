@@ -1,3 +1,29 @@
+## Wip
+
+### ✨ Features
+
+- 移除左侧菜单搜索，新增顶部菜单搜索功能
+
+### ⚡ Performance Improvements
+
+- 异步引入组件
+
+### 🎫 Chores
+
+- 返回顶部样式调整,避免遮住其他元素
+- 升级`ant-design-vue`到`2.0.0-rc.4`
+
+### 🐛 Bug Fixes
+
+- 修复多级路由缓存导致组件渲染多次的问题
+- 修复地图图表切换后消失问题
+- 修复登录成功 notify 消失问题
+- 修改 `VirtualScroll`和`ImportExcel`组件名为`VScroll`与`ImpExcel`,暂时解决含有关键字的组件在 vue 模版内使用内存溢出
+- 修复 axios 大小写问题
+- 修复按钮样式问题
+- 修复菜单分割模式问题
+- 修复 `Modal`与`Drawer`组件在使用 emits 数据传递失效问题
+
 ## 2.0.0-rc.13 (2020-12-10)
 
 ## (破坏性更新) Breaking changes
