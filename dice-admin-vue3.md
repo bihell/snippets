@@ -230,6 +230,7 @@ export default blog;
         useSearchForm: true,
         formConfig: getFormConfig(),
         showTableSetting: true,
+        showIndexColumn: false,
       });
 
       return {
@@ -238,6 +239,7 @@ export default blog;
     },
   });
 </script>
+
 
 ```
 
@@ -286,47 +288,42 @@ export function getBasicColumns(): BasicColumn[] {
   ];
 }
 
-// export const getAdvanceSchema = (itemNumber = 6): FormSchema[] => {
-//   const arr: any = [];
-//   // for (let index = 0; index < itemNumber; index++) {
-//   //   arr.push({
-//   //     field: `field${index}`,
-//   //     label: `字段${index}`,
-//   //     component: 'Input',
-//   //     colProps: {
-//   //       xl: 12,
-//   //       xxl: 8,
-//   //     },
-//   //   });
-//   // }
-//   return arr;
-// };
-
 export function getFormConfig(): Partial<FormProps> {
   return {
-    labelWidth: 100,
+    labelWidth: 70,
     schemas: [
-      // ...getAdvanceSchema(5),
       {
-        field: `field11`,
-        label: `字段33`,
+        field: `status`,
+        label: `文章状态`,
         component: 'Select',
-        defaultValue: '1',
+        defaultValue: '',
         componentProps: {
           options: [
             {
-              label: '选项1',
-              value: '1',
+              label: '不限制',
+              value: '',
             },
             {
-              label: '选项2',
-              value: '2',
+              label: '已发布',
+              value: 'PUBLISHED',
+            },
+            {
+              label: '草稿',
+              value: 'DRAFT',
+            },
+            {
+              label: '回收站',
+              value: 'RECYCLE',
+            },
+            {
+              label: '私密',
+              value: 'INTIMATE',
             },
           ],
         },
         colProps: {
-          xl: 12,
-          xxl: 8,
+          xl: 5,
+          xxl: 3,
         },
       },
     ],
@@ -375,6 +372,50 @@ export interface ArticleListItem {
  * @description: Request list return value
  */
 export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
+
+```
+
+# src/components/Table/src/**const.ts**
+
+```
+// 通用接口字段设置
+// 支持 xxx.xxx.xxx格式
+export const FETCH_SETTING = {
+  // 传给后台的当前页字段名
+  pageField: 'pageIndex',
+  // 传给后台的每页显示记录数字段名
+  sizeField: 'pageSize',
+  // 接口返回的表格数据字段名
+  listField: 'records',
+  // 接口返回的表格总数字段名
+  totalField: 'total',
+};
+
+```
+
+# /src/api/blog/blog.ts
+
+```
+import { defHttp } from '/@/utils/http/axios';
+import { ArticleListParams, ArticleListGetResultModel } from './model/blogModel';
+
+enum Api {
+  Article_LIST = '/article/getPageList',
+}
+
+/**
+ * @description: Get sample list value
+ */
+export function articleListApi(params: ArticleListParams) {
+  return defHttp.request<ArticleListGetResultModel>({
+    url: Api.Article_LIST,
+    method: 'POST',
+    params,
+    headers: {
+      ignoreCancelToken: true,
+    },
+  });
+}
 
 ```
 

@@ -40,47 +40,42 @@ export function getBasicColumns(): BasicColumn[] {
   ];
 }
 
-// export const getAdvanceSchema = (itemNumber = 6): FormSchema[] => {
-//   const arr: any = [];
-//   // for (let index = 0; index < itemNumber; index++) {
-//   //   arr.push({
-//   //     field: `field${index}`,
-//   //     label: `字段${index}`,
-//   //     component: 'Input',
-//   //     colProps: {
-//   //       xl: 12,
-//   //       xxl: 8,
-//   //     },
-//   //   });
-//   // }
-//   return arr;
-// };
-
 export function getFormConfig(): Partial<FormProps> {
   return {
-    labelWidth: 100,
+    labelWidth: 70,
     schemas: [
-      // ...getAdvanceSchema(5),
       {
-        field: `field11`,
-        label: `字段33`,
+        field: `status`,
+        label: `文章状态`,
         component: 'Select',
-        defaultValue: '1',
+        defaultValue: '',
         componentProps: {
           options: [
             {
-              label: '选项1',
-              value: '1',
+              label: '不限制',
+              value: '',
             },
             {
-              label: '选项2',
-              value: '2',
+              label: '已发布',
+              value: 'PUBLISHED',
+            },
+            {
+              label: '草稿',
+              value: 'DRAFT',
+            },
+            {
+              label: '回收站',
+              value: 'RECYCLE',
+            },
+            {
+              label: '私密',
+              value: 'INTIMATE',
             },
           ],
         },
         colProps: {
-          xl: 12,
-          xxl: 8,
+          xl: 5,
+          xxl: 3,
         },
       },
     ],

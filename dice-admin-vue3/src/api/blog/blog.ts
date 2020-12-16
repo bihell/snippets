@@ -2,7 +2,7 @@ import { defHttp } from '/@/utils/http/axios';
 import { ArticleListParams, ArticleListGetResultModel } from './model/blogModel';
 
 enum Api {
-  Article_LIST = '/article',
+  Article_LIST = '/article/getPageList',
 }
 
 /**
@@ -11,7 +11,7 @@ enum Api {
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.Article_LIST,
-    method: 'GET',
+    method: 'POST',
     params,
     headers: {
       ignoreCancelToken: true,

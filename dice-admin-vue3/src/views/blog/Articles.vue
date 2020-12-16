@@ -18,6 +18,7 @@
         useSearchForm: true,
         formConfig: getFormConfig(),
         showTableSetting: true,
+        showIndexColumn: false,
       });
 
       return {
