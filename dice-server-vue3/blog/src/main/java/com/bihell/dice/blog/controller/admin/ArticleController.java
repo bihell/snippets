@@ -1,19 +1,22 @@
 package com.bihell.dice.blog.controller.admin;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.bihell.dice.framework.common.api.ApiCode;
 import com.bihell.dice.framework.common.api.ApiResult;
+import com.bihell.dice.framework.core.pagination.Paging;
+import com.bihell.dice.framework.log.annotation.OperationLog;
+import com.bihell.dice.framework.log.enums.OperationLogType;
 import com.bihell.dice.framework.util.LoginUtil;
 import com.bihell.dice.blog.model.blog.Article;
-import com.bihell.dice.framework.core.pagination.Pagination;
 import com.bihell.dice.blog.model.params.ArticleParam;
 import com.bihell.dice.blog.service.blog.ArticleService;
-import com.bihell.dice.config.constant.DiceConsts;
 import com.bihell.dice.framework.common.api.RestResponse;
 import com.bihell.dice.blog.utils.Types;
+import com.bihell.dice.blog.param.ArticlePageParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,17 +35,14 @@ public class ArticleController {
     private final ArticleService articleService;
 
     /**
-     * 文章信息列表
-     *
-     * @param pageNum  第几页
-     * @param pageSize 每页数量
-     * @return {@see Pagination<Article>}
+     * 文章分页列表
      */
-    @GetMapping
-    public RestResponse index(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                              @RequestParam(required = false, defaultValue = DiceConsts.PAGE_SIZE) Integer pageSize, Article articleParam) {
-        IPage<Article> articles = articleService.getAdminArticles(pageNum, pageSize, articleParam);
-        return RestResponse.ok(new Pagination<Article>(articles));
+    @PostMapping("/getPageList")
+    @OperationLog(name = "文章分页列表", type = OperationLogType.PAGE)
+    @ApiOperation(value = "文章分页列表", response = Article.class)
+    public ApiResult<Paging<Article>> getArticlePageList(@Validated @RequestBody ArticlePageParam articlePageParam) throws Exception {
+        Paging<Article> paging = articleService.getArticlePageList(articlePageParam);
+        return ApiResult.ok(paging);
     }
 
     /**
