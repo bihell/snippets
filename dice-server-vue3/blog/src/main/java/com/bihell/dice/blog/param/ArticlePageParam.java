@@ -19,4 +19,7 @@ import lombok.experimental.Accessors;
 public class ArticlePageParam extends BasePageOrderParam {
     private static final long serialVersionUID = 1L;
     private PostStatusEnum status;
+    private Integer priority;
+    private String title;
+    private String content;
 }

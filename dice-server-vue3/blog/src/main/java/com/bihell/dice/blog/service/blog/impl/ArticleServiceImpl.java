@@ -120,13 +120,11 @@ public class ArticleServiceImpl extends BaseServiceImpl<ArticleMapper, Article> 
         Page<Article> page = new PageInfo<>(articlePageParam, OrderItem.desc(getLambdaColumn(Article::getUpdateTime)));
         LambdaQueryWrapper<Article> wrapper = new QueryWrapper<Article>().lambda()
                 .select(Article.class, info -> !"content".equals(info.getColumn()))
-//                .eq(Article::getType, Types.POST)
-                .eq(!StringUtils.isEmpty(articlePageParam.getStatus()), Article::getStatus, articlePageParam.getStatus());
-//                .eq(!StringUtils.isEmpty(query.getPriority()), Article::getPriority, query.getPriority())
-//                .like(!StringUtils.isEmpty(query.getTitle()), Article::getTitle, query.getTitle())
-//                .like(!StringUtils.isEmpty(query.getTags()), Article::getTags, query.getTags())
-//                .like(!StringUtils.isEmpty(query.getCategory()), Article::getCategory, query.getCategory())
-//                .like(!StringUtils.isEmpty(query.getContent()), Article::getContent, query.getContent());
+                .eq(Article::getType, Types.POST)
+                .eq(!StringUtils.isEmpty(articlePageParam.getStatus()), Article::getStatus, articlePageParam.getStatus())
+                .eq(!StringUtils.isEmpty(articlePageParam.getPriority()), Article::getPriority, articlePageParam.getPriority())
+                .like(!StringUtils.isEmpty(articlePageParam.getTitle()), Article::getTitle, articlePageParam.getTitle())
+                .like(!StringUtils.isEmpty(articlePageParam.getContent()), Article::getContent, articlePageParam.getContent());
         IPage<Article> iPage = articleMapper.selectPage(page,wrapper);
         return new Paging<>(iPage);
     }
