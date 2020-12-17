@@ -19,6 +19,7 @@
         formConfig: getFormConfig(),
         showTableSetting: true,
         showIndexColumn: false,
+        bordered: true,
       });
 
       return {

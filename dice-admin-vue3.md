@@ -231,6 +231,7 @@ export default blog;
         formConfig: getFormConfig(),
         showTableSetting: true,
         showIndexColumn: false,
+        bordered: true,
       });
 
       return {
@@ -239,8 +240,6 @@ export default blog;
     },
   });
 </script>
-
-
 ```
 
 # src/views/blog/tableData.tsx
@@ -259,19 +258,22 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: '标题',
       dataIndex: 'title',
+      align: 'left',
     },
     {
       title: '分类',
       dataIndex: 'category',
-      width: 150,
+      width: 60,
     },
     {
       title: '状态',
       dataIndex: 'status',
+      width: 120,
     },
     {
       title: '评论',
       dataIndex: 'commentCount',
+      width: 60,
     },
     {
       title: '发布日期',
@@ -290,18 +292,19 @@ export function getBasicColumns(): BasicColumn[] {
 
 export function getFormConfig(): Partial<FormProps> {
   return {
-    labelWidth: 70,
+    labelWidth: 10,
     schemas: [
       {
         field: `status`,
-        label: `文章状态`,
+        label: ` `,
         component: 'Select',
         defaultValue: '',
         componentProps: {
+          placeholder: '状态',
           options: [
             {
               label: '不限制',
-              value: '',
+              value: null,
             },
             {
               label: '已发布',
@@ -322,8 +325,59 @@ export function getFormConfig(): Partial<FormProps> {
           ],
         },
         colProps: {
-          xl: 5,
-          xxl: 3,
+          xl: 4,
+          xxl: 2,
+        },
+      },
+      {
+        field: `priority`,
+        label: ` `,
+        component: 'Select',
+        defaultValue: '',
+        componentProps: {
+          placeholder: '是否置顶',
+          options: [
+            {
+              label: '不限制',
+              value: null,
+            },
+            {
+              label: '普通',
+              value: 0,
+            },
+            {
+              label: '置顶',
+              value: 1,
+            },
+          ],
+        },
+        colProps: {
+          xl: 4,
+          xxl: 2,
+        },
+      },
+      {
+        field: `title`,
+        label: ` `,
+        component: 'Input',
+        componentProps: {
+          placeholder: '搜索标题',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
+        },
+      },
+      {
+        field: `content`,
+        label: ` `,
+        component: 'Input',
+        componentProps: {
+          placeholder: '搜索内容',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
         },
       },
     ],

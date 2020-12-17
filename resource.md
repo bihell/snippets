@@ -698,4 +698,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [YAPI](https://github.com/YMFE/yapi)：分享一个高效、易用、功能强大、可视化的 API 管理平台 - YAPI。拥有可内网部署、扁平化权限设计、类似 Postman 的接口调试、支持 Postman
 [jd-base](https://github.com/EvineDeng/jd-base) 京东薅羊毛脚本https://github.com/lxk0301/jd_scripts 的shell套壳工具
 [SuperMarket](https://github.com/GoogleLLP/SuperMarket) 这是一款设计精良的网上商城系统，包括前端、后端、数据库、负载均衡、数据库缓存、分库分表、读写分离、全文检索、消息队列等，使用SpringCloud框架，基于Java开发。该项目可部署到服务器上，不断完善中……
-
+[sherlock](https://github.com/sherlock-project/sherlock)  Hunt down social media accounts by username across social networks
+[snapdrop](https://github.com/RobinLinus/snapdrop) A Progressive Web App for local file sharing
+[BlueSea](https://github.com/jiangqizheng/BlueSea) BlueSea，是一个有趣的英语学习扩展程序。支持划词翻译、单词高亮、单词弹幕、记忆曲线复习、词频统计...等功能。
+[novel-plus](https://github.com/201206030/novel-plus) 小说精品屋-plus是一个多端（PC、WAP）阅读、功能完善的原创文学CMS系统，包含了作家专区供原创作者上传小说，提供了爬虫工具定义规则多线程采集任意小说网站数据作为网站测试小说数据，新书自动入库，老书自动更新。
