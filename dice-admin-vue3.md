@@ -85,16 +85,6 @@ import { loginApi } from '/@/api/sys/user';
   }
 ```
 
-# /src/api/sys/user.ts
-
-```
-enum Api {
-  Login = '/auth/login',
-  GetUserInfoById = '/getUserInfoById',
-  GetPermCodeByUserId = '/getPermCodeByUserId',
-}
-```
-
 # src/enums/httpEnum.ts
 
 ```
@@ -211,17 +201,31 @@ export default blog;
 
 ```
 <template>
-  <BasicTable @register="registerTable" />
+  <BasicTable @register="registerTable">
+    <template #category="{ record }">
+      <Tag color="blue">
+        {{ record.category }}
+      </Tag>
+    </template>
+    <template #status="{ record }">
+      <Tag color="blue">
+        {{ status[record.status].text }}
+      </Tag>
+    </template>
+    <template #cc="{ record }">
+      <Badge :count="record.commentCount" show-zero />
+    </template>
+  </BasicTable>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable } from '/@/components/Table';
   import { getBasicColumns, getFormConfig } from './tableData';
-
-  import { articleListApi } from '/@/api/blog/blog';
+  import { Tag, Badge } from 'ant-design-vue';
+  import { articleListApi, postStatus } from '/@/api/blog/blog';
 
   export default defineComponent({
-    components: { BasicTable },
+    components: { BasicTable, Tag, Badge },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
@@ -234,12 +238,16 @@ export default blog;
         bordered: true,
       });
 
+      const status = postStatus();
+
       return {
         registerTable,
+        status,
       };
     },
   });
 </script>
+
 ```
 
 # src/views/blog/tableData.tsx
@@ -247,6 +255,7 @@ export default blog;
 ```
 import { FormProps } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table/src/types/table';
+import { formatToDateTime } from '/@/utils/dateUtil';
 
 export function getBasicColumns(): BasicColumn[] {
   return [
@@ -263,29 +272,37 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: '分类',
       dataIndex: 'category',
-      width: 60,
+      width: 80,
+      align: 'center',
+      slots: { customRender: 'category' },
     },
     {
       title: '状态',
       dataIndex: 'status',
-      width: 120,
+      width: 70,
+      align: 'center',
+      slots: { customRender: 'status' },
     },
     {
       title: '评论',
       dataIndex: 'commentCount',
       width: 60,
+      align: 'center',
+      slots: { customRender: 'cc' },
     },
     {
       title: '发布日期',
       sorter: true,
-      dataIndex: 'publish',
+      dataIndex: 'createTime',
       width: 150,
+      customRender: ({ record }) => formatToDateTime(record.createTime),
     },
     {
       title: '修改日期',
       sorter: true,
       dataIndex: 'updateTime',
       width: 150,
+      customRender: ({ record }) => formatToDateTime(record.updateTime),
     },
   ];
 }
@@ -383,6 +400,17 @@ export function getFormConfig(): Partial<FormProps> {
     ],
   };
 }
+
+```
+
+# /src/api/sys/user.ts
+
+```
+enum Api {
+  Login = '/auth/login',
+  GetUserInfoById = '/getUserInfoById',
+  GetPermCodeByUserId = '/getPermCodeByUserId',
+}
 ```
 
 # src/api/model/baseModel.ts
@@ -429,24 +457,6 @@ export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
 
 ```
 
-# src/components/Table/src/**const.ts**
-
-```
-// 通用接口字段设置
-// 支持 xxx.xxx.xxx格式
-export const FETCH_SETTING = {
-  // 传给后台的当前页字段名
-  pageField: 'pageIndex',
-  // 传给后台的每页显示记录数字段名
-  sizeField: 'pageSize',
-  // 接口返回的表格数据字段名
-  listField: 'records',
-  // 接口返回的表格总数字段名
-  totalField: 'total',
-};
-
-```
-
 # /src/api/blog/blog.ts
 
 ```
@@ -470,6 +480,54 @@ export function articleListApi(params: ArticleListParams) {
     },
   });
 }
+
+export function postStatus() {
+  return ({
+    PUBLISHED: {
+      value: 'PUBLISHED',
+      color: 'green',
+      status: 'success',
+      text: '已发布'
+    },
+    DRAFT: {
+      value: 'DRAFT',
+      color: 'warning',
+      status: 'warning',
+      text: '草稿'
+    },
+    RECYCLE: {
+      value: 'RECYCLE',
+      color: 'danger',
+      status: 'error',
+      text: '回收站'
+    },
+    INTIMATE: {
+      value: 'INTIMATE',
+      color: 'blue',
+      status: 'success',
+      text: '私密'
+    }
+  })
+}
+
+
+```
+
+# src/components/Table/src/**const.ts**
+
+```
+// 通用接口字段设置
+// 支持 xxx.xxx.xxx格式
+export const FETCH_SETTING = {
+  // 传给后台的当前页字段名
+  pageField: 'pageIndex',
+  // 传给后台的每页显示记录数字段名
+  sizeField: 'pageSize',
+  // 接口返回的表格数据字段名
+  listField: 'records',
+  // 接口返回的表格总数字段名
+  totalField: 'total',
+};
 
 ```
 

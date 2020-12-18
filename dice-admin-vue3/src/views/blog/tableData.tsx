@@ -1,5 +1,6 @@
 import { FormProps } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table/src/types/table';
+import { formatToDateTime } from '/@/utils/dateUtil';
 
 export function getBasicColumns(): BasicColumn[] {
   return [
@@ -16,29 +17,37 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: '分类',
       dataIndex: 'category',
-      width: 60,
+      width: 80,
+      align: 'center',
+      slots: { customRender: 'category' },
     },
     {
       title: '状态',
       dataIndex: 'status',
-      width: 120,
+      width: 70,
+      align: 'center',
+      slots: { customRender: 'status' },
     },
     {
       title: '评论',
       dataIndex: 'commentCount',
       width: 60,
+      align: 'center',
+      slots: { customRender: 'cc' },
     },
     {
       title: '发布日期',
       sorter: true,
-      dataIndex: 'publish',
+      dataIndex: 'createTime',
       width: 150,
+      customRender: ({ record }) => formatToDateTime(record.createTime),
     },
     {
       title: '修改日期',
       sorter: true,
       dataIndex: 'updateTime',
       width: 150,
+      customRender: ({ record }) => formatToDateTime(record.updateTime),
     },
   ];
 }
