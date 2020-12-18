@@ -702,3 +702,13 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [snapdrop](https://github.com/RobinLinus/snapdrop) A Progressive Web App for local file sharing
 [BlueSea](https://github.com/jiangqizheng/BlueSea) BlueSea，是一个有趣的英语学习扩展程序。支持划词翻译、单词高亮、单词弹幕、记忆曲线复习、词频统计...等功能。
 [novel-plus](https://github.com/201206030/novel-plus) 小说精品屋-plus是一个多端（PC、WAP）阅读、功能完善的原创文学CMS系统，包含了作家专区供原创作者上传小说，提供了爬虫工具定义规则多线程采集任意小说网站数据作为网站测试小说数据，新书自动入库，老书自动更新。
+[mapbox-gl-js](https://github.com/mapbox/mapbox-gl-js) Mapbox GL JS是一个JavaScript库，使用WebGL渲染交互式矢量瓦片地图和栅格瓦片地图。WebGL渲染意味着高性能，MapboxGL能够渲染大量的地图要素，拥有流畅的交互以及动画效果、可以显示立体地图并且支持移动端，是一款十分优秀的WEB GIS(地理信息系统) 开发框架。
+[vant](https://github.com/youzan/vant) Vant Weapp是移动端 Vue组件库Vant的小程序版本，两者基于相同的视觉规范，提供一致的API接口，助力开发者快速搭建小程序应用。
+[realworld](https://github.com/gothinkster/realworld) RealWorld应用程序是对Medium.com的完整克隆，已经通过各种各样的前端和后端技术实现。它可以对13个框架进行比较，并且比较的是比其他基准测试更大、更复杂的应用程序的实现。
+[iDataV](https://github.com/yyhsong/iDataV) 这是一个开源大屏模板，通过它你可以快速开始一个可视化大屏项目
+[uni-app](https://github.com/dcloudio/uni-app) 这是一个使用Vue.js开发跨平台应用的前端框架，uni-app框架将开发者使
+[siyuan](https://github.com/siyuan-note/siyuan) 📕 思源笔记是一款 Markdown 块级引用和双向链接的网状笔记应用，支持 Windows、Mac 和 Linux，可在浏览器上直接使用，支持移动端适配。SiYuan is a Markdown Block-Reference and Bidirectional-Link note-taking application, supports Windows, Mac and Linux, can be used directly on the browser, and supports mobile-end adaptation.
+[BilibiliTask](https://github.com/srcrs/BilibiliTask) 哔哩哔哩(B站)自动完成每日任务，投币，点赞，直播签到，自动兑换银瓜子为硬币，自动送出即将过期礼物，漫画App签到。
+[fscan](https://github.com/shadow1ng/fscan) 一款内网扫描工具，方便一键大保健~
+[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved) 强大的哔哩哔哩增强脚本: 下载视频, 音乐, 封面, 弹幕 / 简化直播间, 评论区, 首页 / 自定义顶栏, 删除广告, 夜间模式 / 触屏设备支持
+
