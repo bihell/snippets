@@ -119,43 +119,25 @@ const router = createRouter({
 
 ```
 import type { MenuModule } from '/@/router/types.d';
-import { t } from '/@/hooks/web/useI18n';
 
 const menu: MenuModule = {
   orderNo: 0,
   menu: {
     path: '/blog',
-    name: t('routes.blog.blog'),
+    name: '博客',
     children: [
       {
+        path: 'articles',
+        name: '文章列表',
+      },
+      {
         path: 'article',
-        name: t('routes.blog.article'),
+        name: '编辑文章',
       },
     ],
   },
 };
 export default menu;
-
-```
-
-# src/locales/lang/en/routes/blog.ts
-
-```
-export default {
-  blog: 'Blog',
-
-  article: 'Article',
-};
-```
-
-# src/locales/lang/zh_CN/routes/blog.ts
-
-```
-export default {
-  blog: '博客',
-
-  article: '文章列表',
-};
 ```
 
 # src/router/routes/modules/blog.ts
@@ -164,7 +146,6 @@ export default {
 import type { AppRouteModule } from '/@/router/types';
 
 import { LAYOUT } from '/@/router/constant';
-import { t } from '/@/hooks/web/useI18n';
 
 const blog: AppRouteModule = {
   path: '/blog',
@@ -173,21 +154,30 @@ const blog: AppRouteModule = {
   redirect: '/blog/article',
   meta: {
     icon: 'carbon:blog',
-    title: t('routes.blog.blog'),
+    title: '博客',
   },
   children: [
     {
-      path: 'article',
-      name: 'article',
+      path: 'articles',
+      name: 'articles',
       component: () => import('/@/views/blog/Articles.vue'),
       meta: {
-        title: t('routes.blog.article'),
+        title: '文章列表',
+      },
+    },
+    {
+      path: 'article',
+      name: 'article',
+      component: () => import('/@/views/blog/Article.vue'),
+      meta: {
+        title: '编辑文章',
       },
     },
   ],
 };
 
 export default blog;
+
 ```
 
 # src/settings/projectSetting.ts
@@ -215,17 +205,31 @@ export default blog;
     <template #cc="{ record }">
       <Badge :count="record.commentCount" show-zero />
     </template>
+    <template #action="{ record }">
+      <TableAction
+        :drop-down-actions="[
+          {
+            label: '编辑',
+            onClick: handleDelete.bind(null, record),
+          },
+          {
+            label: '删除',
+            onClick: handleOpen.bind(null, record),
+          },
+        ]"
+      />
+    </template>
   </BasicTable>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable } from '/@/components/Table';
+  import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge },
+    components: { BasicTable, Tag, Badge, TableAction },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
@@ -236,13 +240,29 @@ export default blog;
         showTableSetting: true,
         showIndexColumn: false,
         bordered: true,
+        actionColumn: {
+          width: 65,
+          title: '操作',
+          align: 'center',
+          dataIndex: 'action',
+          slots: { customRender: 'action' },
+        },
       });
 
       const status = postStatus();
 
+      function handleDelete(record: any) {
+        console.log('点击了删除', record);
+      }
+      function handleOpen(record: any) {
+        console.log('点击了启用', record);
+      }
+
       return {
         registerTable,
         status,
+        handleDelete,
+        handleOpen,
       };
     },
   });
@@ -402,6 +422,75 @@ export function getFormConfig(): Partial<FormProps> {
 }
 
 ```
+
+
+
+# /src/views/blog/ArticleDrawer.vue
+
+```
+<template>
+  <BasicDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
+    <div>
+      <BasicForm @register="registerForm" />
+    </div>
+  </BasicDrawer>
+  <PageFooter>
+    <template #right>
+      <a-button class="mr-2" type="primary" @click="submitAll"> 保存草稿 </a-button>
+      <a-button class="mr-2" type="danger" @click="submitAll"> 保存 </a-button>
+    </template>
+  </PageFooter>
+</template>
+<script lang="ts">
+  import { defineComponent } from 'vue';
+  import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
+
+  import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
+  const schemas: FormSchema[] = [
+    {
+      field: 'field1',
+      component: 'Input',
+      label: '字段1',
+      colProps: {
+        span: 12,
+      },
+      defaultValue: '111',
+    },
+    {
+      field: 'field2',
+      component: 'Input',
+      label: '字段2',
+      colProps: {
+        span: 12,
+      },
+    },
+  ];
+  export default defineComponent({
+    components: { BasicDrawer, BasicForm },
+    setup() {
+      const [registerForm, { setFieldsValue }] = useForm({
+        labelWidth: 120,
+        schemas,
+        showActionButtonGroup: false,
+        actionColOptions: {
+          span: 24,
+        },
+      });
+      const [register] = useDrawerInner((data) => {
+        // 方式1
+        setFieldsValue({
+          field2: data.data,
+          field1: data.info,
+        });
+      });
+      return { register, schemas, registerForm };
+    },
+  });
+</script>
+
+```
+
+
 
 # /src/api/sys/user.ts
 

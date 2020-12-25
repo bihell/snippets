@@ -1,7 +1,6 @@
 import type { AppRouteModule } from '/@/router/types';
 
 import { LAYOUT } from '/@/router/constant';
-import { t } from '/@/hooks/web/useI18n';
 
 const blog: AppRouteModule = {
   path: '/blog',
@@ -10,15 +9,23 @@ const blog: AppRouteModule = {
   redirect: '/blog/article',
   meta: {
     icon: 'carbon:blog',
-    title: t('routes.blog.blog'),
+    title: '博客',
   },
   children: [
     {
-      path: 'article',
-      name: 'article',
+      path: 'articles',
+      name: 'articles',
       component: () => import('/@/views/blog/Articles.vue'),
       meta: {
-        title: t('routes.blog.article'),
+        title: '文章列表',
+      },
+    },
+    {
+      path: 'article',
+      name: 'article',
+      component: () => import('/@/views/blog/Article.vue'),
+      meta: {
+        title: '编辑文章',
       },
     },
   ],

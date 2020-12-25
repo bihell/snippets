@@ -714,3 +714,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [京东实时数据仓库开发实践](https://mp.weixin.qq.com/s?__biz=MzU1NTMyOTI4Mw==&mid=2247517195&idx=1&sn=c826e8f68b231f03a3c97a8eba331482&chksm=fbd73667cca0bf718cdc482c19334eea5a25c119490955dd5a672c4767919fb84da5ea546518&mpshare=1&scene=1&srcid=12154cNvxDF0L8yWk3d0eoMR&sharer_sharetime=1608039293532&sharer_shareid=942119afdfbc37ad9eb04201dfe5b060&key=9a48b3e8cb675d3d46919e63644f4340219f35d451eede80da7176a61554cf4730b5fb496dfac51637671eb34f07e93c57efd9882422ffaf26a331af0f15cfb6cc7989ace793c138553445617f4ed78366b6c78b66eb0f7beeedaacc182086ff4662d49ee35ad3025803490050935fcc896ea5aa80b8b7ebbc63b2d5fdc0e0b2&ascene=1&uin=NDY1Mzg4MTg4&devicetype=Windows+10+x64&version=63000039&lang=zh_CN&exportkey=A0ymEPQCMiRtnIebVXRQBvg%3D&pass_ticket=TeoQG%2BpVQdZ9EzmR6I3iraWjLcPPrq0jSORXfALt06LUX6r7YbpdKg1YMNFZC8sL&wx_header=0)
 [wave](https://github.com/h2oai/wave) Realtime Web Apps and Dashboards for Python
 [Mooc_Downloader](https://github.com/PyJun/Mooc_Downloader) 学无止下载器，慕课下载器，Mooc下载，慕课网下载，中国大学下载，爱课程下载，网易云课堂下载，学堂在线下载，超星学习通下载；支持视频，课件同时下载
+[DevUtils-app](https://github.com/DevUtilsApp/DevUtils-app) Developer Utilities for macOS
+
