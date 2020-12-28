@@ -1,22 +1,20 @@
-import type { PropType } from 'vue';
-import type { FormActionType, FormProps } from './types/form';
-import type { FormSchema } from './types/form';
+import type { PropType, Ref } from 'vue';
+import type { FormActionType, FormProps } from '../types/form';
+import type { FormSchema } from '../types/form';
 import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
 import type { TableActionType } from '/@/components/Table';
 
-import { defineComponent, computed, unref, toRef } from 'vue';
+import { defineComponent, computed, unref, toRefs } from 'vue';
 import { Form, Col } from 'ant-design-vue';
-import { componentMap } from './componentMap';
+import { componentMap } from '../componentMap';
 import { BasicHelp } from '/@/components/Basic';
 
 import { isBoolean, isFunction } from '/@/utils/is';
 import { getSlot } from '/@/utils/helper/tsxHelper';
-import { createPlaceholderMessage } from './helper';
+import { createPlaceholderMessage, setComponentRuleType } from '../helper';
 import { upperFirst, cloneDeep } from 'lodash-es';
 
-import { useItemLabelWidth } from './hooks/useLabelWidth';
-import { ComponentType } from './types';
-import { isNumber } from '/@/utils/is';
+import { useItemLabelWidth } from '../hooks/useLabelWidth';
 import { useI18n } from '/@/hooks/web/useI18n';
 
 export default defineComponent({
@@ -32,12 +30,16 @@ export default defineComponent({
       default: {},
     },
     allDefaultValues: {
-      type: Object as PropType<any>,
+      type: Object as PropType<Recordable>,
       default: {},
     },
     formModel: {
-      type: Object as PropType<any>,
+      type: Object as PropType<Recordable>,
       default: {},
+    },
+    setFormModel: {
+      type: Function as PropType<(key: string, value: any) => void>,
+      default: null,
     },
     tableAction: {
       type: Object as PropType<TableActionType>,
@@ -48,10 +50,15 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const { t } = useI18n();
-    // @ts-ignore
-    const itemLabelWidthRef = useItemLabelWidth(toRef(props, 'schema'), toRef(props, 'formProps'));
 
-    const getValuesRef = computed(() => {
+    const { schema, formProps } = toRefs(props) as {
+      schema: Ref<FormSchema>;
+      formProps: Ref<FormProps>;
+    };
+
+    const itemLabelWidthProp = useItemLabelWidth(schema, formProps);
+
+    const getValues = computed(() => {
       const { allDefaultValues, formModel, schema } = props;
       const { mergeDynamicData } = props.formProps;
       return {
@@ -61,33 +68,32 @@ export default defineComponent({
           ...mergeDynamicData,
           ...allDefaultValues,
           ...formModel,
-        },
+        } as Recordable,
         schema: schema,
       };
     });
 
-    const getComponentsPropsRef = computed(() => {
+    const getComponentsProps = computed(() => {
       const { schema, tableAction, formModel, formActionType } = props;
       const { componentProps = {} } = schema;
       if (!isFunction(componentProps)) {
         return componentProps;
       }
-      return componentProps({ schema, tableAction, formModel, formActionType }) || {};
+      return componentProps({ schema, tableAction, formModel, formActionType }) ?? {};
     });
 
-    const getDisableRef = computed(() => {
+    const getDisable = computed(() => {
       const { disabled: globDisabled } = props.formProps;
       const { dynamicDisabled } = props.schema;
-      const { disabled: itemDisabled = false } = unref(getComponentsPropsRef);
+      const { disabled: itemDisabled = false } = unref(getComponentsProps);
       let disabled = !!globDisabled || itemDisabled;
       if (isBoolean(dynamicDisabled)) {
         disabled = dynamicDisabled;
       }
 
       if (isFunction(dynamicDisabled)) {
-        disabled = dynamicDisabled(unref(getValuesRef));
+        disabled = dynamicDisabled(unref(getValues));
       }
-
       return disabled;
     });
 
@@ -109,10 +115,10 @@ export default defineComponent({
         isIfShow = ifShow;
       }
       if (isFunction(show)) {
-        isShow = show(unref(getValuesRef));
+        isShow = show(unref(getValues));
       }
       if (isFunction(ifShow)) {
-        isIfShow = ifShow(unref(getValuesRef));
+        isIfShow = ifShow(unref(getValues));
       }
       isShow = isShow && itemIsAdvanced;
       return { isShow, isIfShow };
@@ -129,7 +135,7 @@ export default defineComponent({
       } = props.schema;
 
       if (isFunction(dynamicRules)) {
-        return dynamicRules(unref(getValuesRef)) as ValidationRule[];
+        return dynamicRules(unref(getValues)) as ValidationRule[];
       }
 
       let rules: ValidationRule[] = cloneDeep(defRules) as ValidationRule[];
@@ -151,45 +157,25 @@ export default defineComponent({
           const joinLabel = Reflect.has(props.schema, 'rulesMessageJoinLabel')
             ? rulesMessageJoinLabel
             : globalRulesMessageJoinLabel;
+
           rule.message =
             rule.message || createPlaceholderMessage(component) + `${joinLabel ? label : ''}`;
+
           if (component.includes('Input') || component.includes('Textarea')) {
             rule.whitespace = true;
           }
-          if (
-            component.includes('DatePicker') ||
-            component.includes('MonthPicker') ||
-            component.includes('WeekPicker') ||
-            component.includes('TimePicker')
-          ) {
-            rule.type = 'object';
-          } else if (component.includes('RangePicker') || component.includes('Upload')) {
-            rule.type = 'array';
-          } else if (component.includes('InputNumber')) {
-            rule.type = 'number';
-          }
+
+          setComponentRuleType(rule, component);
         }
       }
 
-      // 最大输入长度规则校验
+      // Maximum input length rule check
       const characterInx = rules.findIndex((val) => val.max);
       if (characterInx !== -1 && !rules[characterInx].validator) {
         rules[characterInx].message =
           rules[characterInx].message || t('component.form.maxTip', [rules[characterInx].max]);
       }
       return rules;
-    }
-
-    function handleValue(component: ComponentType, field: string) {
-      const val = (props.formModel as any)[field];
-      if (['Input', 'InputPassword', 'InputSearch', 'InputTextArea'].includes(component)) {
-        if (val && isNumber(val)) {
-          (props.formModel as any)[field] = `${val}`;
-          return `${val}`;
-        }
-        return val;
-      }
-      return val;
     }
 
     function renderComponent() {
@@ -206,56 +192,58 @@ export default defineComponent({
       const eventKey = `on${upperFirst(changeEvent)}`;
 
       const on = {
-        [eventKey]: (e: any) => {
+        [eventKey]: (e: Nullable<Recordable>) => {
           if (propsData[eventKey]) {
             propsData[eventKey](e);
           }
 
           const target = e ? e.target : null;
+
           const value = target ? (isCheck ? target.checked : target.value) : e;
-          (props.formModel as any)[field] = value;
+          props.setFormModel(field, value);
         },
       };
-      const Comp = componentMap.get(component);
+      const Comp = componentMap.get(component) as typeof defineComponent;
 
       const { autoSetPlaceHolder, size } = props.formProps;
-      const propsData: any = {
+      const propsData: Recordable = {
         allowClear: true,
         getPopupContainer: (trigger: Element) => trigger.parentNode,
         size,
-        ...unref(getComponentsPropsRef),
-        disabled: unref(getDisableRef),
+        ...unref(getComponentsProps),
+        disabled: unref(getDisable),
       };
 
       const isCreatePlaceholder = !propsData.disabled && autoSetPlaceHolder;
       let placeholder;
-      // RangePicker place为数组
+      // RangePicker place is an array
       if (isCreatePlaceholder && component !== 'RangePicker' && component) {
-        placeholder =
-          (unref(getComponentsPropsRef) && unref(getComponentsPropsRef).placeholder) ||
-          createPlaceholderMessage(component);
+        placeholder = unref(getComponentsProps)?.placeholder || createPlaceholderMessage(component);
       }
       propsData.placeholder = placeholder;
       propsData.codeField = field;
-      propsData.formValues = unref(getValuesRef);
-      const bindValue = {
-        [valueField || (isCheck ? 'checked' : 'value')]: handleValue(component, field),
+      propsData.formValues = unref(getValues);
+
+      const bindValue: Recordable = {
+        [valueField || (isCheck ? 'checked' : 'value')]: props.formModel[field],
+      };
+
+      const compAttr: Recordable = {
+        ...propsData,
+        ...on,
+        ...bindValue,
       };
 
       if (!renderComponentContent) {
-        return <Comp {...propsData} {...on} {...bindValue} />;
+        return <Comp {...compAttr} />;
       }
       const compSlot = isFunction(renderComponentContent)
-        ? { ...renderComponentContent(unref(getValuesRef)) }
+        ? { ...renderComponentContent(unref(getValues)) }
         : {
             default: () => renderComponentContent,
           };
 
-      return (
-        <Comp {...propsData} {...on} {...bindValue}>
-          {compSlot}
-        </Comp>
-      );
+      return <Comp {...compAttr}>{compSlot}</Comp>;
     }
 
     function renderLabelHelpMessage() {
@@ -279,47 +267,62 @@ export default defineComponent({
     }
 
     function renderItem() {
-      const { itemProps, slot, render, field } = props.schema;
-      const { labelCol, wrapperCol } = unref(itemLabelWidthRef);
+      const { itemProps, slot, render, field, suffix } = props.schema;
+      const { labelCol, wrapperCol } = unref(itemLabelWidthProp);
       const { colon } = props.formProps;
+
       const getContent = () => {
         return slot
-          ? getSlot(slots, slot, unref(getValuesRef))
+          ? getSlot(slots, slot, unref(getValues))
           : render
-          ? render(unref(getValuesRef))
+          ? render(unref(getValues))
           : renderComponent();
       };
+
+      const showSuffix = !!suffix;
+
+      const getSuffix = isFunction(suffix) ? suffix(unref(getValues)) : suffix;
+
       return (
         <Form.Item
           name={field}
           colon={colon}
-          {...(itemProps as any)}
+          class={{ 'suffix-item': showSuffix }}
+          {...(itemProps as Recordable)}
           label={renderLabelHelpMessage()}
           rules={handleRules()}
           labelCol={labelCol}
           wrapperCol={wrapperCol}
         >
-          {() => getContent()}
+          {() => (
+            <>
+              {getContent()}
+              {showSuffix && <span class="suffix">{getSuffix}</span>}
+            </>
+          )}
         </Form.Item>
       );
     }
     return () => {
       const { colProps = {}, colSlot, renderColContent, component } = props.schema;
       if (!componentMap.has(component)) return null;
+
       const { baseColProps = {} } = props.formProps;
 
       const realColProps = { ...baseColProps, ...colProps };
       const { isIfShow, isShow } = getShow();
+
       const getContent = () => {
         return colSlot
-          ? getSlot(slots, colSlot, unref(getValuesRef))
+          ? getSlot(slots, colSlot, unref(getValues))
           : renderColContent
-          ? renderColContent(unref(getValuesRef))
+          ? renderColContent(unref(getValues))
           : renderItem();
       };
+
       return (
         isIfShow && (
-          <Col {...realColProps} class={!isShow ? 'hidden' : ''}>
+          <Col {...realColProps} class={{ hidden: !isShow }}>
             {() => getContent()}
           </Col>
         )

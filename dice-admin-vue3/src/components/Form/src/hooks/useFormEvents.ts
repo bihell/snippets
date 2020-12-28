@@ -6,25 +6,22 @@ import { unref, toRaw } from 'vue';
 
 import { isArray, isFunction, isObject, isString } from '/@/utils/is';
 import { deepMerge, unique } from '/@/utils';
-import { dateItemType } from '../helper';
+import { dateItemType, handleInputNumberValue } from '../helper';
 import moment from 'moment';
 import { cloneDeep } from 'lodash-es';
+import { error } from '/@/utils/log';
 
 interface UseFormActionContext {
   emit: EmitType;
   getProps: ComputedRef<FormProps>;
   getSchema: ComputedRef<FormSchema[]>;
-  formModel: any;
-  defaultValueRef: Ref<any>;
+  formModel: Recordable;
+  defaultValueRef: Ref<Recordable>;
   formElRef: Ref<FormActionType>;
   schemaRef: Ref<FormSchema[]>;
   handleFormValues: Fn;
-  actionState: {
-    resetAction: any;
-    submitAction: any;
-  };
 }
-export function useFormAction({
+export function useFormEvents({
   emit,
   getProps,
   formModel,
@@ -33,48 +30,51 @@ export function useFormAction({
   formElRef,
   schemaRef,
   handleFormValues,
-  actionState,
 }: UseFormActionContext) {
-  async function resetFields(): Promise<any> {
+  async function resetFields(): Promise<void> {
     const { resetFunc, submitOnReset } = unref(getProps);
     resetFunc && isFunction(resetFunc) && (await resetFunc());
+
     const formEl = unref(formElRef);
     if (!formEl) return;
+
     Object.keys(formModel).forEach((key) => {
-      (formModel as any)[key] = defaultValueRef.value[key];
+      formModel[key] = defaultValueRef.value[key];
     });
     clearValidate();
     emit('reset', toRaw(formModel));
-    // return values;
     submitOnReset && handleSubmit();
   }
 
   /**
-   * @description: 设置表单值
+   * @description: Set form value
    */
-  async function setFieldsValue(values: any): Promise<void> {
+  async function setFieldsValue(values: Recordable): Promise<void> {
     const fields = unref(getSchema)
       .map((item) => item.field)
       .filter(Boolean);
-    // const formEl = unref(formElRef);
 
     const validKeys: string[] = [];
     Object.keys(values).forEach((key) => {
-      const element = values[key];
-      if (element !== undefined && element !== null && fields.includes(key)) {
+      const schema = unref(getSchema).find((item) => item.field === key);
+      let value = values[key];
+
+      value = handleInputNumberValue(schema?.component, value);
+      // 0| '' is allow
+      if (value !== undefined && value !== null && fields.includes(key)) {
         // time type
         if (itemIsDateType(key)) {
-          if (Array.isArray(element)) {
-            const arr: any[] = [];
-            for (const ele of element) {
+          if (Array.isArray(value)) {
+            const arr: moment.Moment[] = [];
+            for (const ele of value) {
               arr.push(moment(ele));
             }
-            (formModel as any)[key] = arr;
+            formModel[key] = arr;
           } else {
-            (formModel as any)[key] = moment(element);
+            formModel[key] = moment(value);
           }
         } else {
-          (formModel as any)[key] = element;
+          formModel[key] = value;
         }
         validKeys.push(key);
       }
@@ -84,19 +84,18 @@ export function useFormAction({
   /**
    * @description: Delete based on field name
    */
-  function removeSchemaByFiled(fields: string | string[]): void {
+  async function removeSchemaByFiled(fields: string | string[]): Promise<void> {
     const schemaList: FormSchema[] = cloneDeep(unref(getSchema));
-    if (!fields) {
-      return;
-    }
-    let fieldList: string[] = fields as string[];
+    if (!fields) return;
+
+    let fieldList: string[] = isString(fields) ? [fields] : fields;
     if (isString(fields)) {
       fieldList = [fields];
     }
     for (const field of fieldList) {
       _removeSchemaByFiled(field, schemaList);
     }
-    schemaRef.value = schemaList as any;
+    schemaRef.value = schemaList;
   }
 
   /**
@@ -114,27 +113,26 @@ export function useFormAction({
   /**
    * @description: Insert after a certain field, if not insert the last
    */
-  function appendSchemaByField(schema: FormSchema, prefixField?: string) {
+  async function appendSchemaByField(schema: FormSchema, prefixField?: string, first = false) {
     const schemaList: FormSchema[] = cloneDeep(unref(getSchema));
 
     const index = schemaList.findIndex((schema) => schema.field === prefixField);
-    const hasInList = schemaList.find((item) => item.field === schema.field);
+    const hasInList = schemaList.some((item) => item.field === schema.field);
 
-    if (hasInList) {
-      return;
-    }
-    if (!prefixField || index === -1) {
-      schemaList.push(schema);
-      schemaRef.value = schemaList as any;
+    if (!hasInList) return;
+
+    if (!prefixField || index === -1 || first) {
+      first ? schemaList.unshift(schema) : schemaList.push(schema);
+      schemaRef.value = schemaList;
       return;
     }
     if (index !== -1) {
       schemaList.splice(index + 1, 0, schema);
     }
-    schemaRef.value = schemaList as any;
+    schemaRef.value = schemaList;
   }
 
-  function updateSchema(data: Partial<FormSchema> | Partial<FormSchema>[]) {
+  async function updateSchema(data: Partial<FormSchema> | Partial<FormSchema>[]) {
     let updateData: Partial<FormSchema>[] = [];
     if (isObject(data)) {
       updateData.push(data as FormSchema);
@@ -142,9 +140,13 @@ export function useFormAction({
     if (isArray(data)) {
       updateData = [...data];
     }
+
     const hasField = updateData.every((item) => Reflect.has(item, 'field') && item.field);
+
     if (!hasField) {
-      throw new Error('Must pass in the `field` field!');
+      error(
+        'All children of the form Schema array that need to be updated must contain the `field` field'
+      );
     }
     const schema: FormSchema[] = [];
     updateData.forEach((item) => {
@@ -157,12 +159,12 @@ export function useFormAction({
         }
       });
     });
-    schemaRef.value = unique(schema, 'field') as any;
+    schemaRef.value = unique(schema, 'field');
   }
 
-  function getFieldsValue(): any {
+  function getFieldsValue(): Recordable {
     const formEl = unref(formElRef);
-    if (!formEl) return;
+    if (!formEl) return {};
     return handleFormValues(toRaw(unref(formModel)));
   }
 
@@ -171,23 +173,25 @@ export function useFormAction({
    */
   function itemIsDateType(key: string) {
     return unref(getSchema).some((item) => {
-      return item.field === key ? dateItemType.includes(item.component!) : false;
+      return item.field === key ? dateItemType.includes(item.component) : false;
     });
   }
 
-  function validateFields(nameList?: NamePath[] | undefined) {
-    if (!formElRef.value) return;
-    return formElRef.value.validateFields(nameList);
+  async function validateFields(nameList?: NamePath[] | undefined) {
+    const res = await unref(formElRef)?.validateFields(nameList || []);
+    return res;
   }
 
-  function validate(nameList?: NamePath[] | undefined) {
-    if (!formElRef.value) return;
-    return formElRef.value.validate(nameList);
+  async function validate(nameList?: NamePath[] | undefined) {
+    return await unref(formElRef)?.validate(nameList || []);
   }
 
-  function clearValidate(name?: string | string[]) {
-    if (!formElRef.value) return;
-    formElRef.value.clearValidate(name);
+  async function clearValidate(name?: string | string[]) {
+    await unref(formElRef)?.clearValidate(name);
+  }
+
+  async function scrollToField(name: NamePath, options?: ScrollOptions | undefined) {
+    await unref(formElRef)?.scrollToField(name, options);
   }
 
   /**
@@ -208,13 +212,6 @@ export function useFormAction({
       emit('submit', res);
     } catch (error) {}
   }
-  actionState.resetAction = {
-    onClick: resetFields,
-  };
-
-  actionState.submitAction = {
-    onClick: handleSubmit,
-  };
 
   return {
     handleSubmit,
@@ -227,5 +224,6 @@ export function useFormAction({
     removeSchemaByFiled,
     resetFields,
     setFieldsValue,
+    scrollToField,
   };
 }

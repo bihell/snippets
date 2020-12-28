@@ -12,11 +12,11 @@ export const PAGE_SIZE = ~~PAGE_SIZE_OPTIONS[0];
 // 支持 xxx.xxx.xxx格式
 export const FETCH_SETTING = {
   // 传给后台的当前页字段名
-  pageField: 'pageIndex',
+  pageField: 'page',
   // 传给后台的每页显示记录数字段名
   sizeField: 'pageSize',
   // 接口返回的表格数据字段名
-  listField: 'records',
+  listField: 'items',
   // 接口返回的表格总数字段名
   totalField: 'total',
 };
