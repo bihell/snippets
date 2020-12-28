@@ -5,7 +5,7 @@
     <div class="bottom-control">
       <a-button class="mb-2" type="dashed" @click="advancedVisible = true"> 高级 </a-button>
       <a-space>
-        <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
+        <a-button type="dashed" @click="advancedVisible = true"> 啊级 </a-button>
       </a-space>
     </div>
 
