@@ -2,14 +2,12 @@
   <div class="p-4">
     <a-input v-model:value="titleValue" class="mb-2" placeholder="请输入标题" />
     <MarkDown ref="markDownRef" v-model:value="value" v-model:height="mdHeight" />
-    <PageFooter>
-      <template #right>
-        <a-button class="mr-2" type="primary" @click="submitAll"> 保存草稿 </a-button>
-        <a-button class="mr-2" type="primary" @click="submitAll"> 预览 </a-button>
-        <a-button class="mr-2" type="danger" @click="openArticleDrawer"> 发布 </a-button>
-        <a-button class="mr-2" type="primary" @click="submitAll"> 附件库 </a-button>
-      </template>
-    </PageFooter>
+    <div class="bottom-control">
+      <a-button class="mb-2" type="dashed" @click="advancedVisible = true"> 高级 </a-button>
+      <a-space>
+        <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
+      </a-space>
+    </div>
 
     <ArticleDrawer @register="registerArticleDrawer" />
   </div>
@@ -17,12 +15,11 @@
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import { MarkDown, MarkDownActionType } from '/@/components/Markdown';
-  import { PageFooter } from '/@/components/Page';
   import ArticleDrawer from './ArticleDrawer.vue';
   import { useDrawer } from '/@/components/Drawer';
 
   export default defineComponent({
-    components: { MarkDown, PageFooter, ArticleDrawer },
+    components: { MarkDown, ArticleDrawer },
     setup() {
       const markDownRef = ref<Nullable<MarkDownActionType>>(null);
       const valueRef = ref('');
@@ -64,5 +61,19 @@
 
   .mb-2 {
     margin-bottom: 0.5em !important;
+  }
+
+  .bottom-control {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 7px 14px;
+    text-align: right;
+    background: rgb(255, 255, 255);
+    border-top: 1px solid rgb(232, 232, 232);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05),
+      0 -12px 48px 16px rgba(0, 0, 0, 0.03);
   }
 </style>

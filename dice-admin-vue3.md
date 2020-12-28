@@ -180,13 +180,6 @@ export default blog;
 
 ```
 
-# src/settings/projectSetting.ts
-
-```
-  // Whether to show footer
-  showFooter: false,
-```
-
 # src/views/blog/Articles.vue
 
 ```
