@@ -14,6 +14,10 @@ const menu: MenuModule = {
         path: 'article',
         name: '编辑文章',
       },
+      {
+        path: 'articleDrawer',
+        name: '抽屉',
+      },
     ],
   },
 };

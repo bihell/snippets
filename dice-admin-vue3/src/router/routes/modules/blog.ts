@@ -28,6 +28,14 @@ const blog: AppRouteModule = {
         title: '编辑文章',
       },
     },
+    {
+      path: 'articleDrawer',
+      name: 'articleDrawer',
+      component: () => import('/@/views/blog/ArticleDrawer.vue'),
+      meta: {
+        title: '抽屉',
+      },
+    },
   ],
 };
 

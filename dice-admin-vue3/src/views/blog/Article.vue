@@ -3,12 +3,13 @@
     <a-input v-model:value="titleValue" class="mb-2" placeholder="请输入标题" />
     <MarkDown ref="markDownRef" v-model:value="value" v-model:height="mdHeight" />
     <div class="bottom-control">
-      <a-button class="mb-2" type="dashed" @click="advancedVisible = true"> 高级 </a-button>
-      <a-space>
-        <a-button type="dashed" @click="advancedVisible = true"> 啊级 </a-button>
-      </a-space>
+      <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
+      <a-button type="dashed" @click="openArticleDrawer(true)"> 发布 </a-button>
+      <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
+      <a-button type="dashed" @click="advancedVisible = true"> 保存 </a-button>
+      <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
+      <a-button type="dashed" @click="advancedVisible = true"> 保存 </a-button>
     </div>
-
     <ArticleDrawer @register="registerArticleDrawer" />
   </div>
 </template>

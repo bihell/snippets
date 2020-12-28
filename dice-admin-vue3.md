@@ -1,3 +1,10 @@
+# .eslintrc.js
+
+```
+  rules: {
+    'prettier/prettier':'off',
+```
+
 #  	.env.development
 
 ```vue
