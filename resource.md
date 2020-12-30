@@ -718,3 +718,14 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [UnblockNeteaseMusic](https://github.com/nondanee/UnblockNeteaseMusic) 解锁网易云音乐客户端变灰歌曲
 [omim](https://github.com/mapsme/omim) MAPS.ME — Offline OpenStreetMap maps for iOS and Android
 [storybook](https://github.com/storybookjs/storybook) 📓 The UI component explorer. Develop, document, & test for React, Vue, Angular, Ember, Web Components, & more!
+[keepass2android](https://github.com/PhilippC/keepass2android) 一个开源的 Android 密码管理器。
+[PrettyZoo](https://github.com/vran-dev/PrettyZoo) 一款 Java 写的高颜值 ZooKeeper 客户端桌面应用。该项目使用了 JDK11 以及 JavaFX 编写的 GUI 客户端，代码量适中适合想学习 JavaFX 编写应用的朋友。需要连接 ZK 服务端查看数据的话，手边有这么个工具还是挺方便的。实用和颜值集一身的项目
+[vueblog](https://github.com/MarkerHub/vueblog) 一个前后端分离的简单博客案例，适合刚入门vue，学前后端分离的童鞋！
+[x-spreadsheet](https://github.com/myliang/x-spreadsheet) 基于 JavaScript 实现的轻量级 Web 电子表格库。它功能齐全，包含表格的基本操作和函数等，还有详细的中文文档
+[h5-Dooring](https://github.com/MrXujiang/h5-Dooring) 一款功能齐全的 H5 页面可视化配置平台。让你通过可视化的方式制作出 H5 页面，技术栈以 React 为主，后台采用 Node.js 实现。虽然网上有很多这种工具，但本项目免费开源、功能齐全值得一试
+[tui.image-editor](https://github.com/nhn/tui.image-editor) 功能齐全的图片编辑器。支持图片剪裁、旋转、涂鸦等功能，实现了 Vue 和 React 封装的组件，便于整合进你的项目
+[Pine](https://github.com/lukakerr/Pine) 一个免费、轻量、简洁的 macOS Markdown 编辑器。
+[neofetch](https://github.com/dylanaraps/neofetch) 展示操作系统信息的命令行工具，支持将近 150 种操作系统
+[sql-style-guide](https://github.com/mattm/sql-style-guide) 一份 SQL 语句编写风格建议。
+[Web-Dev-For-Beginners](https://github.com/microsoft/Web-Dev-For-Beginners) 24 Lessons, 12 Weeks, Get Started as a Web Developer
+[jd_seckill](https://github.com/huanghyw/jd_seckill) 京东茅台抢购，不支持其他商品！愿大家与黄牛站在同一个起跑线，公平的参与这场抢茅大赛。

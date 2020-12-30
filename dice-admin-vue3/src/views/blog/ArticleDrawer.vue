@@ -1,5 +1,4 @@
 <template>
-  <a-button type="primary" @click="showDrawer"> Open </a-button>
   <a-drawer
     title="Multi-level drawer"
     width="520"
@@ -32,6 +31,7 @@
     >
       <a-button @click="onClose"> Cancel </a-button>
       <a-button type="primary" @click="onClose"> Submit </a-button>
+      <a-button type="primary" @click="showDrawer"> 高级选项 </a-button>
     </div>
   </a-drawer>
 </template>
