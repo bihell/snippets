@@ -48,28 +48,11 @@
 [爬虫管理平台 Crawlab v0.4.3 发布（界面上点几下就可安装 pip 或 npm 依赖）](https://studygolang.com/articles/25890)
 [Jack-Cherish/python-spider](https://github.com/Jack-Cherish/python-spider) Python3网络爬虫实战：淘宝、京东、网易云、B站、12306、抖音、笔趣阁、漫画小说下载、音乐电影下载等。
 [DouBanSpider](https://github.com/lanbing510/DouBanSpider)：豆瓣读书的爬虫
-
-
-
-
-[[手把手系列之] Jenkins+Docker 自动化部署 vue 项目](https://segmentfault.com/a/1190000020868116)
-[spug](https://github.com/openspug/spug)：使用 Python+Vue 实现的开源运维平台，前后端分离方便二次开发。该项目基于 Docker 镜像发布部署，方便安装和升级。支持运维常见功能：主机管理、任务计划管理、发布部署、监控告警等
-[awesome-resume-for-chinese](https://github.com/dyweb/awesome-resume-for-chinese) | 收集了一些适合中文的简历模板 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HwMllvEjG)
-[vue3.0 从 0 到 1 实战电商管理系统（第一天） - 掘金](https://juejin.im/post/5eae5d92e51d451b2e03255c)
-[sx1989827/DOClever](https://github.com/sx1989827/DOClever) | 做最好的接口管理平台
-[vue 制作抓娃娃机 - 掘金](https://juejin.im/post/5e9818a351882573bd5f4aaf)
-[stats](https://github.com/exelban/stats) macOS 菜单栏上的监控工具。支持 CPU、GPU、内存、网络等监控和多语言
-[master-coder-ll / v2ray-web-manager](https://github.com/master-coder-ll/v2ray-web-manager) v2ray-web-manager 是一个 tls+ws+v2ray 一端口多用户的解决方案；同时增加了流量控制/账号管理/限速等功能。key word: v2ray admin
 [深入解密来自未来的缓存-caffeine](https://github.com/javagrowing/JGrowing/blob/master/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6/%E6%B7%B1%E5%85%A5%E8%A7%A3%E5%AF%86%E6%9D%A5%E8%87%AA%E6%9C%AA%E6%9D%A5%E7%9A%84%E7%BC%93%E5%AD%98-Caffeine.md)
-[阿里 Java 诊断利器 Arthas 在线教程](https://weekly.manong.io/bounce?nid=251&aid=15498&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqulk59)
-[ddqre12345/vue-music](https://github.com/ddqre12345/vue-music) cloud-music(网易云音乐)
-[zhixuanziben/gouyan-movie-vue](https://github.com/zhixuanziben/gouyan-movie-vue) | 这是一个基于 vue 全家桶制作的在线电影影讯网站，利用豆瓣 api 的接口获取数据，模仿猫眼电影制作的 webapp，实现了当前热映电影，即将上映电影，电影详细信息，短评和长评论信息，影星个人信息，以及电影查询的功能 | 310 | Vue | 11/09 |
-[smuyyh/BookReader](https://github.com/smuyyh/BookReader) | :closed\*book: "任阅" 网络小说阅读器，3D 翻页效果、txt/pdf/epub 书籍阅读、Wifi 传书~ | 5.4k | Java | 06/25 |
-[logodiy](https://github.com/sherlonWang/logodiy) | 一个简单的在线 Logo 制作工具 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HuaHFEGTr)
-[insoxin/qrpay](https://github.com/insoxin/qrpay) | 五合一收款码在线生成
-[effective-java-3rd-chinese](https://github.com/sjsdfg/effective-java-3rd-chinese) Effective Java 中文版（第 3 版），Java 四大名著之一，本书一共包含 90 个条目，每个条目讨论 Java 程序设计中的一条规则。这些规则反映了最有经验的优秀程序员在实践中常用的一些有益的做法。
-[picojs](https://github.com/tehnokv/picojs)：200 行实现的面部识别库
-[goalert](https://github.com/target/goalert)：一个基于 Go 语言实现的报警和处理报警系统。它以发请求或者手动添加方式进行告警，支持短信、电话、发邮件等通知方式。集成了一个看板，基本上算是开箱即用。
+
+
+
+
 [a597873885/webfunny_monitor](https://github.com/a597873885/webfunny_monitor) | 通过向 html 页面中插入一段简单的 JS 探针代码，实现无埋点监控前端页面的用户行为，包括但不限于 PV/UV、报错日志、请求日志、静态资源加载情况、用户点击行为以及截图信息等等，目的在于帮助前端开发提高解决线上问题的效率。页面 DEMO: | 520 | CSS | 11/29 |
 [tebelorg/TagUI-Python](https://github.com/tebelorg/TagUI-Python) 一个 Python 自动化操作的库。比如：自动打开网页并截图
 [gwuhaolin/resume](https://github.com/gwuhaolin/resume) | 简约的在线简历 | 261 | HTML | 06/28 |
@@ -413,18 +396,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 
 
 
-[huangruiLearn / flutter_hrlweibo](https://github.com/huangruiLearn/flutter_hrlweibo) Flutter 仿微博客户端
-[crownpku/Information-Extraction-Chinese](https://github.com/crownpku/Information-Extraction-Chinese) Chinese Named Entity Recognition with IDCNN/biLSTM+CRF, and Relation Extraction with biGRU+2ATT 中文实体识别与关系提取
-[luokr.com](https://github.com/alvan/luokr.com)：Python Tornado 写的开源网站——螺壳网
-[HTML5AudioPlayer](https://juejin.im/post/5cfb68376fb9a07edb39392a)：HTML5 实现磁带播放机
-[itimor/django-oms](https://github.com/itimor/django-oms) | 加强版运维系统，集成工单、发布、监控、管理 dns、saltstack | 196 | Vue | 10/23 |
-[FeeiCN/ESD](https://github.com/FeeiCN/ESD) | Enumeration sub domains(枚举子域名) | 545 | Python | 07/05 |
-[Apache Hadoop YARN 的架构与运行流程](http://www.justdojava.com/2019/07/01/yarn/)
-[Modlishka](https://github.com/drk1wi/Modlishka)：由波兰一名安全研究员开源的反向代理工具。该工具可以进行自动化钓鱼攻击，并破解受 2FA（双因子验证）登录保护的账户。简而言之，开发者可以很轻松的借助该工具快速搭建一个钓鱼网站。
-[PantsuDango / Dango-Translator](https://github.com/PantsuDango/Dango-Translator) 团子翻译器 —— 个人兴趣制作的一款基于 OCR 技术的翻译器
-[如何优雅的设计和使用缓存？](https://github.com/javagrowing/JGrowing/blob/master/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%9C%8D%E5%8A%A1%E4%BC%98%E5%8C%96/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98%EF%BC%9F.md)
-[bxm0927/vue-meituan](https://github.com/bxm0927/vue-meituan) | :hamburger: :meat\*on_bone: :fork_and_knife: 基于 Vue 全家桶 (2.x)制作的美团外卖 APP | 631 | Vue | 03/02 |
-[KubeOperator/KubeOperator](https://github.com/KubeOperator/KubeOperator) 用 Python 语言开发的开源容器集群管理平台。在离线网络环境下通过可视化 Web UI 在 VMware、Openstack 或者物理机上规划、部署和管理生产级别的 Kubernetes 集群。开启你的 Kubernetes 之旅
+
 [【自荐项目】基于 OpenResty 的高性能 API 网关系统](https://github.com/apioak/apioak)
 [Flink 原理与实现：Aysnc I/O](https://weekly.manong.io/bounce?nid=168&aid=9694&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmwezl4)
 [genal-chat](https://github.com/genaller/genal-chat) 适合前端新手学习的‘星空’聊天室项目。采用 Vue + socket.io 结合 TypeScript 语法构建，界面炫酷、良好的代码规范、支持群聊和好友搜索等功能
@@ -729,3 +701,33 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [sql-style-guide](https://github.com/mattm/sql-style-guide) 一份 SQL 语句编写风格建议。
 [Web-Dev-For-Beginners](https://github.com/microsoft/Web-Dev-For-Beginners) 24 Lessons, 12 Weeks, Get Started as a Web Developer
 [jd_seckill](https://github.com/huanghyw/jd_seckill) 京东茅台抢购，不支持其他商品！愿大家与黄牛站在同一个起跑线，公平的参与这场抢茅大赛。
+[[手把手系列之] Jenkins+Docker 自动化部署 vue 项目](https://segmentfault.com/a/1190000020868116)
+[spug](https://github.com/openspug/spug)：使用 Python+Vue 实现的开源运维平台，前后端分离方便二次开发。该项目基于 Docker 镜像发布部署，方便安装和升级。支持运维常见功能：主机管理、任务计划管理、发布部署、监控告警等
+[awesome-resume-for-chinese](https://github.com/dyweb/awesome-resume-for-chinese) | 收集了一些适合中文的简历模板 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HwMllvEjG)
+[vue3.0 从 0 到 1 实战电商管理系统（第一天） - 掘金](https://juejin.im/post/5eae5d92e51d451b2e03255c)
+[huangruiLearn / flutter_hrlweibo](https://github.com/huangruiLearn/flutter_hrlweibo) Flutter 仿微博客户端
+[crownpku/Information-Extraction-Chinese](https://github.com/crownpku/Information-Extraction-Chinese) Chinese Named Entity Recognition with IDCNN/biLSTM+CRF, and Relation Extraction with biGRU+2ATT 中文实体识别与关系提取
+[luokr.com](https://github.com/alvan/luokr.com)：Python Tornado 写的开源网站——螺壳网
+[HTML5AudioPlayer](https://juejin.im/post/5cfb68376fb9a07edb39392a)：HTML5 实现磁带播放机
+[sx1989827/DOClever](https://github.com/sx1989827/DOClever) | 做最好的接口管理平台
+[vue 制作抓娃娃机 - 掘金](https://juejin.im/post/5e9818a351882573bd5f4aaf)
+[stats](https://github.com/exelban/stats) macOS 菜单栏上的监控工具。支持 CPU、GPU、内存、网络等监控和多语言
+[master-coder-ll / v2ray-web-manager](https://github.com/master-coder-ll/v2ray-web-manager) v2ray-web-manager 是一个 tls+ws+v2ray 一端口多用户的解决方案；同时增加了流量控制/账号管理/限速等功能。key word: v2ray admin
+[阿里 Java 诊断利器 Arthas 在线教程](https://weekly.manong.io/bounce?nid=251&aid=15498&url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqulk59)
+[ddqre12345/vue-music](https://github.com/ddqre12345/vue-music) cloud-music(网易云音乐)
+[zhixuanziben/gouyan-movie-vue](https://github.com/zhixuanziben/gouyan-movie-vue) | 这是一个基于 vue 全家桶制作的在线电影影讯网站，利用豆瓣 api 的接口获取数据，模仿猫眼电影制作的 webapp，实现了当前热映电影，即将上映电影，电影详细信息，短评和长评论信息，影星个人信息，以及电影查询的功能 | 310 | Vue | 11/09 |
+[smuyyh/BookReader](https://github.com/smuyyh/BookReader) | :closed\*book: "任阅" 网络小说阅读器，3D 翻页效果、txt/pdf/epub 书籍阅读、Wifi 传书~ | 5.4k | Java | 06/25 |
+[itimor/django-oms](https://github.com/itimor/django-oms) | 加强版运维系统，集成工单、发布、监控、管理 dns、saltstack | 196 | Vue | 10/23 |
+[logodiy](https://github.com/sherlonWang/logodiy) | 一个简单的在线 Logo 制作工具 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HuaHFEGTr)
+[FeeiCN/ESD](https://github.com/FeeiCN/ESD) | Enumeration sub domains(枚举子域名) | 545 | Python | 07/05 |
+[Apache Hadoop YARN 的架构与运行流程](http://www.justdojava.com/2019/07/01/yarn/)
+[insoxin/qrpay](https://github.com/insoxin/qrpay) | 五合一收款码在线生成
+[effective-java-3rd-chinese](https://github.com/sjsdfg/effective-java-3rd-chinese) Effective Java 中文版（第 3 版），Java 四大名著之一，本书一共包含 90 个条目，每个条目讨论 Java 程序设计中的一条规则。这些规则反映了最有经验的优秀程序员在实践中常用的一些有益的做法。
+[picojs](https://github.com/tehnokv/picojs)：200 行实现的面部识别库
+[goalert](https://github.com/target/goalert)：一个基于 Go 语言实现的报警和处理报警系统。它以发请求或者手动添加方式进行告警，支持短信、电话、发邮件等通知方式。集成了一个看板，基本上算是开箱即用。
+[owncast](https://github.com/owncast/owncast) 开源直播软件
+[Modlishka](https://github.com/drk1wi/Modlishka)：由波兰一名安全研究员开源的反向代理工具。该工具可以进行自动化钓鱼攻击，并破解受 2FA（双因子验证）登录保护的账户。简而言之，开发者可以很轻松的借助该工具快速搭建一个钓鱼网站。
+[PantsuDango / Dango-Translator](https://github.com/PantsuDango/Dango-Translator) 团子翻译器 —— 个人兴趣制作的一款基于 OCR 技术的翻译器
+[如何优雅的设计和使用缓存？](https://github.com/javagrowing/JGrowing/blob/master/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%9C%8D%E5%8A%A1%E4%BC%98%E5%8C%96/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98%EF%BC%9F.md)
+[bxm0927/vue-meituan](https://github.com/bxm0927/vue-meituan) | :hamburger: :meat\*on_bone: :fork_and_knife: 基于 Vue 全家桶 (2.x)制作的美团外卖 APP | 631 | Vue | 03/02 |
+[KubeOperator/KubeOperator](https://github.com/KubeOperator/KubeOperator) 用 Python 语言开发的开源容器集群管理平台。在离线网络环境下通过可视化 Web UI 在 VMware、Openstack 或者物理机上规划、部署和管理生产级别的 Kubernetes 集群。开启你的 Kubernetes 之旅

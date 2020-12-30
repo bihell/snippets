@@ -16,7 +16,7 @@ export const FETCH_SETTING = {
   // 传给后台的每页显示记录数字段名
   sizeField: 'pageSize',
   // 接口返回的表格数据字段名
-  listField: 'records',
+  listField: 'items',
   // 接口返回的表格总数字段名
   totalField: 'total',
 };
@@ -31,3 +31,9 @@ export function DEFAULT_SORT_FN(sortInfo: SorterResult) {
     order,
   };
 }
+
+//  表格单元格默认布局
+export const DEFAULT_ALIGN = 'center';
+
+export const INDEX_COLUMN_FLAG = 'INDEX';
+export const ACTION_COLUMN_FLAG = 'ACTION';
