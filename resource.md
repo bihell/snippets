@@ -731,3 +731,11 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [如何优雅的设计和使用缓存？](https://github.com/javagrowing/JGrowing/blob/master/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%9C%8D%E5%8A%A1%E4%BC%98%E5%8C%96/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98%EF%BC%9F.md)
 [bxm0927/vue-meituan](https://github.com/bxm0927/vue-meituan) | :hamburger: :meat\*on_bone: :fork_and_knife: 基于 Vue 全家桶 (2.x)制作的美团外卖 APP | 631 | Vue | 03/02 |
 [KubeOperator/KubeOperator](https://github.com/KubeOperator/KubeOperator) 用 Python 语言开发的开源容器集群管理平台。在离线网络环境下通过可视化 Web UI 在 VMware、Openstack 或者物理机上规划、部署和管理生产级别的 Kubernetes 集群。开启你的 Kubernetes 之旅
+[gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 基于gin+vue搭建的后台管理系统框架，集成jwt鉴权，权限管理，动态路由，分页封装，多点登录拦截，资源权限，上传下载，代码生成器，表单生成器，通用工作流等基础功能，五分钟一套CURD前后端代码，目前已支持VUE3，欢迎issue和pr~
+[Hadoop 编程实战：HDFS API 编程](https://xie.infoq.cn/article/560f9b30720a529852c718144)
+[Hadoop 编程实战：HDFS API 编程样例](https://xie.infoq.cn/article/c9be9920ba3fc48d150c33411?utm_source=rss&utm_medium=article)
+[jd_maotai_seckill](https://github.com/ChinaVolvocars/jd_maotai_seckill) 优化版本的京东茅台抢购神器
+[stock](https://github.com/pythonstock/stock) stock，股票系统。使用python进行开发。
+[Tmall_Tickets](https://github.com/cehui0303/Tmall_Tickets) 天猫超市茅台抢票功能
+[nezha](https://github.com/naiba/nezha) :trollface: 哪吒面板 可能是最优秀的探针了
+[Mac 迁移指南：换新机后要做的第一件事](https://sspai.com/post/64301)
