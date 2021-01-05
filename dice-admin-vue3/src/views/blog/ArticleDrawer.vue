@@ -1,17 +1,5 @@
 <template>
-  <BasicDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
-    <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
-    <template #insertFooter>
-      <a-button> btn</a-button>
-    </template>
-    <template #centerFooter>
-      <a-button> btn2</a-button>
-    </template>
-
-    <template #appendFooter>
-      <a-button> btn3</a-button>
-    </template>
-
+  <BasicDrawer v-bind="$attrs" title="文章设置" width="30%" show-footer>
     <template #footer>
       <a-button> customerFooter</a-button>
     </template>

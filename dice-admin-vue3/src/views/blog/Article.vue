@@ -1,11 +1,13 @@
 <template>
   <div class="p-4">
-    <a-input v-model:value="titleValue" class="mb-2" placeholder="请输入标题" />
+    <a-input v-model:value="titleValue" class="mr-2" placeholder="请输入标题" />
     <MarkDown ref="markDownRef" v-model:value="value" v-model:height="mdHeight" />
     <PageFooter>
       <template #right>
-        <a-button type="primary" @click="submitAll"> 提交 </a-button>
-        <a-button type="primary" class="my-4" @click="openDrawer1(true)">打开Drawer</a-button>
+        <a-button class="mr-2" type="dashed" @click="submitAll"> 保存草稿 </a-button>
+        <a-button class="mr-2" @click="openDrawer1(true)"> 预览 </a-button>
+        <a-button class="mr-2" type="primary" @click="openDrawer1(true)"> 发布 </a-button>
+        <a-button class="mr-2" @click="openDrawer1(true)"> 媒体库 </a-button>
       </template>
     </PageFooter>
     <ArticleDrawer @register="register1" />

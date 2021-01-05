@@ -227,7 +227,14 @@ export default blog;
             onClick: handleOpen.bind(null, record),
           },
         ]"
-      />
+        :divider="false"
+      >
+        <template #more>
+          <a-button shape="circle" class="border-none">
+            <FormOutlined />
+          </a-button>
+        </template>
+      </TableAction>
     </template>
   </BasicTable>
 </template>
@@ -237,9 +244,10 @@ export default blog;
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
+  import { FormOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction },
+    components: { BasicTable, Tag, Badge, TableAction ,FormOutlined},
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
@@ -251,7 +259,7 @@ export default blog;
         showIndexColumn: false,
         bordered: true,
         actionColumn: {
-          width: 100,
+          width: 150,
           title: '操作',
           align: 'center',
           dataIndex: 'action',
@@ -278,7 +286,11 @@ export default blog;
   });
 </script>
 
-
+<style lang="less" scoped>
+.border-none {
+border: 0 !important;
+}
+</style>
 ```
 
 # src/views/blog/tableData.tsx
@@ -438,42 +450,33 @@ export function getFormConfig(): Partial<FormProps> {
 
 ```vue
 <template>
-  <BasicDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
-    <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
-    <template #insertFooter>
-      <a-button> btn</a-button>
-    </template>
-    <template #centerFooter>
-      <a-button> btn2</a-button>
-    </template>
-
-    <template #appendFooter>
-      <a-button> btn3</a-button>
-    </template>
-
-  <template #footer>
+  <BasicDrawer
+    v-bind="$attrs"
+    title="文章设置"
+    width="30%"
+    show-footer
+  >
+    <template #footer>
       <a-button> customerFooter</a-button>
     </template>
   </BasicDrawer>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { BasicDrawer } from '/@/components/Drawer';
-export default defineComponent({
-  components: { BasicDrawer },
-  setup() {
-    return {
-      handleOk: () => {
-        console.log('=====================');
-        console.log('ok');
-        console.log('======================');
-      },
-    };
-  },
-});
+  import { defineComponent } from 'vue';
+  import { BasicDrawer } from '/@/components/Drawer';
+  export default defineComponent({
+    components: { BasicDrawer },
+    setup() {
+      return {
+        handleOk: () => {
+          console.log('=====================');
+          console.log('ok');
+          console.log('======================');
+        },
+      };
+    },
+  });
 </script>
-
-
 ```
 
 # src/views/blog/Article.vue
@@ -483,7 +486,7 @@ export default defineComponent({
   <div class="p-4">
     <a-input
       v-model:value="titleValue"
-      class="mb-2"
+      class="mr-2"
       placeholder="请输入标题"
     />
     <MarkDown
@@ -494,12 +497,31 @@ export default defineComponent({
     <PageFooter>
       <template #right>
         <a-button
-          type="primary"
+          class="mr-2"
+          type="dashed"
           @click="submitAll"
         >
-          提交
+          保存草稿
         </a-button>
-        <a-button type="primary" class="my-4" @click="openDrawer1(true)">打开Drawer</a-button>
+        <a-button
+          class="mr-2"
+          @click="openDrawer1(true)"
+        >
+          预览
+        </a-button>
+        <a-button
+          class="mr-2"
+          type="primary"
+          @click="openDrawer1(true)"
+        >
+          发布
+        </a-button>
+        <a-button
+          class="mr-2"
+          @click="openDrawer1(true)"
+        >
+          媒体库
+        </a-button>
       </template>
     </PageFooter>
     <ArticleDrawer @register="register1" />
@@ -513,14 +535,13 @@ export default defineComponent({
   import ArticleDrawer from './ArticleDrawer.vue';
 
   export default defineComponent({
-    components: { MarkDown,PageFooter,ArticleDrawer },
+    components: { MarkDown, PageFooter, ArticleDrawer },
     setup() {
       const markDownRef = ref<Nullable<MarkDownActionType>>(null);
       const valueRef = ref('');
       const titleValue = '';
       const mdHeight = document.documentElement.clientHeight - 195;
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
-
 
       async function submitAll() {
         try {
@@ -558,8 +579,8 @@ export default defineComponent({
   .mb-2 {
     margin-bottom: 0.5em !important;
   }
-
 </style>
+
 
 ```
 

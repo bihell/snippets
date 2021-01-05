@@ -32,7 +32,14 @@
             onClick: handleOpen.bind(null, record),
           },
         ]"
-      />
+        :divider="false"
+      >
+        <template #more>
+          <a-button shape="circle" class="border-none">
+            <FormOutlined />
+          </a-button>
+        </template>
+      </TableAction>
     </template>
   </BasicTable>
 </template>
@@ -42,9 +49,10 @@
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
+  import { FormOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction },
+    components: { BasicTable, Tag, Badge, TableAction, FormOutlined },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
@@ -56,7 +64,7 @@
         showIndexColumn: false,
         bordered: true,
         actionColumn: {
-          width: 100,
+          width: 150,
           title: '操作',
           align: 'center',
           dataIndex: 'action',
@@ -82,3 +90,9 @@
     },
   });
 </script>
+
+<style lang="less" scoped>
+  .border-none {
+    border: 0 !important;
+  }
+</style>
