@@ -1,10 +1,13 @@
-import { BasicColumn, BasicTableProps, GetColumnsParams } from '../types/table';
-import { PaginationProps } from '../types/pagination';
-import { unref, ComputedRef, Ref, computed, watchEffect, ref, toRaw } from 'vue';
-import { isBoolean, isArray, isString } from '/@/utils/is';
+import type { BasicColumn, BasicTableProps, CellFormat, GetColumnsParams } from '../types/table';
+import type { PaginationProps } from '../types/pagination';
+import { unref, ComputedRef, Ref, computed, watch, ref, toRaw } from 'vue';
+import { isBoolean, isArray, isString, isObject } from '/@/utils/is';
 import { DEFAULT_ALIGN, PAGE_SIZE, INDEX_COLUMN_FLAG, ACTION_COLUMN_FLAG } from '../const';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { isEqual, cloneDeep } from 'lodash-es';
+import { isFunction } from '/@/utils/is';
+import { formatToDate } from '/@/utils/dateUtil';
+import { renderEditCell } from '../components/editable';
 
 const { t } = useI18n();
 
@@ -40,19 +43,17 @@ function handleIndexColumn(
   getPaginationRef: ComputedRef<boolean | PaginationProps>,
   columns: BasicColumn[]
 ) {
-  const { showIndexColumn, indexColumnProps } = unref(propsRef);
+  const { showIndexColumn, indexColumnProps, isTreeTable } = unref(propsRef);
 
   let pushIndexColumns = false;
-  columns.forEach((item) => {
-    const { children } = item;
-
-    const isTreeTable = children && children.length;
-
+  if (unref(isTreeTable)) {
+    return;
+  }
+  columns.forEach(() => {
     const indIndex = columns.findIndex((column) => column.flag === INDEX_COLUMN_FLAG);
-
-    if (showIndexColumn && !isTreeTable) {
+    if (showIndexColumn) {
       pushIndexColumns = indIndex === -1;
-    } else if (!showIndexColumn && !isTreeTable && indIndex !== -1) {
+    } else if (!showIndexColumn && indIndex !== -1) {
       columns.splice(indIndex, 1);
     }
   });
@@ -116,7 +117,8 @@ export function useColumns(
     }
     const { ellipsis } = unref(propsRef);
 
-    columns.forEach((item) => {
+    const cloneColumns = cloneDeep(columns);
+    cloneColumns.forEach((item) => {
       const { customRender, slots } = item;
 
       handleItem(
@@ -124,18 +126,52 @@ export function useColumns(
         Reflect.has(item, 'ellipsis') ? !!item.ellipsis : !!ellipsis && !customRender && !slots
       );
     });
+    return cloneColumns;
+  });
+
+  const getViewColumns = computed(() => {
+    const viewColumns = sortFixedColumn(unref(getColumnsRef));
+
+    const columns = cloneDeep(viewColumns);
+    columns.forEach((column) => {
+      const { slots, dataIndex, customRender, format, edit, editRow, flag } = column;
+
+      if (!slots || !slots?.title) {
+        column.slots = { title: `header-${dataIndex}`, ...(slots || {}) };
+        column.customTitle = column.title;
+        Reflect.deleteProperty(column, 'title');
+      }
+      const isDefaultAction = [INDEX_COLUMN_FLAG, ACTION_COLUMN_FLAG].includes(flag!);
+      if (!customRender && format && !edit && !isDefaultAction) {
+        column.customRender = ({ text, record, index }) => {
+          return formatCell(text, format, record, index);
+        };
+      }
+
+      // edit table
+      if ((edit || editRow) && !isDefaultAction) {
+        column.customRender = renderEditCell(column);
+      }
+    });
     return columns;
   });
 
-  const getSortFixedColumns = computed(() => {
-    return useFixedColumn(unref(getColumnsRef));
-  });
+  watch(
+    () => unref(propsRef).columns,
+    (columns) => {
+      columnsRef.value = columns;
+      cacheColumns = columns?.filter((item) => !item.flag) ?? [];
+    }
+  );
 
-  watchEffect(() => {
-    const columns = toRaw(unref(propsRef).columns);
-    columnsRef.value = columns;
-    cacheColumns = columns?.filter((item) => !item.flag) ?? [];
-  });
+  // watchEffect(() => {
+  //   const columns = toRaw(unref(propsRef).columns);
+  //   console.log('======================');
+  //   console.log(111);
+  //   console.log('======================');
+  //   columnsRef.value = columns;
+  //   cacheColumns = columns?.filter((item) => !item.flag) ?? [];
+  // });
 
   /**
    * set columns
@@ -160,13 +196,14 @@ export function useColumns(
       const columnKeys = columns as string[];
       const newColumns: BasicColumn[] = [];
       cacheColumns.forEach((item) => {
-        if (columnKeys.includes(`${item.key}`! || item.dataIndex!)) {
+        if (columnKeys.includes(item.dataIndex! || (item.key as string))) {
           newColumns.push({
             ...item,
             defaultHidden: false,
           });
         }
       });
+
       // Sort according to another array
       if (!isEqual(cacheKeys, columns)) {
         newColumns.sort((prev, next) => {
@@ -191,7 +228,7 @@ export function useColumns(
     }
 
     if (sort) {
-      columns = useFixedColumn(columns);
+      columns = sortFixedColumn(columns);
     }
 
     return columns;
@@ -200,10 +237,10 @@ export function useColumns(
     return cacheColumns;
   }
 
-  return { getColumnsRef, getCacheColumns, getColumns, setColumns, getSortFixedColumns };
+  return { getColumnsRef, getCacheColumns, getColumns, setColumns, getViewColumns };
 }
 
-export function useFixedColumn(columns: BasicColumn[]) {
+function sortFixedColumn(columns: BasicColumn[]) {
   const fixedLeftColumns: BasicColumn[] = [];
   const fixedRightColumns: BasicColumn[] = [];
   const defColumns: BasicColumn[] = [];
@@ -223,4 +260,36 @@ export function useFixedColumn(columns: BasicColumn[]) {
   );
 
   return resultColumns;
+}
+
+// format cell
+export function formatCell(text: string, format: CellFormat, record: Recordable, index: number) {
+  if (!format) {
+    return text;
+  }
+
+  // custom function
+  if (isFunction(format)) {
+    return format(text, record, index);
+  }
+
+  try {
+    // date type
+    const DATE_FORMAT_PREFIX = 'date|';
+    if (isString(format) && format.startsWith(DATE_FORMAT_PREFIX)) {
+      const dateFormat = format.replace(DATE_FORMAT_PREFIX, '');
+
+      if (!dateFormat) {
+        return text;
+      }
+      return formatToDate(text, dateFormat);
+    }
+
+    // enum
+    if (isObject(format) && Reflect.has(format, 'size')) {
+      return format.get(text);
+    }
+  } catch (error) {
+    return text;
+  }
 }

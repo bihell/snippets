@@ -1,7 +1,7 @@
-import type { BasicTableProps, FetchParams } from '../types/table';
+import type { BasicTableProps, FetchParams, SorterResult } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
 
-import { ref, unref, ComputedRef, computed, onMounted, watchEffect } from 'vue';
+import { ref, unref, ComputedRef, computed, onMounted, watch, reactive } from 'vue';
 
 import { useTimeoutFn } from '/@/hooks/core/useTimeout';
 
@@ -16,18 +16,71 @@ interface ActionType {
   setPagination: (info: Partial<PaginationProps>) => void;
   setLoading: (loading: boolean) => void;
   getFieldsValue: () => Recordable;
+  clearSelectedRowKeys: () => void;
+}
+
+interface SearchState {
+  sortInfo: Recordable;
+  filterInfo: Record<string, string[]>;
 }
 export function useDataSource(
   propsRef: ComputedRef<BasicTableProps>,
-  { getPaginationInfo, setPagination, setLoading, getFieldsValue }: ActionType,
+  {
+    getPaginationInfo,
+    setPagination,
+    setLoading,
+    getFieldsValue,
+    clearSelectedRowKeys,
+  }: ActionType,
   emit: EmitType
 ) {
+  const searchState = reactive<SearchState>({
+    sortInfo: {},
+    filterInfo: {},
+  });
   const dataSourceRef = ref<Recordable[]>([]);
 
-  watchEffect(() => {
-    const { dataSource, api } = unref(propsRef);
-    !api && dataSource && (dataSourceRef.value = dataSource);
-  });
+  // watchEffect(() => {
+  //   const { dataSource, api } = unref(propsRef);
+  //   !api && dataSource && (dataSourceRef.value = dataSource);
+  // });
+
+  watch(
+    () => unref(propsRef).dataSource,
+    () => {
+      const { dataSource, api } = unref(propsRef);
+      !api && dataSource && (dataSourceRef.value = dataSource);
+    },
+    {
+      immediate: true,
+    }
+  );
+
+  function handleTableChange(
+    pagination: PaginationProps,
+    filters: Partial<Recordable<string[]>>,
+    sorter: SorterResult
+  ) {
+    const { clearSelectOnPageChange, sortFn, filterFn } = unref(propsRef);
+    if (clearSelectOnPageChange) {
+      clearSelectedRowKeys();
+    }
+    setPagination(pagination);
+
+    const params: Recordable = {};
+    if (sorter && isFunction(sortFn)) {
+      const sortInfo = sortFn(sorter);
+      searchState.sortInfo = sortInfo;
+      params.sortInfo = sortInfo;
+    }
+
+    if (filters && isFunction(filterFn)) {
+      const filterInfo = filterFn(filters);
+      searchState.filterInfo = filterInfo;
+      params.filterInfo = filterInfo;
+    }
+    fetch(params);
+  }
 
   function setTableKey(items: any[]) {
     if (!items || !Array.isArray(items)) return;
@@ -75,6 +128,14 @@ export function useDataSource(
     return unref(dataSourceRef);
   });
 
+  async function updateTableData(index: number, key: string, value: any) {
+    const record = dataSourceRef.value[index];
+    if (record) {
+      dataSourceRef.value[index][key] = value;
+    }
+    return dataSourceRef.value[index];
+  }
+
   async function fetch(opt?: FetchParams) {
     const { api, searchInfo, fetchSetting, beforeFetch, afterFetch, useSearchForm } = unref(
       propsRef
@@ -94,6 +155,8 @@ export function useDataSource(
         pageParams[sizeField] = pageSize;
       }
 
+      const { sortInfo = {}, filterInfo } = searchState;
+
       let params: Recordable = {
         ...pageParams,
         ...(useSearchForm ? getFieldsValue() : {}),
@@ -101,6 +164,8 @@ export function useDataSource(
         ...(opt ? opt.searchInfo : {}),
         ...(opt ? opt.sortInfo : {}),
         ...(opt ? opt.filterInfo : {}),
+        ...sortInfo,
+        ...filterInfo,
       };
       if (beforeFetch && isFunction(beforeFetch)) {
         params = beforeFetch(params) || params;
@@ -164,7 +229,7 @@ export function useDataSource(
   onMounted(() => {
     useTimeoutFn(() => {
       unref(propsRef).immediate && fetch();
-    }, 0);
+    }, 16);
   });
 
   return {
@@ -175,5 +240,7 @@ export function useDataSource(
     getAutoCreateKey,
     fetch,
     reload,
+    updateTableData,
+    handleTableChange,
   };
 }
