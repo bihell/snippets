@@ -15,6 +15,13 @@
     </template>
     <template #action="{ record }">
       <TableAction
+        :actions="[
+          {
+            label: '编辑',
+            icon: 'ic:outline-delete-outline',
+            onClick: handleDelete.bind(null, record),
+          },
+        ]"
         :drop-down-actions="[
           {
             label: '编辑',
@@ -49,7 +56,7 @@
         showIndexColumn: false,
         bordered: true,
         actionColumn: {
-          width: 65,
+          width: 100,
           title: '操作',
           align: 'center',
           dataIndex: 'action',

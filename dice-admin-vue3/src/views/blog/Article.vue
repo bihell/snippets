@@ -2,41 +2,41 @@
   <div class="p-4">
     <a-input v-model:value="titleValue" class="mb-2" placeholder="请输入标题" />
     <MarkDown ref="markDownRef" v-model:value="value" v-model:height="mdHeight" />
-    <div class="bottom-control">
-      <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
-      <a-button type="dashed" @click="openArticleDrawer(true)"> 发布 </a-button>
-      <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
-      <a-button type="dashed" @click="advancedVisible = true"> 保存 </a-button>
-      <a-button type="dashed" @click="advancedVisible = true"> 高级 </a-button>
-      <a-button type="dashed" @click="advancedVisible = true"> 保存 </a-button>
-    </div>
-    <ArticleDrawer @register="registerArticleDrawer" />
+    <PageFooter>
+      <template #right>
+        <a-button type="primary" @click="submitAll"> 提交 </a-button>
+        <a-button type="primary" class="my-4" @click="openDrawer1(true)">打开Drawer</a-button>
+      </template>
+    </PageFooter>
+    <ArticleDrawer @register="register1" />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, unref } from 'vue';
+  import { defineComponent, ref } from 'vue';
   import { MarkDown, MarkDownActionType } from '/@/components/Markdown';
-  import ArticleDrawer from './ArticleDrawer.vue';
+  import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
+  import ArticleDrawer from './ArticleDrawer.vue';
 
   export default defineComponent({
-    components: { MarkDown, ArticleDrawer },
+    components: { MarkDown, PageFooter, ArticleDrawer },
     setup() {
       const markDownRef = ref<Nullable<MarkDownActionType>>(null);
       const valueRef = ref('');
       const titleValue = '';
-      const [registerArticleDrawer, { openDrawer: openArticleDrawer }] = useDrawer();
+      const mdHeight = document.documentElement.clientHeight - 195;
+      const [register1, { openDrawer: openDrawer1 }] = useDrawer();
 
       async function submitAll() {
         try {
-          const markDown = unref(markDownRef);
-          if (!markDown) return;
-          const vditor = markDown.getVditor();
-          console.log('table data:', vditor.getValue());
-          console.log('table data:', valueRef);
+          if (tableRef.value) {
+            console.log('table data:', tableRef.value.getDataSource());
+          }
+
+          const [values, taskValues] = await Promise.all([validate(), validateTaskForm()]);
+          console.log('form data:', values, taskValues);
         } catch (error) {}
       }
-      const mdHeight = document.documentElement.clientHeight - 195;
 
       return {
         value: valueRef,
@@ -44,8 +44,8 @@
         titleValue,
         submitAll,
         mdHeight,
-        registerArticleDrawer,
-        openArticleDrawer,
+        register1,
+        openDrawer1,
       };
     },
   });
@@ -62,19 +62,5 @@
 
   .mb-2 {
     margin-bottom: 0.5em !important;
-  }
-
-  .bottom-control {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 7px 14px;
-    text-align: right;
-    background: rgb(255, 255, 255);
-    border-top: 1px solid rgb(232, 232, 232);
-    border-radius: 0 0 4px 4px;
-    box-shadow: 0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05),
-      0 -12px 48px 16px rgba(0, 0, 0, 0.03);
   }
 </style>

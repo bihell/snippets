@@ -1,61 +1,35 @@
 <template>
-  <a-drawer
-    title="Multi-level drawer"
-    width="520"
-    :closable="false"
-    :visible="visible"
-    @close="onClose"
-  >
-    <a-button type="primary" @click="showChildrenDrawer"> Two-level drawer </a-button>
-    <a-drawer
-      title="Two-level Drawer"
-      width="320"
-      :closable="false"
-      :visible="childrenDrawer"
-      @close="onChildrenDrawerClose"
-    >
-      <a-button type="primary" @click="showChildrenDrawer"> This is two-level drawer </a-button>
-    </a-drawer>
-    <div
-      :style="{
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-        borderTop: '1px solid #e8e8e8',
-        padding: '10px 16px',
-        textAlign: 'right',
-        left: 0,
-        background: '#fff',
-        borderRadius: '0 0 4px 4px',
-      }"
-    >
-      <a-button @click="onClose"> Cancel </a-button>
-      <a-button type="primary" @click="onClose"> Submit </a-button>
-      <a-button type="primary" @click="showDrawer"> 高级选项 </a-button>
-    </div>
-  </a-drawer>
+  <BasicDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
+    <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
+    <template #insertFooter>
+      <a-button> btn</a-button>
+    </template>
+    <template #centerFooter>
+      <a-button> btn2</a-button>
+    </template>
+
+    <template #appendFooter>
+      <a-button> btn3</a-button>
+    </template>
+
+    <template #footer>
+      <a-button> customerFooter</a-button>
+    </template>
+  </BasicDrawer>
 </template>
-<script>
-  export default {
-    data() {
+<script lang="ts">
+  import { defineComponent } from 'vue';
+  import { BasicDrawer } from '/@/components/Drawer';
+  export default defineComponent({
+    components: { BasicDrawer },
+    setup() {
       return {
-        visible: false,
-        childrenDrawer: false,
+        handleOk: () => {
+          console.log('=====================');
+          console.log('ok');
+          console.log('======================');
+        },
       };
     },
-    methods: {
-      showDrawer() {
-        this.visible = true;
-      },
-      onClose() {
-        this.visible = false;
-      },
-      showChildrenDrawer() {
-        this.childrenDrawer = true;
-      },
-      onChildrenDrawerClose() {
-        this.childrenDrawer = false;
-      },
-    },
-  };
+  });
 </script>

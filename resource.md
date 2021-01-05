@@ -739,3 +739,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Tmall_Tickets](https://github.com/cehui0303/Tmall_Tickets) 天猫超市茅台抢票功能
 [nezha](https://github.com/naiba/nezha) :trollface: 哪吒面板 可能是最优秀的探针了
 [Mac 迁移指南：换新机后要做的第一件事](https://sspai.com/post/64301)
+[rich](https://github.com/willmcgugan/rich) Rich是一个Python库，可以美化终端输出，而且pip就可以轻松的安装。
+[视频｜如何制作 macOS Big Sur 安装启动盘](https://sspai.com/post/64313)

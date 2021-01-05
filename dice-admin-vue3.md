@@ -189,7 +189,7 @@ export default blog;
 
 # src/views/blog/Articles.vue
 
-```
+```vue
 <template>
   <BasicTable @register="registerTable">
     <template #category="{ record }">
@@ -203,10 +203,20 @@ export default blog;
       </Tag>
     </template>
     <template #cc="{ record }">
-      <Badge :count="record.commentCount" show-zero />
+      <Badge
+        :count="record.commentCount"
+        show-zero
+      />
     </template>
     <template #action="{ record }">
       <TableAction
+        :actions="[
+          {
+            label: '编辑',
+            icon: 'ic:outline-delete-outline',
+            onClick: handleDelete.bind(null, record),
+          },
+        ]"
         :drop-down-actions="[
           {
             label: '编辑',
@@ -241,7 +251,7 @@ export default blog;
         showIndexColumn: false,
         bordered: true,
         actionColumn: {
-          width: 65,
+          width: 100,
           title: '操作',
           align: 'center',
           dataIndex: 'action',
@@ -267,6 +277,7 @@ export default blog;
     },
   });
 </script>
+
 
 ```
 
@@ -423,70 +434,132 @@ export function getFormConfig(): Partial<FormProps> {
 
 ```
 
-
-
 # /src/views/blog/ArticleDrawer.vue
 
-```
+```vue
 <template>
-  <BasicDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
-    <div>
-      <BasicForm @register="registerForm" />
-    </div>
-  </BasicDrawer>
-  <PageFooter>
-    <template #right>
-      <a-button class="mr-2" type="primary" @click="submitAll"> 保存草稿 </a-button>
-      <a-button class="mr-2" type="danger" @click="submitAll"> 保存 </a-button>
+  <BasicDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
+    <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
+    <template #insertFooter>
+      <a-button> btn</a-button>
     </template>
-  </PageFooter>
+    <template #centerFooter>
+      <a-button> btn2</a-button>
+    </template>
+
+    <template #appendFooter>
+      <a-button> btn3</a-button>
+    </template>
+
+  <template #footer>
+      <a-button> customerFooter</a-button>
+    </template>
+  </BasicDrawer>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
+import { defineComponent } from 'vue';
+import { BasicDrawer } from '/@/components/Drawer';
+export default defineComponent({
+  components: { BasicDrawer },
+  setup() {
+    return {
+      handleOk: () => {
+        console.log('=====================');
+        console.log('ok');
+        console.log('======================');
+      },
+    };
+  },
+});
+</script>
 
-  import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
-  const schemas: FormSchema[] = [
-    {
-      field: 'field1',
-      component: 'Input',
-      label: '字段1',
-      colProps: {
-        span: 12,
-      },
-      defaultValue: '111',
-    },
-    {
-      field: 'field2',
-      component: 'Input',
-      label: '字段2',
-      colProps: {
-        span: 12,
-      },
-    },
-  ];
+
+```
+
+# src/views/blog/Article.vue
+
+```vue
+<template>
+  <div class="p-4">
+    <a-input
+      v-model:value="titleValue"
+      class="mb-2"
+      placeholder="请输入标题"
+    />
+    <MarkDown
+      ref="markDownRef"
+      v-model:value="value"
+      v-model:height="mdHeight"
+    />
+    <PageFooter>
+      <template #right>
+        <a-button
+          type="primary"
+          @click="submitAll"
+        >
+          提交
+        </a-button>
+        <a-button type="primary" class="my-4" @click="openDrawer1(true)">打开Drawer</a-button>
+      </template>
+    </PageFooter>
+    <ArticleDrawer @register="register1" />
+  </div>
+</template>
+<script lang="ts">
+  import { defineComponent, ref } from 'vue';
+  import { MarkDown, MarkDownActionType } from '/@/components/Markdown';
+  import { PageFooter } from '/@/components/Page';
+  import { useDrawer } from '/@/components/Drawer';
+  import ArticleDrawer from './ArticleDrawer.vue';
+
   export default defineComponent({
-    components: { BasicDrawer, BasicForm },
+    components: { MarkDown,PageFooter,ArticleDrawer },
     setup() {
-      const [registerForm, { setFieldsValue }] = useForm({
-        labelWidth: 120,
-        schemas,
-        showActionButtonGroup: false,
-        actionColOptions: {
-          span: 24,
-        },
-      });
-      const [register] = useDrawerInner((data) => {
-        // 方式1
-        setFieldsValue({
-          field2: data.data,
-          field1: data.info,
-        });
-      });
-      return { register, schemas, registerForm };
+      const markDownRef = ref<Nullable<MarkDownActionType>>(null);
+      const valueRef = ref('');
+      const titleValue = '';
+      const mdHeight = document.documentElement.clientHeight - 195;
+      const [register1, { openDrawer: openDrawer1 }] = useDrawer();
+
+
+      async function submitAll() {
+        try {
+          if (tableRef.value) {
+            console.log('table data:', tableRef.value.getDataSource());
+          }
+
+          const [values, taskValues] = await Promise.all([validate(), validateTaskForm()]);
+          console.log('form data:', values, taskValues);
+        } catch (error) {}
+      }
+
+      return {
+        value: valueRef,
+        markDownRef,
+        titleValue,
+        submitAll,
+        mdHeight,
+        register1,
+        openDrawer1,
+      };
     },
   });
 </script>
+
+<style lang="less" scoped>
+  .app-container {
+    padding: 15px;
+  }
+
+  .mb-3 {
+    margin-bottom: 1em !important;
+  }
+
+  .mb-2 {
+    margin-bottom: 0.5em !important;
+  }
+
+</style>
 
 ```
 
