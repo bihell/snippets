@@ -757,21 +757,23 @@ export function postStatus() {
 
 ```
 
-# src/components/Table/src/**const.ts**
+# src/settings/componentSetting.ts
 
 ```
-// 通用接口字段设置
-// 支持 xxx.xxx.xxx格式
-export const FETCH_SETTING = {
-  // 传给后台的当前页字段名
-  pageField: 'pageIndex',
-  // 传给后台的每页显示记录数字段名
-  sizeField: 'pageSize',
-  // 接口返回的表格数据字段名
-  listField: 'records',
-  // 接口返回的表格总数字段名
-  totalField: 'total',
-};
-
+export default {
+  // basic-table setting
+  table: {
+    // Form interface request general configuration
+    // support xxx.xxx.xxx
+    fetchSetting: {
+      // The field name of the current page passed to the background
+      pageField: 'pageIndex',
+      // The number field name of each page displayed in the background
+      sizeField: 'pageSize',
+      // Field name of the form data returned by the interface
+      listField: 'records',
+      // Total number of tables returned by the interface field name
+      totalField: 'total',
+    },
 ```
 
