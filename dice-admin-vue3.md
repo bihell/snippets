@@ -2,7 +2,7 @@
 
 ```
   rules: {
-    'prettier/prettier':'off',
+    'prettier/prettier': 'off',
 ```
 
 #  	.env.development
@@ -203,20 +203,10 @@ export default blog;
       </Tag>
     </template>
     <template #cc="{ record }">
-      <Badge
-        :count="record.commentCount"
-        show-zero
-      />
+      <Badge :count="record.commentCount" show-zero />
     </template>
     <template #action="{ record }">
       <TableAction
-        :actions="[
-          {
-            label: '编辑',
-            icon: 'ic:outline-delete-outline',
-            onClick: handleDelete.bind(null, record),
-          },
-        ]"
         :drop-down-actions="[
           {
             label: '编辑',
@@ -247,7 +237,7 @@ export default blog;
   import { FormOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction ,FormOutlined},
+    components: { BasicTable, Tag, Badge, TableAction, FormOutlined },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
@@ -259,7 +249,7 @@ export default blog;
         showIndexColumn: false,
         bordered: true,
         actionColumn: {
-          width: 150,
+          width: 50,
           title: '操作',
           align: 'center',
           dataIndex: 'action',
@@ -287,10 +277,11 @@ export default blog;
 </script>
 
 <style lang="less" scoped>
-.border-none {
-border: 0 !important;
-}
+  .border-none {
+    border: 0 !important;
+  }
 </style>
+
 ```
 
 # src/views/blog/tableData.tsx
@@ -453,7 +444,7 @@ export function getFormConfig(): Partial<FormProps> {
   <BasicDrawer
     v-bind="$attrs"
     title="文章设置"
-    width="30%"
+    width="20%"
     show-footer
   >
     <BasicForm
@@ -462,43 +453,117 @@ export function getFormConfig(): Partial<FormProps> {
       @register="registerForm"
     />
     <template #footer>
-      <a-button> customerFooter</a-button>
+      <a-button
+        class="mr-2"
+        type="dashed"
+      >
+        保存草稿
+      </a-button>
+      <a-button
+        class="mr-2"
+        type="primary"
+      >
+        发布
+      </a-button>
+      <a-button>查看</a-button>
     </template>
   </BasicDrawer>
 </template>
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+  import { defineComponent, ref } from 'vue';
   import { BasicDrawer } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   const schemas: FormSchema[] = [
     {
       field: 'tag',
-      component: 'Input',
+      component: 'Select',
       label: '标签',
+      componentProps: {
+        placeholder: '请选择文章标签',
+      },
+      colProps: {
+        span: 24,
+      },
       componentProps:{
-        placeholder:'请选择文章标签',
+
       },
     },
     {
       field: 'category',
-      component: 'Input',
+      component: 'Select',
       label: '分类',
-      componentProps:{
-        placeholder:'请选择文章分类',
+      componentProps: {
+        mode: 'multiple',
+        placeholder: '请选择文章分类',
+        options: [
+          {
+            label: 'aa',
+            value: null,
+          },
+          {
+            label: 'bb',
+            value: 'PUBLISHED',
+          },
+          {
+            label: 'cc',
+            value: 'DRAFT',
+          },
+          {
+            label: 'dd',
+            value: 'RECYCLE',
+          },
+          {
+            label: 'ee',
+            value: 'INTIMATE',
+          },
+        ],
+      },
+      colProps: {
+        span: 24,
       },
     },
     {
       field: 'top',
       component: 'Switch',
       label: '是否置顶',
-      componentProps:{
-        placeholder:'请选择文章分类',
+      layout: 'horizontal',
+      componentProps: {
+      },
+      colProps: {
+        span: 10,
+      },
+    },
+    {
+      field: 'allowComment',
+      component: 'Switch',
+      label: '开启评论',
+      layout: 'horizontal',
+      componentProps: {
+      },
+      colProps: {
+        span: 10,
+      },
+    },
+    {
+      field: 'createDate',
+      component: 'DatePicker',
+      label: '创建日期',
+      componentProps: {
+        showTime:true,
+      },
+    },
+    {
+      field: 'modifyDate',
+      component: 'DatePicker',
+      label: '修改日期',
+      componentProps: {
+        showTime:true
       },
     },
   ];
 
   export default defineComponent({
-    components: { BasicDrawer, BasicForm},
+    components: { BasicDrawer, BasicForm },
     setup() {
       const modelRef = ref({});
       const [
@@ -508,7 +573,6 @@ import {defineComponent, ref} from 'vue';
           // setProps
         },
       ] = useForm({
-        labelWidth: 120,
         schemas,
         showActionButtonGroup: false,
         actionColOptions: {
@@ -532,12 +596,13 @@ import {defineComponent, ref} from 'vue';
       // });
       return {
         // register,
-        schemas, registerForm, model: modelRef
+        schemas,
+        registerForm,
+        model: modelRef,
       };
     },
   });
 </script>
-
 ```
 
 # src/views/blog/Article.vue
