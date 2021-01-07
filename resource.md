@@ -741,3 +741,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Mac 迁移指南：换新机后要做的第一件事](https://sspai.com/post/64301)
 [rich](https://github.com/willmcgugan/rich) Rich是一个Python库，可以美化终端输出，而且pip就可以轻松的安装。
 [视频｜如何制作 macOS Big Sur 安装启动盘](https://sspai.com/post/64313)
+[支撑700亿数据量的ClickHouse高可用架构实践](https://www.infoq.cn/article/VggxS8hQbEwG1z3NdtT0?utm_source=rss&utm_medium=article)
+[学习使用 Sed 文本编辑器](https://linux.cn/article-12992-1.html?utm_source=rss&utm_medium=rss)
