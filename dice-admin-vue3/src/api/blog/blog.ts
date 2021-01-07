@@ -1,8 +1,14 @@
 import { defHttp } from '/@/utils/http/axios';
-import { ArticleListParams, ArticleListGetResultModel } from './model/blogModel';
+import {
+  ArticleListParams,
+  ArticleListGetResultModel,
+  OptionsGetResultModel,
+  OptionsParams,
+} from './model/blogModel';
 
 enum Api {
-  Article_LIST = '/article/getPageList',
+  ARTICLE_LIST = '/article/getPageList',
+  META_LIST = '/meta/meta_list',
 }
 
 /**
@@ -10,8 +16,19 @@ enum Api {
  */
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
-    url: Api.Article_LIST,
+    url: Api.ARTICLE_LIST,
     method: 'POST',
+    params,
+  });
+}
+
+/**
+ * @description: Get sample options value
+ */
+export function metaListApi(params: OptionsParams) {
+  return defHttp.request<OptionsGetResultModel>({
+    url: Api.META_LIST,
+    method: 'GET',
     params,
     headers: {
       ignoreCancelToken: true,

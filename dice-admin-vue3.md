@@ -441,30 +441,11 @@ export function getFormConfig(): Partial<FormProps> {
 
 ```vue
 <template>
-  <BasicDrawer
-    v-bind="$attrs"
-    title="文章设置"
-    width="20%"
-    show-footer
-  >
-    <BasicForm
-      :model="model"
-      layout="vertical"
-      @register="registerForm"
-    />
+  <BasicDrawer v-bind="$attrs" title="文章设置" width="20%" show-footer>
+    <BasicForm :model="model" layout="vertical" @register="registerForm" />
     <template #footer>
-      <a-button
-        class="mr-2"
-        type="dashed"
-      >
-        保存草稿
-      </a-button>
-      <a-button
-        class="mr-2"
-        type="primary"
-      >
-        发布
-      </a-button>
+      <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
+      <a-button class="mr-2" type="primary"> 发布 </a-button>
       <a-button>查看</a-button>
     </template>
   </BasicDrawer>
@@ -473,50 +454,30 @@ export function getFormConfig(): Partial<FormProps> {
   import { defineComponent, ref } from 'vue';
   import { BasicDrawer } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
+  import {metaListApi} from "/@/api/blog/blog";
   const schemas: FormSchema[] = [
     {
       field: 'tag',
-      component: 'Select',
+      component: 'ApiSelect',
       label: '标签',
       componentProps: {
+        mode: 'multiple',
         placeholder: '请选择文章标签',
+        api:metaListApi,
+        params:{type:'tag'},
       },
       colProps: {
         span: 24,
       },
-      componentProps:{
-
-      },
     },
     {
       field: 'category',
-      component: 'Select',
+      component: 'ApiSelect',
       label: '分类',
       componentProps: {
-        mode: 'multiple',
         placeholder: '请选择文章分类',
-        options: [
-          {
-            label: 'aa',
-            value: null,
-          },
-          {
-            label: 'bb',
-            value: 'PUBLISHED',
-          },
-          {
-            label: 'cc',
-            value: 'DRAFT',
-          },
-          {
-            label: 'dd',
-            value: 'RECYCLE',
-          },
-          {
-            label: 'ee',
-            value: 'INTIMATE',
-          },
-        ],
+        api:metaListApi,
+        params:{type:'category'}
       },
       colProps: {
         span: 24,
@@ -527,8 +488,7 @@ export function getFormConfig(): Partial<FormProps> {
       component: 'Switch',
       label: '是否置顶',
       layout: 'horizontal',
-      componentProps: {
-      },
+      componentProps: {},
       colProps: {
         span: 10,
       },
@@ -538,8 +498,7 @@ export function getFormConfig(): Partial<FormProps> {
       component: 'Switch',
       label: '开启评论',
       layout: 'horizontal',
-      componentProps: {
-      },
+      componentProps: {},
       colProps: {
         span: 10,
       },
@@ -549,7 +508,7 @@ export function getFormConfig(): Partial<FormProps> {
       component: 'DatePicker',
       label: '创建日期',
       componentProps: {
-        showTime:true,
+        showTime: true,
       },
     },
     {
@@ -557,7 +516,7 @@ export function getFormConfig(): Partial<FormProps> {
       component: 'DatePicker',
       label: '修改日期',
       componentProps: {
-        showTime:true
+        showTime: true,
       },
     },
   ];
@@ -733,7 +692,7 @@ export interface BasicFetchResult<T extends any> {
 
 # src/api/blog/model/blogModel.ts
 
-```
+```javascript
 import { BasicPageParams, BasicFetchResult } from '/@/api/model/baseModel';
 /**
  * @description: Request list interface parameters
@@ -759,21 +718,35 @@ export interface ArticleListItem {
   commentCount: number;
 }
 
+export interface OptionsParams {
+  type: string
+}
+
 /**
  * @description: Request list return value
  */
 export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
 
+export interface OptionsItem {
+  label: string;
+  value: string;
+}
+
+/**
+ * @description: Request list return value
+ */
+export type OptionsGetResultModel = BasicFetchResult<OptionsItem[]>;
 ```
 
 # /src/api/blog/blog.ts
 
-```
+```javascript
 import { defHttp } from '/@/utils/http/axios';
-import { ArticleListParams, ArticleListGetResultModel } from './model/blogModel';
+import { ArticleListParams, ArticleListGetResultModel, OptionsGetResultModel, OptionsParams } from './model/blogModel';
 
 enum Api {
-  Article_LIST = '/article/getPageList',
+  ARTICLE_LIST = '/article/getPageList',
+  META_LIST = '/meta/meta_list',
 }
 
 /**
@@ -781,8 +754,19 @@ enum Api {
  */
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
-    url: Api.Article_LIST,
+    url: Api.ARTICLE_LIST,
     method: 'POST',
+    params,
+  });
+}
+
+/**
+ * @description: Get sample options value
+ */
+export function metaListApi(params: OptionsParams) {
+  return defHttp.request<OptionsGetResultModel>({
+    url: Api.META_LIST,
+    method: 'GET',
     params,
     headers: {
       ignoreCancelToken: true,
@@ -791,35 +775,33 @@ export function articleListApi(params: ArticleListParams) {
 }
 
 export function postStatus() {
-  return ({
+  return {
     PUBLISHED: {
       value: 'PUBLISHED',
       color: 'green',
       status: 'success',
-      text: '已发布'
+      text: '已发布',
     },
     DRAFT: {
       value: 'DRAFT',
       color: 'warning',
       status: 'warning',
-      text: '草稿'
+      text: '草稿',
     },
     RECYCLE: {
       value: 'RECYCLE',
       color: 'danger',
       status: 'error',
-      text: '回收站'
+      text: '回收站',
     },
     INTIMATE: {
       value: 'INTIMATE',
       color: 'blue',
       status: 'success',
-      text: '私密'
-    }
-  })
+      text: '私密',
+    },
+  };
 }
-
-
 ```
 
 # src/settings/componentSetting.ts

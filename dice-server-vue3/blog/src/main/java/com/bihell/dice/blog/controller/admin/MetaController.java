@@ -1,10 +1,15 @@
 package com.bihell.dice.blog.controller.admin;
 
+import com.bihell.dice.blog.mapper.blogs.MetaMapper;
 import com.bihell.dice.blog.service.blog.MetaService;
+import com.bihell.dice.blog.vo.MetaQueryVO;
+import com.bihell.dice.framework.common.api.ApiResult;
 import com.bihell.dice.framework.common.api.RestResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 属性(标签和分类)管理 Controller
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 public class MetaController {
 
     private final MetaService metaService;
+    private final MetaMapper metaMapper;
 
     /**
      * 获取所有属性
@@ -29,6 +35,15 @@ public class MetaController {
                                @RequestParam(required = false) String title,
                                @RequestParam(required = false) String snippetFileContent) {
         return RestResponse.ok(metaService.getMetaDtos(type, title, snippetFileContent));
+    }
+
+    /**
+     * 根据类型获取meta 列表
+     * @return {@see List<MetaQueryVO>}
+     */
+    @GetMapping("/meta_list")
+    public ApiResult<List<MetaQueryVO>> getSelectList(@RequestParam String type) {
+        return ApiResult.ok(metaMapper.selectByMetaType(type));
     }
 
     /**

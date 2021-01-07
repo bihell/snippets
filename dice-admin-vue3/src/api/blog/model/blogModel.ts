@@ -23,7 +23,21 @@ export interface ArticleListItem {
   commentCount: number;
 }
 
+export interface OptionsParams {
+  type: string;
+}
+
 /**
  * @description: Request list return value
  */
 export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
+
+export interface OptionsItem {
+  label: string;
+  value: string;
+}
+
+/**
+ * @description: Request list return value
+ */
+export type OptionsGetResultModel = BasicFetchResult<OptionsItem[]>;

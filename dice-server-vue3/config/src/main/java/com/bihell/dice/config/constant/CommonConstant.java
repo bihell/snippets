@@ -23,12 +23,12 @@ public interface CommonConstant {
     /**
      * 分页数据列表名称
      */
-    String PAGE_RECORDS_NAME = "records";
+    String PAGE_RECORDS_NAME = "list";
 
     /**
      * 分页当前页码名称
      */
-    String PAGE_INDEX_NAME = "pageIndex";
+    String PAGE_INDEX_NAME = "page";
 
     /**
      * 分页当前页大小名称

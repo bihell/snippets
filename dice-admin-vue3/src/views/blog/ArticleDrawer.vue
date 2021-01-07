@@ -12,48 +12,30 @@
   import { defineComponent, ref } from 'vue';
   import { BasicDrawer } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
+  import { metaListApi } from '/@/api/blog/blog';
   const schemas: FormSchema[] = [
     {
       field: 'tag',
-      component: 'Select',
+      component: 'ApiSelect',
       label: '标签',
       componentProps: {
+        mode: 'multiple',
         placeholder: '请选择文章标签',
+        api: metaListApi,
+        params: { type: 'tag' },
       },
       colProps: {
         span: 24,
       },
-      componentProps: {},
     },
     {
       field: 'category',
-      component: 'Select',
+      component: 'ApiSelect',
       label: '分类',
       componentProps: {
-        mode: 'multiple',
         placeholder: '请选择文章分类',
-        options: [
-          {
-            label: 'aa',
-            value: null,
-          },
-          {
-            label: 'bb',
-            value: 'PUBLISHED',
-          },
-          {
-            label: 'cc',
-            value: 'DRAFT',
-          },
-          {
-            label: 'dd',
-            value: 'RECYCLE',
-          },
-          {
-            label: 'ee',
-            value: 'INTIMATE',
-          },
-        ],
+        api: metaListApi,
+        params: { type: 'category' },
       },
       colProps: {
         span: 24,
