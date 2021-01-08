@@ -13,12 +13,14 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, h } from 'vue';
+  import { defineComponent, h, ref } from 'vue';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './PostDrawer.vue';
+  import { useRoute } from 'vue-router';
+  import { apiGetPost } from '/@/api/blog/blog';
 
   const schemas: FormSchema[] = [
     {
@@ -51,7 +53,23 @@
   export default defineComponent({
     components: { MarkDown, PageFooter, ArticleDrawer, BasicForm },
     setup() {
+      const loading = ref(false);
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
+      const route = useRoute();
+      const loadDataList = async () => {
+        try {
+          loading.value = true;
+          let result = await apiGetPost(route.query);
+          console.log(result);
+        } catch (error) {
+        } finally {
+          setTimeout(() => {
+            loading.value = false;
+          }, 500);
+        }
+      };
+
+      loadDataList();
 
       const [
         registerForm,

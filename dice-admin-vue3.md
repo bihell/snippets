@@ -163,7 +163,7 @@ const blog: AppRouteModule = {
     {
       path: 'list',
       name: 'PostList',
-      component: () => import('/@/views/blog/PostList.vue'),
+      component: () => import('/@/views/blog/post/PostList.vue'),
       meta: {
         title: '文章列表',
       },
@@ -171,7 +171,7 @@ const blog: AppRouteModule = {
     {
       path: 'edit',
       name: 'PostEdit',
-      component: () => import('/@/views/blog/PostEdit.vue'),
+      component: () => import('/@/views/blog/post/PostEdit.vue'),
       meta: {
         title: '编辑文章',
       },
@@ -182,7 +182,7 @@ const blog: AppRouteModule = {
 export default blog;
 ```
 
-# src/views/blog/PostList.vue
+# src/views/blog/post/PostList.vue
 
 ```vue
 <template>
@@ -205,11 +205,11 @@ export default blog;
         :drop-down-actions="[
           {
             label: '编辑',
-            onClick: handleDelete.bind(null, record),
+            onClick: handleEditClick.bind(null, record),
           },
           {
             label: '删除',
-            onClick: handleOpen.bind(null, record),
+            onClick: handleEditClick.bind(null, record),
           },
         ]"
         :divider="false"
@@ -223,10 +223,7 @@ export default blog;
     </template>
     <template #toolbar>
       <router-link :to="{ name: 'PostEdit' }">
-        <a-button
-          type="primary"
-        >
-          <FileAddOutlined/>写文章</a-button>
+        <a-button type="primary"> <FileAddOutlined />写文章</a-button>
       </router-link>
     </template>
   </BasicTable>
@@ -238,6 +235,7 @@ export default blog;
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
+  import {useRouter} from 'vue-router'
 
   export default defineComponent({
     components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
@@ -261,19 +259,23 @@ export default blog;
       });
 
       const status = postStatus();
+      const router = useRouter()
 
-      function handleDelete(record: any) {
-        console.log('点击了删除', record);
+      function  pushWithQuery(query: any)  {
+        router.push({
+          name: 'PostEdit',
+          query: query
+        })
       }
-      function handleOpen(record: any) {
-        console.log('点击了启用', record);
+
+      function handleEditClick(record: any) {
+        pushWithQuery({id:record.id})
       }
 
       return {
         registerTable,
         status,
-        handleDelete,
-        handleOpen,
+        handleEditClick,
       };
     },
   });
@@ -593,7 +595,7 @@ export function getFormConfig(): Partial<FormProps> {
 </script>
 ```
 
-# src/views/blog/PostEdit.vue
+# src/views/blog/post/PostEdit.vue
 
 ```vue
 <template>
@@ -611,12 +613,15 @@ export function getFormConfig(): Partial<FormProps> {
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, h } from 'vue';
+import {defineComponent, h, ref} from 'vue';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './PostDrawer.vue';
+  import { useRoute } from 'vue-router'
+  import { apiGetPost } from '/@/api/blog/blog';
+
 
   const schemas: FormSchema[] = [
     {
@@ -649,7 +654,26 @@ export function getFormConfig(): Partial<FormProps> {
   export default defineComponent({
     components: { MarkDown, PageFooter, ArticleDrawer, BasicForm },
     setup() {
+      const loading = ref(false);
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
+      const route = useRoute();
+      const loadDataList = async () => {
+        try {
+          loading.value = true;
+          let result = (
+            await apiGetPost(route.query)
+          )
+          console.log(result)
+        } catch (error) {
+
+        } finally {
+          setTimeout(() =>{
+            loading.value = false;
+          },500)
+        }
+      }
+
+      loadDataList()
 
       const [
         registerForm,
@@ -713,7 +737,7 @@ import { BasicPageParams, BasicFetchResult } from '/@/api/model/baseModel';
  */
 export type ArticleListParams = BasicPageParams;
 
-export interface ArticleListItem {
+export interface PostItem {
   createTime: string;
   updateTime: string;
   creator: number;
@@ -732,14 +756,18 @@ export interface ArticleListItem {
   commentCount: number;
 }
 
+export interface PostParams {
+  id: number;
+}
+
 export interface OptionsParams {
-  type: string
+  type: string;
 }
 
 /**
  * @description: Request list return value
  */
-export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
+export type ArticleListGetResultModel = BasicFetchResult<PostItem>;
 
 export interface OptionsItem {
   label: string;
@@ -756,16 +784,28 @@ export type OptionsGetResultModel = BasicFetchResult<OptionsItem[]>;
 
 ```javascript
 import { defHttp } from '/@/utils/http/axios';
-import { ArticleListParams, ArticleListGetResultModel, OptionsGetResultModel, OptionsParams } from './model/blogModel';
+import {
+  ArticleListParams,
+  ArticleListGetResultModel,
+  OptionsGetResultModel,
+  OptionsParams,
+  PostParams,
+  PostItem,
+} from './model/blogModel';
 
 enum Api {
   ARTICLE_LIST = '/article/getPageList',
+  POST = '/article/',
   META_LIST = '/meta/meta_list',
 }
 
-/**
- * @description: Get sample list value
- */
+export function apiGetPost(params: PostParams) {
+  return defHttp.request<PostItem>({
+    url: Api.POST+params.id,
+    method: 'GET',
+  });
+}
+
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,
@@ -774,9 +814,6 @@ export function articleListApi(params: ArticleListParams) {
   });
 }
 
-/**
- * @description: Get sample options value
- */
 export function metaListApi(params: OptionsParams) {
   return defHttp.request<OptionsGetResultModel>({
     url: Api.META_LIST,

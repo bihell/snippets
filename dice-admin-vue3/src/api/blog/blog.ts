@@ -4,16 +4,23 @@ import {
   ArticleListGetResultModel,
   OptionsGetResultModel,
   OptionsParams,
+  PostParams,
+  PostItem,
 } from './model/blogModel';
 
 enum Api {
   ARTICLE_LIST = '/article/getPageList',
+  POST = '/article/',
   META_LIST = '/meta/meta_list',
 }
 
-/**
- * @description: Get sample list value
- */
+export function apiGetPost(params: PostParams) {
+  return defHttp.request<PostItem>({
+    url: Api.POST + params.id,
+    method: 'GET',
+  });
+}
+
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,
@@ -22,9 +29,6 @@ export function articleListApi(params: ArticleListParams) {
   });
 }
 
-/**
- * @description: Get sample options value
- */
 export function metaListApi(params: OptionsParams) {
   return defHttp.request<OptionsGetResultModel>({
     url: Api.META_LIST,

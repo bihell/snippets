@@ -15,7 +15,7 @@ const blog: AppRouteModule = {
     {
       path: 'list',
       name: 'PostList',
-      component: () => import('/@/views/blog/PostList.vue'),
+      component: () => import('/@/views/blog/post/PostList.vue'),
       meta: {
         title: '文章列表',
       },
@@ -23,7 +23,7 @@ const blog: AppRouteModule = {
     {
       path: 'edit',
       name: 'PostEdit',
-      component: () => import('/@/views/blog/PostEdit.vue'),
+      component: () => import('/@/views/blog/post/PostEdit.vue'),
       meta: {
         title: '编辑文章',
       },

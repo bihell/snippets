@@ -4,7 +4,7 @@ import { BasicPageParams, BasicFetchResult } from '/@/api/model/baseModel';
  */
 export type ArticleListParams = BasicPageParams;
 
-export interface ArticleListItem {
+export interface PostItem {
   createTime: string;
   updateTime: string;
   creator: number;
@@ -23,6 +23,10 @@ export interface ArticleListItem {
   commentCount: number;
 }
 
+export interface PostParams {
+  id: number;
+}
+
 export interface OptionsParams {
   type: string;
 }
@@ -30,7 +34,7 @@ export interface OptionsParams {
 /**
  * @description: Request list return value
  */
-export type ArticleListGetResultModel = BasicFetchResult<ArticleListItem>;
+export type ArticleListGetResultModel = BasicFetchResult<PostItem>;
 
 export interface OptionsItem {
   label: string;

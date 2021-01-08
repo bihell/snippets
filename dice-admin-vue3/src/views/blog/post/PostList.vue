@@ -18,11 +18,11 @@
         :drop-down-actions="[
           {
             label: '编辑',
-            onClick: handleDelete.bind(null, record),
+            onClick: handleEditClick.bind(null, record),
           },
           {
             label: '删除',
-            onClick: handleOpen.bind(null, record),
+            onClick: handleEditClick.bind(null, record),
           },
         ]"
         :divider="false"
@@ -48,6 +48,7 @@
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
+  import { useRouter } from 'vue-router';
 
   export default defineComponent({
     components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
@@ -71,19 +72,23 @@
       });
 
       const status = postStatus();
+      const router = useRouter();
 
-      function handleDelete(record: any) {
-        console.log('点击了删除', record);
+      function pushWithQuery(query: any) {
+        router.push({
+          name: 'PostEdit',
+          query: query,
+        });
       }
-      function handleOpen(record: any) {
-        console.log('点击了启用', record);
+
+      function handleEditClick(record: any) {
+        pushWithQuery({ id: record.id });
       }
 
       return {
         registerTable,
         status,
-        handleDelete,
-        handleOpen,
+        handleEditClick,
       };
     },
   });
