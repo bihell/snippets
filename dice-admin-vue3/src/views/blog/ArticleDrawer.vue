@@ -3,7 +3,7 @@
     <BasicForm :model="model" layout="vertical" @register="registerForm" />
     <template #footer>
       <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
-      <a-button class="mr-2" type="primary"> 发布 </a-button>
+      <a-button class="mr-2" type="primary" @click="getFormValues"> 发布 </a-button>
       <a-button>发布并查看</a-button>
     </template>
   </BasicDrawer>
@@ -87,7 +87,7 @@
         registerForm,
         {
           // setFieldsValue,
-          // setProps
+          getFieldsValue,
         },
       ] = useForm({
         schemas,
@@ -111,8 +111,15 @@
       //   //   model:{ field2: data.data, field1: data.info }
       //   // })
       // });
+
+      function getFormValues() {
+        const values = getFieldsValue();
+        console.log('values:' + JSON.stringify(values));
+      }
+
       return {
         // register,
+        getFormValues,
         schemas,
         registerForm,
         model: modelRef,

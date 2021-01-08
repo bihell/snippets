@@ -441,11 +441,31 @@ export function getFormConfig(): Partial<FormProps> {
 
 ```vue
 <template>
-  <BasicDrawer v-bind="$attrs" title="文章设置" width="20%" show-footer>
-    <BasicForm :model="model" layout="vertical" @register="registerForm" />
+  <BasicDrawer
+    v-bind="$attrs"
+    title="文章设置"
+    width="20%"
+    show-footer
+  >
+    <BasicForm
+      :model="model"
+      layout="vertical"
+      @register="registerForm"
+    />
     <template #footer>
-      <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
-      <a-button class="mr-2" type="primary"> 发布 </a-button>
+      <a-button
+        class="mr-2"
+        type="dashed"
+      >
+        保存草稿
+      </a-button>
+      <a-button
+        class="mr-2"
+        type="primary"
+        @click="getFormValues"
+      >
+        发布
+      </a-button>
       <a-button>发布并查看</a-button>
     </template>
   </BasicDrawer>
@@ -454,7 +474,7 @@ export function getFormConfig(): Partial<FormProps> {
   import { defineComponent, ref } from 'vue';
   import { BasicDrawer } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
-  import {metaListApi} from "/@/api/blog/blog";
+  import { metaListApi } from '/@/api/blog/blog';
   const schemas: FormSchema[] = [
     {
       field: 'tag',
@@ -463,8 +483,8 @@ export function getFormConfig(): Partial<FormProps> {
       componentProps: {
         mode: 'multiple',
         placeholder: '请选择文章标签',
-        api:metaListApi,
-        params:{type:'tag'},
+        api: metaListApi,
+        params: { type: 'tag' },
       },
       colProps: {
         span: 24,
@@ -476,8 +496,8 @@ export function getFormConfig(): Partial<FormProps> {
       label: '分类',
       componentProps: {
         placeholder: '请选择文章分类',
-        api:metaListApi,
-        params:{type:'category'}
+        api: metaListApi,
+        params: { type: 'category' },
       },
       colProps: {
         span: 24,
@@ -529,7 +549,7 @@ export function getFormConfig(): Partial<FormProps> {
         registerForm,
         {
           // setFieldsValue,
-          // setProps
+          getFieldsValue,
         },
       ] = useForm({
         schemas,
@@ -553,8 +573,15 @@ export function getFormConfig(): Partial<FormProps> {
       //   //   model:{ field2: data.data, field1: data.info }
       //   // })
       // });
+
+      function getFormValues() {
+        const values = getFieldsValue();
+        console.log('values:' + JSON.stringify(values));
+      }
+
       return {
         // register,
+        getFormValues,
         schemas,
         registerForm,
         model: modelRef,
