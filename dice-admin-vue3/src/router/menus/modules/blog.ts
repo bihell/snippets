@@ -7,16 +7,8 @@ const menu: MenuModule = {
     name: '博客',
     children: [
       {
-        path: 'articles',
+        path: 'list',
         name: '文章列表',
-      },
-      {
-        path: 'article',
-        name: '编辑文章',
-      },
-      {
-        path: 'articleDrawer',
-        name: '抽屉',
       },
     ],
   },

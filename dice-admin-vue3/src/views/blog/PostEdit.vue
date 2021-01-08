@@ -18,21 +18,23 @@
   import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
-  import ArticleDrawer from './ArticleDrawer.vue';
+  import ArticleDrawer from './PostDrawer.vue';
 
   const schemas: FormSchema[] = [
     {
       field: 'title',
       component: 'Input',
       label: '',
-      defaultValue: '标题',
+      componentProps: {
+        placeholder: '文章标题',
+      },
       rules: [{ required: true }],
     },
     {
       field: 'markdown',
       component: 'Input',
       label: '',
-      defaultValue: 'defaultValue',
+      defaultValue: '',
       rules: [{ required: true, trigger: 'blur' }],
       render: ({ model, field }) => {
         return h(MarkDown, {

@@ -34,6 +34,11 @@
         </template>
       </TableAction>
     </template>
+    <template #toolbar>
+      <router-link :to="{ name: 'PostEdit' }">
+        <a-button type="primary"> <FileAddOutlined />写文章</a-button>
+      </router-link>
+    </template>
   </BasicTable>
 </template>
 <script lang="ts">
@@ -42,10 +47,10 @@
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
-  import { FormOutlined } from '@ant-design/icons-vue';
+  import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction, FormOutlined },
+    components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',

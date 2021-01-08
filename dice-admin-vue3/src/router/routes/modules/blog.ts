@@ -13,27 +13,19 @@ const blog: AppRouteModule = {
   },
   children: [
     {
-      path: 'articles',
-      name: 'articles',
-      component: () => import('/@/views/blog/Articles.vue'),
+      path: 'list',
+      name: 'PostList',
+      component: () => import('/@/views/blog/PostList.vue'),
       meta: {
         title: '文章列表',
       },
     },
     {
-      path: 'article',
-      name: 'article',
-      component: () => import('/@/views/blog/Article.vue'),
+      path: 'edit',
+      name: 'PostEdit',
+      component: () => import('/@/views/blog/PostEdit.vue'),
       meta: {
         title: '编辑文章',
-      },
-    },
-    {
-      path: 'articleDrawer',
-      name: 'articleDrawer',
-      component: () => import('/@/views/blog/ArticleDrawer.vue'),
-      meta: {
-        title: '抽屉',
       },
     },
   ],

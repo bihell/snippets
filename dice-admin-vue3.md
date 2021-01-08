@@ -124,7 +124,7 @@ const router = createRouter({
 
 # src/router/menus/modules/blog.ts
 
-```
+```javascript
 import type { MenuModule } from '/@/router/types.d';
 
 const menu: MenuModule = {
@@ -134,12 +134,8 @@ const menu: MenuModule = {
     name: '博客',
     children: [
       {
-        path: 'articles',
+        path: 'list',
         name: '文章列表',
-      },
-      {
-        path: 'article',
-        name: '编辑文章',
       },
     ],
   },
@@ -149,7 +145,7 @@ export default menu;
 
 # src/router/routes/modules/blog.ts
 
-```
+```javascript
 import type { AppRouteModule } from '/@/router/types';
 
 import { LAYOUT } from '/@/router/constant';
@@ -165,17 +161,17 @@ const blog: AppRouteModule = {
   },
   children: [
     {
-      path: 'articles',
-      name: 'articles',
-      component: () => import('/@/views/blog/Articles.vue'),
+      path: 'list',
+      name: 'PostList',
+      component: () => import('/@/views/blog/PostList.vue'),
       meta: {
         title: '文章列表',
       },
     },
     {
-      path: 'article',
-      name: 'article',
-      component: () => import('/@/views/blog/Article.vue'),
+      path: 'edit',
+      name: 'PostEdit',
+      component: () => import('/@/views/blog/PostEdit.vue'),
       meta: {
         title: '编辑文章',
       },
@@ -184,10 +180,9 @@ const blog: AppRouteModule = {
 };
 
 export default blog;
-
 ```
 
-# src/views/blog/Articles.vue
+# src/views/blog/PostList.vue
 
 ```vue
 <template>
@@ -226,6 +221,14 @@ export default blog;
         </template>
       </TableAction>
     </template>
+    <template #toolbar>
+      <router-link :to="{ name: 'PostEdit' }">
+        <a-button
+          type="primary"
+        >
+          <FileAddOutlined/>写文章</a-button>
+      </router-link>
+    </template>
   </BasicTable>
 </template>
 <script lang="ts">
@@ -234,10 +237,10 @@ export default blog;
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
-  import { FormOutlined } from '@ant-design/icons-vue';
+  import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction, FormOutlined },
+    components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
@@ -281,7 +284,6 @@ export default blog;
     border: 0 !important;
   }
 </style>
-
 ```
 
 # src/views/blog/tableData.tsx
@@ -437,7 +439,7 @@ export function getFormConfig(): Partial<FormProps> {
 
 ```
 
-# /src/views/blog/ArticleDrawer.vue
+# /src/views/blog/PostDrawer.vue
 
 ```vue
 <template>
@@ -591,13 +593,12 @@ export function getFormConfig(): Partial<FormProps> {
 </script>
 ```
 
-# src/views/blog/Article.vue
+# src/views/blog/PostEdit.vue
 
 ```vue
 <template>
   <div class="p-4">
-    <BasicForm @register="registerForm">
-    </BasicForm>
+    <BasicForm @register="registerForm"> </BasicForm>
     <PageFooter>
       <template #right>
         <a-button class="mr-2" type="dashed" @click="getFormValues"> 保存草稿 </a-button>
@@ -610,38 +611,40 @@ export function getFormConfig(): Partial<FormProps> {
   </div>
 </template>
 <script lang="ts">
-import {defineComponent, h} from 'vue';
-  import {BasicForm, FormSchema, useForm} from '/@/components/Form/index';
+  import { defineComponent, h } from 'vue';
+  import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
-  import ArticleDrawer from './ArticleDrawer.vue';
+  import ArticleDrawer from './PostDrawer.vue';
 
-const schemas: FormSchema[] = [
-  {
-    field: 'title',
-    component: 'Input',
-    label: '',
-    defaultValue: '标题',
-    rules: [{ required: true }],
-  },
-  {
-    field: 'markdown',
-    component: 'Input',
-    label: '',
-    defaultValue: 'defaultValue',
-    rules: [{ required: true, trigger: 'blur' }],
-    render: ({ model, field }) => {
-      return h(MarkDown, {
-        value: model[field],
-        onChange: (value: string) => {
-          model[field] = value;
-        },
-        height: document.documentElement.clientHeight - 220
-      });
+  const schemas: FormSchema[] = [
+    {
+      field: 'title',
+      component: 'Input',
+      label: '',
+      componentProps: {
+        placeholder: '文章标题',
+      },
+      rules: [{ required: true }],
     },
-  },
-];
+    {
+      field: 'markdown',
+      component: 'Input',
+      label: '',
+      defaultValue: '',
+      rules: [{ required: true, trigger: 'blur' }],
+      render: ({ model, field }) => {
+        return h(MarkDown, {
+          value: model[field],
+          onChange: (value: string) => {
+            model[field] = value;
+          },
+          height: document.documentElement.clientHeight - 220,
+        });
+      },
+    },
+  ];
 
   export default defineComponent({
     components: { MarkDown, PageFooter, ArticleDrawer, BasicForm },
@@ -677,9 +680,7 @@ const schemas: FormSchema[] = [
   });
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>
 ```
 
 
