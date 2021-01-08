@@ -446,7 +446,7 @@ export function getFormConfig(): Partial<FormProps> {
     <template #footer>
       <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
       <a-button class="mr-2" type="primary"> 发布 </a-button>
-      <a-button>查看</a-button>
+      <a-button>发布并查看</a-button>
     </template>
   </BasicDrawer>
 </template>
