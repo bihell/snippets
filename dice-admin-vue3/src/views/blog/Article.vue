@@ -1,10 +1,9 @@
 <template>
   <div class="p-4">
-    <a-input v-model:value="titleValue" class="mr-2" placeholder="请输入标题" />
-    <MarkDown ref="markDownRef" v-model:value="value" v-model:height="mdHeight" />
+    <BasicForm @register="registerForm"> </BasicForm>
     <PageFooter>
       <template #right>
-        <a-button class="mr-2" type="dashed" @click="submitAll"> 保存草稿 </a-button>
+        <a-button class="mr-2" type="dashed" @click="getFormValues"> 保存草稿 </a-button>
         <a-button class="mr-2" @click="openDrawer1(true)"> 预览 </a-button>
         <a-button class="mr-2" type="primary" @click="openDrawer1(true)"> 发布 </a-button>
         <a-button class="mr-2" @click="openDrawer1(true)"> 媒体库 </a-button>
@@ -14,38 +13,66 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import { MarkDown, MarkDownActionType } from '/@/components/Markdown';
+  import { defineComponent, h } from 'vue';
+  import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
+  import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './ArticleDrawer.vue';
 
+  const schemas: FormSchema[] = [
+    {
+      field: 'title',
+      component: 'Input',
+      label: '',
+      defaultValue: '标题',
+      rules: [{ required: true }],
+    },
+    {
+      field: 'markdown',
+      component: 'Input',
+      label: '',
+      defaultValue: 'defaultValue',
+      rules: [{ required: true, trigger: 'blur' }],
+      render: ({ model, field }) => {
+        return h(MarkDown, {
+          value: model[field],
+          onChange: (value: string) => {
+            model[field] = value;
+          },
+          height: document.documentElement.clientHeight - 220,
+        });
+      },
+    },
+  ];
+
   export default defineComponent({
-    components: { MarkDown, PageFooter, ArticleDrawer },
+    components: { MarkDown, PageFooter, ArticleDrawer, BasicForm },
     setup() {
-      const markDownRef = ref<Nullable<MarkDownActionType>>(null);
-      const valueRef = ref('');
-      const titleValue = '';
-      const mdHeight = document.documentElement.clientHeight - 195;
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
 
-      async function submitAll() {
-        try {
-          if (tableRef.value) {
-            console.log('table data:', tableRef.value.getDataSource());
-          }
+      const [
+        registerForm,
+        {
+          // setFieldsValue,
+          getFieldsValue,
+        },
+      ] = useForm({
+        schemas,
+        showActionButtonGroup: false,
+        actionColOptions: {
+          span: 24,
+        },
+      });
 
-          const [values, taskValues] = await Promise.all([validate(), validateTaskForm()]);
-          console.log('form data:', values, taskValues);
-        } catch (error) {}
+      function getFormValues() {
+        const values = getFieldsValue();
+        console.log('values:' + JSON.stringify(values));
       }
 
       return {
-        value: valueRef,
-        markDownRef,
-        titleValue,
-        submitAll,
-        mdHeight,
+        getFormValues,
+        registerForm,
         register1,
         openDrawer1,
       };
@@ -53,16 +80,4 @@
   });
 </script>
 
-<style lang="less" scoped>
-  .app-container {
-    padding: 15px;
-  }
-
-  .mb-3 {
-    margin-bottom: 1em !important;
-  }
-
-  .mb-2 {
-    margin-bottom: 0.5em !important;
-  }
-</style>
+<style lang="less" scoped></style>
