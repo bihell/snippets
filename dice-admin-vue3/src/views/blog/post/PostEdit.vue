@@ -13,7 +13,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, h, ref } from 'vue';
+  import { defineComponent, h, onMounted, ref } from 'vue';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
@@ -69,8 +69,6 @@
         }
       };
 
-      loadDataList();
-
       const [
         registerForm,
         {
@@ -89,6 +87,10 @@
         const values = getFieldsValue();
         console.log('values:' + JSON.stringify(values));
       }
+
+      onMounted(() => {
+        loadDataList();
+      });
 
       return {
         getFormValues,

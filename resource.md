@@ -744,3 +744,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [支撑700亿数据量的ClickHouse高可用架构实践](https://www.infoq.cn/article/VggxS8hQbEwG1z3NdtT0?utm_source=rss&utm_medium=article)
 [学习使用 Sed 文本编辑器](https://linux.cn/article-12992-1.html?utm_source=rss&utm_medium=rss)
 [Vue3 面向对象开发指南](https://zhuanlan.zhihu.com/p/228285053)
+[ClickHouse 的实践之路](https://xie.infoq.cn/article/ebfe0a6b0d6bdbbb4eae642ff?utm_source=rss&utm_medium=article)

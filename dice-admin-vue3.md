@@ -613,15 +613,14 @@ export function getFormConfig(): Partial<FormProps> {
   </div>
 </template>
 <script lang="ts">
-import {defineComponent, h, ref} from 'vue';
+  import { defineComponent, h, onMounted, ref } from 'vue';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { MarkDown } from '/@/components/Markdown';
   import { PageFooter } from '/@/components/Page';
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './PostDrawer.vue';
-  import { useRoute } from 'vue-router'
+  import { useRoute } from 'vue-router';
   import { apiGetPost } from '/@/api/blog/blog';
-
 
   const schemas: FormSchema[] = [
     {
@@ -660,20 +659,15 @@ import {defineComponent, h, ref} from 'vue';
       const loadDataList = async () => {
         try {
           loading.value = true;
-          let result = (
-            await apiGetPost(route.query)
-          )
-          console.log(result)
+          let result = await apiGetPost(route.query);
+          console.log(result);
         } catch (error) {
-
         } finally {
-          setTimeout(() =>{
+          setTimeout(() => {
             loading.value = false;
-          },500)
+          }, 500);
         }
-      }
-
-      loadDataList()
+      };
 
       const [
         registerForm,
@@ -693,6 +687,10 @@ import {defineComponent, h, ref} from 'vue';
         const values = getFieldsValue();
         console.log('values:' + JSON.stringify(values));
       }
+
+      onMounted(() => {
+        loadDataList();
+      });
 
       return {
         getFormValues,
