@@ -601,7 +601,7 @@ export function getFormConfig(): Partial<FormProps> {
 ```vue
 <template>
   <div class="p-4">
-    <BasicForm @register="registerForm"> </BasicForm>
+    <BasicForm @register="registerForm" />
     <PageFooter>
       <template #right>
         <a-button class="mr-2" type="dashed" @click="getFormValues"> 保存草稿 </a-button>
@@ -637,7 +637,6 @@ export function getFormConfig(): Partial<FormProps> {
       field: 'markdown',
       component: 'Input',
       label: '',
-      defaultValue: '',
       rules: [{ required: true, trigger: 'blur' }],
       render: ({ model, field }) => {
         return h(MarkDown, {
@@ -652,16 +651,18 @@ export function getFormConfig(): Partial<FormProps> {
   ];
 
   export default defineComponent({
-    components: { MarkDown, PageFooter, ArticleDrawer, BasicForm },
+    components: { PageFooter, ArticleDrawer, BasicForm },
     setup() {
       const loading = ref(false);
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
       const route = useRoute();
+      let postInfo: { title: String; content: String };
       const loadDataList = async () => {
         try {
           loading.value = true;
-          let result = await apiGetPost(route.query);
-          console.log(result);
+          postInfo = await apiGetPost(Number(route.query.id));
+          console.log(postInfo.title);
+          setFromValues();
         } catch (error) {
         } finally {
           setTimeout(() => {
@@ -670,13 +671,7 @@ export function getFormConfig(): Partial<FormProps> {
         }
       };
 
-      const [
-        registerForm,
-        {
-          // setFieldsValue,
-          getFieldsValue,
-        },
-      ] = useForm({
+      const [registerForm, { setFieldsValue, getFieldsValue }] = useForm({
         schemas,
         showActionButtonGroup: false,
         actionColOptions: {
@@ -687,6 +682,10 @@ export function getFormConfig(): Partial<FormProps> {
       function getFormValues() {
         const values = getFieldsValue();
         console.log('values:' + JSON.stringify(values));
+      }
+
+      function setFromValues() {
+        setFieldsValue({ title: postInfo.title, markdown: postInfo.content });
       }
 
       onMounted(() => {
@@ -788,7 +787,6 @@ import {
   ArticleListGetResultModel,
   OptionsGetResultModel,
   OptionsParams,
-  PostParams,
   PostItem,
 } from './model/blogModel';
 
@@ -798,9 +796,9 @@ enum Api {
   META_LIST = '/meta/meta_list',
 }
 
-export function apiGetPost(params: PostParams) {
+export function apiGetPost(id: number) {
   return defHttp.request<PostItem>({
-    url: Api.POST+params.id,
+    url: Api.POST + id,
     method: 'GET',
   });
 }

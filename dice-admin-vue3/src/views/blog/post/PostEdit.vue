@@ -36,7 +36,6 @@
       field: 'markdown',
       component: 'Input',
       label: '',
-      defaultValue: '',
       rules: [{ required: true, trigger: 'blur' }],
       render: ({ model, field }) => {
         return h(MarkDown, {
@@ -56,11 +55,13 @@
       const loading = ref(false);
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
       const route = useRoute();
+      let postInfo: { title: String; content: String };
       const loadDataList = async () => {
         try {
           loading.value = true;
-          let result = await apiGetPost(route.query);
-          console.log(result);
+          postInfo = await apiGetPost(Number(route.query.id));
+          console.log(postInfo.title);
+          setFromValues();
         } catch (error) {
         } finally {
           setTimeout(() => {
@@ -69,13 +70,7 @@
         }
       };
 
-      const [
-        registerForm,
-        {
-          // setFieldsValue,
-          getFieldsValue,
-        },
-      ] = useForm({
+      const [registerForm, { setFieldsValue, getFieldsValue }] = useForm({
         schemas,
         showActionButtonGroup: false,
         actionColOptions: {
@@ -86,6 +81,10 @@
       function getFormValues() {
         const values = getFieldsValue();
         console.log('values:' + JSON.stringify(values));
+      }
+
+      function setFromValues() {
+        setFieldsValue({ title: postInfo.title, markdown: postInfo.content });
       }
 
       onMounted(() => {

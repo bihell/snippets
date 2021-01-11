@@ -4,7 +4,6 @@ import {
   ArticleListGetResultModel,
   OptionsGetResultModel,
   OptionsParams,
-  PostParams,
   PostItem,
 } from './model/blogModel';
 
@@ -14,9 +13,9 @@ enum Api {
   META_LIST = '/meta/meta_list',
 }
 
-export function apiGetPost(params: PostParams) {
+export function apiGetPost(id: number) {
   return defHttp.request<PostItem>({
-    url: Api.POST + params.id,
+    url: Api.POST + id,
     method: 'GET',
   });
 }
