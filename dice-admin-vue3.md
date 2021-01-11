@@ -622,6 +622,7 @@ export function getFormConfig(): Partial<FormProps> {
   import ArticleDrawer from './PostDrawer.vue';
   import { useRoute } from 'vue-router';
   import { apiGetPost } from '/@/api/blog/blog';
+  import { PostItem } from '/@/api/blog/model/blogModel.ts';
 
   const schemas: FormSchema[] = [
     {
@@ -634,7 +635,7 @@ export function getFormConfig(): Partial<FormProps> {
       rules: [{ required: true }],
     },
     {
-      field: 'markdown',
+      field: 'content',
       component: 'Input',
       label: '',
       rules: [{ required: true, trigger: 'blur' }],
@@ -656,7 +657,8 @@ export function getFormConfig(): Partial<FormProps> {
       const loading = ref(false);
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
       const route = useRoute();
-      let postInfo: { title: String; content: String };
+      let postInfo: PostItem;
+
       const loadDataList = async () => {
         try {
           loading.value = true;
@@ -685,7 +687,7 @@ export function getFormConfig(): Partial<FormProps> {
       }
 
       function setFromValues() {
-        setFieldsValue({ title: postInfo.title, markdown: postInfo.content });
+        setFieldsValue(postInfo);
       }
 
       onMounted(() => {
@@ -752,10 +754,6 @@ export interface PostItem {
   type: string;
   allowComment: boolean;
   commentCount: number;
-}
-
-export interface PostParams {
-  id: number;
 }
 
 export interface OptionsParams {
