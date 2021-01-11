@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <BasicForm @register="registerForm"> </BasicForm>
+    <BasicForm @register="registerForm" />
     <PageFooter>
       <template #right>
         <a-button class="mr-2" type="dashed" @click="getFormValues"> 保存草稿 </a-button>
@@ -51,7 +51,7 @@
   ];
 
   export default defineComponent({
-    components: { MarkDown, PageFooter, ArticleDrawer, BasicForm },
+    components: { PageFooter, ArticleDrawer, BasicForm },
     setup() {
       const loading = ref(false);
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();

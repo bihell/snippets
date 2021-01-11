@@ -3,6 +3,7 @@
 ```
   rules: {
     'prettier/prettier': 'off',
+    'vue/max-attributes-per-line': 'off',
 ```
 
 #  	.env.development
