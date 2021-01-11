@@ -3,9 +3,9 @@
     <BasicForm @register="registerForm" />
     <PageFooter>
       <template #right>
-        <a-button class="mr-2" type="dashed" @click="getFormValues"> 保存草稿 </a-button>
+        <a-button class="mr-2" type="dashed" @click="saveDraft"> 保存草稿 </a-button>
         <a-button class="mr-2" @click="openDrawer1(true)"> 预览 </a-button>
-        <a-button class="mr-2" type="primary" @click="openDrawer1(true)"> 发布 </a-button>
+        <a-button class="mr-2" type="primary" @click="send"> 发布 </a-button>
         <a-button class="mr-2" @click="openDrawer1(true)"> 媒体库 </a-button>
       </template>
     </PageFooter>
@@ -20,7 +20,7 @@
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './PostDrawer.vue';
   import { useRoute } from 'vue-router';
-  import { apiGetPost } from '/@/api/blog/blog';
+  import { apiGetPost, apiSavePost } from '/@/api/blog/blog';
   import { PostItem } from '/@/api/blog/model/blogModel.ts';
 
   const schemas: FormSchema[] = [
@@ -80,13 +80,28 @@
         },
       });
 
+      function saveDraft() {
+        updatePostInfo();
+        apiSavePost(postInfo);
+      }
+
       function getFormValues() {
         const values = getFieldsValue();
         console.log('values:' + JSON.stringify(values));
       }
 
+      function updatePostInfo() {
+        const values = getFieldsValue();
+        Object.assign(postInfo, values);
+      }
+
       function setFromValues() {
         setFieldsValue(postInfo);
+      }
+
+      function send() {
+        updatePostInfo();
+        openDrawer1(true, postInfo);
       }
 
       onMounted(() => {
@@ -95,6 +110,8 @@
 
       return {
         getFormValues,
+        saveDraft,
+        send,
         registerForm,
         register1,
         openDrawer1,

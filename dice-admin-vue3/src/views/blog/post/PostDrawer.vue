@@ -1,5 +1,5 @@
 <template>
-  <BasicDrawer v-bind="$attrs" title="文章设置" width="20%" show-footer>
+  <BasicDrawer v-bind="$attrs" title="文章设置" width="20%" show-footer @register="register">
     <BasicForm :model="model" layout="vertical" @register="registerForm" />
     <template #footer>
       <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
@@ -10,12 +10,12 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicDrawer } from '/@/components/Drawer';
+  import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { metaListApi } from '/@/api/blog/blog';
   const schemas: FormSchema[] = [
     {
-      field: 'tag',
+      field: 'tags',
       component: 'ApiSelect',
       label: '标签',
       componentProps: {
@@ -45,7 +45,6 @@
       field: 'top',
       component: 'Switch',
       label: '是否置顶',
-      layout: 'horizontal',
       componentProps: {},
       colProps: {
         span: 10,
@@ -55,7 +54,6 @@
       field: 'allowComment',
       component: 'Switch',
       label: '开启评论',
-      layout: 'horizontal',
       componentProps: {},
       colProps: {
         span: 10,
@@ -83,13 +81,7 @@
     components: { BasicDrawer, BasicForm },
     setup() {
       const modelRef = ref({});
-      const [
-        registerForm,
-        {
-          // setFieldsValue,
-          getFieldsValue,
-        },
-      ] = useForm({
+      const [registerForm, { setFieldsValue, getFieldsValue }] = useForm({
         schemas,
         showActionButtonGroup: false,
         actionColOptions: {
@@ -97,20 +89,10 @@
         },
       });
 
-      // const [register] = useModalInner((data) => {
-      //   // 方式1
-      //   // setFieldsValue({
-      //   //   field2: data.data,
-      //   //   field1: data.info,
-      //   // });
-      //
-      //   // 方式2
-      //   modelRef.value = { field2: data.data, field1: data.info };
-      //
-      //   // setProps({
-      //   //   model:{ field2: data.data, field1: data.info }
-      //   // })
-      // });
+      const [register] = useDrawerInner((data) => {
+        data.tags = data.tags.split(',');
+        setFieldsValue(data);
+      });
 
       function getFormValues() {
         const values = getFieldsValue();
@@ -118,7 +100,7 @@
       }
 
       return {
-        // register,
+        register,
         getFormValues,
         schemas,
         registerForm,

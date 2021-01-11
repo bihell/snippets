@@ -446,43 +446,23 @@ export function getFormConfig(): Partial<FormProps> {
 
 ```vue
 <template>
-  <BasicDrawer
-    v-bind="$attrs"
-    title="文章设置"
-    width="20%"
-    show-footer
-  >
-    <BasicForm
-      :model="model"
-      layout="vertical"
-      @register="registerForm"
-    />
+  <BasicDrawer v-bind="$attrs" title="文章设置" width="20%" show-footer @register="register">
+    <BasicForm :model="model" layout="vertical" @register="registerForm" />
     <template #footer>
-      <a-button
-        class="mr-2"
-        type="dashed"
-      >
-        保存草稿
-      </a-button>
-      <a-button
-        class="mr-2"
-        type="primary"
-        @click="getFormValues"
-      >
-        发布
-      </a-button>
+      <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
+      <a-button class="mr-2" type="primary" @click="getFormValues"> 发布 </a-button>
       <a-button>发布并查看</a-button>
     </template>
   </BasicDrawer>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicDrawer } from '/@/components/Drawer';
+  import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { metaListApi } from '/@/api/blog/blog';
   const schemas: FormSchema[] = [
     {
-      field: 'tag',
+      field: 'tags',
       component: 'ApiSelect',
       label: '标签',
       componentProps: {
@@ -512,7 +492,6 @@ export function getFormConfig(): Partial<FormProps> {
       field: 'top',
       component: 'Switch',
       label: '是否置顶',
-      layout: 'horizontal',
       componentProps: {},
       colProps: {
         span: 10,
@@ -522,7 +501,6 @@ export function getFormConfig(): Partial<FormProps> {
       field: 'allowComment',
       component: 'Switch',
       label: '开启评论',
-      layout: 'horizontal',
       componentProps: {},
       colProps: {
         span: 10,
@@ -550,13 +528,7 @@ export function getFormConfig(): Partial<FormProps> {
     components: { BasicDrawer, BasicForm },
     setup() {
       const modelRef = ref({});
-      const [
-        registerForm,
-        {
-          // setFieldsValue,
-          getFieldsValue,
-        },
-      ] = useForm({
+      const [registerForm, { setFieldsValue, getFieldsValue }] = useForm({
         schemas,
         showActionButtonGroup: false,
         actionColOptions: {
@@ -564,20 +536,10 @@ export function getFormConfig(): Partial<FormProps> {
         },
       });
 
-      // const [register] = useModalInner((data) => {
-      //   // 方式1
-      //   // setFieldsValue({
-      //   //   field2: data.data,
-      //   //   field1: data.info,
-      //   // });
-      //
-      //   // 方式2
-      //   modelRef.value = { field2: data.data, field1: data.info };
-      //
-      //   // setProps({
-      //   //   model:{ field2: data.data, field1: data.info }
-      //   // })
-      // });
+      const [register] = useDrawerInner((data) => {
+        data.tags=data.tags.split(',')
+        setFieldsValue(data);
+      });
 
       function getFormValues() {
         const values = getFieldsValue();
@@ -585,7 +547,7 @@ export function getFormConfig(): Partial<FormProps> {
       }
 
       return {
-        // register,
+        register,
         getFormValues,
         schemas,
         registerForm,
@@ -604,9 +566,9 @@ export function getFormConfig(): Partial<FormProps> {
     <BasicForm @register="registerForm" />
     <PageFooter>
       <template #right>
-        <a-button class="mr-2" type="dashed" @click="getFormValues"> 保存草稿 </a-button>
+        <a-button class="mr-2" type="dashed" @click="saveDraft"> 保存草稿 </a-button>
         <a-button class="mr-2" @click="openDrawer1(true)"> 预览 </a-button>
-        <a-button class="mr-2" type="primary" @click="openDrawer1(true)"> 发布 </a-button>
+        <a-button class="mr-2" type="primary" @click="send"> 发布 </a-button>
         <a-button class="mr-2" @click="openDrawer1(true)"> 媒体库 </a-button>
       </template>
     </PageFooter>
@@ -621,7 +583,7 @@ export function getFormConfig(): Partial<FormProps> {
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './PostDrawer.vue';
   import { useRoute } from 'vue-router';
-  import { apiGetPost } from '/@/api/blog/blog';
+  import { apiGetPost, apiSavePost } from '/@/api/blog/blog';
   import { PostItem } from '/@/api/blog/model/blogModel.ts';
 
   const schemas: FormSchema[] = [
@@ -681,13 +643,28 @@ export function getFormConfig(): Partial<FormProps> {
         },
       });
 
+      function saveDraft() {
+        updatePostInfo();
+        apiSavePost(postInfo);
+      }
+
       function getFormValues() {
         const values = getFieldsValue();
         console.log('values:' + JSON.stringify(values));
       }
 
+      function updatePostInfo() {
+        const values = getFieldsValue();
+        Object.assign(postInfo, values);
+      }
+
       function setFromValues() {
         setFieldsValue(postInfo);
+      }
+
+      function send() {
+        updatePostInfo();
+        openDrawer1(true, postInfo);
       }
 
       onMounted(() => {
@@ -696,6 +673,8 @@ export function getFormConfig(): Partial<FormProps> {
 
       return {
         getFormValues,
+        saveDraft,
+        send,
         registerForm,
         register1,
         openDrawer1,
@@ -798,6 +777,14 @@ export function apiGetPost(id: number) {
   return defHttp.request<PostItem>({
     url: Api.POST + id,
     method: 'GET',
+  });
+}
+
+export function apiSavePost(params: PostItem) {
+  return defHttp.request({
+    url: Api.POST,
+    method: 'post',
+    params,
   });
 }
 

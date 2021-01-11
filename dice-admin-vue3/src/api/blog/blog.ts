@@ -20,6 +20,14 @@ export function apiGetPost(id: number) {
   });
 }
 
+export function apiSavePost(params: PostItem) {
+  return defHttp.request({
+    url: Api.POST,
+    method: 'post',
+    params,
+  });
+}
+
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,
