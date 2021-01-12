@@ -460,6 +460,7 @@ export function getFormConfig(): Partial<FormProps> {
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { metaListApi } from '/@/api/blog/blog';
+  import 'moment/dist/locale/zh-cn';
   const schemas: FormSchema[] = [
     {
       field: 'tags',
@@ -507,15 +508,18 @@ export function getFormConfig(): Partial<FormProps> {
       },
     },
     {
-      field: 'createDate',
+      field: 'createTime',
       component: 'DatePicker',
       label: '创建日期',
       componentProps: {
         showTime: true,
+        onOk: (e: any) => {
+          console.log(e);
+        },
       },
     },
     {
-      field: 'modifyDate',
+      field: 'updateTime',
       component: 'DatePicker',
       label: '修改日期',
       componentProps: {
@@ -537,7 +541,10 @@ export function getFormConfig(): Partial<FormProps> {
       });
 
       const [register] = useDrawerInner((data) => {
-        data.tags=data.tags.split(',')
+        if (typeof data.tags === 'string') {
+          data.tags = data.tags.split(',');
+          // data.createTime = moment(data.createTime);
+        }
         setFieldsValue(data);
       });
 
@@ -625,7 +632,6 @@ export function getFormConfig(): Partial<FormProps> {
         try {
           loading.value = true;
           postInfo = await apiGetPost(Number(route.query.id));
-          console.log(postInfo.title);
           setFromValues();
         } catch (error) {
         } finally {
@@ -655,6 +661,7 @@ export function getFormConfig(): Partial<FormProps> {
 
       function updatePostInfo() {
         const values = getFieldsValue();
+        postInfo.tags = postInfo.tags.toString();
         Object.assign(postInfo, values);
       }
 

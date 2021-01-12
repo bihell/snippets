@@ -13,6 +13,7 @@
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
   import { metaListApi } from '/@/api/blog/blog';
+  import 'moment/dist/locale/zh-cn';
   const schemas: FormSchema[] = [
     {
       field: 'tags',
@@ -60,15 +61,18 @@
       },
     },
     {
-      field: 'createDate',
+      field: 'createTime',
       component: 'DatePicker',
       label: '创建日期',
       componentProps: {
         showTime: true,
+        onOk: (e: any) => {
+          console.log(e);
+        },
       },
     },
     {
-      field: 'modifyDate',
+      field: 'updateTime',
       component: 'DatePicker',
       label: '修改日期',
       componentProps: {
@@ -90,7 +94,10 @@
       });
 
       const [register] = useDrawerInner((data) => {
-        data.tags = data.tags.split(',');
+        if (typeof data.tags === 'string') {
+          data.tags = data.tags.split(',');
+          // data.createTime = moment(data.createTime);
+        }
         setFieldsValue(data);
       });
 

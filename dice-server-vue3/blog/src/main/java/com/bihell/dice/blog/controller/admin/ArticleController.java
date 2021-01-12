@@ -64,10 +64,10 @@ public class ArticleController {
      * 新建或修改文章
      */
     @PostMapping
-    public RestResponse saveArticle(@Valid @RequestBody ArticleParam articleParam) {
+    public ApiResult<Integer> saveArticle(@Valid @RequestBody ArticleParam articleParam) {
         articleParam.setCreator(LoginUtil.getUserId());
         Integer articleId = articleService.saveArticle(articleParam);
-        return RestResponse.ok(articleId);
+        return ApiResult.ok(articleId);
     }
 
     /**

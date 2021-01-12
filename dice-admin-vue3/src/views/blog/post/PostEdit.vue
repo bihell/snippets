@@ -62,7 +62,6 @@
         try {
           loading.value = true;
           postInfo = await apiGetPost(Number(route.query.id));
-          console.log(postInfo.title);
           setFromValues();
         } catch (error) {
         } finally {
@@ -92,6 +91,7 @@
 
       function updatePostInfo() {
         const values = getFieldsValue();
+        postInfo.tags = postInfo.tags.toString();
         Object.assign(postInfo, values);
       }
 
