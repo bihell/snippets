@@ -10,6 +10,10 @@ const menu: MenuModule = {
         path: 'test1',
         name: '测试1',
       },
+      {
+        path: 'Component',
+        name: 'Component',
+      },
     ],
   },
 };

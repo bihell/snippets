@@ -15,10 +15,9 @@
       </div>
     </div>
     <a-divider orientation="left"> input </a-divider>
-    <input :value="value" @input="input" />
-    <div v-if="error">
-      {{ error }}
-    </div>
+    <input v-model="value" type="checkbox" value="a" />
+    <input v-model="value" type="checkbox" value="b" />
+    {{ value }}
     <h1>
       > 需求:使用vue赋值json数据，并显示到页面的输入框中（表单回显）。
       点击提交按钮，改变json数据，验证同时输入框的内容也发生改变。
@@ -39,7 +38,7 @@
       return {
         count: 3,
         numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        value: 'User',
+        value: ['a'],
         user: {
           username: '路飞',
           password: '123456',

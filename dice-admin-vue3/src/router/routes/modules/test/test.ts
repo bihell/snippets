@@ -20,6 +20,14 @@ const blog: AppRouteModule = {
         title: '测试',
       },
     },
+    {
+      path: 'Component',
+      name: 'Component',
+      component: () => import('/@/views/test/test1/Component.vue'),
+      meta: {
+        title: 'Component',
+      },
+    },
   ],
 };
 
