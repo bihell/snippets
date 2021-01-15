@@ -1,7 +1,7 @@
 <template>
-  <div :class="getClass(number)">
+  <button :class="getClass(number)" @click="handleClick()">
     {{ number }}
-  </div>
+  </button>
 </template>
 
 <script>
@@ -13,6 +13,10 @@
       },
     },
     methods: {
+      handleClick() {
+        this.$emit('chosen', this.number);
+        console.log(this.number);
+      },
       getClass(number) {
         if (this.isEven(number)) {
           return 'red';

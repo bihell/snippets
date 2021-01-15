@@ -745,3 +745,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [学习使用 Sed 文本编辑器](https://linux.cn/article-12992-1.html?utm_source=rss&utm_medium=rss)
 [Vue3 面向对象开发指南](https://zhuanlan.zhihu.com/p/228285053)
 [ClickHouse 的实践之路](https://xie.infoq.cn/article/ebfe0a6b0d6bdbbb4eae642ff?utm_source=rss&utm_medium=article)
+[Signal-Desktop](https://github.com/signalapp/Signal-Desktop) Signal — Private Messenger for Windows, Mac, and Linux

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <num v-for="asdf in numbers" :number="asdf" />
+    <p>chosen是从子组件传过来的</p>
+    <num v-for="asdf in numbers" :number="asdf" @chosen="putInArray" />
+    <h3>Clicked number</h3>
+    <num v-for="asdf in clickedNumber" :number="asdf" />
   </div>
 </template>
 
@@ -11,13 +14,8 @@
     components: { Num },
     data: function () {
       return {
-        count: 3,
         numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        value: ['a'],
-        user: {
-          username: '路飞',
-          password: '123456',
-        },
+        clickedNumber: [],
       };
     },
     computed: {
@@ -28,18 +26,8 @@
       },
     },
     methods: {
-      fun() {
-        alert(this.user.username + '   ' + this.user.password);
-        this.user.username = '佐助';
-        this.user.password = '666666';
-      },
-
-      // 如果什么变量都不输入，那么默认传入的是event参数，参数名随意
-      input($evt) {
-        this.value = $evt.target.value;
-      },
-      increment() {
-        this.count += 1;
+      putInArray(number) {
+        this.clickedNumber.push(number);
       },
     },
   };

@@ -28,6 +28,14 @@ const blog: AppRouteModule = {
         title: 'Component',
       },
     },
+    {
+      path: 'SignUp',
+      name: 'SignUp',
+      component: () => import('/@/views/test/sign-up/SignUp.vue'),
+      meta: {
+        title: 'Component',
+      },
+    },
   ],
 };
 

@@ -1,0 +1,68 @@
+<template>
+  <div class="input-wrapper">
+    <div class="label">
+      <label :for="name">{{ name }}</label>
+      <div class="error">
+        {{ error }}
+      </div>
+    </div>
+  </div>
+  <input :id="name" v-model="value" type="text" />
+</template>
+
+<script>
+  export default {
+    props: {
+      name: {
+        type: String,
+        required: true,
+      },
+      rules: {
+        type: Object, // min,required
+      },
+    },
+    data() {
+      return {
+        value: '',
+      };
+    },
+    computed: {
+      error() {
+        if (this.rules.required && this.value.length === 0) {
+          return 'Required';
+        }
+
+        if (this.rules.min && this.value.length < this.rules.min) {
+          return `Minimun length is ${this.rules.min}`;
+        }
+      },
+    },
+  };
+</script>
+
+<style scoped>
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .label {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .error {
+    color: red;
+  }
+
+  input {
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    background: none;
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
+</style>

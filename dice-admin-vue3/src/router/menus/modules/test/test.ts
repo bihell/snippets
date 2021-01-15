@@ -14,6 +14,10 @@ const menu: MenuModule = {
         path: 'Component',
         name: 'Component',
       },
+      {
+        path: 'SignUp',
+        name: 'SignUp',
+      },
     ],
   },
 };
