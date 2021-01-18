@@ -7,7 +7,7 @@
       </div>
     </div>
   </div>
-  <input :id="name" :value="value" type="text" @input="input" />
+  <input :id="name" :value="value" :type="type" @input="input" />
 </template>
 
 <script>
@@ -23,21 +23,31 @@
       value: {
         type: String,
       },
+      type: {
+        type: String,
+      },
     },
     computed: {
       error() {
-        if (this.rules.required && this.value.length === 0) {
-          return 'Required';
-        }
-
-        if (this.rules.min && this.value.length < this.rules.min) {
-          return `Minimun length is ${this.rules.min}`;
-        }
+        return this.validate(this.value);
       },
     },
     methods: {
+      validate(value) {
+        if (this.rules.required && !value) {
+          return 'Required';
+        }
+
+        if (this.rules.min && value.length < this.rules.min) {
+          return `Minimun length is ${this.rules.min}`;
+        }
+      },
       input($evt) {
-        this.$emit('update', { value: $evt.target.value, name: this.name });
+        this.$emit('update', {
+          value: $evt.target.value,
+          name: this.name,
+          valid: this.validate($evt.target.value) ? false : true,
+        });
       },
     },
   };
