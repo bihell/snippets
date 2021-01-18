@@ -73,8 +73,7 @@ function handleIndexColumn(
         return `${index + 1}`;
       }
       const { current = 1, pageSize = PAGE_SIZE } = getPagination;
-      const currentIndex = (current - 1) * pageSize + index + 1;
-      return currentIndex;
+      return ((current < 1 ? 1 : current) - 1) * pageSize + index + 1;
     },
     ...(isFixedLeft
       ? {
@@ -173,6 +172,17 @@ export function useColumns(
   //   cacheColumns = columns?.filter((item) => !item.flag) ?? [];
   // });
 
+  function setCacheColumnsByField(dataIndex: string | undefined, value: Partial<BasicColumn>) {
+    if (!dataIndex || !value) {
+      return;
+    }
+    cacheColumns.forEach((item) => {
+      if (item.dataIndex === dataIndex) {
+        Object.assign(item, value);
+        return;
+      }
+    });
+  }
   /**
    * set columns
    * @param columnList key｜column
@@ -237,7 +247,14 @@ export function useColumns(
     return cacheColumns;
   }
 
-  return { getColumnsRef, getCacheColumns, getColumns, setColumns, getViewColumns };
+  return {
+    getColumnsRef,
+    getCacheColumns,
+    getColumns,
+    setColumns,
+    getViewColumns,
+    setCacheColumnsByField,
+  };
 }
 
 function sortFixedColumn(columns: BasicColumn[]) {

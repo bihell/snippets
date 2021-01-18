@@ -2,11 +2,24 @@
 
 ### ✨ Refactor
 
+- 新增 `SimpleMenu`组件替代左侧菜单组件(顶部菜单没有替换,功能尽量做到简单不卡)。解决菜单卡顿问题。
+
+### 🐛 Bug Fixes
+
+- 修复 `TableAction`图标问题
+- 修复菜单折叠按钮丢失问题
+- 修复菜单相关问题
+
+## 2.0.0-rc.16 (2020-01-12)
+
+### ✨ Refactor
+
 - 独立组件配置到 `/@/settings/componentsSetting`
 - `colorSetting`和`designSetting`现在合并为`designSetting`
 - `ant-design-vue`组件注册移动到`components/registerComponent`
 - 移除 `setup` 文件夹
 - 升级到`vite2`
+- 图片预览改为`Image`组件实现,暂时移除函数式使用方式
 
 ### ✨ Features
 
@@ -16,6 +29,7 @@
 - 新增`PageWrapper`组件。并应用于示例页面
 - 新增标签页折叠功能
 - 兼容旧版浏览器
+- tinymce 新增图片上传
 
 ### 🐛 Bug Fixes
 
@@ -24,6 +38,8 @@
 - 修复表格内存溢出问题
 - 修复`layout` 收缩展开功能在分割模式下失效
 - 修复 modal 高度计算错误
+- 修复文件上传错误
+- 修复表格已知问题
 
 ### 🎫 Chores
 
