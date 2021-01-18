@@ -7,7 +7,7 @@
       </div>
     </div>
   </div>
-  <input :id="name" v-model="value" type="text" />
+  <input :id="name" :value="value" type="text" @input="input" />
 </template>
 
 <script>
@@ -20,11 +20,9 @@
       rules: {
         type: Object, // min,required
       },
-    },
-    data() {
-      return {
-        value: '',
-      };
+      value: {
+        type: String,
+      },
     },
     computed: {
       error() {
@@ -35,6 +33,11 @@
         if (this.rules.min && this.value.length < this.rules.min) {
           return `Minimun length is ${this.rules.min}`;
         }
+      },
+    },
+    methods: {
+      input($evt) {
+        this.$emit('update', { value: $evt.target.value, name: this.name });
       },
     },
   };

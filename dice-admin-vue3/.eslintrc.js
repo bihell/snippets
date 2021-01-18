@@ -16,7 +16,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    'vue/max-attributes-per-line': 'off',
+    'prettier/prettier': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
