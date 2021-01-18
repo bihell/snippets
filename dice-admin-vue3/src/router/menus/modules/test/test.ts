@@ -18,6 +18,10 @@ const menu: MenuModule = {
         path: 'SignUp',
         name: 'SignUp',
       },
+      {
+        path: 'pokemon',
+        name: 'pokemon',
+      },
     ],
   },
 };
