@@ -22,6 +22,10 @@ const menu: MenuModule = {
         path: 'pokemon',
         name: 'pokemon',
       },
+      {
+        path: 'pokemonsolt',
+        name: 'pokemonsolt',
+      },
     ],
   },
 };

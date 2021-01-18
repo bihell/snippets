@@ -749,3 +749,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [实时数仓|架构设计与技术选型](https://xie.infoq.cn/article/499a1c88939a901a34c298e39?utm_source=rss&utm_medium=article)
 [duf](https://www.cyberciti.biz/open-source/command-line-hacks/duf-disk-usage-free-utility-for-linux-bsd-macos-windows/) duf – Disk Usage/Free Utility for Linux, BSD, macOS & Window
 [5 种常见的 Docker Compose 错误](https://www.infoq.cn/article/EJYS0CMBal0Z5oyycILT?utm_source=rss&utm_medium=article)
+[ClickHouse 在大数据领域企业级应用实践和探索总结](https://xie.infoq.cn/article/461f29c3661b19d298fe1a971?utm_source=rss&utm_medium=article)

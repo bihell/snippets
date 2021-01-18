@@ -44,6 +44,14 @@ const blog: AppRouteModule = {
         title: 'pokemon',
       },
     },
+    {
+      path: 'pokemonsolt',
+      name: 'pokemonsolt',
+      component: () => import('/@/views/test/pokemon/PokemonSolt.vue'),
+      meta: {
+        title: 'pokemonsolt',
+      },
+    },
   ],
 };
 
