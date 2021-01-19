@@ -26,6 +26,10 @@ const menu: MenuModule = {
         path: 'pokemonsolt',
         name: 'pokemonsolt',
       },
+      {
+        path: 'pokemonsoltnest',
+        name: 'pokemonsolt套娃版',
+      },
     ],
   },
 };
