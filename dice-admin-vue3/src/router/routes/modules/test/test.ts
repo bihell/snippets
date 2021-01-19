@@ -60,6 +60,14 @@ const blog: AppRouteModule = {
         title: 'pokemonsolt套娃版',
       },
     },
+    {
+      path: 'composition1',
+      name: 'composition1',
+      component: () => import('/@/views/test/composition/1.vue'),
+      meta: {
+        title: 'composition1',
+      },
+    },
   ],
 };
 
