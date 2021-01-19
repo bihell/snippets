@@ -1,26 +1,31 @@
 <template>
   <div class="cards">
-    <div v-for="starter in starters" class="card">
-      <div class="title">
+    <Card v-for="starter in starters">
+      <template #title>
         {{ starter.name }}
-      </div>
-      <div class="content">
+      </template>
+      <template #content>
         <img :src="starter.sprite" />
-      </div>
-      <div class="description">
+      </template>
+      <template #description>
         <div v-for="type in starter.types">
           {{ type }}
         </div>
-      </div>
-    </div>
+      </template>
+    </Card>
   </div>
 </template>
 
 <script>
+  import Card from './Card.vue';
+
   const api = 'https://pokeapi.co/api/v2/pokemon';
   const ids = [1, 4, 7];
 
   export default {
+    components: {
+      Card,
+    },
     data() {
       return {
         starters: [],
@@ -51,39 +56,7 @@
     display: flex;
   }
 
-  .card {
-    max-width: 200px;
-    margin: 0 5px;
-    cursor: pointer;
-    border: 1px solid silver;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px darkgrey;
-    transition: 0.2s;
-  }
-
-  .title,
-  .content,
-  .description {
-    padding: 16px;
-    text-align: center;
-    text-transform: capitalize;
-  }
-
   img {
     width: 100%;
-  }
-
-  .title,
-  .content {
-    border-bottom: 1px solid silver;
-  }
-
-  .title {
-    font-size: 1.25em;
-  }
-
-  .card:hover {
-    box-shadow: 0 1px 9px darkgrey;
-    transition: 0.2s;
   }
 </style>
