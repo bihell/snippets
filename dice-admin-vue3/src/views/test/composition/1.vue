@@ -8,15 +8,28 @@
   <button @click="increase('b')">
     {{ numbers.b }}
   </button>
+  <button @click="a++">
+    {{ a }}
+  </button>
+  <button @click="b++">
+    {{ b }}
+  </button>
+  {{ total }}
+  <div v-for="msg in history">
+    {{ msg }}
+  </div>
 </template>
 
 <script>
-  import { ref, reactive } from 'vue';
+  import { ref, reactive, computed, watch, watchEffect } from 'vue';
 
   export default {
     setup() {
       // ref 比较适合单个值
       const count = ref(0);
+      const a = ref(0);
+      const b = ref(0);
+      const history = ref([]);
 
       // reactive 比较适合复杂值，对象之类
       const numbers = reactive({
@@ -31,11 +44,40 @@
         count.value += 1;
       };
 
+      // watch(numbers,(newVal) => {
+      //   console.log(newVal.a,newVal.b)
+      // },{ immediate:true})
+      //
+      // 只看变更了的数据
+      watchEffect(() => {
+        console.log(numbers.a);
+      });
+
+      // 变更前变更后,只作用域ref变量
+      watch(count, (newVal, oldVal) => {
+        console.log(newVal, oldVal);
+      });
+
+      watch([a, b], ([newA, newB], [oldA, oldB]) => {
+        if (newA !== oldA) {
+          history.value.push(`a:${oldA} -> ${newA}`);
+        }
+        if (newB !== oldB) {
+          history.value.push(`a:${oldB} -> ${newB}`);
+        }
+      });
+
+      // const total = computed(() => { return count.value + numbers.a + numbers.b});
+      const total = computed(() => count.value + numbers.a + numbers.b);
       return {
+        history,
+        total,
         increment,
         count,
         numbers,
         increase,
+        a,
+        b,
       };
     },
   };
