@@ -1,9 +1,12 @@
 <template>
   <div class="cards">
-    <Card v-for="starter in starters" @click="fetchEvolutions(starter)">
-      <template #title>
-        {{ starter.name }}
-      </template>
+    <Card
+      v-for="starter in starters"
+      :class="{ opace: selectedId && starter.id !== selectedId }"
+      class="card"
+      @click="fetchEvolutions(starter)"
+    >
+      <template #title> {{ starter.name }} # {{ starter.id }} </template>
       <template #content>
         <img :src="starter.sprite" />
       </template>
@@ -17,9 +20,7 @@
 
   <div class="cards">
     <Card v-for="creature in evolutions">
-      <template #title>
-        {{ creature.name }}
-      </template>
+      <template #title> {{ creature.name }} #{{ creature.id }} </template>
       <template #content>
         <img :src="creature.sprite" />
       </template>
@@ -46,6 +47,7 @@
       return {
         starters: [],
         evolutions: [],
+        selectedId: null,
       };
     },
 
@@ -55,6 +57,7 @@
 
     methods: {
       async fetchEvolutions(pokemon) {
+        this.selectedId = pokemon.id;
         this.evolutions = await this.fetchData([pokemon.id + 1, pokemon.id + 2]);
         console.log(this.evolutions);
       },
@@ -77,6 +80,14 @@
 <style scoped>
   .cards {
     display: flex;
+  }
+
+  .opace {
+    opacity: 0.5;
+  }
+
+  .card:hover {
+    opacity: 1;
   }
 
   img {
