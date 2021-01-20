@@ -2,7 +2,7 @@ import type { AppRouteModule } from '/@/router/types';
 
 import { LAYOUT } from '/@/router/constant';
 
-const blog: AppRouteModule = {
+const test: AppRouteModule = {
   path: '/test',
   name: 'Test',
   component: LAYOUT,
@@ -87,4 +87,4 @@ const blog: AppRouteModule = {
   ],
 };
 
-export default blog;
+export default test;
