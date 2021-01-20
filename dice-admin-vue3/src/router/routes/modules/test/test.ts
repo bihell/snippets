@@ -68,6 +68,14 @@ const blog: AppRouteModule = {
         title: 'composition1',
       },
     },
+    {
+      path: 'microblog',
+      name: 'microblog',
+      component: () => import('/@/views/test/composition/MicroBlog.vue'),
+      meta: {
+        title: 'microblog',
+      },
+    },
   ],
 };
 

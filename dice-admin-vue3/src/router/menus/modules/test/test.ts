@@ -34,6 +34,10 @@ const menu: MenuModule = {
         path: 'composition1',
         name: 'composition1',
       },
+      {
+        path: 'microblog',
+        name: 'microblog',
+      },
     ],
   },
 };

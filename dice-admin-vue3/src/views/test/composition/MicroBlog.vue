@@ -1,9 +1,19 @@
 <template>
-  <div> </div>
+  <div v-for="post in store.state.posts">
+    {{ post.title }}
+  </div>
 </template>
 
 <script>
-  export default {};
+  import { store } from './store';
+
+  export default {
+    setup() {
+      return {
+        store,
+      };
+    },
+  };
 </script>
 
 <style scoped></style>
