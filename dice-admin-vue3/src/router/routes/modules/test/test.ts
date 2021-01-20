@@ -70,10 +70,18 @@ const blog: AppRouteModule = {
     },
     {
       path: 'microblog',
-      name: 'microblog',
+      name: 'microblog(emit)',
       component: () => import('/@/views/test/composition/MicroBlog.vue'),
       meta: {
         title: 'microblog',
+      },
+    },
+    {
+      path: 'microblogstore',
+      name: 'microblogstore',
+      component: () => import('/@/views/test/composition/MicroBlogV2.vue'),
+      meta: {
+        title: 'microblog(store)',
       },
     },
   ],

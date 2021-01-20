@@ -36,7 +36,11 @@ const menu: MenuModule = {
       },
       {
         path: 'microblog',
-        name: 'microblog',
+        name: 'microblog(emit)',
+      },
+      {
+        path: 'microblogstore',
+        name: 'microblog(store)',
       },
     ],
   },
