@@ -1,4 +1,4 @@
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { testPosts } from './TestPosts';
 
 class Store {
@@ -11,6 +11,17 @@ class Store {
 
   setHashtag(tag) {
     this.state.currentHashtag = tag;
+  }
+
+  get filteredPosts() {
+    return computed(() => {
+      if (!this.state.currentHashtag) {
+        return this.state.posts;
+      }
+      return this.state.posts.filter((post) => {
+        return post.hashtags.includes(this.state.currentHashtag);
+      });
+    });
   }
 
   incrementLike(post) {
