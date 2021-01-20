@@ -393,6 +393,8 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [wangshub/Douyin-Bot](https://github.com/wangshub/Douyin-Bot) | 😍 Python 抖音机器人，论如何在抖音上找到漂亮小姐姐？ | 6.2k | Python | 11/03 |
 [xiaofengShi/CHINESE-OCR](https://github.com/xiaofengShi/CHINESE-OCR) | [python3.6] 运用 tf 实现自然场景文字检测
 [jira_clone](https://github.com/oldboyxx/jira_clone) 这个项目是使用 React / Babel(客户端)和 Node / TypeScript(API)构建的简化的 Jira 克隆。
+[jd_sign_bot](https://github.com/ruicky/jd_sign_bot) 京东签到机器人
+
 
 
 

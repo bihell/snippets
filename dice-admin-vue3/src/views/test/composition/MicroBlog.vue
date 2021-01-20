@@ -7,12 +7,14 @@
       {{ post.content }}
     </template>
     <template #description>
-      <Controls :post="post" />
+      <Controls :post="post" @setHashtag="setHashtag" />
     </template>
   </card>
+  {{ currentHashtag }}
 </template>
 
 <script>
+  import { ref } from 'vue';
   import { store } from './store';
   import Card from '../pokemon/Card.vue';
   import Controls from './Controls.vue';
@@ -23,8 +25,14 @@
       Card,
     },
     setup() {
+      const currentHashtag = ref();
+      const setHashtag = (tag) => {
+        currentHashtag.value = tag;
+      };
       return {
         store,
+        setHashtag,
+        currentHashtag,
       };
     },
   };
