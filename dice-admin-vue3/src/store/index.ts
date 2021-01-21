@@ -6,6 +6,8 @@ import {
 import { config } from 'vuex-module-decorators';
 import { isDevMode } from '/@/utils/env';
 
+import { testPosts } from '/@/views/test/composition/TestPosts';
+
 const delay = () => new Promise((res) => setTimeout(res, 1000));
 
 config.rawError = true;
@@ -34,9 +36,13 @@ const store = createStore({
 
   // 获取数据
   actions: {
-    async fetchDataFromServer() {
+    async fetchDataFromServer(ctx, id) {
       await delay();
-      console.log('LOG');
+      const post = testPosts.find((post) => {
+        return post.id === id;
+      });
+      console.log(post);
+      ctx.commit('setPostId', post.id);
     },
   },
 });

@@ -41,7 +41,7 @@
         // mutation
         this.$store.commit('setPostId', id);
         // action
-        this.$store.dispatch('fetchDataFromServer');
+        this.$store.dispatch('fetchDataFromServer', id);
       },
     },
   };
