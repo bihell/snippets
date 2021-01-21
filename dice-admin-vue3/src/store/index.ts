@@ -17,11 +17,16 @@ const store = createStore({
   state() {
     return {
       count: 0,
+      currentPostId: null,
     };
   },
+  // change
   mutations: {
     increment(state, payload) {
       state.count += payload.number;
+    },
+    setPostId(state, id) {
+      state.currentPostId = id;
     },
   },
 });
