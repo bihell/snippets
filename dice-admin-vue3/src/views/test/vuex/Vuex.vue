@@ -38,7 +38,10 @@
         this.$store.commit('increment', { number: Math.random() });
       },
       fetchPostData(id) {
+        // mutation
         this.$store.commit('setPostId', id);
+        // action
+        this.$store.dispatch('fetchDataFromServer');
       },
     },
   };

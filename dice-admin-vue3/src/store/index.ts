@@ -6,6 +6,8 @@ import {
 import { config } from 'vuex-module-decorators';
 import { isDevMode } from '/@/utils/env';
 
+const delay = () => new Promise((res) => setTimeout(res, 1000));
+
 config.rawError = true;
 const isDev = isDevMode();
 // const plugins: Plugin<any>[] = isDev ? [createLogger()] : [];
@@ -27,6 +29,14 @@ const store = createStore({
     },
     setPostId(state, id) {
       state.currentPostId = id;
+    },
+  },
+
+  // 获取数据
+  actions: {
+    async fetchDataFromServer() {
+      await delay();
+      console.log('LOG');
     },
   },
 });
