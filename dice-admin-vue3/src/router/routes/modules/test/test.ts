@@ -92,6 +92,14 @@ const test: AppRouteModule = {
         title: 'vuex',
       },
     },
+    {
+      path: 'vuexcomposition',
+      name: 'vuexComposition',
+      component: () => import('/@/views/test/vuex/VuexComposition.vue'),
+      meta: {
+        title: 'vuex(composition)',
+      },
+    },
   ],
 };
 

@@ -46,6 +46,10 @@ const menu: MenuModule = {
         path: 'vuex',
         name: 'vuex',
       },
+      {
+        path: 'vuexcomposition',
+        name: 'vuex(composition)',
+      },
     ],
   },
 };
