@@ -32,8 +32,9 @@
         return this.$store.state.count;
       },
       currentPost() {
-        console.log(this.$store.state.currentPost);
-        return this.$store.state.currentPost;
+        // console.log(this.$store.state)
+        // console.log(this.$store.state.test.currentPost);
+        return this.$store.state.test.currentPost;
       },
     },
     methods: {
@@ -44,7 +45,7 @@
         // mutation
         // this.$store.commit('setPostId', id);
         // action
-        this.$store.dispatch('fetchDataFromServer', id);
+        this.$store.dispatch('test/fetchDataFromServer', id);
       },
     },
   };
