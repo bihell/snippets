@@ -753,3 +753,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [5 种常见的 Docker Compose 错误](https://www.infoq.cn/article/EJYS0CMBal0Z5oyycILT?utm_source=rss&utm_medium=article)
 [ClickHouse 在大数据领域企业级应用实践和探索总结](https://xie.infoq.cn/article/461f29c3661b19d298fe1a971?utm_source=rss&utm_medium=article)
 [Redis缓存总结：淘汰机制、缓存雪崩、数据不一致](http://developer.51cto.com/art/202101/641702.htm) 
+[Flink+Kafka：网易云音乐实时数仓建设实践](https://www.infoq.cn/article/JPrjR3fB7NhDNILZAsIj?utm_source=rss&utm_medium=article)

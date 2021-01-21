@@ -14,6 +14,16 @@ const store = createStore({
   // modules: {},
   strict: isDev,
   // plugins,
+  state() {
+    return {
+      count: 0,
+    };
+  },
+  mutations: {
+    increment(state, payload) {
+      state.count += payload.number;
+    },
+  },
 });
 
 export function setupStore(app: App<Element>) {

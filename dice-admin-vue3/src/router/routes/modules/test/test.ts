@@ -84,6 +84,14 @@ const test: AppRouteModule = {
         title: 'microblog(store)',
       },
     },
+    {
+      path: 'vuex',
+      name: 'vuex',
+      component: () => import('/@/views/test/vuex/Vuex.vue'),
+      meta: {
+        title: 'vuex',
+      },
+    },
   ],
 };
 

@@ -42,6 +42,10 @@ const menu: MenuModule = {
         path: 'microblogstore',
         name: 'microblog(store)',
       },
+      {
+        path: 'vuex',
+        name: 'vuex',
+      },
     ],
   },
 };
