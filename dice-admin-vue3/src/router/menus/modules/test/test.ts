@@ -50,6 +50,10 @@ const menu: MenuModule = {
         path: 'vuexcomposition',
         name: 'vuex(composition)',
       },
+      {
+        path: 'photos',
+        name: 'photos',
+      },
     ],
   },
 };

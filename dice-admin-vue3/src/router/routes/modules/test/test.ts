@@ -100,6 +100,14 @@ const test: AppRouteModule = {
         title: 'vuex(composition)',
       },
     },
+    {
+      path: 'photos',
+      name: 'photos',
+      component: () => import('/@/views/test/photos/Photos.vue'),
+      meta: {
+        title: 'photos',
+      },
+    },
   ],
 };
 
