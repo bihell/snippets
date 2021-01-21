@@ -21,7 +21,7 @@ const store = createStore({
   state() {
     return {
       count: 0,
-      currentPostId: null,
+      currentPost: null,
     };
   },
   // change
@@ -29,8 +29,8 @@ const store = createStore({
     increment(state, payload) {
       state.count += payload.number;
     },
-    setPostId(state, id) {
-      state.currentPostId = id;
+    setPost(state, post) {
+      state.currentPost = post;
     },
   },
 
@@ -41,8 +41,8 @@ const store = createStore({
       const post = testPosts.find((post) => {
         return post.id === id;
       });
-      console.log(post);
-      ctx.commit('setPostId', post.id);
+      // console.log(post);
+      ctx.commit('setPost', post);
     },
   },
 });

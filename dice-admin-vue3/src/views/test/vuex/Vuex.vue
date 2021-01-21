@@ -2,8 +2,10 @@
   <button v-for="post in posts" @click="fetchPostData(post.id)">
     {{ post.title }}
   </button>
-
-  Current Post Id: {{ currentPostId }}
+  <div v-if="currentPost">
+    <h1>{{ currentPost.title }}</h1>
+    <p>{{ currentPost.content }}</p>
+  </div>
 
   Count: {{ count }}
   <button @click="increment"> Increment </button>
@@ -29,8 +31,9 @@
       count() {
         return this.$store.state.count;
       },
-      currentPostId() {
-        return this.$store.state.currentPostId;
+      currentPost() {
+        console.log(this.$store.state.currentPost);
+        return this.$store.state.currentPost;
       },
     },
     methods: {
@@ -39,7 +42,7 @@
       },
       fetchPostData(id) {
         // mutation
-        this.$store.commit('setPostId', id);
+        // this.$store.commit('setPostId', id);
         // action
         this.$store.dispatch('fetchDataFromServer', id);
       },
