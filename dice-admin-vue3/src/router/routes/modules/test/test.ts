@@ -102,11 +102,21 @@ const test: AppRouteModule = {
     },
     {
       path: 'photos',
-      name: 'photos',
+      name: 'root',
       component: () => import('/@/views/test/photos/Photos.vue'),
       meta: {
         title: 'photos',
       },
+      children: [
+        {
+          path: 'album/:id',
+          name: 'album',
+          component: () => import('/@/views/test/photos/PhotoView.vue'),
+          meta: {
+            title: 'album',
+          },
+        },
+      ],
     },
   ],
 };
