@@ -10,17 +10,17 @@ import static com.bihell.dice.blog.utils.DateUtil.convertToLocalDateTimeVisLong;
  */
 public class ArticleParam extends Article {
 
-    /**
-     * 创建时间
-     **/
-    public void setCreateTime(Long createTime) {
-        super.setCreateTime(convertToLocalDateTimeVisLong(createTime));
-    }
-
-    /**
-     * 修改时间
-     **/
-    public void setUpdateTime(Long updateTime) {
-        super.setUpdateTime(convertToLocalDateTimeVisLong(updateTime));
-    }
+//    /**
+//     * 创建时间
+//     **/
+//    public void setCreateTime(Long createTime) {
+//        super.setCreateTime(convertToLocalDateTimeVisLong(createTime));
+//    }
+//
+//    /**
+//     * 修改时间
+//     **/
+//    public void setUpdateTime(Long updateTime) {
+//        super.setUpdateTime(convertToLocalDateTimeVisLong(updateTime));
+//    }
 }

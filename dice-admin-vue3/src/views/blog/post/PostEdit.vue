@@ -1,123 +1,92 @@
 <template>
-  <div class="p-4">
-    <BasicForm @register="registerForm" />
+  <div class="app-container">
+    <a-row :gutter="12">
+      <a-col :span="24">
+        <div class="mb-2">
+          <a-input size="large" placeholder="请输入文章标题" :value="title" @input="setTitle" />
+        </div>
+
+        <MarkDown :value="content" :height="contentHeight" @change="setContent" />
+      </a-col>
+    </a-row>
     <PageFooter>
       <template #right>
         <a-button class="mr-2" type="dashed" @click="saveDraft"> 保存草稿 </a-button>
-        <a-button class="mr-2" @click="openDrawer1(true)"> 预览 </a-button>
-        <a-button class="mr-2" type="primary" @click="send"> 发布 </a-button>
-        <a-button class="mr-2" @click="openDrawer1(true)"> 媒体库 </a-button>
+        <a-button class="mr-2" @click="preview"> 预览 </a-button>
+        <a-button class="mr-2" type="primary" @click="postSetting"> 发布 </a-button>
+        <a-button class="mr-2" @click="media"> 媒体库 </a-button>
       </template>
     </PageFooter>
-    <ArticleDrawer @register="register1" />
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent, h, onMounted, ref } from 'vue';
-  import { BasicForm, FormSchema, useForm } from '/@/components/Form/index';
+
+<script>
   import { MarkDown } from '/@/components/Markdown';
-  import { PageFooter } from '/@/components/Page';
-  import { useDrawer } from '/@/components/Drawer';
-  import ArticleDrawer from './PostDrawer.vue';
+  import { computed, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
   import { apiGetPost, apiSavePost } from '/@/api/blog/blog';
-  import { PostItem } from '/@/api/blog/model/blogModel.ts';
-
-  const schemas: FormSchema[] = [
-    {
-      field: 'title',
-      component: 'Input',
-      label: '',
-      componentProps: {
-        placeholder: '文章标题',
-      },
-      rules: [{ required: true }],
-    },
-    {
-      field: 'content',
-      component: 'Input',
-      label: '',
-      rules: [{ required: true, trigger: 'blur' }],
-      render: ({ model, field }) => {
-        return h(MarkDown, {
-          value: model[field],
-          onChange: (value: string) => {
-            model[field] = value;
-          },
-          height: document.documentElement.clientHeight - 220,
-        });
-      },
-    },
-  ];
-
-  export default defineComponent({
-    components: { PageFooter, ArticleDrawer, BasicForm },
+  import { PageFooter } from '/@/components/Page';
+  import { store } from './store';
+  export default {
+    components: { MarkDown, PageFooter },
     setup() {
-      const loading = ref(false);
-      const [register1, { openDrawer: openDrawer1 }] = useDrawer();
-      const route = useRoute();
-      let postInfo: PostItem;
-
-      const loadDataList = async () => {
-        try {
-          loading.value = true;
-          postInfo = await apiGetPost(Number(route.query.id));
-          setFromValues();
-        } catch (error) {
-        } finally {
-          setTimeout(() => {
-            loading.value = false;
-          }, 500);
-        }
-      };
-
-      const [registerForm, { setFieldsValue, getFieldsValue }] = useForm({
-        schemas,
-        showActionButtonGroup: false,
-        actionColOptions: {
-          span: 24,
-        },
+      const contentHeight = computed(() => {
+        return document.documentElement.clientHeight - 185;
       });
 
+      const route = useRoute();
+
+      const fetchPost = async () => {
+        const post = await apiGetPost(Number(route.query.id));
+        store.setCurrentPost(post);
+        console.log(store.state.currentPost);
+      };
+
+      const setTitle = (evt) => {
+        store.setTitle(evt.target.value);
+      };
+
+      function setContent(v) {
+        store.setContent(v);
+      }
+
       function saveDraft() {
-        updatePostInfo();
-        apiSavePost(postInfo);
+        const post = store.state.currentPost;
+        post.status = 'DRAFT';
+        apiSavePost(store.state.currentPost);
       }
 
-      function getFormValues() {
-        const values = getFieldsValue();
-        console.log('values:' + JSON.stringify(values));
-      }
+      // todo
+      function preview() {}
 
-      function updatePostInfo() {
-        const values = getFieldsValue();
-        postInfo.tags = postInfo.tags.toString();
-        Object.assign(postInfo, values);
-      }
+      // todo
+      function media() {}
 
-      function setFromValues() {
-        setFieldsValue(postInfo);
-      }
-
-      function send() {
-        updatePostInfo();
-        openDrawer1(true, postInfo);
-      }
+      function postSetting() {}
 
       onMounted(() => {
-        loadDataList();
+        {
+          fetchPost();
+        }
       });
 
       return {
-        getFormValues,
+        content: computed(() => store.state.currentPost.content),
+        title: computed(() => store.state.currentPost.title),
+        contentHeight,
+        setContent,
+        setTitle,
         saveDraft,
-        send,
-        registerForm,
-        register1,
-        openDrawer1,
+        preview,
+        media,
+        postSetting,
       };
     },
-  });
+  };
 </script>
 
-<style lang="less" scoped></style>
+<style scoped>
+  .app-container {
+    padding: 6px;
+  }
+</style>
