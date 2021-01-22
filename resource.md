@@ -327,8 +327,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [用 asyncio 实现的 shadowsocks - aioshadowsocks](https://github.com/ruanyf/weekly/issues/765)
 [TGSAN/CMWTAT_Digital_Edition](https://github.com/TGSAN/CMWTAT_Digital_Edition) CloudMoe Windows 10 Activation Toolkit get digital license, the best open source Win 10 activator in GitHub. GitHub 上最棒的开源 Win10 数字权利（数字许可证）激活工具！
 [Haleydu / Cimoc](https://github.com/Haleydu/Cimoc) 漫画阅读器
-[使用 Docker 搭建本地 Hadoop 集群](https://github.com/kbyyd24/blog/issues/2)
-[基于 Docker 搭建 Hadoop 集群之升级版](https://kiwenlau.com/2016/06/12/160612-hadoop-cluster-docker-update/)
 [hankcs/HanLP](https://github.com/hankcs/HanLP) | 自然语言处理 中文分词 词性标注 命名实体识别 依存句法分析 新词发现 关键词短语提取 自动摘要 文本分类聚类 拼音简繁 | 16.8k | Java | 11/26 |
 [Synonyms](https://github.com/huyingxi/Synonyms)：中文近义词工具包，可以用于自然语言理解的很多任务：文本对齐，推荐算法，相似度计算，语义偏移，关键字提取，概念提取，自动摘要，搜索引擎等
 [NaNShaner/repoll](https://github.com/NaNShaner/repoll) Redis 管理平台 Repoll，现已开源，基于 redis3.x，支持单机、哨兵以及集群模式
@@ -472,7 +470,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [基于 Binlog + Flink 实现多表数据同构/异构方案](http://www.linkedkeeper.com/1391.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [winterssy/mxget](https://github.com/winterssy/mxget) | 优雅的一站式音乐搜索、下载试听服务，支持国内所有音乐平台 | 497 | Go | 11/29 |
 [cool-retro-term](https://github.com/Swordfish90/cool-retro-term) - 怀旧的命令行终端。[![Open-Source Software][oss icon] ![Freeware][freeware icon]](https://github.com/Swordfish90/cool-retro-term) https://linux.cn/article-12432-1.html?utm_source=rss&utm_medium=rss
-[清华大学-邓俊辉 MOOC 数据结构与算法全套](https://www.bilibili.com/video/av49361421?from=search&seid=2756779141930403558) 
+[清华大学-邓俊辉 MOOC 数据结构与算法全套](https://www.bilibili.com/video/av49361421?from=search&seid=2756779141930403558)
 [ElasticSearch + Kibana 单机环境安装](https://github.com/frank-lam/fullstack-tutorial/blob/master/notes/installation/ElasticSearch+Kibana单机环境搭建.md)
 [iikira / BaiduPCS-Go](https://github.com/iikira/BaiduPCS-Go) 百度网盘客户端 - Go 语言编写
 [luban-h5](https://github.com/ly525/luban-h5) 鲁班 H5 是基于 Vue2.0 开发的，通过拖拽+配置的形式，生成页面的工具。
@@ -752,5 +750,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [duf](https://www.cyberciti.biz/open-source/command-line-hacks/duf-disk-usage-free-utility-for-linux-bsd-macos-windows/) duf – Disk Usage/Free Utility for Linux, BSD, macOS & Window
 [5 种常见的 Docker Compose 错误](https://www.infoq.cn/article/EJYS0CMBal0Z5oyycILT?utm_source=rss&utm_medium=article)
 [ClickHouse 在大数据领域企业级应用实践和探索总结](https://xie.infoq.cn/article/461f29c3661b19d298fe1a971?utm_source=rss&utm_medium=article)
-[Redis缓存总结：淘汰机制、缓存雪崩、数据不一致](http://developer.51cto.com/art/202101/641702.htm) 
+[Redis缓存总结：淘汰机制、缓存雪崩、数据不一致](http://developer.51cto.com/art/202101/641702.htm)
 [Flink+Kafka：网易云音乐实时数仓建设实践](https://www.infoq.cn/article/JPrjR3fB7NhDNILZAsIj?utm_source=rss&utm_medium=article)
+[数据倾斜？Spark 3.0 AQE专治各种不服](https://xie.infoq.cn/article/867afc6679a3fa2b079e15f79?utm_source=rss&utm_medium=article)
