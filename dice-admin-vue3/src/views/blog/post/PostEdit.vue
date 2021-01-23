@@ -17,6 +17,7 @@
         <a-button class="mr-2" @click="media"> 媒体库 </a-button>
       </template>
     </PageFooter>
+    <ArticleDrawer @register="register1" />
   </div>
 </template>
 
@@ -27,9 +28,13 @@
   import { apiGetPost, apiSavePost } from '/@/api/blog/blog';
   import { PageFooter } from '/@/components/Page';
   import { store } from './store';
+  import { useDrawer } from '/@/components/Drawer';
+  import ArticleDrawer from './PostDrawer.vue';
+
   export default {
-    components: { MarkDown, PageFooter },
+    components: { MarkDown, PageFooter, ArticleDrawer },
     setup() {
+      const [register1, { openDrawer: openDrawer1 }] = useDrawer();
       const contentHeight = computed(() => {
         return document.documentElement.clientHeight - 185;
       });
@@ -39,7 +44,6 @@
       const fetchPost = async () => {
         const post = await apiGetPost(Number(route.query.id));
         store.setCurrentPost(post);
-        console.log(store.state.currentPost);
       };
 
       const setTitle = (evt) => {
@@ -62,7 +66,9 @@
       // todo
       function media() {}
 
-      function postSetting() {}
+      function postSetting() {
+        openDrawer1(true);
+      }
 
       onMounted(() => {
         {
@@ -80,6 +86,7 @@
         preview,
         media,
         postSetting,
+        register1,
       };
     },
   };
