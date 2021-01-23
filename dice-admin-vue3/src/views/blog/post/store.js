@@ -30,6 +30,10 @@ class Store {
     this.state.currentPost.category = category;
   }
 
+  setPriority(priority) {
+    priority ? (this.state.currentPost.priority = 1) : (this.state.currentPost.priority = 0);
+  }
+
   async fetchMetaList() {
     this.state.tagList = await metaListApi({ type: 'tag' });
     this.state.categoryList = await metaListApi({ type: 'category' });

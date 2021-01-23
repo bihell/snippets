@@ -26,6 +26,15 @@
           </a-select-option>
         </a-select>
       </a-form-item>
+      <a-form-item layout="horizontal" label="是否置顶">
+        <a-switch
+          v-model:checked="priority"
+          checked-children="是"
+          un-checked-children="否"
+          default-checked
+          @change="setPriority"
+        />
+      </a-form-item>
     </a-form>
 
     <template #footer>
@@ -54,6 +63,10 @@
         store.setCategory(v);
       }
 
+      function setPriority(v) {
+        store.setPriority(v);
+      }
+
       store.fetchMetaList();
 
       return {
@@ -64,8 +77,10 @@
         category: computed(() => store.state.currentPost.category),
         tagList: computed(() => store.state.tagList),
         categoryList: computed(() => store.state.categoryList),
+        priority: computed(() => store.state.currentPost.priority),
         setTags,
         setCategory,
+        setPriority,
       };
     },
   });
