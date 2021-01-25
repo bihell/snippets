@@ -11,10 +11,10 @@
     </a-row>
     <PageFooter>
       <template #right>
-        <a-button class="mr-2" type="dashed" @click="saveDraft"> 保存草稿 </a-button>
-        <a-button class="mr-2" @click="preview"> 预览 </a-button>
+        <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
+        <a-button class="mr-2" @click="preview" disabled> 预览 </a-button>
         <a-button class="mr-2" type="primary" @click="postSetting"> 发布 </a-button>
-        <a-button class="mr-2" @click="media"> 媒体库 </a-button>
+        <a-button class="mr-2" @click="media" disabled> 媒体库 </a-button>
       </template>
     </PageFooter>
     <ArticleDrawer @register="register1" />
@@ -25,7 +25,7 @@
   import { MarkDown } from '/@/components/Markdown';
   import { computed, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
-  import { apiGetPost, apiSavePost } from '/@/api/blog/blog';
+  import { apiGetPost } from '/@/api/blog/blog';
   import { PageFooter } from '/@/components/Page';
   import { store } from './store';
   import { useDrawer } from '/@/components/Drawer';
@@ -54,10 +54,8 @@
         store.setContent(v);
       }
 
-      function saveDraft() {
-        const post = store.state.currentPost;
-        post.status = 'DRAFT';
-        apiSavePost(store.state.currentPost);
+      function savePost(v) {
+        store.savePost(v);
       }
 
       // todo
@@ -82,7 +80,7 @@
         contentHeight,
         setContent,
         setTitle,
-        saveDraft,
+        savePost,
         preview,
         media,
         postSetting,

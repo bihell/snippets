@@ -26,7 +26,7 @@
           </a-select-option>
         </a-select>
       </a-form-item>
-      <a-form-item layout="horizontal" label="是否置顶">
+      <a-form-item label="是否置顶">
         <a-switch
           v-model:checked="priority"
           checked-children="是"
@@ -35,20 +35,37 @@
           @change="setPriority"
         />
       </a-form-item>
+      <a-form-item label="开启评论">
+        <a-switch
+          v-model:checked="comment"
+          checked-children="是"
+          un-checked-children="否"
+          default-checked
+          @change="setComment"
+        />
+      </a-form-item>
+      <a-form-item label="创建日期">
+        <a-date-picker
+          v-model:value="createTime"
+          show-time
+          placeholder="选择创建日期"
+          @change="setCreateTime"
+        />
+      </a-form-item>
     </a-form>
 
     <template #footer>
-      <a-button class="mr-2" type="dashed"> 保存草稿 </a-button>
-      <a-button class="mr-2" type="primary" @click="getFormValues"> 发布 </a-button>
-      <a-button>发布并查看</a-button>
+      <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
+      <a-button class="mr-2" type="primary" @click="savePost"> 发布 </a-button>
+      <a-button disabled>发布并查看</a-button>
     </template>
   </BasicDrawer>
 </template>
 <script>
   import { computed, defineComponent } from 'vue';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
-  import 'moment/dist/locale/zh-cn';
   import { store } from '/@/views/blog/post/store';
+  import moment from 'moment';
 
   export default defineComponent({
     components: { BasicDrawer },
@@ -67,6 +84,18 @@
         store.setPriority(v);
       }
 
+      function setComment(v) {
+        store.setComment(v);
+      }
+
+      function savePost(v) {
+        store.savePost(v);
+      }
+
+      function setCreateTime(v) {
+        store.setCreateTime(v);
+      }
+
       store.fetchMetaList();
 
       return {
@@ -78,9 +107,14 @@
         tagList: computed(() => store.state.tagList),
         categoryList: computed(() => store.state.categoryList),
         priority: computed(() => store.state.currentPost.priority),
+        comment: computed(() => store.state.currentPost.allowComment),
+        createTime: computed(() => moment(store.state.currentPost.createTime)),
         setTags,
         setCategory,
         setPriority,
+        setComment,
+        savePost,
+        setCreateTime,
       };
     },
   });

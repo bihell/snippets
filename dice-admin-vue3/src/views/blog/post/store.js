@@ -1,5 +1,9 @@
 import { reactive } from 'vue';
-import { metaListApi } from '/@/api/blog/blog';
+import { metaListApi, apiSavePost } from '/@/api/blog/blog';
+import { useMessage } from '/@/hooks/web/useMessage';
+const { createMessage } = useMessage();
+const { success } = createMessage;
+import { formatToDateTime } from '/@/utils/dateUtil';
 
 class Store {
   constructor() {
@@ -32,6 +36,21 @@ class Store {
 
   setPriority(priority) {
     priority ? (this.state.currentPost.priority = 1) : (this.state.currentPost.priority = 0);
+  }
+
+  setCreateTime(datetime) {
+    this.state.currentPost.createTime = formatToDateTime(datetime);
+  }
+
+  setComment(allowComment) {
+    this.state.currentPost.allowComment = allowComment;
+  }
+
+  async savePost(status) {
+    this.state.currentPost.status = status;
+    const postId = await apiSavePost(this.state.currentPost);
+    console.log(postId);
+    success('保存成功');
   }
 
   async fetchMetaList() {
