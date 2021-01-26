@@ -125,7 +125,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<ArticleMapper, Article> 
                 .eq(!StringUtils.isEmpty(articlePageParam.getPriority()), Article::getPriority, articlePageParam.getPriority())
                 .like(!StringUtils.isEmpty(articlePageParam.getTitle()), Article::getTitle, articlePageParam.getTitle())
                 .like(!StringUtils.isEmpty(articlePageParam.getContent()), Article::getContent, articlePageParam.getContent());
-        IPage<Article> iPage = articleMapper.selectPage(page,wrapper);
+        IPage<Article> iPage = articleMapper.selectPage(page, wrapper);
         return new Paging<>(iPage);
     }
 
@@ -167,9 +167,15 @@ public class ArticleServiceImpl extends BaseServiceImpl<ArticleMapper, Article> 
         }
 
         Integer id = article.getId();
+
         // 存储分类和标签
-        metasService.saveOrRemoveMetas(article.getCategory(), Types.CATEGORY, id);
-        metasService.saveOrRemoveMetas(article.getTags(), Types.TAG, id);
+        if (article.getCategory() != null) {
+            metasService.saveOrRemoveMetas(article.getCategory(), Types.CATEGORY, id);
+        }
+        if (article.getTags() != null) {
+            metasService.saveOrRemoveMetas(article.getTags(), Types.TAG, id);
+        }
+
         return id;
     }
 

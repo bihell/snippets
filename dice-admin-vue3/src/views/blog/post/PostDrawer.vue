@@ -52,11 +52,19 @@
           @change="setCreateTime"
         />
       </a-form-item>
+      <a-form-item label="修改日期">
+        <a-date-picker
+          v-model:value="updateTime"
+          show-time
+          placeholder="选择修改日期"
+          @change="setUpdateTime"
+        />
+      </a-form-item>
     </a-form>
 
     <template #footer>
       <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
-      <a-button class="mr-2" type="primary" @click="savePost"> 发布 </a-button>
+      <a-button class="mr-2" type="primary" @click="savePost('PUBLISHED')"> 发布 </a-button>
       <a-button disabled>发布并查看</a-button>
     </template>
   </BasicDrawer>
@@ -93,28 +101,39 @@
       }
 
       function setCreateTime(v) {
-        store.setCreateTime(v);
+        console.log(moment(store.state.currentPost.createTime).utc().format());
+        console.log(v.utc().format());
+        store.setCreateTime(v.utc().format());
       }
 
+      function setUpdateTime(v) {
+        store.setUpdateTime(v.utc().format());
+      }
       store.fetchMetaList();
 
       return {
         register,
         tags: computed(() =>
-          store.state.currentPost.tags.length === 0 ? [] : store.state.currentPost.tags.split(',')
+          store.state.currentPost.tags === undefined || store.state.currentPost.tags.length === 0
+            ? []
+            : store.state.currentPost.tags.split(',')
         ),
         category: computed(() => store.state.currentPost.category),
         tagList: computed(() => store.state.tagList),
         categoryList: computed(() => store.state.categoryList),
         priority: computed(() => store.state.currentPost.priority),
         comment: computed(() => store.state.currentPost.allowComment),
-        createTime: computed(() => moment(store.state.currentPost.createTime)),
+        // createTime: computed(() => store.state.currentPost.createTime),
+        // updateTime: computed(() => store.state.currentPost.updateTime),
+        createTime: computed(() => moment.utc(store.state.currentPost.createTime).local()),
+        updateTime: computed(() => moment.utc(store.state.currentPost.updateTime).local()),
         setTags,
         setCategory,
         setPriority,
         setComment,
         savePost,
         setCreateTime,
+        setUpdateTime,
       };
     },
   });

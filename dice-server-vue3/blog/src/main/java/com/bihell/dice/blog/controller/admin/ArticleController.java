@@ -8,7 +8,6 @@ import com.bihell.dice.framework.log.annotation.OperationLog;
 import com.bihell.dice.framework.log.enums.OperationLogType;
 import com.bihell.dice.framework.util.LoginUtil;
 import com.bihell.dice.blog.model.blog.Article;
-import com.bihell.dice.blog.model.params.ArticleParam;
 import com.bihell.dice.blog.service.blog.ArticleService;
 import com.bihell.dice.framework.common.api.RestResponse;
 import com.bihell.dice.blog.utils.Types;
@@ -64,9 +63,9 @@ public class ArticleController {
      * 新建或修改文章
      */
     @PostMapping
-    public ApiResult<Integer> saveArticle(@Valid @RequestBody ArticleParam articleParam) {
-        articleParam.setCreator(LoginUtil.getUserId());
-        Integer articleId = articleService.saveArticle(articleParam);
+    public ApiResult<Integer> saveArticle(@Valid @RequestBody Article article) {
+        article.setCreator(LoginUtil.getUserId());
+        Integer articleId = articleService.saveArticle(article);
         return ApiResult.ok(articleId);
     }
 

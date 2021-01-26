@@ -42,8 +42,12 @@
       const route = useRoute();
 
       const fetchPost = async () => {
-        const post = await apiGetPost(Number(route.query.id));
-        store.setCurrentPost(post);
+        if (route.query.id) {
+          const post = await apiGetPost(Number(route.query.id));
+          store.setCurrentPost(post);
+        } else {
+          store.setCurrentPost({});
+        }
       };
 
       const setTitle = (evt) => {

@@ -3,7 +3,6 @@ import { metaListApi, apiSavePost } from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
-import { formatToDateTime } from '/@/utils/dateUtil';
 
 class Store {
   constructor() {
@@ -39,7 +38,11 @@ class Store {
   }
 
   setCreateTime(datetime) {
-    this.state.currentPost.createTime = formatToDateTime(datetime);
+    this.state.currentPost.createTime = datetime;
+  }
+
+  setUpdateTime(datetime) {
+    this.state.currentPost.updateTime = datetime;
   }
 
   setComment(allowComment) {
