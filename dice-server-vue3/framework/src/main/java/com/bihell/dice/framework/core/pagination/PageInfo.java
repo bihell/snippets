@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 自定义分页参数 todo
- **/
+ * 自定义分页参数
+ * @author haseochen*/
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)

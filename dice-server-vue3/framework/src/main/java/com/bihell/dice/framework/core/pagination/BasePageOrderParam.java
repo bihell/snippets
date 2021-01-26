@@ -11,7 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 可排序查询参数对象 todo
+ * 可排序查询参数对象
+ * @author haseochen
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
