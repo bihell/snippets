@@ -123,8 +123,6 @@
         categoryList: computed(() => store.state.categoryList),
         priority: computed(() => store.state.currentPost.priority),
         comment: computed(() => store.state.currentPost.allowComment),
-        // createTime: computed(() => store.state.currentPost.createTime),
-        // updateTime: computed(() => store.state.currentPost.updateTime),
         createTime: computed(() => moment.utc(store.state.currentPost.createTime).local()),
         updateTime: computed(() => moment.utc(store.state.currentPost.updateTime).local()),
         setTags,

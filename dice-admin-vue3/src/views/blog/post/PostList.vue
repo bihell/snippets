@@ -1,5 +1,10 @@
 <template>
   <BasicTable @register="registerTable">
+    <template #form-submitAfter>
+      <router-link :to="{ name: 'PostEdit' }">
+        <a-button type="primary"> <FileAddOutlined /> 写文章 </a-button>
+      </router-link>
+    </template>
     <template #category="{ record }">
       <Tag color="blue">
         {{ record.category }}
@@ -34,11 +39,11 @@
         </template>
       </TableAction>
     </template>
-    <template #toolbar>
-      <router-link :to="{ name: 'PostEdit' }">
-        <a-button type="primary"> <FileAddOutlined />写文章</a-button>
-      </router-link>
-    </template>
+    <!--    <template #toolbar>-->
+    <!--      <router-link :to="{ name: 'PostEdit' }">-->
+    <!--        <a-button type="primary"> <FileAddOutlined />写文章</a-button>-->
+    <!--      </router-link>-->
+    <!--    </template>-->
   </BasicTable>
 </template>
 <script lang="ts">
