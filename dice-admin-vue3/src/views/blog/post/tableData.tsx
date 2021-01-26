@@ -61,7 +61,7 @@ export function getFormConfig(): Partial<FormProps> {
         label: ` `,
         component: 'Select',
         defaultValue: '',
-        slot: 'submitAfter',
+        // slot: 'advanceBefore',
         componentProps: {
           placeholder: '状态',
           options: [

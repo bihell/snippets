@@ -1,6 +1,6 @@
 <template>
   <BasicTable @register="registerTable">
-    <template #form-submitAfter>
+    <template #form-advanceBefore>
       <router-link :to="{ name: 'PostEdit' }">
         <a-button type="primary"> <FileAddOutlined /> 写文章 </a-button>
       </router-link>

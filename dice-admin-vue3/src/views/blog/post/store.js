@@ -1,8 +1,9 @@
 import { reactive } from 'vue';
-import { metaListApi, apiSavePost } from '/@/api/blog/blog';
+import { metaListApi, apiSavePost, apiGetPost } from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
+import { formatToDateTime } from '/@/utils/dateUtil';
 
 class Store {
   constructor() {
@@ -38,11 +39,11 @@ class Store {
   }
 
   setCreateTime(datetime) {
-    this.state.currentPost.createTime = datetime;
+    this.state.currentPost.createTime = formatToDateTime(datetime);
   }
 
   setUpdateTime(datetime) {
-    this.state.currentPost.updateTime = datetime;
+    this.state.currentPost.updateTime = formatToDateTime(datetime);
   }
 
   setComment(allowComment) {
@@ -52,13 +53,21 @@ class Store {
   async savePost(status) {
     this.state.currentPost.status = status;
     const postId = await apiSavePost(this.state.currentPost);
-    console.log(postId);
+    await this.fetchPost(postId);
     success('保存成功');
   }
 
   async fetchMetaList() {
     this.state.tagList = await metaListApi({ type: 'tag' });
     this.state.categoryList = await metaListApi({ type: 'category' });
+  }
+
+  async fetchPost(postId) {
+    if (postId) {
+      this.state.currentPost = await apiGetPost(postId);
+    } else {
+      this.state.currentPost = {};
+    }
   }
 }
 export const store = new Store();

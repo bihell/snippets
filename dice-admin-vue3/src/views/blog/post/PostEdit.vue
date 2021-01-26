@@ -41,14 +41,14 @@
 
       const route = useRoute();
 
-      const fetchPost = async () => {
-        if (route.query.id) {
-          const post = await apiGetPost(Number(route.query.id));
-          store.setCurrentPost(post);
-        } else {
-          store.setCurrentPost({});
-        }
-      };
+      // const fetchPost = async () => {
+      //   if (route.query.id) {
+      //     const post = await apiGetPost(Number(route.query.id));
+      //     store.setCurrentPost(post);
+      //   } else {
+      //     store.setCurrentPost({});
+      //   }
+      // };
 
       const setTitle = (evt) => {
         store.setTitle(evt.target.value);
@@ -74,7 +74,8 @@
 
       onMounted(() => {
         {
-          fetchPost();
+          store.fetchPost(route.query.id);
+          // fetchPost();
         }
       });
 

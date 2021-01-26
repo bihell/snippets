@@ -114,7 +114,9 @@
       return {
         register,
         tags: computed(() =>
-          store.state.currentPost.tags === undefined || store.state.currentPost.tags.length === 0
+          store.state.currentPost.tags === undefined ||
+          store.state.currentPost.tags === null ||
+          store.state.currentPost.tags.length === 0
             ? []
             : store.state.currentPost.tags.split(',')
         ),
@@ -123,8 +125,10 @@
         categoryList: computed(() => store.state.categoryList),
         priority: computed(() => store.state.currentPost.priority),
         comment: computed(() => store.state.currentPost.allowComment),
-        createTime: computed(() => moment.utc(store.state.currentPost.createTime).local()),
-        updateTime: computed(() => moment.utc(store.state.currentPost.updateTime).local()),
+        createTime: computed(() => moment(store.state.currentPost.createTime)),
+        updateTime: computed(() => moment(store.state.currentPost.updateTime)),
+        // createTime: computed(() => moment.utc(store.state.currentPost.createTime).local()),
+        // updateTime: computed(() => moment.utc(store.state.currentPost.updateTime).local()),
         setTags,
         setCategory,
         setPriority,
