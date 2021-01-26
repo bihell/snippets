@@ -754,3 +754,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Flink+Kafka：网易云音乐实时数仓建设实践](https://www.infoq.cn/article/JPrjR3fB7NhDNILZAsIj?utm_source=rss&utm_medium=article)
 [数据倾斜？Spark 3.0 AQE专治各种不服](https://xie.infoq.cn/article/867afc6679a3fa2b079e15f79?utm_source=rss&utm_medium=article)
 [Mybatis【14】-- Mybatis 如何实现一对多查询？](https://xie.infoq.cn/article/93c69bf1d336529c4e078db22?utm_source=rss&utm_medium=article)
+[deskreen](https://github.com/pavlobu/deskreen) Deskreen turns any device with a web browser to a second screen for your computer
+[superset](https://github.com/apache/superset) Apache Superset is a Data Visualization and Data Exploration Platform
+[HackBrowserData](https://github.com/moonD4rk/HackBrowserData/blob/master/README_ZH.md) hack-browser-data 是一个解密浏览器数据（密码|历史记录|Cookies|书签）的导出工具，支持全平台主流浏览器。
+

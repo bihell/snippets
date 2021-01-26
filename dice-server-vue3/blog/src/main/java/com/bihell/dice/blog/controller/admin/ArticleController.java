@@ -1,6 +1,7 @@
 package com.bihell.dice.blog.controller.admin;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.bihell.dice.framework.common.api.ApiCode;
 import com.bihell.dice.framework.common.api.ApiResult;
 import com.bihell.dice.framework.core.pagination.Paging;
@@ -19,6 +20,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 后台文章管理 Controller
@@ -54,7 +57,7 @@ public class ArticleController {
     public ApiResult<Article> showArticle(@PathVariable Integer id) {
         Article article = articleService.getAdminArticle(id);
         if (null == article) {
-            return  ApiResult.fail(ApiCode.NOT_FOUND,null);
+            return ApiResult.fail(ApiCode.NOT_FOUND, null);
         }
         return ApiResult.ok(article);
     }
