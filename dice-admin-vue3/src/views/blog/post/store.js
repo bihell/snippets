@@ -4,6 +4,8 @@ import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
 import { formatToDateTime } from '/@/utils/dateUtil';
+// import { useGo } from '/@/hooks/web/usePage';
+// const go = useGo();
 
 class Store {
   constructor() {
@@ -54,6 +56,7 @@ class Store {
     this.state.currentPost.status = status;
     const postId = await apiSavePost(this.state.currentPost);
     await this.fetchPost(postId);
+    // go('/blog/edit?id='+postId)
     success('保存成功');
   }
 
