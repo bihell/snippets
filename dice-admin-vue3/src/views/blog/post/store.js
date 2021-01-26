@@ -16,10 +16,6 @@ class Store {
     });
   }
 
-  setCurrentPost(post) {
-    this.state.currentPost = post;
-  }
-
   setTitle(title) {
     this.state.currentPost.title = title;
   }
