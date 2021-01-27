@@ -13,7 +13,7 @@ const blog: AppRouteModule = {
   },
   children: [
     {
-      path: 'list',
+      path: 'posts',
       name: 'PostList',
       component: () => import('/@/views/blog/post/PostList.vue'),
       meta: {
@@ -26,6 +26,14 @@ const blog: AppRouteModule = {
       component: () => import('/@/views/blog/post/PostEdit.vue'),
       meta: {
         title: '编辑文章',
+      },
+    },
+    {
+      path: 'comments',
+      name: 'CommentList',
+      component: () => import('/@/views/blog/comment/CommentList.vue'),
+      meta: {
+        title: '评论列表',
       },
     },
   ],

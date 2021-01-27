@@ -72,7 +72,7 @@
 <script>
   import { computed, defineComponent } from 'vue';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
-  import { store } from '/@/views/blog/post/store';
+  import { store } from '../store';
   import moment from 'moment';
 
   export default defineComponent({

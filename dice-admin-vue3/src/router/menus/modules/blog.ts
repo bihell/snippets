@@ -7,8 +7,12 @@ const menu: MenuModule = {
     name: '博客',
     children: [
       {
-        path: 'list',
+        path: 'posts',
         name: '文章列表',
+      },
+      {
+        path: 'comments',
+        name: '评论列表',
       },
     ],
   },

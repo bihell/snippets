@@ -757,4 +757,11 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [deskreen](https://github.com/pavlobu/deskreen) Deskreen turns any device with a web browser to a second screen for your computer
 [superset](https://github.com/apache/superset) Apache Superset is a Data Visualization and Data Exploration Platform
 [HackBrowserData](https://github.com/moonD4rk/HackBrowserData/blob/master/README_ZH.md) hack-browser-data 是一个解密浏览器数据（密码|历史记录|Cookies|书签）的导出工具，支持全平台主流浏览器。
-
+[Flink SQL 在字节跳动的优化与实践](https://xie.infoq.cn/article/e6bce76e1e9804d18db2a28a2?utm_source=rss&utm_medium=article)
+[Flink 助力美团数仓增量生产](https://xie.infoq.cn/article/8720ffcd0bd3be274dcff8b6a?utm_source=rss&utm_medium=article)
+[美团把 Kafka 作为应用层缓存的实践](https://www.infoq.cn/article/K6dQFQQiHPJFEpl3y3hS?utm_source=rss&utm_medium=article)
+[Hadoop 编程实战：HDFS 用户 Shell 详解](https://xie.infoq.cn/article/2f95eeab926e3af0331e0289e?utm_source=rss&utm_medium=article)
+[nows](https://github.com/egotong/nows) 非常真实，用最猛的刀，扎向昏沉的你。没事打开就可以打开瞅瞅，毕竟人生苦短都没苦笑过有什么意思!
+[devtools](https://github.com/wangpinpin/devtools) 常用开发工具
+[BullshitGenerator](https://github.com/menzi11/BullshitGenerator) 狗屁不通文章生成器
+[高性能 Nginx HTTPS 调优！为 HTTPS 提速 30%](https://segmentfault.com/a/1190000039073842)

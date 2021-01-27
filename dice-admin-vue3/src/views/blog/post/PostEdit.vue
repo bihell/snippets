@@ -25,9 +25,8 @@
   import { MarkDown } from '/@/components/Markdown';
   import { computed, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
-  import { apiGetPost } from '/@/api/blog/blog';
   import { PageFooter } from '/@/components/Page';
-  import { store } from './store';
+  import { store } from '../store';
   import { useDrawer } from '/@/components/Drawer';
   import ArticleDrawer from './PostDrawer.vue';
 

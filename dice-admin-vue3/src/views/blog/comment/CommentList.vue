@@ -1,10 +1,5 @@
 <template>
   <BasicTable @register="registerTable">
-    <template #form-advanceBefore>
-      <router-link :to="{ name: 'PostEdit' }">
-        <a-button type="primary"> <FileAddOutlined /> 写文章 </a-button>
-      </router-link>
-    </template>
     <template #category="{ record }">
       <Tag color="blue">
         {{ record.category }}
@@ -52,11 +47,11 @@
   import { getBasicColumns, getFormConfig } from '../tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { articleListApi, postStatus } from '/@/api/blog/blog';
-  import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
+  import { FormOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
+    components: { BasicTable, Tag, Badge, TableAction, FormOutlined },
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
