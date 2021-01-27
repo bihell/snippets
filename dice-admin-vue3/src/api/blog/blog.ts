@@ -24,6 +24,14 @@ export function apiDeletePost(id: number) {
   });
 }
 
+export function apiDeleteMeta(name: string, type: string) {
+  return defHttp.request({
+    url: Api.META,
+    params: { name, type },
+    method: 'DELETE',
+  });
+}
+
 export function apiDeleteComment(id: number) {
   return defHttp.request({
     url: Api.COMMENT + id,

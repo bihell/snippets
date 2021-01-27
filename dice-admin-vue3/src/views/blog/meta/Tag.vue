@@ -8,7 +8,9 @@
               <span class="meta" @click="handleTagClick(tag)">{{ tag.name }} </span>
               <span style="float: right; clear: both;">
                 <span class="radius-count">{{ tag.count }}</span>
-                <a-button type="danger" @click="handleDeleteTagClick(tag.name)">删除</a-button>
+                <a-button type="danger" @click="handleDeleteMetaClick(tag.name, 'tag')"
+                  >删除</a-button
+                >
               </span>
             </li>
           </ul>
@@ -25,7 +27,9 @@
               <span class="meta" @click="handleCategoryClick(category)">{{ category.name }} </span>
               <span style="float: right; clear: both;">
                 <span class="radius-count">{{ category.count }}</span>
-                <a-button type="danger" @click="handleDeleteTagClick(category.name)">删除</a-button>
+                <a-button type="danger" @click="handleDeleteMetaClick(category.name, 'category')"
+                  >删除</a-button
+                >
               </span>
             </li>
           </ul>
@@ -47,7 +51,7 @@
   import { store } from '../store';
   import { computed, reactive } from 'vue';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { apiSaveMeta, apiUpdateMeta } from '/@/api/blog/blog';
+  import { apiSaveMeta, apiUpdateMeta, apiDeleteMeta, apiDeletePost } from '/@/api/blog/blog';
   const { createMessage, createConfirm, createErrorModal } = useMessage();
   const { success } = createMessage;
   export default {
@@ -72,8 +76,17 @@
         category.id = v.id;
       }
 
-      function handleDeleteTagClick(v: any) {
-        console.log(v);
+      function handleDeleteMetaClick(name: string, type: string) {
+        createConfirm({
+          iconType: 'warning',
+          title: '删除确认',
+          content: '确定要删除么？',
+          onOk: async () => {
+            await apiDeleteMeta(name, type);
+            success('已删除');
+            await store.fetchMetaList();
+          },
+        });
       }
 
       async function handleSaveOrUpdateTagClick() {
@@ -123,7 +136,7 @@
         category,
         handleTagClick,
         handleCategoryClick,
-        handleDeleteTagClick,
+        handleDeleteMetaClick,
         handleSaveOrUpdateTagClick,
         handleSaveOrUpdateCategoryClick,
       };
