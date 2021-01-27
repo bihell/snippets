@@ -65,13 +65,9 @@ public class CommentController {
      * @return {@see RestResponse.ok()}
      */
     @DeleteMapping("{id}")
-    public RestResponse delete(@PathVariable Integer id) {
-        if (commentService.deleteComment(id)) {
-
-            return RestResponse.ok();
-        } else {
-            return RestResponse.fail("删除评论失败");
-        }
+    public ApiResult<Boolean> delete(@PathVariable Integer id) {
+        boolean flag = commentService.deleteComment(id);
+        return ApiResult.result(flag);
     }
 
     /**

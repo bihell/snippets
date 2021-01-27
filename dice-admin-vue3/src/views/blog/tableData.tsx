@@ -59,46 +59,30 @@ export function getCommentColumns(): BasicColumn[] {
       width: 60,
       dataIndex: 'id',
     },
-    // {
-    //   title: '标题',
-    //   dataIndex: 'title',
-    //   align: 'left',
-    // },
-    // {
-    //   title: '分类',
-    //   dataIndex: 'category',
-    //   width: 80,
-    //   align: 'center',
-    //   slots: { customRender: 'category' },
-    // },
-    // {
-    //   title: '状态',
-    //   dataIndex: 'status',
-    //   width: 70,
-    //   align: 'center',
-    //   slots: { customRender: 'status' },
-    // },
-    // {
-    //   title: '评论',
-    //   dataIndex: 'commentCount',
-    //   width: 60,
-    //   align: 'center',
-    //   slots: { customRender: 'cc' },
-    // },
-    // {
-    //   title: '发布日期',
-    //   sorter: true,
-    //   dataIndex: 'createTime',
-    //   width: 150,
-    //   customRender: ({ record }) => formatToDateTime(record.createTime),
-    // },
-    // {
-    //   title: '修改日期',
-    //   sorter: true,
-    //   dataIndex: 'updateTime',
-    //   width: 150,
-    //   customRender: ({ record }) => formatToDateTime(record.updateTime),
-    // },
+    {
+      title: '称呼',
+      width: 120,
+      dataIndex: 'name',
+      align: 'left',
+    },
+    {
+      title: '内容',
+      dataIndex: 'content',
+      align: 'left',
+    },
+    {
+      title: '邮箱',
+      dataIndex: 'email',
+      width: 200,
+      align: 'left',
+    },
+    {
+      title: '评论日期',
+      dataIndex: 'created',
+      width: 150,
+      align: 'center',
+      customRender: ({ record }) => formatToDateTime(record.created),
+    },
   ];
 }
 

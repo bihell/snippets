@@ -27,7 +27,7 @@
           },
           {
             label: '删除',
-            onClick: handleDelete.bind(null, record),
+            onClick: handleDeleteClick.bind(null, record),
           },
         ]"
         :divider="false"
@@ -93,7 +93,7 @@
         pushWithQuery({ id: record.id });
       }
 
-      async function handleDelete(record: any) {
+      async function handleDeleteClick(record: any) {
         createConfirm({
           iconType: 'warning',
           title: '删除文章',
@@ -110,7 +110,7 @@
         registerTable,
         status,
         handleEditClick,
-        handleDelete,
+        handleDeleteClick,
       };
     },
   });

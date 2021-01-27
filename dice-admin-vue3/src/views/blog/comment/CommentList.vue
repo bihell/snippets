@@ -1,28 +1,15 @@
 <template>
   <BasicTable @register="registerTable">
-    <template #category="{ record }">
-      <Tag color="blue">
-        {{ record.category }}
-      </Tag>
-    </template>
-    <template #status="{ record }">
-      <Tag color="blue">
-        {{ status[record.status].text }}
-      </Tag>
-    </template>
-    <template #cc="{ record }">
-      <Badge :count="record.commentCount" show-zero />
-    </template>
     <template #action="{ record }">
       <TableAction
         :drop-down-actions="[
           {
-            label: '编辑',
-            onClick: handleEditClick.bind(null, record),
+            label: '明细',
+            onClick: handleDetailClick.bind(null, record),
           },
           {
             label: '删除',
-            onClick: handleEditClick.bind(null, record),
+            onClick: handleDeleteClick.bind(null, record),
           },
         ]"
         :divider="false"
@@ -34,26 +21,22 @@
         </template>
       </TableAction>
     </template>
-    <!--    <template #toolbar>-->
-    <!--      <router-link :to="{ name: 'PostEdit' }">-->
-    <!--        <a-button type="primary"> <FileAddOutlined />写文章</a-button>-->
-    <!--      </router-link>-->
-    <!--    </template>-->
   </BasicTable>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getCommentColumns } from '../tableData';
-  import { Tag, Badge } from 'ant-design-vue';
-  import { apiCommentList, postStatus } from '/@/api/blog/blog';
+  import { apiCommentList, apiDeleteComment } from '/@/api/blog/blog';
   import { FormOutlined } from '@ant-design/icons-vue';
-  import { useRouter } from 'vue-router';
+  import { useMessage } from '/@/hooks/web/useMessage';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction, FormOutlined },
+    components: { BasicTable, TableAction, FormOutlined },
     setup() {
-      const [registerTable] = useTable({
+      const { createMessage, createConfirm } = useMessage();
+      const { success } = createMessage;
+      const [registerTable, { reload }] = useTable({
         title: '文章列表',
         api: apiCommentList,
         columns: getCommentColumns(),
@@ -69,24 +52,32 @@
         },
       });
 
-      const status = postStatus();
-      const router = useRouter();
-
-      function pushWithQuery(query: any) {
-        router.push({
-          name: 'PostEdit',
-          query: query,
+      async function handleDeleteClick(record: any) {
+        createConfirm({
+          iconType: 'warning',
+          title: '删除评论',
+          content: '确定要删除么？',
+          onOk: async () => {
+            await apiDeleteComment(record.id);
+            success('删除评论成功');
+            await reload();
+          },
         });
       }
 
-      function handleEditClick(record: any) {
-        pushWithQuery({ id: record.id });
+      function handleDetailClick(record: any) {
+        console.log(record.id);
+        createConfirm({
+          iconType: 'info',
+          title: '功能开发中',
+          content: '正在开发中，欢迎提PR',
+        });
       }
 
       return {
         registerTable,
-        status,
-        handleEditClick,
+        handleDeleteClick,
+        handleDetailClick,
       };
     },
   });
