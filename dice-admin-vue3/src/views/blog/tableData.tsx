@@ -52,6 +52,56 @@ export function getBasicColumns(): BasicColumn[] {
   ];
 }
 
+export function getCommentColumns(): BasicColumn[] {
+  return [
+    {
+      title: 'ID',
+      width: 60,
+      dataIndex: 'id',
+    },
+    // {
+    //   title: '标题',
+    //   dataIndex: 'title',
+    //   align: 'left',
+    // },
+    // {
+    //   title: '分类',
+    //   dataIndex: 'category',
+    //   width: 80,
+    //   align: 'center',
+    //   slots: { customRender: 'category' },
+    // },
+    // {
+    //   title: '状态',
+    //   dataIndex: 'status',
+    //   width: 70,
+    //   align: 'center',
+    //   slots: { customRender: 'status' },
+    // },
+    // {
+    //   title: '评论',
+    //   dataIndex: 'commentCount',
+    //   width: 60,
+    //   align: 'center',
+    //   slots: { customRender: 'cc' },
+    // },
+    // {
+    //   title: '发布日期',
+    //   sorter: true,
+    //   dataIndex: 'createTime',
+    //   width: 150,
+    //   customRender: ({ record }) => formatToDateTime(record.createTime),
+    // },
+    // {
+    //   title: '修改日期',
+    //   sorter: true,
+    //   dataIndex: 'updateTime',
+    //   width: 150,
+    //   customRender: ({ record }) => formatToDateTime(record.updateTime),
+    // },
+  ];
+}
+
 export function getFormConfig(): Partial<FormProps> {
   return {
     labelWidth: 10,

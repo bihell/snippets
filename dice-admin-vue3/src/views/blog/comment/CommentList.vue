@@ -44,9 +44,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { getBasicColumns, getFormConfig } from '../tableData';
+  import { getCommentColumns } from '../tableData';
   import { Tag, Badge } from 'ant-design-vue';
-  import { articleListApi, postStatus } from '/@/api/blog/blog';
+  import { commentListApi, postStatus } from '/@/api/blog/blog';
   import { FormOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
 
@@ -55,10 +55,8 @@
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
-        api: articleListApi,
-        columns: getBasicColumns(),
-        useSearchForm: true,
-        formConfig: getFormConfig(),
+        api: commentListApi,
+        columns: getCommentColumns(),
         showTableSetting: true,
         showIndexColumn: false,
         bordered: true,

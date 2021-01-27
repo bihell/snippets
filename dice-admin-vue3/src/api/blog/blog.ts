@@ -9,6 +9,7 @@ import {
 
 enum Api {
   ARTICLE_LIST = '/article/getPageList',
+  COMMENT_LIST = '/comment/getPageList',
   POST = '/article/',
   META_LIST = '/meta/meta_list',
 }
@@ -31,6 +32,14 @@ export function apiSavePost(params: PostItem) {
 export function articleListApi(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,
+    method: 'POST',
+    params,
+  });
+}
+
+export function commentListApi(params: ArticleListParams) {
+  return defHttp.request<ArticleListGetResultModel>({
+    url: Api.COMMENT_LIST,
     method: 'POST',
     params,
   });
