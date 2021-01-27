@@ -33,7 +33,7 @@
   import { store } from '../store';
   import { computed, reactive } from 'vue';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { apiSaveMeta } from '/@/api/blog/blog';
+  import { apiSaveMeta, apiUpdateMeta } from '/@/api/blog/blog';
   const { createMessage, createConfirm, createErrorModal } = useMessage();
   const { success } = createMessage;
   export default {
@@ -58,14 +58,12 @@
       }
 
       async function handleSaveOrUpdateTagClick() {
-        console.log(tag.name === null);
-        console.log(tag.id === null);
-        console.log(tag);
         if (tag.name === '') {
           createErrorModal({ title: 'Tip', content: '标签名不能为空' });
           return;
         }
         if (tag.id !== '') {
+          await apiUpdateMeta(Number(tag.id), tag.name, 'tag');
           success('更新标签成功');
           setTag({ label: '', value: '' });
           await store.fetchMetaList();

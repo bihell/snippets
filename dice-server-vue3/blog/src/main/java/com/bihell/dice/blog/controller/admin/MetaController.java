@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -68,24 +69,19 @@ public class MetaController {
      * @return
      */
     @PostMapping
-    public ApiResult<Boolean> saveMeta(@RequestBody Meta meta) {
+    public ApiResult<Boolean> saveMeta(@Valid @RequestBody Meta meta) {
         boolean flag = metaService.saveMeta(meta.getName(), meta.getType());
             return ApiResult.result(flag);
     }
 
     /**
      * 根据id修改分类
-     *
-     * @param id   属性id
-     * @param name 新属性名
-     * @param type 新属性类型
+     * @param meta
      * @return
      */
     @PostMapping("{id}")
-    public RestResponse updateMeta(@PathVariable Integer id, @RequestParam String name, @RequestParam String type) {
-        if (metaService.updateMeta(id, name, type)) {
-            return RestResponse.ok();
-        }
-        return RestResponse.fail();
+    public ApiResult<Boolean> updateMeta(@Valid @RequestBody Meta meta) {
+        boolean flag =  metaService.updateMeta(meta.getId(), meta.getName(), meta.getType());
+        return ApiResult.result(flag);
     }
 }

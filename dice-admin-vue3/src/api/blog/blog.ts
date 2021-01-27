@@ -80,6 +80,14 @@ export function apiSaveMeta(name: string, type: string) {
   });
 }
 
+export function apiUpdateMeta(id: number, name: string, type: string) {
+  return defHttp.request({
+    url: Api.META + id,
+    method: 'POST',
+    params: { id, name, type },
+  });
+}
+
 export function postStatus() {
   return {
     PUBLISHED: {
