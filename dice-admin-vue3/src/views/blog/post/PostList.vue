@@ -27,7 +27,7 @@
           },
           {
             label: '删除',
-            onClick: handleEditClick.bind(null, record),
+            onClick: handleDelete.bind(null, record),
           },
         ]"
         :divider="false"
@@ -51,16 +51,19 @@
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getBasicColumns, getFormConfig } from '../tableData';
   import { Tag, Badge } from 'ant-design-vue';
-  import { articleListApi, postStatus } from '/@/api/blog/blog';
+  import { apiPostList, postStatus, apiDeletePost } from '/@/api/blog/blog';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
+  import { useMessage } from '/@/hooks/web/useMessage';
 
   export default defineComponent({
     components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
     setup() {
-      const [registerTable] = useTable({
+      const { createMessage, createConfirm } = useMessage();
+      const { success } = createMessage;
+      const [registerTable, { reload }] = useTable({
         title: '文章列表',
-        api: articleListApi,
+        api: apiPostList,
         columns: getBasicColumns(),
         useSearchForm: true,
         formConfig: getFormConfig(),
@@ -90,10 +93,24 @@
         pushWithQuery({ id: record.id });
       }
 
+      async function handleDelete(record: any) {
+        createConfirm({
+          iconType: 'warning',
+          title: '删除文章',
+          content: '确定要删除么？',
+          onOk: async () => {
+            await apiDeletePost(record.id);
+            success('文章删除成功');
+            await reload();
+          },
+        });
+      }
+
       return {
         registerTable,
         status,
         handleEditClick,
+        handleDelete,
       };
     },
   });

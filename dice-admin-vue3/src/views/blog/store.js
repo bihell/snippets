@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { metaListApi, apiSavePost, apiGetPost } from '/@/api/blog/blog';
+import { apiMetaList, apiSavePost, apiGetPost } from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
@@ -57,8 +57,8 @@ class Store {
   }
 
   async fetchMetaList() {
-    this.state.tagList = await metaListApi({ type: 'tag' });
-    this.state.categoryList = await metaListApi({ type: 'category' });
+    this.state.tagList = await apiMetaList({ type: 'tag' });
+    this.state.categoryList = await apiMetaList({ type: 'category' });
   }
 
   async fetchPost(postId) {

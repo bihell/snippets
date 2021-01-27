@@ -74,17 +74,13 @@ public class ArticleController {
 
     /**
      * 删除文章
-     *
-     * @param id 文章id
-     * @return {@see RestResponse.ok()}
+     * @param id
+     * @return
      */
     @DeleteMapping("{id}")
-    public RestResponse deleteArticle(@PathVariable Integer id) {
-        if (articleService.deleteArticle(id)) {
-            return RestResponse.ok("删除文章成功");
-        } else {
-            return RestResponse.fail();
-        }
+    public ApiResult<Boolean> deleteArticle(@PathVariable Integer id) {
+        boolean flag = articleService.deleteArticle(id);
+        return ApiResult.result(flag);
     }
 
     /**

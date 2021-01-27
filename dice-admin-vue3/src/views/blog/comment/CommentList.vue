@@ -46,7 +46,7 @@
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getCommentColumns } from '../tableData';
   import { Tag, Badge } from 'ant-design-vue';
-  import { commentListApi, postStatus } from '/@/api/blog/blog';
+  import { apiCommentList, postStatus } from '/@/api/blog/blog';
   import { FormOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
 
@@ -55,7 +55,7 @@
     setup() {
       const [registerTable] = useTable({
         title: '文章列表',
-        api: commentListApi,
+        api: apiCommentList,
         columns: getCommentColumns(),
         showTableSetting: true,
         showIndexColumn: false,

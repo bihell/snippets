@@ -21,6 +21,13 @@ export function apiGetPost(id: number) {
   });
 }
 
+export function apiDeletePost(id: number) {
+  return defHttp.request<PostItem>({
+    url: Api.POST + id,
+    method: 'DELETE',
+  });
+}
+
 export function apiSavePost(params: PostItem) {
   return defHttp.request({
     url: Api.POST,
@@ -29,7 +36,7 @@ export function apiSavePost(params: PostItem) {
   });
 }
 
-export function articleListApi(params: ArticleListParams) {
+export function apiPostList(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,
     method: 'POST',
@@ -37,7 +44,7 @@ export function articleListApi(params: ArticleListParams) {
   });
 }
 
-export function commentListApi(params: ArticleListParams) {
+export function apiCommentList(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.COMMENT_LIST,
     method: 'POST',
@@ -45,7 +52,7 @@ export function commentListApi(params: ArticleListParams) {
   });
 }
 
-export function metaListApi(params: OptionsParams) {
+export function apiMetaList(params: OptionsParams) {
   return defHttp.request<OptionsGetResultModel>({
     url: Api.META_LIST,
     method: 'GET',
