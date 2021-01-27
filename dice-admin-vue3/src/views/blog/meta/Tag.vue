@@ -20,9 +20,25 @@
       </a-col>
       <a-col :xs="24" :sm="12" :md="12" :lg="12">
         <a-card title="分类列表">
-          <p>card content</p>
-          <p>card content</p>
-          <p>card content</p>
+          <ul class="meta-list">
+            <li v-for="category in categoryList" :key="category.value">
+              <span class="meta" @click="handleCategoryClick(category)">{{ category.label }} </span>
+              <span style="float: right; clear: both;">
+                <span class="radius-count">{{ category.count }}</span>
+                <a-button type="danger" @click="handleDeleteTagClick(category.label)"
+                  >删除</a-button
+                >
+              </span>
+            </li>
+          </ul>
+          <a-input
+            v-model:value.trim="category.name"
+            placeholder="请输入标签名称"
+            class="meta-input"
+          />
+          <a-button style="float: right; clear: both;" @click="handleSaveOrUpdateCategoryClick">
+            保存标签
+          </a-button>
         </a-card>
       </a-col>
     </a-row>
@@ -43,6 +59,10 @@
         name: '',
         id: '',
       });
+      const category = reactive({
+        name: '',
+        id: '',
+      });
 
       const setTag = (v) => {
         tag.name = v.label;
@@ -51,6 +71,11 @@
 
       function handleTagClick(v) {
         setTag(v);
+      }
+
+      function handleCategoryClick(v) {
+        category.name = v.label;
+        category.id = v.value;
       }
 
       function handleDeleteTagClick(v) {
@@ -74,13 +99,37 @@
           await store.fetchMetaList();
         }
       }
+
+      async function handleSaveOrUpdateCategoryClick() {
+        if (category.name === '') {
+          createErrorModal({ title: 'Tip', content: '分类名不能为空' });
+          return;
+        }
+        if (category.id !== '') {
+          await apiUpdateMeta(Number(category.id), category.name, 'category');
+          success('更新分类成功');
+          category.name = '';
+          category.id = '';
+          await store.fetchMetaList();
+        } else {
+          await apiSaveMeta(category.name, 'category');
+          success('新增分类成功');
+          category.name = '';
+          category.id = '';
+          await store.fetchMetaList();
+        }
+      }
+
       return {
         tagList: computed(() => store.state.tagList),
         categoryList: computed(() => store.state.categoryList),
         tag,
+        category,
         handleTagClick,
+        handleCategoryClick,
         handleDeleteTagClick,
         handleSaveOrUpdateTagClick,
+        handleSaveOrUpdateCategoryClick,
       };
     },
   };
