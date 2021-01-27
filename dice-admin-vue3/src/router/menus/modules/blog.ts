@@ -14,6 +14,10 @@ const menu: MenuModule = {
         path: 'comments',
         name: '评论列表',
       },
+      {
+        path: 'tags',
+        name: '标签分类',
+      },
     ],
   },
 };

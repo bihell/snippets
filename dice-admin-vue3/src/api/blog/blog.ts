@@ -13,6 +13,7 @@ enum Api {
   POST = '/article/',
   COMMENT = '/comment/',
   META_LIST = '/meta/meta_list',
+  META = '/meta/',
 }
 
 export function apiGetPost(id: number) {
@@ -23,14 +24,14 @@ export function apiGetPost(id: number) {
 }
 
 export function apiDeletePost(id: number) {
-  return defHttp.request<PostItem>({
+  return defHttp.request({
     url: Api.POST + id,
     method: 'DELETE',
   });
 }
 
 export function apiDeleteComment(id: number) {
-  return defHttp.request<PostItem>({
+  return defHttp.request({
     url: Api.COMMENT + id,
     method: 'DELETE',
   });
@@ -68,6 +69,14 @@ export function apiMetaList(params: OptionsParams) {
     headers: {
       ignoreCancelToken: true,
     },
+  });
+}
+
+export function apiSaveMeta(name: string, type: string) {
+  return defHttp.request({
+    url: Api.META,
+    method: 'POST',
+    params: { name, type },
   });
 }
 

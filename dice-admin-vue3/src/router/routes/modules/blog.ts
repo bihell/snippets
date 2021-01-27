@@ -36,6 +36,14 @@ const blog: AppRouteModule = {
         title: '评论列表',
       },
     },
+    {
+      path: 'tags',
+      name: 'Tags',
+      component: () => import('/@/views/blog/meta/Tag.vue'),
+      meta: {
+        title: '标签分类',
+      },
+    },
   ],
 };
 

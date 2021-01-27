@@ -1,6 +1,7 @@
 package com.bihell.dice.blog.controller.admin;
 
 import com.bihell.dice.blog.mapper.blogs.MetaMapper;
+import com.bihell.dice.blog.model.blog.Meta;
 import com.bihell.dice.blog.service.blog.MetaService;
 import com.bihell.dice.blog.vo.MetaQueryVO;
 import com.bihell.dice.framework.common.api.ApiResult;
@@ -63,17 +64,13 @@ public class MetaController {
 
     /**
      * 添加一个分类
-     *
-     * @param name 属性名
-     * @param type 属性类型 {@see Types#CATEGORY},{@see Types#TAG}
-     * @return {@see RestResponse.ok()}
+     * @param meta
+     * @return
      */
     @PostMapping
-    public RestResponse saveMeta(@RequestParam String name, @RequestParam String type) {
-        if (metaService.saveMeta(name, type)) {
-            return RestResponse.ok();
-        }
-        return RestResponse.fail();
+    public ApiResult<Boolean> saveMeta(@RequestBody Meta meta) {
+        boolean flag = metaService.saveMeta(meta.getName(), meta.getType());
+            return ApiResult.result(flag);
     }
 
     /**
