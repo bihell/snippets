@@ -4,11 +4,11 @@
       <a-col :xs="24" :sm="12" :md="12" :lg="12">
         <a-card title="标签列表">
           <ul class="meta-list">
-            <li v-for="tag in tagList" :key="tag.value">
-              <span class="meta" @click="handleTagClick(tag)">{{ tag.label }} </span>
+            <li v-for="tag in tagList" :key="tag.id">
+              <span class="meta" @click="handleTagClick(tag)">{{ tag.name }} </span>
               <span style="float: right; clear: both;">
                 <span class="radius-count">{{ tag.count }}</span>
-                <a-button type="danger" @click="handleDeleteTagClick(tag.label)">删除</a-button>
+                <a-button type="danger" @click="handleDeleteTagClick(tag.name)">删除</a-button>
               </span>
             </li>
           </ul>
@@ -21,13 +21,11 @@
       <a-col :xs="24" :sm="12" :md="12" :lg="12">
         <a-card title="分类列表">
           <ul class="meta-list">
-            <li v-for="category in categoryList" :key="category.value">
-              <span class="meta" @click="handleCategoryClick(category)">{{ category.label }} </span>
+            <li v-for="category in categoryList" :key="category.id">
+              <span class="meta" @click="handleCategoryClick(category)">{{ category.name }} </span>
               <span style="float: right; clear: both;">
                 <span class="radius-count">{{ category.count }}</span>
-                <a-button type="danger" @click="handleDeleteTagClick(category.label)"
-                  >删除</a-button
-                >
+                <a-button type="danger" @click="handleDeleteTagClick(category.name)">删除</a-button>
               </span>
             </li>
           </ul>
@@ -64,21 +62,17 @@
         id: '',
       });
 
-      const setTag = (v) => {
-        tag.name = v.label;
-        tag.id = v.value;
-      };
-
-      function handleTagClick(v) {
-        setTag(v);
+      function handleTagClick(v: any) {
+        tag.name = v.name;
+        tag.id = v.id;
       }
 
-      function handleCategoryClick(v) {
-        category.name = v.label;
-        category.id = v.value;
+      function handleCategoryClick(v: any) {
+        category.name = v.name;
+        category.id = v.id;
       }
 
-      function handleDeleteTagClick(v) {
+      function handleDeleteTagClick(v: any) {
         console.log(v);
       }
 
@@ -90,12 +84,14 @@
         if (tag.id !== '') {
           await apiUpdateMeta(Number(tag.id), tag.name, 'tag');
           success('更新标签成功');
-          setTag({ label: '', value: '' });
+          tag.name = '';
+          tag.id = '';
           await store.fetchMetaList();
         } else {
           await apiSaveMeta(tag.name, 'tag');
           success('新增标签成功');
-          setTag({ label: '', value: '' });
+          tag.name = '';
+          tag.id = '';
           await store.fetchMetaList();
         }
       }
@@ -187,5 +183,21 @@
 
   .clearfix::after {
     clear: both;
+  }
+
+  .radius-count {
+    display: inline-block;
+    min-width: 10px;
+    padding: 4px 7px;
+    margin-right: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 12px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #f36a5a;
+    border-radius: 10px;
   }
 </style>

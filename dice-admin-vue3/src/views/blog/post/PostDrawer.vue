@@ -9,8 +9,8 @@
           placeholder="请选择标签"
           @change="setTags"
         >
-          <a-select-option v-for="tag in tagList" :key="tag.label">
-            {{ tag.label }}
+          <a-select-option v-for="tag in tagList" :key="tag.name">
+            {{ tag.name }}
           </a-select-option>
         </a-select>
       </a-form-item>
@@ -21,8 +21,8 @@
           placeholder="请选择分类"
           @change="setCategory"
         >
-          <a-select-option v-for="category in categoryList" :key="category.label">
-            {{ category.label }}
+          <a-select-option v-for="category in categoryList" :key="category.name">
+            {{ category.name }}
           </a-select-option>
         </a-select>
       </a-form-item>

@@ -1,18 +1,12 @@
 import { defHttp } from '/@/utils/http/axios';
-import {
-  ArticleListParams,
-  ArticleListGetResultModel,
-  OptionsGetResultModel,
-  OptionsParams,
-  PostItem,
-} from './model/blogModel';
+import { ArticleListParams, ArticleListGetResultModel, PostItem } from './model/blogModel';
 
 enum Api {
   ARTICLE_LIST = '/article/getPageList',
   COMMENT_LIST = '/comment/getPageList',
   POST = '/article/',
   COMMENT = '/comment/',
-  META_LIST = '/meta/meta_list',
+  META_LIST = '/meta/getList',
   META = '/meta/',
 }
 
@@ -61,11 +55,11 @@ export function apiCommentList(params: ArticleListParams) {
   });
 }
 
-export function apiMetaList(params: OptionsParams) {
-  return defHttp.request<OptionsGetResultModel>({
+export function apiMetaList(type: string) {
+  return defHttp.request({
     url: Api.META_LIST,
     method: 'GET',
-    params,
+    params: { type },
     headers: {
       ignoreCancelToken: true,
     },

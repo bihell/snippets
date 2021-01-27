@@ -2,6 +2,7 @@ package com.bihell.dice.blog.controller.admin;
 
 import com.bihell.dice.blog.mapper.blogs.MetaMapper;
 import com.bihell.dice.blog.model.blog.Meta;
+import com.bihell.dice.blog.model.dto.MetaDto;
 import com.bihell.dice.blog.service.blog.MetaService;
 import com.bihell.dice.blog.vo.MetaQueryVO;
 import com.bihell.dice.framework.common.api.ApiResult;
@@ -37,6 +38,13 @@ public class MetaController {
                                @RequestParam(required = false) String title,
                                @RequestParam(required = false) String snippetFileContent) {
         return RestResponse.ok(metaService.getMetaDtos(type, title, snippetFileContent));
+    }
+
+    @GetMapping("/getList")
+    public ApiResult<List<MetaDto>> getMetaList(@RequestParam String type,
+                                          @RequestParam(required = false) String title,
+                                          @RequestParam(required = false) String snippetFileContent) {
+        return ApiResult.ok(metaService.getMetaDtos(type, title, snippetFileContent));
     }
 
     /**

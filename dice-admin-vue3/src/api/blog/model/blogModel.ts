@@ -23,10 +23,6 @@ export interface PostItem {
   commentCount: number;
 }
 
-export interface OptionsParams {
-  type: string;
-}
-
 /**
  * @description: Request list return value
  */

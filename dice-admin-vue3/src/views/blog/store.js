@@ -57,8 +57,8 @@ class Store {
   }
 
   async fetchMetaList() {
-    this.state.tagList = await apiMetaList({ type: 'tag' });
-    this.state.categoryList = await apiMetaList({ type: 'category' });
+    this.state.tagList = await apiMetaList('tag');
+    this.state.categoryList = await apiMetaList('category');
   }
 
   async fetchPost(postId) {
