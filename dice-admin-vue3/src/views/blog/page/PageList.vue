@@ -44,7 +44,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { getBasicColumns, getPageConfig } from '../tableData';
+  import { getPageColumns, getPageConfig } from '../tableData';
   import { Tag, Badge } from 'ant-design-vue';
   import { apiPageList, postStatus, apiDeletePage } from '/@/api/blog/blog';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
@@ -57,9 +57,9 @@
       const { createMessage, createConfirm } = useMessage();
       const { success } = createMessage;
       const [registerTable, { reload }] = useTable({
-        title: '文章列表',
+        title: '页面列表',
         api: apiPageList,
-        columns: getBasicColumns(),
+        columns: getPageColumns(),
         useSearchForm: true,
         formConfig: getPageConfig(),
         showTableSetting: true,
@@ -79,7 +79,7 @@
 
       function pushWithQuery(query: any) {
         router.push({
-          name: 'PostEdit',
+          name: 'PageEdit',
           query: query,
         });
       }

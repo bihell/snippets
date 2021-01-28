@@ -52,6 +52,14 @@ const blog: AppRouteModule = {
         title: '页面列表',
       },
     },
+    {
+      path: 'PageEdit',
+      name: 'PageEdit',
+      component: () => import('/@/views/blog/page/PageEdit.vue'),
+      meta: {
+        title: '编辑页面',
+      },
+    },
   ],
 };
 

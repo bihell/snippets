@@ -47,7 +47,7 @@ public class PageController {
      * @return {@see Article}
      */
     @GetMapping("{id}")
-    public ApiResult<Article> showPage(@PathVariable Integer id) {
+    public ApiResult<Article> getPage(@PathVariable Integer id) {
         Article page = articleService.getAdminPage(id);
         if (null == page) {
             return ApiResult.fail(ApiCode.NOT_FOUND, null);

@@ -13,11 +13,10 @@
       <template #right>
         <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
         <a-button class="mr-2" @click="preview" disabled> 预览 </a-button>
-        <a-button class="mr-2" type="primary" @click="postSetting"> 发布 </a-button>
+        <a-button class="mr-2" type="primary" @click="savePost('PUBLISHED')"> 发布 </a-button>
         <a-button class="mr-2" @click="media" disabled> 媒体库 </a-button>
       </template>
     </PageFooter>
-    <ArticleDrawer @register="register1" />
   </div>
 </template>
 
@@ -27,27 +26,15 @@
   import { useRoute } from 'vue-router';
   import { PageFooter } from '/@/components/Page';
   import { store } from '../store';
-  import { useDrawer } from '/@/components/Drawer';
-  import ArticleDrawer from './PostDrawer.vue';
 
   export default {
-    components: { MarkDown, PageFooter, ArticleDrawer },
+    components: { MarkDown, PageFooter },
     setup() {
-      const [register1, { openDrawer: openDrawer1 }] = useDrawer();
       const contentHeight = computed(() => {
         return document.documentElement.clientHeight - 185;
       });
 
       const route = useRoute();
-
-      // const fetchPost = async () => {
-      //   if (route.query.id) {
-      //     const post = await apiGetPost(Number(route.query.id));
-      //     store.setCurrentPost(post);
-      //   } else {
-      //     store.setCurrentPost({});
-      //   }
-      // };
 
       const setTitle = (evt) => {
         store.setTitle(evt.target.value);
@@ -67,28 +54,21 @@
       // todo
       function media() {}
 
-      function postSetting() {
-        openDrawer1(true);
-      }
-
       onMounted(() => {
         {
-          store.fetchPost(route.query.id);
-          // fetchPost();
+          store.fetchPage(route.query.id);
         }
       });
 
       return {
-        content: computed(() => store.state.currentPost.content),
-        title: computed(() => store.state.currentPost.title),
+        content: computed(() => store.state.currentPage.content),
+        title: computed(() => store.state.currentPage.title),
         contentHeight,
         setContent,
         setTitle,
         savePost,
         preview,
         media,
-        postSetting,
-        register1,
       };
     },
   };

@@ -51,7 +51,7 @@ public class ArticleController {
      * @return {@see Article}
      */
     @GetMapping("{id}")
-    public ApiResult<Article> showArticle(@PathVariable Integer id) {
+    public ApiResult<Article> getArticle(@PathVariable Integer id) {
         Article article = articleService.getAdminArticle(id);
         if (null == article) {
             return ApiResult.fail(ApiCode.NOT_FOUND, null);

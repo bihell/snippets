@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { apiMetaList, apiSavePost, apiGetPost } from '/@/api/blog/blog';
+import { apiMetaList, apiSavePost, apiGetPost, apiGetPage } from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
@@ -11,6 +11,7 @@ class Store {
   constructor() {
     this.state = reactive({
       currentPost: {},
+      currentPage: {},
       tagList: [],
       categoryList: [],
     });
@@ -66,6 +67,14 @@ class Store {
       this.state.currentPost = await apiGetPost(postId);
     } else {
       this.state.currentPost = {};
+    }
+  }
+
+  async fetchPage(pageId) {
+    if (pageId) {
+      this.state.currentPage = await apiGetPage(pageId);
+    } else {
+      this.state.currentPage = {};
     }
   }
 }

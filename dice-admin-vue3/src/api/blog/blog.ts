@@ -19,6 +19,13 @@ export function apiGetPost(id: number) {
   });
 }
 
+export function apiGetPage(id: number) {
+  return defHttp.request<PostItem>({
+    url: Api.PAGE + id,
+    method: 'GET',
+  });
+}
+
 export function apiDeletePost(id: number) {
   return defHttp.request({
     url: Api.POST + id,
