@@ -46,7 +46,7 @@
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getBasicColumns, getPageConfig } from '../tableData';
   import { Tag, Badge } from 'ant-design-vue';
-  import { apiPageList, postStatus, apiDeletePost } from '/@/api/blog/blog';
+  import { apiPageList, postStatus, apiDeletePage } from '/@/api/blog/blog';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
   import { useMessage } from '/@/hooks/web/useMessage';
@@ -94,7 +94,7 @@
           title: '删除确认',
           content: '确定要删除页面么？',
           onOk: async () => {
-            await apiDeletePost(record.id);
+            await apiDeletePage(record.id);
             success('页面删除成功');
             await reload();
           },

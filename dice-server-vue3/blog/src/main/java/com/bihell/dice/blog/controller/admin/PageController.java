@@ -30,8 +30,9 @@ public class PageController {
 
     /**
      * 自定义页面列表
+     *
      * @param articlePageParam 页面参数
-     * @return ApiResult<Paging<Article>>
+     * @return ApiResult<Paging < Article>>
      */
     @PostMapping("/getPageList")
     public ApiResult<Paging<Article>> getPageList(@Validated @RequestBody ArticlePageParam articlePageParam) {
@@ -74,12 +75,8 @@ public class PageController {
      * @return {@see String}
      */
     @DeleteMapping("{id}")
-    public RestResponse deletePage(@PathVariable Integer id) {
-
-        if (articleMapper.deleteById(id)>0) {
-            return RestResponse.ok("删除自定义页面成功");
-        } else {
-            return RestResponse.fail();
-        }
+    public ApiResult<Boolean> deletePage(@PathVariable Integer id) {
+        boolean flag = articleMapper.deleteById(id) > 0;
+        return ApiResult.result(flag);
     }
 }

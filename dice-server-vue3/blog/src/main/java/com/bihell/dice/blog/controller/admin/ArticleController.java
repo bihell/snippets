@@ -71,8 +71,8 @@ public class ArticleController {
 
     /**
      * 删除文章
-     * @param id
-     * @return
+     * @param id 文章id
+     * @return ApiResult<Boolean>
      */
     @DeleteMapping("{id}")
     public ApiResult<Boolean> deleteArticle(@PathVariable Integer id) {
