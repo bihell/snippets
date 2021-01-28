@@ -9,26 +9,22 @@
         <MarkDown :value="content" :height="contentHeight" @change="setContent" />
       </a-col>
     </a-row>
-    <a-input-number id="inputNumber" v-model:value="priority" :min="0" />
     <PageFooter>
       <template #right>
         <div class="components-input-demo-size">
           排序权重
-          <a-input v-model:value="value" placeholder="large size" />
-          <a-input v-model:value="value" placeholder="large size" />
-          <a-input-number :value="99" :min="2" />
+          <a-input-number class="mr-2" id="inputNumber" v-model:value="priority" :min="0" />
+          <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
+          <a-button class="mr-2" disabled @click="preview"> 预览 </a-button>
+          <a-button class="mr-2" type="primary" @click="savePost('PUBLISHED')"> 发布 </a-button>
+          <a-button class="mr-2" disabled @click="media"> 媒体库 </a-button>
         </div>
-
-        <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
-        <a-button class="mr-2" disabled @click="preview"> 预览 </a-button>
-        <a-button class="mr-2" type="primary" @click="savePost('PUBLISHED')"> 发布 </a-button>
-        <a-button class="mr-2" disabled @click="media"> 媒体库 </a-button>
       </template>
     </PageFooter>
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import { MarkDown } from '/@/components/Markdown';
   import { computed, onMounted } from 'vue';
   import { useRoute } from 'vue-router';

@@ -39,6 +39,7 @@ import {
   Row,
   Col,
   Spin,
+  InputNumber,
 } from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
@@ -89,5 +90,6 @@ export function registerGlobComp(app: App) {
     .use(Input)
     .use(Row)
     .use(Col)
-    .use(Spin);
+    .use(Spin)
+    .use(InputNumber);
 }
