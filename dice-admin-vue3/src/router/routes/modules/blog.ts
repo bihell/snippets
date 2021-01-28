@@ -44,6 +44,14 @@ const blog: AppRouteModule = {
         title: '标签分类',
       },
     },
+    {
+      path: 'pages',
+      name: 'PageList',
+      component: () => import('/@/views/blog/page/PageList.vue'),
+      meta: {
+        title: '页面列表',
+      },
+    },
   ],
 };
 

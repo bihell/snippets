@@ -180,3 +180,58 @@ export function getFormConfig(): Partial<FormProps> {
     ],
   };
 }
+
+export function getPageConfig(): Partial<FormProps> {
+  return {
+    labelWidth: 10,
+    schemas: [
+      {
+        field: `status`,
+        label: ` `,
+        component: 'Select',
+        defaultValue: '',
+        componentProps: {
+          placeholder: '状态',
+          options: [
+            {
+              label: '不限制',
+              value: null,
+            },
+            {
+              label: '已发布',
+              value: 'PUBLISHED',
+            },
+            {
+              label: '草稿',
+              value: 'DRAFT',
+            },
+            {
+              label: '回收站',
+              value: 'RECYCLE',
+            },
+            {
+              label: '私密',
+              value: 'INTIMATE',
+            },
+          ],
+        },
+        colProps: {
+          xl: 4,
+          xxl: 2,
+        },
+      },
+      {
+        field: `title`,
+        label: ` `,
+        component: 'Input',
+        componentProps: {
+          placeholder: '搜索功能待实现',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
+        },
+      },
+    ],
+  };
+}

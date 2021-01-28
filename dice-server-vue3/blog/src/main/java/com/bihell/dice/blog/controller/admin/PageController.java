@@ -1,17 +1,17 @@
 package com.bihell.dice.blog.controller.admin;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.bihell.dice.blog.param.ArticlePageParam;
 import com.bihell.dice.framework.common.api.ApiCode;
 import com.bihell.dice.framework.common.api.ApiResult;
+import com.bihell.dice.framework.core.pagination.Paging;
 import com.bihell.dice.framework.util.LoginUtil;
 import com.bihell.dice.blog.mapper.blogs.ArticleMapper;
 import com.bihell.dice.blog.model.blog.Article;
-import com.bihell.dice.framework.core.pagination.Pagination;
 import com.bihell.dice.blog.service.blog.ArticleService;
-import com.bihell.dice.config.constant.DiceConsts;
 import com.bihell.dice.framework.common.api.RestResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -30,16 +30,13 @@ public class PageController {
 
     /**
      * 自定义页面列表
-     *
-     * @param pageNum  第几页
-     * @param pageSize 每页数量
-     * @return {@see Pagination<Article>}
+     * @param articlePageParam 页面参数
+     * @return ApiResult<Paging<Article>>
      */
-    @GetMapping
-    public RestResponse index(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                              @RequestParam(required = false, defaultValue = DiceConsts.PAGE_SIZE) Integer pageSize) {
-        IPage<Article> pages = articleService.getAdminPages(pageNum, pageSize);
-        return RestResponse.ok(new Pagination<Article>(pages));
+    @PostMapping("/getPageList")
+    public ApiResult<Paging<Article>> getPageList(@Validated @RequestBody ArticlePageParam articlePageParam) {
+        Paging<Article> paging = articleService.getAdminPages(articlePageParam);
+        return ApiResult.ok(paging);
     }
 
     /**

@@ -18,6 +18,10 @@ const menu: MenuModule = {
         path: 'tags',
         name: '标签分类',
       },
+      {
+        path: 'pages',
+        name: '页面列表',
+      },
     ],
   },
 };

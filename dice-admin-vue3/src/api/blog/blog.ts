@@ -5,6 +5,8 @@ enum Api {
   ARTICLE_LIST = '/article/getPageList',
   COMMENT_LIST = '/comment/getPageList',
   POST = '/article/',
+  PAGE = '/page/',
+  PAGE_LIST = '/page/getPageList',
   COMMENT = '/comment/',
   META_LIST = '/meta/getList',
   META = '/meta/',
@@ -20,6 +22,13 @@ export function apiGetPost(id: number) {
 export function apiDeletePost(id: number) {
   return defHttp.request({
     url: Api.POST + id,
+    method: 'DELETE',
+  });
+}
+
+export function apiDeletePage(id: number) {
+  return defHttp.request({
+    url: Api.PAGE + id,
     method: 'DELETE',
   });
 }
@@ -50,6 +59,14 @@ export function apiSavePost(params: PostItem) {
 export function apiPostList(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,
+    method: 'POST',
+    params,
+  });
+}
+
+export function apiPageList(params: ArticleListParams) {
+  return defHttp.request<ArticleListGetResultModel>({
+    url: Api.PAGE_LIST,
     method: 'POST',
     params,
   });

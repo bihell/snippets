@@ -279,21 +279,19 @@ public class ArticleServiceImpl extends BaseServiceImpl<ArticleMapper, Article> 
 
     /**
      * 分页查询后端自定义页面
-     *
-     * @param current 当前页面
-     * @param limit   每页数量
-     * @return Page<Article>
+     * @param articlePageParam
+     * @return
      */
     @Override
-    public IPage<Article> getAdminPages(Integer current, Integer limit) {
+    public Paging<Article> getAdminPages(ArticlePageParam articlePageParam) {
 
-        Page<Article> page = new Page<>(current, limit);
+        Page<Article> page = new PageInfo<>(articlePageParam, OrderItem.desc(getLambdaColumn(Article::getUpdateTime)));
 
         LambdaQueryWrapper<Article> wrapper = new QueryWrapper<Article>().lambda()
                 .select(Article.class, info -> !"content".equals(info.getColumn()))
                 .eq(Article::getType, Types.PAGE);
-
-        return articleMapper.selectPage(page, wrapper);
+        IPage<Article> iPage = articleMapper.selectPage(page, wrapper);
+        return new Paging<>(iPage);
     }
 
     /**

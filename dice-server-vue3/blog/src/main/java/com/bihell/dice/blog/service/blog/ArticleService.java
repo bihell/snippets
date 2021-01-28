@@ -43,6 +43,13 @@ public interface ArticleService extends IService<Article> {
     Paging<Article> getArticlePageList(ArticlePageParam articlePageParam) throws Exception;
 
     /**
+     * 分页查询后端自定义页面
+     * @param articlePageParam
+     * @return
+     */
+    Paging<Article> getAdminPages(ArticlePageParam articlePageParam);
+
+    /**
      * 根据id获取后端文章
      *
      * @param id 文章id
@@ -88,15 +95,6 @@ public interface ArticleService extends IService<Article> {
      * @return Article
      */
     Article getFrontPage(Integer id);
-
-    /**
-     * 分页查询后端自定义页面
-     *
-     * @param page  当前页面
-     * @param limit 每页数量
-     * @return Page<Article>
-     */
-    IPage<Article> getAdminPages(Integer page, Integer limit);
 
     /**
      * 根据id获取后端页面
