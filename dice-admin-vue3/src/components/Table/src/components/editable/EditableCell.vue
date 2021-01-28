@@ -1,7 +1,7 @@
 <template>
   <div :class="prefixCls">
     <div v-show="!isEdit" :class="`${prefixCls}__normal`" @click="handleEdit">
-      {{ value || '&nbsp;' }}
+      {{ getValues || '&nbsp;' }}
       <FormOutlined :class="`${prefixCls}__normal-icon`" v-if="!column.editRow" />
     </div>
 
@@ -227,12 +227,12 @@
         if (!isPass) return false;
         const { column, index } = props;
         const { key, dataIndex } = column;
-        // const value = unref(currentValueRef);
+        const value = unref(currentValueRef);
         if (!key || !dataIndex) return;
         const dataKey = (dataIndex || key) as string;
 
-        const record = await table.updateTableData(index, dataKey, unref(getValues));
-        needEmit && table.emit?.('edit-end', { record, index, key, value: unref(currentValueRef) });
+        const record = await table.updateTableData(index, dataKey, value);
+        needEmit && table.emit?.('edit-end', { record, index, key, value });
         isEdit.value = false;
       }
 
@@ -312,6 +312,7 @@
         handleOptionsChange,
         getWrapperStyle,
         getRowEditable,
+        getValues,
         // getSize,
       };
     },

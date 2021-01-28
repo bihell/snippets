@@ -1,14 +1,40 @@
 ## Wip
 
+### ✨ Features
+
+- `ApiSelect`新增 `numberToString`属性,用于将 value 为`number`的值全部转化为`string`
+
+### ⚡ Performance Improvements
+
+当不使用 mock 时,将 `mock.js` 移出打包文件
+
+### 🐛 Bug Fixes
+
+- 修复 modal 高度计算错误
+- 修复菜单折叠状态下点击标签页弹出菜单
+- 修复 form 表单初始化值为 0 问题
+- 修复表格换行问题
+- 修复菜单外链不跳转
+- 修复菜单顶部显示问题
+- 修复`modifyVars`配置失效问题
+
+## 2.0.0-rc.17 (2020-01-18)
+
 ### ✨ Refactor
 
 - 新增 `SimpleMenu`组件替代左侧菜单组件(顶部菜单没有替换,功能尽量做到简单不卡)。解决菜单卡顿问题。
+- `ant-design-vue`组件不再全局注册。以便于更好配合 css 按需引入。如果需要全局注册,需要自己加
+
+### ✨ Features
+
+- `css` 按需引入
 
 ### 🐛 Bug Fixes
 
 - 修复 `TableAction`图标问题
 - 修复菜单折叠按钮丢失问题
 - 修复菜单相关问题
+- 修复 moment 多语言问题
 
 ## 2.0.0-rc.16 (2020-01-12)
 

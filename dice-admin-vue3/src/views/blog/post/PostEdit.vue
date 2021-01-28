@@ -35,7 +35,7 @@
     setup() {
       const [register1, { openDrawer: openDrawer1 }] = useDrawer();
       const contentHeight = computed(() => {
-        return document.documentElement.clientHeight - 185;
+        return document.documentElement.clientHeight - 150;
       });
 
       const route = useRoute();

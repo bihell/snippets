@@ -137,7 +137,6 @@ export function getFormConfig(): Partial<FormProps> {
         field: `status`,
         label: ` `,
         component: 'Select',
-        defaultValue: '',
         // slot: 'advanceBefore',
         componentProps: {
           placeholder: '状态',
@@ -173,7 +172,6 @@ export function getFormConfig(): Partial<FormProps> {
         field: `priority`,
         label: ` `,
         component: 'Select',
-        defaultValue: '',
         componentProps: {
           placeholder: '是否置顶',
           options: [
@@ -232,7 +230,6 @@ export function getPageConfig(): Partial<FormProps> {
         field: `status`,
         label: ` `,
         component: 'Select',
-        defaultValue: '',
         componentProps: {
           placeholder: '状态',
           options: [

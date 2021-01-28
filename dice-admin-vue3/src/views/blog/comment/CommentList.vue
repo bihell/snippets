@@ -37,7 +37,7 @@
       const { createMessage, createConfirm } = useMessage();
       const { success } = createMessage;
       const [registerTable, { reload }] = useTable({
-        title: '文章列表',
+        title: '评论列表',
         api: apiCommentList,
         columns: getCommentColumns(),
         showTableSetting: true,
