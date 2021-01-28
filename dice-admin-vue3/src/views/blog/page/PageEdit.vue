@@ -9,12 +9,20 @@
         <MarkDown :value="content" :height="contentHeight" @change="setContent" />
       </a-col>
     </a-row>
+    <a-input-number id="inputNumber" v-model:value="priority" :min="0" />
     <PageFooter>
       <template #right>
+        <div class="components-input-demo-size">
+          排序权重
+          <a-input v-model:value="value" placeholder="large size" />
+          <a-input v-model:value="value" placeholder="large size" />
+          <a-input-number :value="99" :min="2" />
+        </div>
+
         <a-button class="mr-2" type="dashed" @click="savePost('DRAFT')"> 保存草稿 </a-button>
-        <a-button class="mr-2" @click="preview" disabled> 预览 </a-button>
+        <a-button class="mr-2" disabled @click="preview"> 预览 </a-button>
         <a-button class="mr-2" type="primary" @click="savePost('PUBLISHED')"> 发布 </a-button>
-        <a-button class="mr-2" @click="media" disabled> 媒体库 </a-button>
+        <a-button class="mr-2" disabled @click="media"> 媒体库 </a-button>
       </template>
     </PageFooter>
   </div>
@@ -63,6 +71,7 @@
       return {
         content: computed(() => store.state.currentPage.content),
         title: computed(() => store.state.currentPage.title),
+        priority: computed(() => store.state.currentPage.priority),
         contentHeight,
         setContent,
         setTitle,
@@ -77,5 +86,10 @@
 <style scoped>
   .app-container {
     padding: 6px;
+  }
+
+  .components-input-demo-size .ant-input {
+    width: 200px;
+    margin: 0 8px 8px 0;
   }
 </style>

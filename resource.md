@@ -765,3 +765,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [devtools](https://github.com/wangpinpin/devtools) 常用开发工具
 [BullshitGenerator](https://github.com/menzi11/BullshitGenerator) 狗屁不通文章生成器
 [高性能 Nginx HTTPS 调优！为 HTTPS 提速 30%](https://segmentfault.com/a/1190000039073842)
+[AutoSignMachine](https://github.com/lunnlew/AutoSignMachine) 一个自动执行任务的工具，通过它可以实现账号自动签到，自动领取权益等功能，帮助我们轻松升级
