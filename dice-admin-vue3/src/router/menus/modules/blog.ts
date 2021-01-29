@@ -22,6 +22,10 @@ const menu: MenuModule = {
         path: 'pages',
         name: '页面列表',
       },
+      {
+        path: 'BlogSetting',
+        name: '博客设置',
+      },
     ],
   },
 };

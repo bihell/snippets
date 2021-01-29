@@ -10,6 +10,14 @@ enum Api {
   COMMENT = '/comment/',
   META_LIST = '/meta/getList',
   META = '/meta/',
+  Option = 'option',
+}
+
+export function apiGetOption() {
+  return defHttp.request({
+    url: Api.Option,
+    method: 'GET',
+  });
 }
 
 export function apiGetPost(id: number) {

@@ -60,6 +60,14 @@ const blog: AppRouteModule = {
         title: '编辑页面',
       },
     },
+    {
+      path: 'BlogSetting',
+      name: 'BlogSettingPage',
+      component: () => import('/@/views/blog/setting/index.vue'),
+      meta: {
+        title: '博客设置',
+      },
+    },
   ],
 };
 
