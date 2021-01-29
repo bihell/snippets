@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { apiMetaList, apiSavePost, apiGetPost, apiGetPage } from '/@/api/blog/blog';
+import { apiMetaList, apiSavePost, apiGetPost, apiGetPage, apiSavePage } from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
@@ -21,8 +21,16 @@ class Store {
     this.state.currentPost.title = title;
   }
 
+  setPageTitle(title) {
+    this.state.currentPage.title = title;
+  }
+
   setContent(content) {
     this.state.currentPost.content = content;
+  }
+
+  setPageContent(content) {
+    this.state.currentPage.content = content;
   }
 
   setTags(tags) {
@@ -37,6 +45,10 @@ class Store {
     priority ? (this.state.currentPost.priority = 1) : (this.state.currentPost.priority = 0);
   }
 
+  setPagePriority(priority) {
+    this.state.currentPage.priority = priority;
+  }
+
   setCreateTime(datetime) {
     this.state.currentPost.createTime = formatToDateTime(datetime);
   }
@@ -49,10 +61,22 @@ class Store {
     this.state.currentPost.allowComment = allowComment;
   }
 
+  setPageComment(allowComment) {
+    this.state.currentPage.allowComment = allowComment;
+  }
+
   async savePost(status) {
     this.state.currentPost.status = status;
     const postId = await apiSavePost(this.state.currentPost);
     await this.fetchPost(postId);
+    // go('/blog/edit?id='+postId)
+    success('保存成功');
+  }
+
+  async savePage(status) {
+    this.state.currentPage.status = status;
+    const postId = await apiSavePage(this.state.currentPage);
+    await this.fetchPage(postId);
     // go('/blog/edit?id='+postId)
     success('保存成功');
   }

@@ -63,6 +63,14 @@ export function apiSavePost(params: PostItem) {
   });
 }
 
+export function apiSavePage(params: PostItem) {
+  return defHttp.request({
+    url: Api.PAGE,
+    method: 'post',
+    params,
+  });
+}
+
 export function apiPostList(params: ArticleListParams) {
   return defHttp.request<ArticleListGetResultModel>({
     url: Api.ARTICLE_LIST,

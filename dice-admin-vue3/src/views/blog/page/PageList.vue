@@ -1,7 +1,7 @@
 <template>
   <BasicTable @register="registerTable">
     <template #form-advanceBefore>
-      <router-link :to="{ name: 'PostEdit' }">
+      <router-link :to="{ name: 'PageEdit' }">
         <a-button type="primary"> <FileAddOutlined /> 新建页面</a-button>
       </router-link>
     </template>

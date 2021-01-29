@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * 自定义页面管理 Controller
  *
@@ -62,10 +64,10 @@ public class PageController {
      * @return {@see String}
      */
     @PostMapping
-    public RestResponse savePage(@RequestBody Article page) {
+    public ApiResult<Integer> savePage(@Valid  @RequestBody Article page) {
         page.setCreator(LoginUtil.getUserId());
-        articleService.savePage(page);
-        return RestResponse.ok("保存文章成功");
+        Integer pageId = articleService.savePage(page);
+        return ApiResult.ok(pageId);
     }
 
     /**

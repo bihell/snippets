@@ -766,3 +766,10 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [BullshitGenerator](https://github.com/menzi11/BullshitGenerator) 狗屁不通文章生成器
 [高性能 Nginx HTTPS 调优！为 HTTPS 提速 30%](https://segmentfault.com/a/1190000039073842)
 [AutoSignMachine](https://github.com/lunnlew/AutoSignMachine) 一个自动执行任务的工具，通过它可以实现账号自动签到，自动领取权益等功能，帮助我们轻松升级
+[ChordNova](https://github.com/Chen-and-Sim/ChordNova)
+[JustAuth](https://github.com/justauth/JustAuth) 帮你搞定第三方登陆的 Java 开源组件。使用简单、接入方便，帮你随心所欲地接入第三方登陆，让登陆变得简单。目前已经支持十多个平台，还在持续扩充中
+[apollo](https://github.com/ctripcorp/apollo) 携程开源的分布式配置中心。开箱即用理念发挥到极致，比如：服务器部分基于 Spring Boot 和 Spring Cloud 开发，运行方便无需额外的 Tomcat 应用容器。并且具备配置修改后即时生效、规范的权限、流程治理等特性，适用于微服务配置管理场景
+[Logi-KafkaManager](https://github.com/didi/Logi-KafkaManager) 功能强大的 Kafka 集群监控和运维管理平台。强大到我一度以为它是付费的，如果你的公司用 Kafka 的话，可以试试主导把这个项目在公司内部用起来，那你离升职和加薪就不远了
+[newbee-mall-vue3-app](https://github.com/newbee-ltd/newbee-mall-vue3-app) 基于 Vue 3.0 技术栈的电商网站前端开源项目。它麻雀虽小五脏俱全，包含模块：首页、类型分类、搜索、地址管理、登录注册等等，该有的基本上都有涉及到。对新手友好，在熟悉 Vue 3.x 的朋友也可以来看看
+[hearthstone-battlegrounds-tools](https://github.com/hbt-org/hearthstone-battlegrounds-tools) 暴雪炉石传说游戏的记牌插件。不懂编程的小伙伴拿去用就好了，支持 Windows 和 macOS 系统。开发者的话，这是一整套完整的 Electronjs 开发流程，从多个渲染进程的管理、不同平台的差异化处理、版本的控制与发布等方面都做了细致的封装，学起来吧。功能上她还具有以下特性：
+[超级好用的 OCR 数据合成与半自动标注工具](https://news.51cto.com/art/202101/643615.htm)
