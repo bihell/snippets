@@ -1,5 +1,12 @@
 import { reactive } from 'vue';
-import { apiMetaList, apiSavePost, apiGetPost, apiGetPage, apiSavePage } from '/@/api/blog/blog';
+import {
+  apiMetaList,
+  apiSavePost,
+  apiGetPost,
+  apiGetPage,
+  apiSavePage,
+  apiGetBlogSetting,
+} from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
 const { success } = createMessage;
@@ -14,6 +21,7 @@ class Store {
       currentPage: {},
       tagList: [],
       categoryList: [],
+      blogSetting: {},
     });
   }
 
@@ -92,6 +100,10 @@ class Store {
     } else {
       this.state.currentPost = {};
     }
+  }
+
+  async fetchBlogSetting() {
+    this.state.blogSetting = await apiGetBlogSetting();
   }
 
   async fetchPage(pageId) {

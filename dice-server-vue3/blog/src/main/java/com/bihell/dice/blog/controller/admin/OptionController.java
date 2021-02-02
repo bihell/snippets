@@ -1,6 +1,7 @@
 package com.bihell.dice.blog.controller.admin;
 
 import com.bihell.dice.blog.service.blog.OptionService;
+import com.bihell.dice.framework.common.api.ApiResult;
 import com.bihell.dice.framework.common.api.RestResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +27,9 @@ public class OptionController {
      *
      * @return Map
      */
-    @GetMapping("all")
-    public RestResponse getAllOptions() {
-        return RestResponse.ok(optionService.getAllOptionMap());
+    @GetMapping
+    public ApiResult<Map<String, String>> getAllOptions() {
+        return ApiResult.ok(optionService.getAllOptionMap());
     }
 
     /**

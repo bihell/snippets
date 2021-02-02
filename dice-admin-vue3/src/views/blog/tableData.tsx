@@ -1,4 +1,4 @@
-import { FormProps } from '/@/components/Table';
+import { FormProps, FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table/src/types/table';
 import { formatToDateTime } from '/@/utils/dateUtil';
 
@@ -275,3 +275,124 @@ export function getPageConfig(): Partial<FormProps> {
     ],
   };
 }
+
+export const blogSetSchemas: FormSchema[] = [
+  {
+    field: 'blog_name',
+    component: 'Input',
+    label: '博客名：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'blog_website',
+    component: 'Input',
+    label: '博客地址：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'blog_footer',
+    component: 'InputTextArea',
+    label: '博客底部信息：',
+    colProps: { span: 18 },
+  },
+];
+
+export const seoSetSchemas: FormSchema[] = [
+  {
+    field: 'blog_name',
+    component: 'Input',
+    label: '网站名称（Title）：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'meta_description',
+    component: 'Input',
+    label: '网站描述（description）：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'meta_keywords',
+    component: 'Input',
+    label: '网站关键字（keywords）：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'google_site_verification',
+    component: 'Input',
+    label: 'Google站点验证（google-site-verification）：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'baidu_site_verification',
+    component: 'Input',
+    label: 'Baidu站点验证（baidu-site-verification）：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'google_analytics',
+    component: 'Input',
+    label: 'Google站点分析（google_analytics）：',
+    colProps: { span: 18 },
+  },
+];
+
+export const mailSetSchemas: FormSchema[] = [
+  {
+    field: 'is_email',
+    component: 'Switch',
+    label: '设置邮箱提醒：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'email_username',
+    component: 'Input',
+    label: '邮箱：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'email_password',
+    component: 'InputPassword',
+    label: '邮箱密码：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'email_host',
+    component: 'Input',
+    label: '主机名：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'email_port',
+    component: 'Input',
+    label: '端口号：',
+    colProps: { span: 18 },
+  },
+  {
+    field: 'email_subject',
+    component: 'Input',
+    label: '邮件标题：',
+    colProps: { span: 18 },
+  },
+];
+
+// tab的list
+export const settingList = [
+  {
+    key: '1',
+    name: '博客设置',
+    register: 'blogSetRegister',
+    click: 'saveSetting',
+  },
+  {
+    key: '2',
+    name: 'SEO 设置',
+    register: 'seoSetRegister',
+    click: 'saveSetting',
+  },
+  {
+    key: '3',
+    name: '邮箱设置',
+    register: 'mailSetRegister',
+    click: 'saveSetting',
+  },
+];
