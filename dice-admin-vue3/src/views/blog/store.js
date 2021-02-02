@@ -6,6 +6,7 @@ import {
   apiGetPage,
   apiSavePage,
   apiGetBlogSetting,
+  saveBlogSetting,
 } from '/@/api/blog/blog';
 import { useMessage } from '/@/hooks/web/useMessage';
 const { createMessage } = useMessage();
@@ -112,6 +113,12 @@ class Store {
     } else {
       this.state.currentPage = {};
     }
+  }
+
+  async saveSetting(v) {
+    Object.assign(this.state.blogSetting, v);
+    await saveBlogSetting(this.state.blogSetting);
+    await this.fetchBlogSetting();
   }
 }
 export const store = new Store();

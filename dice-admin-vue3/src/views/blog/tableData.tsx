@@ -299,7 +299,7 @@ export const blogSetSchemas: FormSchema[] = [
 
 export const seoSetSchemas: FormSchema[] = [
   {
-    field: 'blog_name',
+    field: 'meta_title',
     component: 'Input',
     label: '网站名称（Title）：',
     colProps: { span: 18 },
@@ -375,24 +375,21 @@ export const mailSetSchemas: FormSchema[] = [
   },
 ];
 
-// tab的list
+// todo tab的list
 export const settingList = [
   {
     key: '1',
     name: '博客设置',
     register: 'blogSetRegister',
-    click: 'saveSetting',
   },
   {
     key: '2',
     name: 'SEO 设置',
     register: 'seoSetRegister',
-    click: 'saveSetting',
   },
   {
     key: '3',
     name: '邮箱设置',
     register: 'mailSetRegister',
-    click: 'saveSetting',
   },
 ];

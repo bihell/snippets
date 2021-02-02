@@ -20,6 +20,13 @@ export function apiGetBlogSetting() {
   });
 }
 
+export function saveBlogSetting(setting: any) {
+  return defHttp.request({
+    url: Api.Option,
+    method: 'POST',
+    params: setting,
+  });
+}
 export function apiGetPost(id: number) {
   return defHttp.request<PostItem>({
     url: Api.POST + id,
