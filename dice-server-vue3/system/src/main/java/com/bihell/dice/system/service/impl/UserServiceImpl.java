@@ -15,7 +15,6 @@ import com.bihell.dice.framework.util.PasswordUtil;
 import com.bihell.dice.system.entity.AuthRelRoleUser;
 import com.bihell.dice.system.entity.User;
 import com.bihell.dice.system.mapper.UserMapper;
-import com.bihell.dice.system.param.QueryParam;
 import com.bihell.dice.system.param.UserPageParam;
 import com.bihell.dice.system.service.AuthRelRoleUserService;
 import com.bihell.dice.system.service.UserService;
@@ -48,20 +47,14 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     private final AuthRelRoleUserService authRelRoleUserService;
     private final DiceProperties diceProperties;
 
-    /**
-     * 获取用户列表
-     *
-     * @return
-     */
     @Override
-    public IPage<User> getUserList(QueryParam queryParam) {
-        Page<User> page = new Page<>(queryParam.getPageNum(), queryParam.getPageSize());
+    public Paging<User> getUserPageList(UserPageParam userPageParam) {
+        Page<User> page =  new PageInfo<>(userPageParam, OrderItem.desc(getLambdaColumn(User::getLogged)));
         LambdaQueryWrapper<User> wrapper = new QueryWrapper<User>().lambda()
                 .select(User.class, info -> !"password".equals(info.getProperty()))
-                .like(User::getUsername, queryParam.getCriteria())
-                .orderByDesc(User::getCreated);
-
-        return userMapper.selectPage(page, wrapper);
+                .like(!StringUtils.isEmpty(userPageParam.getCriteria()),User::getUsername, userPageParam.getCriteria());
+        IPage<User> iPage = userMapper.selectPage(page, wrapper);
+        return new Paging(iPage);
     }
 
     @Override

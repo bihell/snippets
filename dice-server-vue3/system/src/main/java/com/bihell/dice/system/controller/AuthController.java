@@ -53,14 +53,10 @@ public class AuthController {
         return RestResponse.ok(user);
     }
 
-    /**
-     * 获取用户列表 todo 这里的QueryParam需要调整
-     */
-    @GetMapping("/user/list")
-    public RestResponse list(QueryParam queryParam) {
-
-        IPage<User> userList = userService.getUserList(queryParam);
-        return RestResponse.ok(new Pagination<User>(userList));
+    @PostMapping("/user/list")
+    public ApiResult<Paging<User>> list(@Validated @RequestBody UserPageParam userPageParam) {
+        Paging<User> paging = userService.getUserPageList(userPageParam);
+        return ApiResult.ok(paging);
     }
 
     /**

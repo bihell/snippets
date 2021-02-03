@@ -31,18 +31,18 @@ public interface UserService extends IService<User> {
      */
     boolean resetUser(String oldUsername, String newUsername, String email);
 
-    /**
-     * 获取用户列表
-     * @return
-     */
-    IPage<User> getUserList(QueryParam queryParam);
+//    /**
+//     * 获取用户列表
+//     * @return
+//     */
+//    IPage<User> getUserList(QueryParam queryParam);
 
     void assignRole(User user);
 
-//    /**
-//     * 获取用户列表
-//     * @param userPageParam
-//     * @return
-//     */
-//    Paging<User> getUserPageList(UserPageParam userPageParam);
+    /**
+     * 获取用户列表
+     * @param userPageParam
+     * @return
+     */
+    Paging<User> getUserPageList(UserPageParam userPageParam);
 }

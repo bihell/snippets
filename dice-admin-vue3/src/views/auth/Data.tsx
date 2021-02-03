@@ -4,7 +4,7 @@ import { formatToDateTime } from '/@/utils/dateUtil';
 export function getUserColumns(): BasicColumn[] {
   return [
     {
-      title: '用户ID',
+      title: 'ID',
       width: 60,
       dataIndex: 'id',
     },
@@ -12,13 +12,13 @@ export function getUserColumns(): BasicColumn[] {
       title: '用户名',
       width: 200,
       dataIndex: 'username',
-      // align: 'left',
+      align: 'left',
     },
     {
       title: '别名',
       dataIndex: 'screenName',
       width: 200,
-      // align: 'left',
+      align: 'left',
     },
     {
       title: '邮箱',
@@ -52,7 +52,7 @@ export function getUserFormConfig(): Partial<FormProps> {
         label: ` `,
         component: 'Input',
         componentProps: {
-          placeholder: '搜索id、用户名、别名',
+          placeholder: '请输入用户名',
         },
         colProps: {
           xl: 14,
