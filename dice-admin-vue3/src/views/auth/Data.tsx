@@ -48,6 +48,16 @@ export function getUserFormConfig(): Partial<FormProps> {
     labelWidth: 10,
     schemas: [
       {
+        field: `status`,
+        label: ` `,
+        component: 'Select',
+        slot: 'userAdd',
+        colProps: {
+          xl: 4,
+          xxl: 2,
+        },
+      },
+      {
         field: `criteria`,
         label: ` `,
         component: 'Input',

@@ -1,9 +1,7 @@
 <template>
   <BasicTable @register="registerTable">
-    <template #form-advanceBefore>
-      <router-link :to="{ name: 'PostEdit' }">
-        <a-button type="primary"> <FileAddOutlined /> 新增用户 </a-button>
-      </router-link>
+    <template #form-userAdd>
+      <a-button type="primary"> <FileAddOutlined /> 新增用户 </a-button>
     </template>
     <template #category="{ record }">
       <Tag color="blue">
@@ -39,11 +37,6 @@
         </template>
       </TableAction>
     </template>
-    <!--    <template #toolbar>-->
-    <!--      <router-link :to="{ name: 'PostEdit' }">-->
-    <!--        <a-button type="primary"> <FileAddOutlined />写文章</a-button>-->
-    <!--      </router-link>-->
-    <!--    </template>-->
   </BasicTable>
 </template>
 <script lang="ts">
@@ -63,7 +56,7 @@
       const { createMessage, createConfirm } = useMessage();
       const { success } = createMessage;
       const [registerTable, { reload }] = useTable({
-        title: '文章列表',
+        title: '用户列表',
         api: apiUserList,
         columns: getUserColumns(),
         useSearchForm: true,
