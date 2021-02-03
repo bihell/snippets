@@ -21,7 +21,7 @@
         :drop-down-actions="[
           {
             label: '编辑',
-            onClick: handleEditClick.bind(null, record),
+            onClick: userAdd,
           },
           {
             label: '删除',
@@ -45,7 +45,7 @@
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getUserColumns, getUserFormConfig } from '../Data';
   import { Tag, Badge } from 'ant-design-vue';
-  import { postStatus, apiDeletePost } from '/@/api/blog/blog';
+  import { postStatus } from '/@/api/blog/blog';
   import { apiUserList } from '/@/api/auth/auth';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
@@ -88,34 +88,22 @@
         }, 2000);
       }
 
-      function pushWithQuery(query: any) {
-        router.push({
-          name: 'PostEdit',
-          query: query,
-        });
-      }
-
-      function handleEditClick(record: any) {
-        pushWithQuery({ id: record.id });
-      }
-
       async function handleDeleteClick(record: any) {
         createConfirm({
           iconType: 'warning',
-          title: '删除文章',
-          content: '确定要删除么？',
-          onOk: async () => {
-            await apiDeletePost(record.id);
-            success('文章删除成功');
-            await reload();
-          },
+          title: '删除用户',
+          content: '功能开发中。。。。',
+          // onOk: async () => {
+          //   await apiDeletePost(record.id);
+          //   success('文章删除成功');
+          //   await reload();
+          // },
         });
       }
 
       return {
         registerTable,
         status,
-        handleEditClick,
         handleDeleteClick,
         userAdd,
         register1,
