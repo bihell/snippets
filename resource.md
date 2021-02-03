@@ -773,3 +773,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [newbee-mall-vue3-app](https://github.com/newbee-ltd/newbee-mall-vue3-app) 基于 Vue 3.0 技术栈的电商网站前端开源项目。它麻雀虽小五脏俱全，包含模块：首页、类型分类、搜索、地址管理、登录注册等等，该有的基本上都有涉及到。对新手友好，在熟悉 Vue 3.x 的朋友也可以来看看
 [hearthstone-battlegrounds-tools](https://github.com/hbt-org/hearthstone-battlegrounds-tools) 暴雪炉石传说游戏的记牌插件。不懂编程的小伙伴拿去用就好了，支持 Windows 和 macOS 系统。开发者的话，这是一整套完整的 Electronjs 开发流程，从多个渲染进程的管理、不同平台的差异化处理、版本的控制与发布等方面都做了细致的封装，学起来吧。功能上她还具有以下特性：
 [超级好用的 OCR 数据合成与半自动标注工具](https://news.51cto.com/art/202101/643615.htm)
+[详解 Flink 容器化环境下的 OOM Killed](https://xie.infoq.cn/article/9b031dc395cb6162b9718f762)
+[「JWT」，你必须了解的认证登录方案](https://xie.infoq.cn/article/6b40282148451df8073209a8d?utm_source=rss&utm_medium=article)

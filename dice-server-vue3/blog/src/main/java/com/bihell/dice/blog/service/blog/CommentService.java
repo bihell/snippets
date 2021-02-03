@@ -3,7 +3,7 @@ package com.bihell.dice.blog.service.blog;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.bihell.dice.blog.model.blog.Comment;
 import com.bihell.dice.blog.model.dto.CommentDto;
-import com.bihell.dice.blog.param.CommentParam;
+import com.bihell.dice.blog.param.CommentPageParam;
 import com.bihell.dice.blog.utils.Types;
 import com.bihell.dice.framework.core.pagination.Paging;
 
@@ -34,10 +34,10 @@ public interface CommentService {
     /**
      * 获取评论列表
      *
-     * @param commentParam
+     * @param commentPageParam
      * @return Paging<Comment>
      */
-    Paging<Comment> getCommentPageList(CommentParam commentParam);
+    Paging<Comment> getCommentPageList(CommentPageParam commentPageParam);
 
     /**
      * 获取评论详情

@@ -8,7 +8,7 @@ const test: AppRouteModule = {
   component: LAYOUT,
   redirect: '/test/test1',
   meta: {
-    icon: 'carbon:blog',
+    icon: 'file-icons:test-js',
     title: '测试',
   },
   children: [

@@ -2,7 +2,7 @@ package com.bihell.dice.blog.controller.admin;
 
 import com.bihell.dice.blog.model.blog.Comment;
 import com.bihell.dice.blog.model.dto.CommentDto;
-import com.bihell.dice.blog.param.CommentParam;
+import com.bihell.dice.blog.param.CommentPageParam;
 import com.bihell.dice.framework.common.api.ApiCode;
 import com.bihell.dice.framework.common.api.ApiResult;
 import com.bihell.dice.blog.service.blog.CommentService;
@@ -34,8 +34,8 @@ public class CommentController {
      * @return {@see Pagination<Comment>}
      */
     @PostMapping("/getPageList")
-    public ApiResult<Paging<Comment>> getCommentPageList(@Validated @RequestBody CommentParam commentParam) {
-        Paging<Comment> paging = commentService.getCommentPageList(commentParam);
+    public ApiResult<Paging<Comment>> getCommentPageList(@Validated @RequestBody CommentPageParam commentPageParam) {
+        Paging<Comment> paging = commentService.getCommentPageList(commentPageParam);
         return ApiResult.ok(paging);
     }
 

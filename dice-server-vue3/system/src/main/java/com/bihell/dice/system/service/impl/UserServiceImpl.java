@@ -3,18 +3,20 @@ package com.bihell.dice.system.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.bihell.dice.config.properties.DiceProperties;
 import com.bihell.dice.framework.common.exception.BusinessException;
 import com.bihell.dice.framework.common.exception.TipException;
+import com.bihell.dice.framework.core.pagination.PageInfo;
+import com.bihell.dice.framework.core.pagination.Paging;
 import com.bihell.dice.framework.shiro.util.SaltUtil;
-import com.bihell.dice.framework.util.DiceUtil;
 import com.bihell.dice.framework.util.PasswordUtil;
 import com.bihell.dice.system.entity.AuthRelRoleUser;
 import com.bihell.dice.system.entity.User;
 import com.bihell.dice.system.mapper.UserMapper;
 import com.bihell.dice.system.param.QueryParam;
+import com.bihell.dice.system.param.UserPageParam;
 import com.bihell.dice.system.service.AuthRelRoleUserService;
 import com.bihell.dice.system.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import com.bihell.dice.framework.common.service.impl.BaseServiceImpl;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +42,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Transactional(rollbackFor = Throwable.class)
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements UserService {
 
     private final UserMapper userMapper;
     private final AuthRelRoleUserService authRelRoleUserService;
@@ -72,6 +75,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             authRelRoleUserService.saveBatch(authRelRoleUserList);
         }
     }
+
+//    @Override
+//    public Paging<User> getUserPageList(UserPageParam userPageParam) {
+//        Page<User> page =  new PageInfo<>(userPageParam, OrderItem.desc(getLambdaColumn(User::getLogged)));
+//        IPage<User> iPage = userMapper.getUserPageList(page,userPageParam);
+//        return new Paging(iPage);
+//    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override

@@ -4,49 +4,41 @@ import { formatToDateTime } from '/@/utils/dateUtil';
 export function getUserColumns(): BasicColumn[] {
   return [
     {
-      title: 'ID',
+      title: '用户ID',
       width: 60,
       dataIndex: 'id',
     },
     {
-      title: '标题',
-      dataIndex: 'title',
+      title: '用户名',
+      width: 200,
+      dataIndex: 'username',
+      // align: 'left',
+    },
+    {
+      title: '别名',
+      dataIndex: 'screenName',
+      width: 200,
+      // align: 'left',
+    },
+    {
+      title: '邮箱',
+      dataIndex: 'email',
+      // width: 80,
       align: 'left',
     },
     {
-      title: '分类',
-      dataIndex: 'category',
-      width: 80,
-      align: 'center',
-      slots: { customRender: 'category' },
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      width: 70,
-      align: 'center',
-      slots: { customRender: 'status' },
-    },
-    {
-      title: '评论',
-      dataIndex: 'commentCount',
-      width: 60,
-      align: 'center',
-      slots: { customRender: 'cc' },
-    },
-    {
-      title: '发布日期',
+      title: '创建时间',
       sorter: true,
-      dataIndex: 'createTime',
+      dataIndex: 'created',
       width: 150,
-      customRender: ({ record }) => formatToDateTime(record.createTime),
+      customRender: ({ record }) => formatToDateTime(record.created),
     },
     {
-      title: '修改日期',
+      title: '最后登陆时间',
       sorter: true,
-      dataIndex: 'updateTime',
+      dataIndex: 'logged',
       width: 150,
-      customRender: ({ record }) => formatToDateTime(record.updateTime),
+      customRender: ({ record }) => formatToDateTime(record.logged),
     },
   ];
 }
@@ -56,84 +48,11 @@ export function getUserFormConfig(): Partial<FormProps> {
     labelWidth: 10,
     schemas: [
       {
-        field: `status`,
-        label: ` `,
-        component: 'Select',
-        // slot: 'advanceBefore',
-        componentProps: {
-          placeholder: '状态',
-          options: [
-            {
-              label: '不限制',
-              value: null,
-            },
-            {
-              label: '已发布',
-              value: 'PUBLISHED',
-            },
-            {
-              label: '草稿',
-              value: 'DRAFT',
-            },
-            {
-              label: '回收站',
-              value: 'RECYCLE',
-            },
-            {
-              label: '私密',
-              value: 'INTIMATE',
-            },
-          ],
-        },
-        colProps: {
-          xl: 4,
-          xxl: 2,
-        },
-      },
-      {
-        field: `priority`,
-        label: ` `,
-        component: 'Select',
-        componentProps: {
-          placeholder: '是否置顶',
-          options: [
-            {
-              label: '不限制',
-              value: null,
-            },
-            {
-              label: '普通',
-              value: 0,
-            },
-            {
-              label: '置顶',
-              value: 1,
-            },
-          ],
-        },
-        colProps: {
-          xl: 4,
-          xxl: 2,
-        },
-      },
-      {
-        field: `title`,
+        field: `criteria`,
         label: ` `,
         component: 'Input',
         componentProps: {
-          placeholder: '搜索标题',
-        },
-        colProps: {
-          xl: 14,
-          xxl: 7,
-        },
-      },
-      {
-        field: `content`,
-        label: ` `,
-        component: 'Input',
-        componentProps: {
-          placeholder: '搜索内容',
+          placeholder: '搜索id、用户名、别名',
         },
         colProps: {
           xl: 14,

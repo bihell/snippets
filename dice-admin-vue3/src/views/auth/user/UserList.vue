@@ -2,7 +2,7 @@
   <BasicTable @register="registerTable">
     <template #form-advanceBefore>
       <router-link :to="{ name: 'PostEdit' }">
-        <a-button type="primary"> <FileAddOutlined /> 写文章 </a-button>
+        <a-button type="primary"> <FileAddOutlined /> 新增用户 </a-button>
       </router-link>
     </template>
     <template #category="{ record }">
@@ -51,7 +51,8 @@
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getUserColumns, getUserFormConfig } from '../Data';
   import { Tag, Badge } from 'ant-design-vue';
-  import { apiPostList, postStatus, apiDeletePost } from '/@/api/blog/blog';
+  import { postStatus, apiDeletePost } from '/@/api/blog/blog';
+  import { apiUserList } from '/@/api/auth/auth';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
   import { useMessage } from '/@/hooks/web/useMessage';
@@ -63,7 +64,7 @@
       const { success } = createMessage;
       const [registerTable, { reload }] = useTable({
         title: '文章列表',
-        api: apiPostList,
+        api: apiUserList,
         columns: getUserColumns(),
         useSearchForm: true,
         formConfig: getUserFormConfig(),

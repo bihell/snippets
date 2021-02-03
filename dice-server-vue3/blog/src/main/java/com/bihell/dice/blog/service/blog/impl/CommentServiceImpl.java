@@ -9,7 +9,7 @@ import com.bihell.dice.blog.mapper.blogs.CommentMapper;
 import com.bihell.dice.blog.model.blog.Article;
 import com.bihell.dice.blog.model.blog.Comment;
 import com.bihell.dice.blog.model.dto.CommentDto;
-import com.bihell.dice.blog.param.CommentParam;
+import com.bihell.dice.blog.param.CommentPageParam;
 import com.bihell.dice.framework.common.exception.TipException;
 import com.bihell.dice.blog.service.blog.CommentService;
 import com.bihell.dice.config.constant.DiceConsts;
@@ -116,8 +116,8 @@ public class CommentServiceImpl extends BaseServiceImpl<CommentMapper, Comment> 
     }
 
     @Override
-    public Paging<Comment> getCommentPageList(CommentParam commentParam) {
-        Page<Comment> page = new PageInfo<>(commentParam, OrderItem.desc(getLambdaColumn(Comment::getCreated)));
+    public Paging<Comment> getCommentPageList(CommentPageParam commentPageParam) {
+        Page<Comment> page = new PageInfo<>(commentPageParam, OrderItem.desc(getLambdaColumn(Comment::getCreated)));
 
         LambdaQueryWrapper<Comment> wrapper = new QueryWrapper<Comment>().lambda()
                 .eq(Comment::getStatus, Types.COMMENT_STATUS_NORMAL);

@@ -2,17 +2,21 @@ package com.bihell.dice.system.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.bihell.dice.framework.common.api.ApiResult;
 import com.bihell.dice.framework.common.api.RestResponse;
 import com.bihell.dice.framework.core.pagination.Pagination;
+import com.bihell.dice.framework.core.pagination.Paging;
 import com.bihell.dice.framework.util.LoginUtil;
 import com.bihell.dice.system.entity.*;
 import com.bihell.dice.system.mapper.*;
 import com.bihell.dice.system.param.QueryParam;
+import com.bihell.dice.system.param.UserPageParam;
 import com.bihell.dice.system.service.*;
 import com.google.common.base.Preconditions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -66,6 +70,15 @@ public class AuthController {
     public RestResponse getAllUsers(QueryParam queryParam) {
         return RestResponse.ok(new Pagination<User>(userMapper.queryByParam(new Page<>(queryParam.getPageNum(), queryParam.getPageSize()), queryParam)));
     }
+
+//    /**
+//     * 获取所有用户
+//     */
+//    @PostMapping("/user/list/all")
+//    public ApiResult<Paging<User>> getUserPageList(@Validated @RequestBody UserPageParam userPageParam) {
+//        Paging<User> paging = userService.getUserPageList(userPageParam);
+//        return ApiResult.ok(paging);
+//    }
 
     @PostMapping("/user/assign/role")
     public RestResponse assignRole(@RequestBody User user) {

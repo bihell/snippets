@@ -15,6 +15,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "CommentParam对象", description = "文章评论参数")
-public class CommentParam extends BasePageOrderParam {
+public class CommentPageParam extends BasePageOrderParam {
     private static final long serialVersionUID = 1L;
 }
