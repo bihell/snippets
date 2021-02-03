@@ -1,7 +1,7 @@
 <template>
   <BasicTable @register="registerTable">
     <template #form-userAdd>
-      <a-button type="primary"> <FileAddOutlined /> 新增用户 </a-button>
+      <a-button type="primary" @click="userAdd"> <FileAddOutlined /> 新增用户 </a-button>
     </template>
     <template #category="{ record }">
       <Tag color="blue">
@@ -38,6 +38,7 @@
       </TableAction>
     </template>
   </BasicTable>
+  <Modal1 @register="register1" />
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
@@ -49,10 +50,13 @@
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
   import { useMessage } from '/@/hooks/web/useMessage';
+  import { useModal } from '/@/components/Modal';
+  import Modal1 from './Modal1.vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined },
+    components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined, Modal1 },
     setup() {
+      const [register1, { openModal: openModal1, setModalProps }] = useModal();
       const { createMessage, createConfirm } = useMessage();
       const { success } = createMessage;
       const [registerTable, { reload }] = useTable({
@@ -75,6 +79,14 @@
 
       const status = postStatus();
       const router = useRouter();
+
+      function userAdd() {
+        openModal1();
+        setModalProps({ loading: true });
+        setTimeout(() => {
+          setModalProps({ loading: false });
+        }, 2000);
+      }
 
       function pushWithQuery(query: any) {
         router.push({
@@ -105,6 +117,8 @@
         status,
         handleEditClick,
         handleDeleteClick,
+        userAdd,
+        register1,
       };
     },
   });
