@@ -10,6 +10,10 @@ const menu: MenuModule = {
         path: 'users',
         name: '用户列表',
       },
+      {
+        path: 'apis',
+        name: 'API管理',
+      },
     ],
   },
 };

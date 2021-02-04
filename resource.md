@@ -775,3 +775,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [超级好用的 OCR 数据合成与半自动标注工具](https://news.51cto.com/art/202101/643615.htm)
 [详解 Flink 容器化环境下的 OOM Killed](https://xie.infoq.cn/article/9b031dc395cb6162b9718f762)
 [「JWT」，你必须了解的认证登录方案](https://xie.infoq.cn/article/6b40282148451df8073209a8d?utm_source=rss&utm_medium=article)
+[揭秘！开源软件背后的神秘组织](https://xie.infoq.cn/article/128257aa8be8fce388d96841d)

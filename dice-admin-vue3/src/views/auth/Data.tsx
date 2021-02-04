@@ -43,6 +43,84 @@ export function getUserColumns(): BasicColumn[] {
   ];
 }
 
+export function getApiColumns(): BasicColumn[] {
+  return [
+    {
+      title: 'ID',
+      width: 60,
+      dataIndex: 'id',
+    },
+    {
+      title: 'api地址',
+      width: 200,
+      dataIndex: 'username',
+      align: 'left',
+    },
+    {
+      title: '所属项目',
+      dataIndex: 'screenName',
+      width: 200,
+      align: 'left',
+    },
+    {
+      title: '创建日期',
+      sorter: true,
+      dataIndex: 'createTime',
+      width: 150,
+      customRender: ({ record }) => formatToDateTime(record.createTime),
+    },
+    {
+      title: '更新日期',
+      sorter: true,
+      dataIndex: 'updateTime',
+      width: 150,
+      customRender: ({ record }) => formatToDateTime(record.updateTime),
+    },
+  ];
+}
+
+export function getApiFormConfig(): Partial<FormProps> {
+  return {
+    labelWidth: 10,
+    schemas: [
+      {
+        field: `status`,
+        label: ` `,
+        component: 'Select',
+        slot: 'apiAdd',
+        colProps: {
+          xl: 4,
+          xxl: 2,
+        },
+      },
+      {
+        field: `projectType`,
+        label: ` `,
+        component: 'Select',
+        componentProps: {
+          placeholder: '所属项目',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
+        },
+      },
+      {
+        field: `criteria`,
+        label: ` `,
+        component: 'Input',
+        componentProps: {
+          placeholder: 'api',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
+        },
+      },
+    ],
+  };
+}
+
 export function getUserFormConfig(): Partial<FormProps> {
   return {
     labelWidth: 10,

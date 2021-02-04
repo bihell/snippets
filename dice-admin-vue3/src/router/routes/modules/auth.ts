@@ -20,6 +20,14 @@ const auth: AppRouteModule = {
         title: '用户列表',
       },
     },
+    {
+      path: 'apis',
+      name: 'ApiList',
+      component: () => import('/@/views/auth/api/ApiList.vue'),
+      meta: {
+        title: 'API管理',
+      },
+    },
   ],
 };
 
