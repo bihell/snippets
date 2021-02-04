@@ -1,6 +1,5 @@
 package com.bihell.dice.system.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bihell.dice.framework.common.api.ApiResult;
 import com.bihell.dice.framework.common.api.RestResponse;
@@ -9,6 +8,7 @@ import com.bihell.dice.framework.core.pagination.Paging;
 import com.bihell.dice.framework.util.LoginUtil;
 import com.bihell.dice.system.entity.*;
 import com.bihell.dice.system.mapper.*;
+import com.bihell.dice.system.param.ApiPageParam;
 import com.bihell.dice.system.param.QueryParam;
 import com.bihell.dice.system.param.UserPageParam;
 import com.bihell.dice.system.service.*;
@@ -66,15 +66,6 @@ public class AuthController {
     public RestResponse getAllUsers(QueryParam queryParam) {
         return RestResponse.ok(new Pagination<User>(userMapper.queryByParam(new Page<>(queryParam.getPageNum(), queryParam.getPageSize()), queryParam)));
     }
-
-//    /**
-//     * 获取所有用户
-//     */
-//    @PostMapping("/user/list/all")
-//    public ApiResult<Paging<User>> getUserPageList(@Validated @RequestBody UserPageParam userPageParam) {
-//        Paging<User> paging = userService.getUserPageList(userPageParam);
-//        return ApiResult.ok(paging);
-//    }
 
     @PostMapping("/user/assign/role")
     public RestResponse assignRole(@RequestBody User user) {
@@ -173,9 +164,15 @@ public class AuthController {
         return RestResponse.ok();
     }
 
-    @GetMapping("/api/list")
-    public RestResponse getApiList(QueryParam queryParam) {
-        return RestResponse.ok(new Pagination<AuthApi>(authApiMapper.queryByParam(new Page<>(queryParam.getPageNum(), queryParam.getPageSize()), queryParam)));
+//    @GetMapping("/api/list")
+//    public RestResponse getApiList(QueryParam queryParam) {
+//        return RestResponse.ok(new Pagination<AuthApi>(authApiMapper.queryByParam(new Page<>(queryParam.getPageNum(), queryParam.getPageSize()), queryParam)));
+//    }
+
+    @PostMapping("/api/list")
+    public  ApiResult<Paging<AuthApi>> getApiList(@Validated @RequestBody ApiPageParam apiPageParam) {
+        Paging<AuthApi> paging = authApiService.getApiPageList(apiPageParam);
+        return ApiResult.ok(paging);
     }
 
     /**

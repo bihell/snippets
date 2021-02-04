@@ -46,7 +46,7 @@
   import { getApiColumns, getApiFormConfig } from '../Data';
   import { Tag, Badge } from 'ant-design-vue';
   import { postStatus } from '/@/api/blog/blog';
-  import { apiUserList } from '/@/api/auth/auth';
+  import { apiApiList } from '/@/api/auth/auth';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
   import { useRouter } from 'vue-router';
   import { useMessage } from '/@/hooks/web/useMessage';
@@ -61,7 +61,7 @@
       const { success } = createMessage;
       const [registerTable, { reload }] = useTable({
         title: 'API列表',
-        api: apiUserList,
+        api: apiApiList,
         columns: getApiColumns(),
         useSearchForm: true,
         formConfig: getApiFormConfig(),

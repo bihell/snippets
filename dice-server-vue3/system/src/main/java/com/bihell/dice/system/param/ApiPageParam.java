@@ -14,9 +14,17 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "UserPageParam对象", description = "用户列表参数")
-public class UserPageParam extends BasePageOrderParam {
+public class ApiPageParam extends BasePageOrderParam {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("搜索词")
     private String criteria;
+
+    @ApiModelProperty("项目")
+    private String projectType;
+
+    private Integer roleId;
+
+    private Integer itemId;
+
 }

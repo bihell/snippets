@@ -69,13 +69,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
         }
     }
 
-//    @Override
-//    public Paging<User> getUserPageList(UserPageParam userPageParam) {
-//        Page<User> page =  new PageInfo<>(userPageParam, OrderItem.desc(getLambdaColumn(User::getLogged)));
-//        IPage<User> iPage = userMapper.getUserPageList(page,userPageParam);
-//        return new Paging(iPage);
-//    }
-
     @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean addUser(User user) {
