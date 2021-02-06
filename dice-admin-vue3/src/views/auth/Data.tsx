@@ -78,6 +78,47 @@ export function getApiColumns(): BasicColumn[] {
   ];
 }
 
+export function getRoleColumns(): BasicColumn[] {
+  return [
+    {
+      title: 'ID',
+      width: 60,
+      dataIndex: 'id',
+    },
+    {
+      title: '角色名称',
+      dataIndex: 'roleName',
+      align: 'left',
+    },
+    {
+      title: '所属项目',
+      dataIndex: 'projectType',
+      // width: 200,
+      align: 'left',
+    },
+    {
+      title: '有效用户数',
+      dataIndex: 'userCount',
+      width: 200,
+      align: 'left',
+    },
+    {
+      title: '创建日期',
+      sorter: true,
+      dataIndex: 'createTime',
+      width: 160,
+      customRender: ({ record }) => formatToDateTime(record.createTime),
+    },
+    {
+      title: '更新日期',
+      sorter: true,
+      dataIndex: 'updateTime',
+      width: 160,
+      customRender: ({ record }) => formatToDateTime(record.updateTime),
+    },
+  ];
+}
+
 export function getApiFormConfig(): Partial<FormProps> {
   return {
     labelWidth: 10,
@@ -110,6 +151,48 @@ export function getApiFormConfig(): Partial<FormProps> {
         component: 'Input',
         componentProps: {
           placeholder: 'api',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
+        },
+      },
+    ],
+  };
+}
+
+export function getRoleFormConfig(): Partial<FormProps> {
+  return {
+    labelWidth: 10,
+    schemas: [
+      {
+        field: `status`,
+        label: ` `,
+        component: 'Select',
+        slot: 'add',
+        colProps: {
+          xl: 4,
+          xxl: 2,
+        },
+      },
+      {
+        field: `projectType`,
+        label: ` `,
+        component: 'Select',
+        componentProps: {
+          placeholder: '所属项目',
+        },
+        colProps: {
+          xl: 14,
+          xxl: 7,
+        },
+      },
+      {
+        field: `criteria`,
+        label: ` `,
+        component: 'Input',
+        componentProps: {
+          placeholder: '角色名称',
         },
         colProps: {
           xl: 14,

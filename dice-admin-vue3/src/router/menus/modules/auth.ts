@@ -14,6 +14,10 @@ const menu: MenuModule = {
         path: 'apis',
         name: 'API管理',
       },
+      {
+        path: 'role',
+        name: '角色管理',
+      },
     ],
   },
 };

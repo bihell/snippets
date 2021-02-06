@@ -10,6 +10,7 @@ import com.bihell.dice.system.entity.*;
 import com.bihell.dice.system.mapper.*;
 import com.bihell.dice.system.param.ApiPageParam;
 import com.bihell.dice.system.param.QueryParam;
+import com.bihell.dice.system.param.RolePageParam;
 import com.bihell.dice.system.param.UserPageParam;
 import com.bihell.dice.system.service.*;
 import com.google.common.base.Preconditions;
@@ -34,9 +35,7 @@ public class AuthController {
     private final AuthItemMapper authItemMapper;
     private final AuthGroupService authGroupService;
     private final AuthItemService authItemService;
-    private final AuthApiMapper authApiMapper;
     private final AuthApiService authApiService;
-    private final AuthRoleMapper authRoleMapper;
     private final AuthContentMapper authContentMapper;
     private final AuthContentService authContentService;
     private final AuthRoleService authRoleService;
@@ -164,11 +163,6 @@ public class AuthController {
         return RestResponse.ok();
     }
 
-//    @GetMapping("/api/list")
-//    public RestResponse getApiList(QueryParam queryParam) {
-//        return RestResponse.ok(new Pagination<AuthApi>(authApiMapper.queryByParam(new Page<>(queryParam.getPageNum(), queryParam.getPageSize()), queryParam)));
-//    }
-
     @PostMapping("/api/list")
     public  ApiResult<Paging<AuthApi>> getApiList(@Validated @RequestBody ApiPageParam apiPageParam) {
         Paging<AuthApi> paging = authApiService.getApiPageList(apiPageParam);
@@ -248,12 +242,13 @@ public class AuthController {
 
     @PostMapping("/role/add")
     public RestResponse addRole(@RequestBody AuthRole authRole) {
-        return RestResponse.ok(authRoleService.save(authRole));
+        return RestResponse.ok(authRoleService.saveRole(authRole));
     }
 
-    @GetMapping("/role/list")
-    public RestResponse getRoleList(QueryParam queryParam) {
-        return RestResponse.ok(new Pagination<AuthRole>(authRoleMapper.queryByParam(new Page<>(queryParam.getPageNum(), queryParam.getPageSize()), queryParam)));
+    @PostMapping("/role/list")
+    public ApiResult<Paging<AuthRole>> getRoleList(@Validated @RequestBody RolePageParam rolePageParam) {
+        Paging<AuthRole> paging = authRoleService.getRolePageList(rolePageParam);
+        return ApiResult.ok(paging);
     }
 
     @GetMapping("/role/get")

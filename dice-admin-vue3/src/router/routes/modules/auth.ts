@@ -28,6 +28,14 @@ const auth: AppRouteModule = {
         title: 'API管理',
       },
     },
+    {
+      path: 'role',
+      name: 'RoleList',
+      component: () => import('/@/views/auth/role/RoleList.vue'),
+      meta: {
+        title: '角色管理',
+      },
+    },
   ],
 };
 
