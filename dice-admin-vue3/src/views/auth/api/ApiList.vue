@@ -1,14 +1,14 @@
 <template>
   <BasicTable @register="registerTable">
     <template #form-apiAdd>
-      <a-button type="primary" @click="userAdd"> <FileAddOutlined /> 新增API </a-button>
+      <a-button type="primary" @click="apiAdd"> <FileAddOutlined /> 新增API </a-button>
     </template>
     <template #action="{ record }">
       <TableAction
         :drop-down-actions="[
           {
             label: '编辑',
-            onClick: userAdd,
+            onClick: apiAdd,
           },
           {
             label: '删除',
@@ -31,10 +31,8 @@
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getApiColumns, getApiFormConfig } from '../Data';
-  import { postStatus } from '/@/api/blog/blog';
   import { apiApiList } from '/@/api/auth/auth';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
-  import { useRouter } from 'vue-router';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useModal } from '/@/components/Modal';
   import Modal1 from './Modal1.vue';
@@ -63,10 +61,7 @@
         },
       });
 
-      const status = postStatus();
-      const router = useRouter();
-
-      function userAdd() {
+      function apiAdd() {
         openModal1();
         setModalProps({ loading: true });
         setTimeout(() => {
@@ -89,9 +84,8 @@
 
       return {
         registerTable,
-        status,
         handleDeleteClick,
-        userAdd,
+        apiAdd,
         register1,
       };
     },
