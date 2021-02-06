@@ -42,12 +42,10 @@ import {
   InputNumber,
 } from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
-
 import { App } from 'vue';
 
 const compList = [Icon, Button, AntButton.Group];
 
-// Fix hmr multiple registered components
 export function registerGlobComp(app: App) {
   compList.forEach((comp: any) => {
     app.component(comp.name, comp);

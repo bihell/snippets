@@ -6,7 +6,7 @@ import legacy from '@vitejs/plugin-legacy';
 
 import { loadEnv } from 'vite';
 
-import { modifyVars } from './build/config/lessModifyVars';
+import { generateModifyVars } from './build/config/themeConfig';
 import { createProxy } from './build/vite/proxy';
 
 import { wrapperEnv } from './build/utils';
@@ -31,9 +31,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     base: VITE_PUBLIC_PATH,
     root,
-    alias: {
-      '/@/': `${pathResolve('src')}/`,
-    },
+    alias: [
+      {
+        find: /^\/@\//,
+        replacement: pathResolve('src') + '/',
+      },
+    ],
     server: {
       port: VITE_PORT,
       proxy: createProxy(VITE_PROXY),
@@ -41,6 +44,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         overlay: true,
       },
     },
+
     build: {
       polyfillDynamicImport: VITE_LEGACY,
       terserOptions: {
@@ -49,6 +53,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           drop_console: VITE_DROP_CONSOLE,
         },
       },
+      brotliSize: false,
+      chunkSizeWarningLimit: 1000,
     },
     define: {
       __VERSION__: pkg.version,
@@ -64,7 +70,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           modifyVars: {
             // reference:  Avoid repeated references
             hack: `true; @import (reference) "${resolve('src/design/config.less')}";`,
-            ...modifyVars,
+            ...generateModifyVars(),
           },
           javascriptEnabled: true,
         },
@@ -75,19 +81,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vue(),
       vueJsx(),
       ...(VITE_LEGACY && isBuild ? [legacy()] : []),
-      ...createVitePlugins(viteEnv, isBuild, mode),
+      ...createVitePlugins(viteEnv, isBuild),
     ],
 
     optimizeDeps: {
-      include: [
-        'moment',
-        '@ant-design/icons-vue',
-        'echarts/map/js/china',
-        'ant-design-vue/es/locale/zh_CN',
-        'moment/dist/locale/zh-cn',
-        'ant-design-vue/es/locale/en_US',
-        'resize-observer-polyfill',
-      ],
+      include: ['@iconify/iconify'],
     },
   };
 };

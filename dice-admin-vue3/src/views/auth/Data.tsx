@@ -51,8 +51,7 @@ export function getApiColumns(): BasicColumn[] {
       dataIndex: 'id',
     },
     {
-      title: 'api地址',
-      width: 200,
+      title: 'Api地址',
       dataIndex: 'apiPath',
       align: 'left',
     },
@@ -66,14 +65,14 @@ export function getApiColumns(): BasicColumn[] {
       title: '创建日期',
       sorter: true,
       dataIndex: 'createTime',
-      width: 150,
+      width: 160,
       customRender: ({ record }) => formatToDateTime(record.createTime),
     },
     {
       title: '更新日期',
       sorter: true,
       dataIndex: 'updateTime',
-      width: 150,
+      width: 160,
       customRender: ({ record }) => formatToDateTime(record.updateTime),
     },
   ];

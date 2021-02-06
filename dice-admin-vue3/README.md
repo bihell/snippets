@@ -67,8 +67,8 @@ The documentation for 2.0 hasn't started yet, it will be provided later.
 
 ### Environmental requirements
 
-- `Node.js`: - Version>`12.0.0` is better.
-- `yarn` > `npm` > `cnpm`: - Package management tool.
+- `Node.js`: - Version > `12.0.0` .
+- `yarn` : - Package management tool.
 
 ### UI framework
 
@@ -254,4 +254,6 @@ If these plugins are helpful to you, you can give a star
 
 - [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock)
 - [vite-plugin-html](https://github.com/anncwb/vite-plugin-html)
-- [vite-plugin-style-import](https://github.com/vbenjs/vite-plugin-style-import)
+- [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import)
+- [vite-plugin-theme](https://github.com/anncwb/vite-plugin-theme)
+- [vite-plugin-imagemin](https://github.com/anncwb/vite-plugin-imagemin)
