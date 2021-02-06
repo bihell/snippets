@@ -3,19 +3,6 @@
     <template #form-userAdd>
       <a-button type="primary" @click="userAdd"> <FileAddOutlined /> 新增用户 </a-button>
     </template>
-    <template #category="{ record }">
-      <Tag color="blue">
-        {{ record.category }}
-      </Tag>
-    </template>
-    <template #status="{ record }">
-      <Tag color="blue">
-        {{ status[record.status].text }}
-      </Tag>
-    </template>
-    <template #cc="{ record }">
-      <Badge :count="record.commentCount" show-zero />
-    </template>
     <template #action="{ record }">
       <TableAction
         :drop-down-actions="[
@@ -44,7 +31,6 @@
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getUserColumns, getUserFormConfig } from '../Data';
-  import { Tag, Badge } from 'ant-design-vue';
   import { postStatus } from '/@/api/blog/blog';
   import { apiUserList } from '/@/api/auth/auth';
   import { FormOutlined, FileAddOutlined } from '@ant-design/icons-vue';
@@ -54,7 +40,7 @@
   import Modal1 from './Modal1.vue';
 
   export default defineComponent({
-    components: { BasicTable, Tag, Badge, TableAction, FormOutlined, FileAddOutlined, Modal1 },
+    components: { BasicTable, TableAction, FormOutlined, FileAddOutlined, Modal1 },
     setup() {
       const [register1, { openModal: openModal1, setModalProps }] = useModal();
       const { createMessage, createConfirm } = useMessage();

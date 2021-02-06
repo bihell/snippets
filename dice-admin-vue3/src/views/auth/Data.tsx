@@ -53,12 +53,12 @@ export function getApiColumns(): BasicColumn[] {
     {
       title: 'api地址',
       width: 200,
-      dataIndex: 'username',
+      dataIndex: 'apiPath',
       align: 'left',
     },
     {
       title: '所属项目',
-      dataIndex: 'screenName',
+      dataIndex: 'projectType',
       width: 200,
       align: 'left',
     },
