@@ -777,3 +777,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [「JWT」，你必须了解的认证登录方案](https://xie.infoq.cn/article/6b40282148451df8073209a8d?utm_source=rss&utm_medium=article)
 [揭秘！开源软件背后的神秘组织](https://xie.infoq.cn/article/128257aa8be8fce388d96841d)
 [放弃 ifconfig，拥抱 ip 命令](https://linux.cn/article-13089-1.html?utm_source=rss&utm_medium=rss)
+[Hive 大数据表性能调优](https://www.infoq.cn/article/qDzg3T00sP4QA9C7Ve18?utm_source=rss&utm_medium=article)
+[explainshell](https://github.com/idank/explainshell) explainshell 是一个可以解析 Linux 命令的网站，它可以给出命令的解释和其参数的解释。
