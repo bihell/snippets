@@ -781,3 +781,9 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [Hive 大数据表性能调优](https://www.infoq.cn/article/qDzg3T00sP4QA9C7Ve18?utm_source=rss&utm_medium=article)
   [explainshell](https://github.com/idank/explainshell) explainshell 是一个可以解析 Linux 命令的网站，它可以给出命令的解释和其参数的解释。
   [mindskip/xzs](https://github.com/mindskip/xzs) 学之思在线考试系统 - postgresql版，支持多种题型：选择题、多选题、判断题、填空题、解答题以及数学公式，包含PC端、小程序端，扩展性强，部署方便(集成部署、前后端分离部署、docker部署)、界面设计友好、代码结构清晰
+[taojinbi](https://github.com/JavisPeng/taojinbi) JavisPeng/taojinbi: 淘宝淘金币自动执行脚本，包含蚂蚁森林收取能量，年货节浇灌福气，解放你的双手
+[一篇文章教你搞懂日志采集利器Filebeat](https://os.51cto.com/art/202103/648819.htm)
+[Flink SQL CDC 实践以及一致性分析](https://xie.infoq.cn/article/8f4da2ea03fcc79b4691bc246) 
+[基于 Flink SQL 构建流批一体的 ETL 数据集成](https://xie.infoq.cn/article/b1f6ea3d719af113fe8ea027a)
+[Flink SQL 性能优化：multiple input 详解](https://xie.infoq.cn/article/3c98b55c4ffa3c3ee61bdaeb3)
+[深度集成 Flink: Apache Iceberg 0.11.0 最新功能解读](https://xie.infoq.cn/article/9bbfe86dcd2e64661ea3d20af)
