@@ -788,3 +788,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Flink SQL 性能优化：multiple input 详解](https://xie.infoq.cn/article/3c98b55c4ffa3c3ee61bdaeb3)
 [深度集成 Flink: Apache Iceberg 0.11.0 最新功能解读](https://xie.infoq.cn/article/9bbfe86dcd2e64661ea3d20af)
 [Flink 集成 Iceberg 在同程艺龙的实践](https://www.infoq.cn/article/WolODSeUzp1iv0G1ojmI?utm_source=rss&utm_medium=article)
+[微软这个开源项目碉堡了！草图秒变HTML代码](https://news.51cto.com/art/202103/653975.htm)
+[后端程序员也可以用Grafana做出漂亮可视化界面！]()
