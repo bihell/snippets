@@ -1,3 +1,8 @@
+[upptime](https://github.com/upptime/upptime) 一个免费开源的网站正常运行时间（uptime）监控服务。之所没有任何费用是因为实现方法都是完全基于 GitHub 提供的免费服务，比如：使用 GitHub 的 Action 每隔 5 分钟访问一次目标网站，获取网站最新的状态。然后通过 GitHub Issues 记录和报告异常，最后在 GitHub Pages 上可视化展示网站的运行状态。就很“绿色无公害”，我特别喜欢
+[Spring Boot2(十五)：Shiro 记住我 rememberMe、验证码 Kaptcha](https://niaobulashi.com/archives/shiro-rememberme-kaptcha.html)
+[MyPerf4J：极快的 Java 接口性能监控和统计工具](https://github.com/LinShunKang/MyPerf4J/blob/develop/README.CN.md?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[oxygen-demo](https://jeasonstudio.github.io/oxygen-demo/)：这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感。	0.914413565			
+
 [learn_python3_spider](https://github.com/wistbean/learn_python3_spider) | 一份从 0 到 1 学习 Python 爬虫教程，内容含有如何抓包，各种爬虫常用的模块使用，实战教程，最后还教你如何反爬虫 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HDZypo4a5)
 [xingag/spider_python](https://github.com/xingag/spider_python) python 爬虫
 [lianjia-scrawler](https://github.com/XuefengHuang/lianjia-scrawler)：该项目提供一个链家网全国房源爬虫工具，数据存储目前支持 Mysql
@@ -52,7 +57,7 @@
 
 
 
-
+[新一代 Java 开发工具 SoFlu 火了，可它到底行不行？](https://www.infoq.cn/article/SqWaOhLtxUTt6aEk8mXX?utm_source=rss&utm_medium=article)
 [a597873885/webfunny_monitor](https://github.com/a597873885/webfunny_monitor) | 通过向 html 页面中插入一段简单的 JS 探针代码，实现无埋点监控前端页面的用户行为，包括但不限于 PV/UV、报错日志、请求日志、静态资源加载情况、用户点击行为以及截图信息等等，目的在于帮助前端开发提高解决线上问题的效率。页面 DEMO: | 520 | CSS | 11/29 |
 [tebelorg/TagUI-Python](https://github.com/tebelorg/TagUI-Python) 一个 Python 自动化操作的库。比如：自动打开网页并截图
 [gwuhaolin/resume](https://github.com/gwuhaolin/resume) | 简约的在线简历 | 261 | HTML | 06/28 |
@@ -470,7 +475,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [基于 Binlog + Flink 实现多表数据同构/异构方案](http://www.linkedkeeper.com/1391.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [winterssy/mxget](https://github.com/winterssy/mxget) | 优雅的一站式音乐搜索、下载试听服务，支持国内所有音乐平台 | 497 | Go | 11/29 |
 [cool-retro-term](https://github.com/Swordfish90/cool-retro-term) - 怀旧的命令行终端。[![Open-Source Software][oss icon] ![Freeware][freeware icon]](https://github.com/Swordfish90/cool-retro-term) https://linux.cn/article-12432-1.html?utm_source=rss&utm_medium=rss
-[清华大学-邓俊辉 MOOC 数据结构与算法全套](https://www.bilibili.com/video/av49361421?from=search&seid=2756779141930403558)
 [ElasticSearch + Kibana 单机环境安装](https://github.com/frank-lam/fullstack-tutorial/blob/master/notes/installation/ElasticSearch+Kibana单机环境搭建.md)
 [iikira / BaiduPCS-Go](https://github.com/iikira/BaiduPCS-Go) 百度网盘客户端 - Go 语言编写
 [luban-h5](https://github.com/ly525/luban-h5) 鲁班 H5 是基于 Vue2.0 开发的，通过拖拽+配置的形式，生成页面的工具。
@@ -518,7 +522,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [Sloth](https://github.com/sveinbjornt/Sloth) 一款 macOS 系统下显示进程打开的文件、socket、管道等信息的工具。就像桌面版的 lsof，快来试试吧
   [running_page](https://github.com/yihong0618/running_page) 一个展示个人跑步主页的 Python 项目
   [pi-hole](https://github.com/pi-hole/pi-hole) 一个免费开源、部署简单的 DNS sinkhole 项目。没关系，我也不明白 DNS sinkhole 是个啥，就知道用它可实现路由器层屏蔽广告的功能。需要先在树莓派安装这个项目，然后配合支持自定义 DNS 的路由器，就可以实现该网络下的全设备广告自动屏蔽。详细步骤
-  [upptime](https://github.com/upptime/upptime) 一个免费开源的网站正常运行时间（uptime）监控服务。之所没有任何费用是因为实现方法都是完全基于 GitHub 提供的免费服务，比如：使用 GitHub 的 Action 每隔 5 分钟访问一次目标网站，获取网站最新的状态。然后通过 GitHub Issues 记录和报告异常，最后在 GitHub Pages 上可视化展示网站的运行状态。就很“绿色无公害”，我特别喜欢
+
   [TalkingData/inmap](https://github.com/TalkingData/inmap) | 大数据地理可视化 | 2.3k | JavaScript | 11/18 |
   [u014427391/jeeplatform](https://github.com/u014427391/jeeplatform) | 一款企业信息化开发基础平台，拟集成 OA(办公自动化)、SCM(供应链系统)、ERP(企业资源管理系统)、CMS(内容管理系统)、CRM(客户关系管理系统)等企业系统的通用业务功能 JeePlatform 项目是一款以 Spring Framework 为核心框架，集 ORM 框架 Mybatis，Web 层框架 SpringMVC 和多种开源组件框架而成的一款通用基础平台，代码已经捐赠给开源中国社区 | 1.1k | JavaScript | 11/23 |
   [React hooks + Mobx + typescript + EggJs 从 0 到 1 打造一款仿网易云音乐 APP（一） - 掘金](https://juejin.im/post/5eb03584e51d454de10eb031)
@@ -564,7 +568,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [iGoogle-ink/gopay](https://github.com/iGoogle-ink/gopay) | 微信（WeChat）、支付宝（AliPay）的 Go 版本 SDK。【持续更新，望开发者及时升级】 | 290 | Go | 11/27 |
   [jvm-mon](https://github.com/ajermakovics/jvm-mon)：命令行模式的 JVM 监控
   [MyPerf4J](https://github.com/LinShunKang/MyPerf4J) | 一个针对高并发、低延迟应用设计的高性能 Java 性能监控和统计工具 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HbRuxt1rj)
-  [ueditor](https://github.com/fex-team/ueditor) UEditor 是由百度 Web 前端研发部开发所见即所得富文本 Web 编辑器，具有轻量，可定制，注重用户体验等特点，开源基于 MIT 协议，允许自由使用和修改代码。
   [gongwalker/ApiManager](https://github.com/gongwalker/ApiManager) | 接口文档管理工具
   [MrS0m30n3/youtube-dl-gui](https://github.com/MrS0m30n3/youtube-dl-gui) A cross platform front-end GUI of the popular youtube-dl written in wxPython.
   [HTML5 的 JavaScript 客户端 PDF 解决方案——jsPDF](http://developer.51cto.com/art/201909/602608.htm)
@@ -587,7 +590,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [用 Python 给自己 DIY 一款小说阅读器，你要不看看？](https://www.itcodemonkey.com/article/15388.html)
   [oui：基于 Vue 的 OpenWrt 后台管理 UI 框架](https://github.com/zhaojh329/oui)
   [style2paints](https://github.com/lllyasviel/style2paints)：style2paints 是一款 AI 驱动的线稿上色工具 ，可根据用户上传的自定义色彩给线稿进行上色
-  [yanjunhui/chat](https://github.com/yanjunhui/chat) | 微信企业号发送监控 for OpenFalcon | 186 | Go | 02/27 |
   [iptv](https://github.com/iptv-org/iptv) | 牛逼了，这个 GitHub 项目收集了全球 8000 多个公共的 IPTV 频道，领域覆盖历史、教育、商业、电影、音乐... | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IjjVBszJL)
   [github1586/nuxt-bnhcp](https://github.com/github1586/nuxt-bnhcp) | nuxt、express、vue、mysql、redis、nginx、socket.io (实战商城) | 1.6k | Vue | 11/06 |
   [HanLP 中文分词 Solr 插件（Java） (hankcs)](https://weekly.manong.io/bounce?nid=85&aid=3415&url=https%3A%2F%2Fgithub.com%2Fhankcs%2Fhanlp-solr-plugin)
@@ -628,7 +630,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [mathAI](https://github.com/Roujack/mathAI) | 一个拍照做题程序。输入一张包含数学计算题的图片，输出识别出的数学计算式以及计算结果 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/Hys2OxDkZ)
   [Musish](https://github.com/Musish/Musish)：一款基于 React 和 MusicKit 实现的 Apple Music 非官方开源版
   [xiandanin/magnetW](https://github.com/xiandanin/magnetW) | 磁力链接聚合搜索 - https://magnetw.app | 4.3k | JavaScript | 11/29 |
-  [shell909090/goproxy](https://github.com/shell909090/goproxy) | 基于 go 写的隧道代理服务器。 | 1.1k | Go | 11/24 |
   [gods-pen](https://github.com/ymm-tech/gods-pen) | 开源运营工具：码良，可用于快速制作 H5 页面，用户无需掌握复杂的编程技术，通过简单拖拽、少量配置即可制作精美的页面，可用于营销场景下的页面制作 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/IkZD4xp8t)
   [git-point](https://github.com/gitpoint/git-point)：基于 React Native 开发的非官方开源 GitHub 客户端，功能丰富包含查看项目和用户信息、接收通知、管理 Issues 和 PR。支持 Android、iOS
   [al0ne/Vxscan](https://github.com/al0ne/Vxscan) | python3 写的综合扫描工具，主要用来存活验证，敏感文件探测(目录扫描/js 泄露接口/html 注释泄露)，WAF/CDN 识别，端口扫描，指纹/服务识别，操作系统识别，POC 扫描，SQL 注入，绕过 CDN，查询旁站等功能，主要用来甲方自测或乙方授权测试，请勿用来搞破坏。 | 857 | Python | 11/07 |
@@ -650,7 +651,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [VeryNginx](https://github.com/alexazhou/VeryNginx/blob/master/readme_zh.md)：VeryNginx 基于 lua\*nginx_module(openrestry) 开发，实现了高级的防火墙、访问统计和其他的一些功能。 集成在 Nginx 中运行，扩展了 Nginx 本身的功能，并提供了友好的 Web 交互界面。
   [ma6254/FictionDown](https://github.com/ma6254/FictionDown) | 小说下载\|小说爬取\|起点\|笔趣阁\|导出 Markdown\|导出 txt\|转换 epub\|广告过滤\|自动校对 | 238 | Go | 05/15 |
   [fxsjy/jieba](https://github.com/fxsjy/jieba) | 结巴中文分词 | 21.0k | Python | 11/26 |
-  [Bash 脚本实现每次登录到 Shell 时可以查看 Linux 系统信息](https://linux.cn/article-11645-1.html?utm_source=rss&utm_medium=rss)
   [基于 Hadoop 生态 Spark Streaming 的大数据实时流处理平台的搭建](http://www.tianshangkun.com/2018/01/26/%E5%9F%BA%E4%BA%8EHadoop%E7%94%9F%E6%80%81SparkStreaming%E7%9A%84%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%97%B6%E6%B5%81%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
   [hroptatyr/dateutils](https://github.com/hroptatyr/dateutils) nifty command line date and time utilities; fast date calculations and conversion in the shell www.fresse.org/dateutils/
   [Vue 3 的组合 API 如何请求数据？](https://developer.51cto.com/art/202010/629096.htm)
@@ -776,7 +776,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [超级好用的 OCR 数据合成与半自动标注工具](https://news.51cto.com/art/202101/643615.htm)
   [详解 Flink 容器化环境下的 OOM Killed](https://xie.infoq.cn/article/9b031dc395cb6162b9718f762)
   [「JWT」，你必须了解的认证登录方案](https://xie.infoq.cn/article/6b40282148451df8073209a8d?utm_source=rss&utm_medium=article)
-  [揭秘！开源软件背后的神秘组织](https://xie.infoq.cn/article/128257aa8be8fce388d96841d)
   [放弃 ifconfig，拥抱 ip 命令](https://linux.cn/article-13089-1.html?utm_source=rss&utm_medium=rss)
   [Hive 大数据表性能调优](https://www.infoq.cn/article/qDzg3T00sP4QA9C7Ve18?utm_source=rss&utm_medium=article)
   [explainshell](https://github.com/idank/explainshell) explainshell 是一个可以解析 Linux 命令的网站，它可以给出命令的解释和其参数的解释。
@@ -789,4 +788,21 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [深度集成 Flink: Apache Iceberg 0.11.0 最新功能解读](https://xie.infoq.cn/article/9bbfe86dcd2e64661ea3d20af)
 [Flink 集成 Iceberg 在同程艺龙的实践](https://www.infoq.cn/article/WolODSeUzp1iv0G1ojmI?utm_source=rss&utm_medium=article)
 [微软这个开源项目碉堡了！草图秒变HTML代码](https://news.51cto.com/art/202103/653975.htm)
-[后端程序员也可以用Grafana做出漂亮可视化界面！]()
+[后端程序员也可以用Grafana做出漂亮可视化界面！](https://developer.51cto.com/art/202103/653974.htm)
+[2021 年要尝试的 3 个新的 Java 工具](https://linux.cn/article-13249-1.html?utm_source=rss&utm_medium=rss)
+[rtty](https://github.com/zhaojh329/rtty)
+[How to Improve Resilience in Kubernetes with Advanced Traffic Management](https://www.nginx.com/blog/improve-kubernetes-resilience-with-advanced-traffic-management/)
+[Docker 环境清理的常用方法](https://developer.51cto.com/art/202103/652770.htm)
+[面试官问 Vue 性能优化，我该怎么回答](https://developer.51cto.com/art/202103/652100.htm)
+[TiDB 在实时分析应用场景下的探索](https://www.infoq.cn/article/Ezh9ZQxKCwF5dt1Dcgbi?utm_source=rss&utm_medium=article)
+[如何系统的了解Kafka](https://www.cnblogs.com/smartloli/p/14459504.html)
+[前后端接口鉴权全解 Cookie/Session/Token 的区别](https://segmentfault.com/a/1190000039303557)
+[Bash 脚本实现每次登录到 Shell 时可以查看 Linux 系统信息](https://linux.cn/article-11645-1.html?utm_source=rss&utm_medium=rss)			
+[修复搜狗、360等浏览器不识别SameSite=None 引起的单点登录故障](https://www.cnblogs.com/JulianHuang/p/12218026.html)
+[sa-token](https://github.com/dromara/sa-token) 这可能是史上功能最全的Java权限认证框架！目前已集成——登录验证、权限验证、Session会话、踢人下线、分布式会话、单点登录、OAuth2.0、记住我模式、模拟他人账号、临时身份切换、集成Redis、多账号认证体系、前后台分离模式、注解式鉴权、路由拦截式鉴权、花式token生成、自动续签、同端互斥登录、会话治理、密码加密、jwt集成、Spring集成...
+[dailycheckin](https://github.com/Sitoi/dailycheckin) 可基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本（支持多账号使用）签到列表: ｜爱奇艺｜全民K歌｜腾讯视频｜有道云笔记｜网易云音乐｜一加手机社区官方论坛｜百度贴吧｜Bilibili｜V2EX｜咔叽网单｜什么值得买｜AcFun｜天翼云盘｜WPS｜吾爱破解｜芒果TV｜联通营业厅｜Fa米家｜喜马拉雅极速版｜小米运动｜百度搜索资源平台｜每日天气预报｜每日一句｜哔咔漫画｜和彩云｜智友邦｜微博｜
+[你要偷偷学会排查线上CPU飙高的问题，然后惊艳所有人！](https://os.51cto.com/art/202103/654778.htm)
+[前端开发者必备的 12 个工具](https://www.infoq.cn/article/3E8LGuzIEXyWxRD3e4QV?utm_source=rss&utm_medium=article)
+[别再面向 for 循环编程了，JDK 自带的观察者模式就很香！](https://segmentfault.com/a/1190000039749122)
+[灵魂拷问！浏览器输入「xxxxhub」的背后.....](https://segmentfault.com/a/1190000039738922)
+[浏览器存储那些事](https://segmentfault.com/a/1190000039738537)
