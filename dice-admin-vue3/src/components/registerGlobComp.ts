@@ -48,7 +48,7 @@ const compList = [Icon, Button, AntButton.Group];
 
 export function registerGlobComp(app: App) {
   compList.forEach((comp: any) => {
-    app.component(comp.name, comp);
+    app.component(comp.name || comp.displayName, comp);
   });
 
   // Optional
