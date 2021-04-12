@@ -2,8 +2,9 @@ export default {
   prefixCls: 'vben',
 };
 
-// header preset color
+// app theme preset color
 export const APP_PRESET_COLOR_LIST: string[] = [
+  '#0960bd',
   '#0084f4',
   '#009688',
   '#536dfe',
