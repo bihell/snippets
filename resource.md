@@ -2,6 +2,7 @@
 [Spring Boot2(十五)：Shiro 记住我 rememberMe、验证码 Kaptcha](https://niaobulashi.com/archives/shiro-rememberme-kaptcha.html)
 [MyPerf4J：极快的 Java 接口性能监控和统计工具](https://github.com/LinShunKang/MyPerf4J/blob/develop/README.CN.md?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [oxygen-demo](https://jeasonstudio.github.io/oxygen-demo/)：这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感。	0.914413565			
+[终于来了，IDEA 2021.1版本正式发布，完美支持WSL 2](https://segmentfault.com/a/1190000039790162)
 
 [learn_python3_spider](https://github.com/wistbean/learn_python3_spider) | 一份从 0 到 1 学习 Python 爬虫教程，内容含有如何抓包，各种爬虫常用的模块使用，实战教程，最后还教你如何反爬虫 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HDZypo4a5)
 [xingag/spider_python](https://github.com/xingag/spider_python) python 爬虫
@@ -806,3 +807,14 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [别再面向 for 循环编程了，JDK 自带的观察者模式就很香！](https://segmentfault.com/a/1190000039749122)
 [灵魂拷问！浏览器输入「xxxxhub」的背后.....](https://segmentfault.com/a/1190000039738922)
 [浏览器存储那些事](https://segmentfault.com/a/1190000039738537)
+[分分钟教会你搭建企业级的 npm 私有仓库](https://www.infoq.cn/article/FCPlC1sOXdP5VkbcU7JY?utm_source=rss&utm_medium=article)
+[编写 Restful 风格的 API 接口正确姿势](https://developer.51cto.com/art/202104/655312.htm)
+[flink-streaming-platform-web](https://github.com/zhp8341/flink-streaming-platform-web)
+[OPPO数仓与数据湖融合架构升级的实践与思考](https://www.infoq.cn/article/kuyk9IEUSyYxBQ5lOFLU?utm_source=rss&utm_medium=article)
+[从零开始，编写一个 HomeBrew 缓存清理脚本](https://sspai.com/post/65842)
+[教你如何在 Linux 中锁定和解锁多个用户](https://developer.51cto.com/art/202104/655913.htm)
+[NobyDa/Script](https://github.com/NobyDa/Script/tree/master) This project is based on the scripting capabilities of two excellent iOS proxy tools, Quantumult X or Surge.
+[一个开源免费的 To-Do-List 应用！](https://developer.51cto.com/art/202104/656259.htm)
+[给顶级开源项目 Spring Boot 贡献代码是一种什么样的体验？](https://segmentfault.com/a/1190000039785482)
+[zhangdaiscott / JimuReport](https://github.com/zhangdaiscott/JimuReport) 一款免费的数据可视化工具，报表与大屏设计！类似于excel操作风格，在线拖拽完成报表设计！功能涵盖: 报表设计、图形报表、打印设计、大屏设计等，永久免费！
+[mini-LED 是什么？配备它的新款 iPad Pro、 Macbook 或许很快到来](https://sspai.com/post/65708)
