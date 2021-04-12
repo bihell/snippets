@@ -41,7 +41,7 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
       if (unref(splitNotLeft) || unref(getIsMobile)) return;
 
       const { meta } = unref(currentRoute);
-      const currentActiveMenu = meta.currentActiveMenu;
+      const currentActiveMenu = meta.currentActiveMenu as string;
       let parentPath = await getCurrentParentPath(path);
       if (!parentPath) {
         parentPath = await getCurrentParentPath(currentActiveMenu);
@@ -65,10 +65,13 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
   );
 
   // split Menu changes
-  watch([() => getSplit.value], () => {
-    if (unref(splitNotLeft)) return;
-    genMenus();
-  });
+  watch(
+    () => getSplit.value,
+    () => {
+      if (unref(splitNotLeft)) return;
+      genMenus();
+    }
+  );
 
   // Handle left menu split
   async function handleSplitLeftMenu(parentPath: string) {
