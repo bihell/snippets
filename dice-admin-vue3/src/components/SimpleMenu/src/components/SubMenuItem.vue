@@ -9,11 +9,11 @@
           :class="`${prefixCls}-submenu-title-icon`"
         />
       </div>
-      <MenuCollapseTransition>
+      <CollapseTransition>
         <ul :class="prefixCls" v-show="opened">
           <slot></slot>
         </ul>
-      </MenuCollapseTransition>
+      </CollapseTransition>
     </template>
 
     <Popover
@@ -43,8 +43,8 @@
           :class="`${prefixCls}-submenu-title-icon`"
         />
       </div>
-      <template #content v-show="opened">
-        <div v-bind="getEvents(true)">
+      <template #content>
+        <div v-bind="getEvents(true)" v-show="opened">
           <ul :class="[prefixCls, `${prefixCls}-${getTheme}`, `${prefixCls}-popup`]">
             <slot></slot>
           </ul>
@@ -72,18 +72,18 @@
   import { propTypes } from '/@/utils/propTypes';
   import { useMenuItem } from './useMenu';
   import { useSimpleRootMenuContext } from './useSimpleMenuContext';
-  import MenuCollapseTransition from './MenuCollapseTransition.vue';
+  import { CollapseTransition } from '/@/components/Transition';
   import Icon from '/@/components/Icon';
   import { Popover } from 'ant-design-vue';
   import { isBoolean, isObject } from '/@/utils/is';
   import Mitt from '/@/utils/mitt';
 
-  const DELAY = 200;
+  const DELAY = 250;
   export default defineComponent({
     name: 'SubMenu',
     components: {
       Icon,
-      MenuCollapseTransition,
+      CollapseTransition,
       Popover,
     },
     props: {

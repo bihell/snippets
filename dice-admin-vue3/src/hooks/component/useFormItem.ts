@@ -3,7 +3,7 @@ import { reactive, readonly, computed, getCurrentInstance, watchEffect } from 'v
 
 import { isEqual } from 'lodash-es';
 
-export function useRuleFormItem<T extends Indexable>(
+export function useRuleFormItem<T extends Recordable>(
   props: T,
   key: keyof T = 'value',
   changeEvent = 'change'
@@ -17,7 +17,7 @@ export function useRuleFormItem<T extends Indexable>(
 
   const defaultState = readonly(innerState);
 
-  const setState = (val: UnwrapRef<T[keyof T]>) => {
+  const setState = (val: UnwrapRef<T[keyof T]>): void => {
     innerState.value = val as T[keyof T];
   };
 
@@ -31,6 +31,7 @@ export function useRuleFormItem<T extends Indexable>(
     },
     set(value) {
       if (isEqual(value, defaultState.value)) return;
+
       innerState.value = value as T[keyof T];
       emit?.(changeEvent, value);
     },
