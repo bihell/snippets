@@ -1,4 +1,4 @@
-import type { ProjectConfig } from '/@/types/config';
+import type { ProjectConfig } from '/#/config';
 
 import { computed, unref } from 'vue';
 
@@ -15,6 +15,8 @@ const getRootSetting = computed((): RootSetting => appStore.getProjectConfig);
 const getPageLoading = computed(() => appStore.getPageLoading);
 
 const getOpenKeepAlive = computed(() => unref(getRootSetting).openKeepAlive);
+
+const getSettingButtonPosition = computed(() => unref(getRootSetting).settingButtonPosition);
 
 const getCanEmbedIFramePage = computed(() => unref(getRootSetting).canEmbedIFramePage);
 
@@ -58,6 +60,7 @@ export function useRootSetting() {
   return {
     setRootSetting,
 
+    getSettingButtonPosition,
     getFullContent,
     getColorWeak,
     getGrayMode,
