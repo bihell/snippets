@@ -1,16 +1,12 @@
 <template>
-  <CollapseContainer title="销售统计" :canExpan="false">
-    <div ref="chartRef" :style="{ width: '100%' }"></div>
-  </CollapseContainer>
+  <div ref="chartRef" :style="{ width: '100%' }"></div>
 </template>
 <script lang="ts">
   import { defineComponent, Ref, ref, onMounted } from 'vue';
 
-  import { CollapseContainer } from '/@/components/Container/index';
   import { useApexCharts } from '/@/hooks/web/useApexCharts';
 
   export default defineComponent({
-    components: { CollapseContainer },
     setup() {
       const chartRef = ref<HTMLDivElement | null>(null);
       const { setOptions } = useApexCharts(chartRef as Ref<HTMLDivElement>);
@@ -20,59 +16,31 @@
             { name: 'Visits', data: [90, 50, 86, 40, 100, 20] },
             { name: 'Sales', data: [70, 75, 70, 76, 20, 85] },
           ],
-          dataLabels: {
-            style: {
-              colors: ['#b9c3cd', '#b9c3cd', '#b9c3cd', '#b9c3cd', '#b9c3cd', '#b9c3cd'],
-            },
-          },
           chart: {
             height: 350,
             type: 'radar',
-            dropShadow: {
-              enabled: true,
-              blur: 1,
-              left: 1,
-              top: 1,
+            toolbar: {
+              show: false,
             },
           },
           yaxis: {
             show: false,
           },
-          grid: {
-            show: false,
-          },
-          legend: { show: false },
+
           title: {
             show: false,
           },
-          tooltip: {
-            x: { show: false },
-          },
           markers: {
-            size: 0,
+            // size: 0,
           },
           xaxis: {
-            categories: ['2011', '2012', '2013', '2014', '2015', '2016'],
+            categories: ['2016', '2017', '2018', '2019', '2020', '2021'],
           },
           stroke: {
             width: 0,
           },
           colors: ['#9f8ed7', '#1edec5'],
-          plotOptions: {
-            radar: {
-              polygons: {
-                strokeColors: [
-                  '#e8e8e8',
-                  'transparent',
-                  'transparent',
-                  'transparent',
-                  'transparent',
-                  'transparent',
-                ],
-                connectorColors: 'transparent',
-              },
-            },
-          },
+
           fill: {
             type: 'gradient',
             gradient: {
