@@ -299,20 +299,20 @@
   @prefix-cls: ~'@{namespace}-basic-table';
 
   .@{prefix-cls} {
+    &-row__striped {
+      td {
+        background-color: content-background;
+      }
+    }
+
     &-form-container {
       padding: 16px;
 
       .ant-form {
         padding: 12px 10px 6px 10px;
         margin-bottom: 16px;
-        background: #fff;
+        background-color: @component-background;
         border-radius: 4px;
-      }
-    }
-
-    &-row__striped {
-      td {
-        background: #fafafa;
       }
     }
 
@@ -328,7 +328,7 @@
 
     .ant-table-wrapper {
       padding: 6px;
-      background: #fff;
+      background-color: @component-background;
       border-radius: 2px;
 
       .ant-table-title {
@@ -340,7 +340,6 @@
       }
     }
 
-    //
     .ant-table {
       width: 100%;
       overflow-x: hidden;
@@ -354,7 +353,7 @@
       }
 
       .ant-table-tbody > tr.ant-table-row-selected td {
-        background: fade(@primary-color, 8%) !important;
+        background-color: fade(@primary-color, 8%) !important;
       }
     }
 

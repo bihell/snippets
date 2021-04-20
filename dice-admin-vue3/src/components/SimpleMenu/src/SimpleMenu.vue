@@ -1,11 +1,11 @@
 <template>
   <Menu
     v-bind="getBindValues"
-    @select="handleSelect"
     :activeName="activeName"
     :openNames="getOpenKeys"
     :class="prefixCls"
     :activeSubMenuNames="activeSubMenuNames"
+    @select="handleSelect"
   >
     <template v-for="item in items" :key="item.path">
       <SimpleSubMenu
@@ -53,6 +53,7 @@
       beforeClickFn: {
         type: Function as PropType<(key: string) => Promise<boolean>>,
       },
+      isSplitMenu: propTypes.bool,
     },
     emits: ['menuClick'],
     setup(props, { attrs, emit }) {
@@ -94,6 +95,9 @@
       watch(
         () => props.items,
         () => {
+          if (!props.isSplitMenu) {
+            return;
+          }
           setOpenKeys(currentRoute.value.path);
         },
         { flush: 'post' }
