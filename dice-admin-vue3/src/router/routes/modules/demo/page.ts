@@ -4,15 +4,15 @@ import { getParentLayout, LAYOUT } from '/@/router/constant';
 import { ExceptionEnum } from '/@/enums/exceptionEnum';
 import { t } from '/@/hooks/web/useI18n';
 
-const ExceptionPage = () => import('/@/views/sys/exception/Exception.vue');
+const ExceptionPage = () => import('/@/views/sys/exception/Exception');
 
 const page: AppRouteModule = {
   path: '/page-demo',
   name: 'PageDemo',
   component: LAYOUT,
-  redirect: '/page-demo/form/basic',
+  redirect: '/page-demo/exception',
   meta: {
-    icon: 'ion:aperture-outline',
+    icon: 'mdi:page-next-outline',
     title: t('routes.demo.page.page'),
   },
   children: [

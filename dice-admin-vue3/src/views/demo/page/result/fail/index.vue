@@ -34,16 +34,17 @@
 <style lang="less" scoped>
   .result-error {
     padding: 48px 32px;
-    background-color: @component-background;
+    background: #fff;
 
     &__content {
       padding: 24px 40px;
-      background-color: @background-color-light;
+      background: #fafafa;
 
       &-title {
         margin-bottom: 16px;
         font-size: 16px;
         font-weight: 500;
+        color: rgba(0, 0, 0, 0.85);
       }
 
       &-icon {

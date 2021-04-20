@@ -19,8 +19,7 @@ import {
 
 import { isProdMode } from '/@/utils/env';
 import { isFunction } from '/@/utils/is';
-import { tryOnUnmounted } from '@vueuse/core';
-
+import { tryOnUnmounted, isInSetup } from '/@/utils/helper/vueHelper';
 import { isEqual } from 'lodash-es';
 import { error } from '/@/utils/log';
 
@@ -32,6 +31,8 @@ const visibleData = reactive<{ [key: number]: boolean }>({});
  * @description: Applicable to separate drawer and call outside
  */
 export function useDrawer(): UseDrawerReturnType {
+  isInSetup();
+
   const drawerRef = ref<DrawerInstance | null>(null);
   const loadedRef = ref<Nullable<boolean>>(false);
   const uidRef = ref<string>('');
@@ -81,12 +82,12 @@ export function useDrawer(): UseDrawerReturnType {
 
       if (openOnSet) {
         dataTransferRef[unref(uidRef)] = null;
-        dataTransferRef[unref(uidRef)] = toRaw(data);
+        dataTransferRef[unref(uidRef)] = data;
         return;
       }
-      const equal = isEqual(toRaw(dataTransferRef[unref(uidRef)]), toRaw(data));
+      const equal = isEqual(toRaw(dataTransferRef[unref(uidRef)]), data);
       if (!equal) {
-        dataTransferRef[unref(uidRef)] = toRaw(data);
+        dataTransferRef[unref(uidRef)] = data;
       }
     },
   };

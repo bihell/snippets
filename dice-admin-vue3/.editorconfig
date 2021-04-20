@@ -3,12 +3,11 @@ root = true
 [*]
 charset=utf-8
 end_of_line=lf
-insert_final_newline=true
+insert_final_newline=false
 indent_style=space
 indent_size=2
-max_line_length = 100
 
-[*.{yml,yaml,json}]
+[*.yml]
 indent_style = space
 indent_size = 2
 

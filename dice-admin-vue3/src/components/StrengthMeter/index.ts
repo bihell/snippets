@@ -1,1 +1,3 @@
-export { default as StrengthMeter } from './src/index.vue';
+import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
+
+export const StrengthMeter = createAsyncComponent(() => import('./src/index.vue'));

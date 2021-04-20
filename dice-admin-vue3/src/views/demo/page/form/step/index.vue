@@ -85,7 +85,7 @@
 <style lang="less" scoped>
   .step-form-content {
     padding: 24px;
-    background-color: @component-background;
+    background: #fff;
   }
 
   .step-form-form {

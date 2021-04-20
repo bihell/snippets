@@ -1,13 +1,13 @@
 import type { BasicTableProps, TableActionType, FetchParams, BasicColumn } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
-import type { DynamicProps } from '/#/utils';
-import type { FormActionType } from '/@/components/Form';
-import type { WatchStopHandle } from 'vue';
-
+import type { DynamicProps } from '/@/types/utils';
 import { getDynamicProps } from '/@/utils';
-import { ref, onUnmounted, unref, watch, toRaw } from 'vue';
+
+import { ref, onUnmounted, unref, watch } from 'vue';
 import { isProdMode } from '/@/utils/env';
+import { isInSetup } from '/@/utils/helper/vueHelper';
 import { error } from '/@/utils/log';
+import type { FormActionType } from '/@/components/Form';
 
 type Props = Partial<DynamicProps<BasicTableProps>>;
 
@@ -17,17 +17,12 @@ type UseTableMethod = TableActionType & {
 
 export function useTable(
   tableProps?: Props
-): [
-  (instance: TableActionType, formInstance: UseTableMethod) => void,
-  TableActionType & {
-    getForm: () => FormActionType;
-  }
-] {
+): [(instance: TableActionType, formInstance: UseTableMethod) => void, TableActionType] {
+  isInSetup();
+
   const tableRef = ref<Nullable<TableActionType>>(null);
   const loadedRef = ref<Nullable<boolean>>(false);
   const formRef = ref<Nullable<UseTableMethod>>(null);
-
-  let stopWatch: WatchStopHandle;
 
   function register(instance: TableActionType, formInstance: UseTableMethod) {
     isProdMode() &&
@@ -36,16 +31,15 @@ export function useTable(
         loadedRef.value = null;
       });
 
-    if (unref(loadedRef) && isProdMode() && instance === unref(tableRef)) return;
-
+    if (unref(loadedRef) && isProdMode() && instance === unref(tableRef)) {
+      return;
+    }
     tableRef.value = instance;
     formRef.value = formInstance;
     tableProps && instance.setProps(getDynamicProps(tableProps));
     loadedRef.value = true;
 
-    stopWatch?.();
-
-    stopWatch = watch(
+    watch(
       () => tableProps,
       () => {
         tableProps && instance.setProps(getDynamicProps(tableProps));
@@ -87,7 +81,7 @@ export function useTable(
     },
     getColumns: ({ ignoreIndex = false }: { ignoreIndex?: boolean } = {}) => {
       const columns = getTableInstance().getColumns({ ignoreIndex }) || [];
-      return toRaw(columns);
+      return columns;
     },
     setColumns: (columns: BasicColumn[]) => {
       getTableInstance().setColumns(columns);
@@ -102,10 +96,10 @@ export function useTable(
       getTableInstance().deleteSelectRowByKey(key);
     },
     getSelectRowKeys: () => {
-      return toRaw(getTableInstance().getSelectRowKeys());
+      return getTableInstance().getSelectRowKeys();
     },
     getSelectRows: () => {
-      return toRaw(getTableInstance().getSelectRows());
+      return getTableInstance().getSelectRows();
     },
     clearSelectedRowKeys: () => {
       getTableInstance().clearSelectedRowKeys();
@@ -117,16 +111,16 @@ export function useTable(
       return getTableInstance().getPaginationRef();
     },
     getSize: () => {
-      return toRaw(getTableInstance().getSize());
+      return getTableInstance().getSize();
     },
     updateTableData: (index: number, key: string, value: any) => {
       return getTableInstance().updateTableData(index, key, value);
     },
     getRowSelection: () => {
-      return toRaw(getTableInstance().getRowSelection());
+      return getTableInstance().getRowSelection();
     },
     getCacheColumns: () => {
-      return toRaw(getTableInstance().getCacheColumns());
+      return getTableInstance().getCacheColumns();
     },
     getForm: () => {
       return (unref(formRef) as unknown) as FormActionType;
@@ -135,13 +129,7 @@ export function useTable(
       getTableInstance().setShowPagination(show);
     },
     getShowPagination: () => {
-      return toRaw(getTableInstance().getShowPagination());
-    },
-    expandAll: () => {
-      getTableInstance().expandAll();
-    },
-    collapseAll: () => {
-      getTableInstance().collapseAll();
+      return getTableInstance().getShowPagination();
     },
   };
 

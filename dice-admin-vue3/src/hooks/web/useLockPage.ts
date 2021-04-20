@@ -1,18 +1,13 @@
 import { computed, onUnmounted, unref, watchEffect } from 'vue';
-import { useThrottleFn } from '@vueuse/core';
+import { useThrottle } from '/@/hooks/core/useThrottle';
 
-import { useAppStore } from '/@/store/modules/app';
-import { useLockStore } from '/@/store/modules/lock';
-
-import { useUserStore } from '/@/store/modules/user';
+import { appStore } from '/@/store/modules/app';
+import { lockStore } from '/@/store/modules/lock';
+import { userStore } from '/@/store/modules/user';
 import { useRootSetting } from '../setting/useRootSetting';
 
 export function useLockPage() {
   const { getLockTime } = useRootSetting();
-  const lockStore = useLockStore();
-  const userStore = useUserStore();
-  const appStore = useAppStore();
-
   let timeId: TimeoutHandle;
 
   function clear(): void {
@@ -21,7 +16,7 @@ export function useLockPage() {
 
   function resetCalcLockTimeout(): void {
     // not login
-    if (!userStore.getToken) {
+    if (!userStore.getTokenState) {
       clear();
       return;
     }
@@ -38,14 +33,14 @@ export function useLockPage() {
   }
 
   function lockPage(): void {
-    lockStore.setLockInfo({
+    lockStore.commitLockInfoState({
       isLock: true,
       pwd: undefined,
     });
   }
 
   watchEffect((onClean) => {
-    if (userStore.getToken) {
+    if (userStore.getTokenState) {
       resetCalcLockTimeout();
     } else {
       clear();
@@ -59,7 +54,7 @@ export function useLockPage() {
     clear();
   });
 
-  const keyupFn = useThrottleFn(resetCalcLockTimeout, 2000);
+  const [keyupFn] = useThrottle(resetCalcLockTimeout, 2000);
 
   return computed(() => {
     if (unref(getLockTime)) {
@@ -70,3 +65,9 @@ export function useLockPage() {
     }
   });
 }
+
+export const getIsLock = computed(() => {
+  const { getLockInfo } = lockStore;
+  const { isLock } = getLockInfo;
+  return isLock;
+});

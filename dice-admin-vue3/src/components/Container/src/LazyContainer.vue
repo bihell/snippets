@@ -1,6 +1,6 @@
 <template>
   <transition-group
-    class="h-full w-full"
+    :class="prefixCls"
     v-bind="$attrs"
     ref="elRef"
     :name="transitionName"
@@ -10,7 +10,7 @@
     <div key="component" v-if="isInit">
       <slot :loading="loading"></slot>
     </div>
-    <div key="skeleton" v-else>
+    <div key="skeleton" v-else name="lazy-skeleton">
       <slot name="skeleton" v-if="$slots.skeleton"></slot>
       <Skeleton v-else />
     </div>
@@ -25,6 +25,7 @@
   import { useTimeoutFn } from '/@/hooks/core/useTimeout';
   import { useIntersectionObserver } from '/@/hooks/event/useIntersectionObserver';
   import { propTypes } from '/@/utils/propTypes';
+  import { useDesign } from '/@/hooks/web/useDesign';
 
   interface State {
     isInit: boolean;
@@ -64,12 +65,14 @@
     },
     emits: ['init'],
     setup(props, { emit }) {
-      const elRef = ref();
+      const elRef = ref<any>(null);
       const state = reactive<State>({
         isInit: false,
         loading: false,
         intersectionObserverInstance: null,
       });
+
+      const { prefixCls } = useDesign('lazy-container');
 
       onMounted(() => {
         immediateInit();
@@ -130,8 +133,17 @@
       }
       return {
         elRef,
+        prefixCls,
         ...toRefs(state),
       };
     },
   });
 </script>
+<style lang="less">
+  @prefix-cls: ~'@{namespace}-lazy-container';
+
+  .@{prefix-cls} {
+    width: 100%;
+    height: 100%;
+  }
+</style>

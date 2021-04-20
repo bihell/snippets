@@ -32,7 +32,7 @@
     ScaleRotateTransition,
     ExpandXTransition,
     ExpandTransition,
-  } from '/@/components/Transition';
+  } from '/@/components/Transition/index';
 
   const transitionList = [
     'Fade',
@@ -91,6 +91,6 @@
     width: 150px;
     height: 150px;
     margin-top: 20px;
-    background-color: rgb(126, 170, 236);
+    background: rgb(126, 170, 236);
   }
 </style>

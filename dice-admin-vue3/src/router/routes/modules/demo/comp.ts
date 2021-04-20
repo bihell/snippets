@@ -9,7 +9,7 @@ const comp: AppRouteModule = {
   component: LAYOUT,
   redirect: '/comp/basic',
   meta: {
-    icon: 'ion:layers-outline',
+    icon: 'ic:outline-settings-input-component',
     title: t('routes.demo.comp.comp'),
   },
 
@@ -87,14 +87,6 @@ const comp: AppRouteModule = {
           component: () => import('/@/views/demo/form/CustomerForm.vue'),
           meta: {
             title: t('routes.demo.form.customerForm'),
-          },
-        },
-        {
-          path: 'appendForm',
-          name: 'appendFormDemo',
-          component: () => import('/@/views/demo/form/AppendForm.vue'),
-          meta: {
-            title: t('routes.demo.form.appendForm'),
           },
         },
       ],
@@ -241,23 +233,6 @@ const comp: AppRouteModule = {
       },
     },
     {
-      path: 'cropper',
-      name: 'CropperDemo',
-      component: () => import('/@/views/demo/comp/cropper/index.vue'),
-      meta: {
-        title: t('routes.demo.comp.cropperImage'),
-      },
-    },
-
-    {
-      path: 'timestamp',
-      name: 'TimeDemo',
-      component: () => import('/@/views/demo/comp/time/index.vue'),
-      meta: {
-        title: t('routes.demo.comp.time'),
-      },
-    },
-    {
       path: 'countTo',
       name: 'CountTo',
       component: () => import('/@/views/demo/comp/count-to/index.vue'),
@@ -311,14 +286,6 @@ const comp: AppRouteModule = {
         title: t('routes.demo.editor.editor'),
       },
       children: [
-        {
-          path: 'json',
-          component: () => import('/@/views/demo/editor/json/index.vue'),
-          name: 'JsonEditorDemo',
-          meta: {
-            title: t('routes.demo.editor.jsonEditor'),
-          },
-        },
         {
           path: 'markdown',
           component: getParentLayout('MarkdownDemo'),

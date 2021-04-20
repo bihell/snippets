@@ -2,35 +2,16 @@
   <PageWrapper title="数字动画示例">
     <Card>
       <CardGrid class="count-to-demo-card">
-        <CountTo prefix="$" :color="'#409EFF'" :startVal="1" :endVal="200000" :duration="8000" />
+        <CountTo prefix="$" :startVal="1" :endVal="200000" :duration="8000" />
       </CardGrid>
       <CardGrid class="count-to-demo-card">
-        <CountTo
-          suffix="$"
-          :color="'red'"
-          :startVal="1"
-          :endVal="300000"
-          :decimals="2"
-          :duration="6000"
-        />
+        <CountTo suffix="$" :startVal="1" :endVal="300000" :decimals="2" :duration="6000" />
       </CardGrid>
       <CardGrid class="count-to-demo-card">
-        <CountTo
-          suffix="$"
-          :color="'rgb(0,238,0)'"
-          :startVal="1"
-          :endVal="400000"
-          :duration="7000"
-        />
+        <CountTo suffix="$" :startVal="1" :endVal="400000" :duration="7000" />
       </CardGrid>
       <CardGrid class="count-to-demo-card">
-        <CountTo
-          separator="-"
-          :color="'rgba(138,43,226,.6)'"
-          :startVal="10000"
-          :endVal="500000"
-          :duration="8000"
-        />
+        <CountTo separator="-" :startVal="10000" :endVal="500000" :duration="8000" />
       </CardGrid>
     </Card>
   </PageWrapper>

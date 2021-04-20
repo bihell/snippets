@@ -47,16 +47,14 @@ const menu: MenuModule = {
             path: 'customerForm',
             name: t('routes.demo.form.customerForm'),
           },
-          {
-            path: 'appendForm',
-            name: t('routes.demo.form.appendForm'),
-          },
         ],
       },
       {
         path: 'table',
         name: t('routes.demo.table.table'),
-
+        tag: {
+          dot: true,
+        },
         children: [
           {
             path: 'basic',
@@ -113,24 +111,22 @@ const menu: MenuModule = {
           {
             path: 'editCellTable',
             name: t('routes.demo.table.editCellTable'),
+            tag: {
+              dot: true,
+            },
           },
           {
             path: 'editRowTable',
             name: t('routes.demo.table.editRowTable'),
+            tag: {
+              dot: true,
+            },
           },
         ],
       },
       {
-        path: 'cropper',
-        name: t('routes.demo.comp.cropperImage'),
-      },
-      {
         path: 'countTo',
         name: t('routes.demo.comp.countTo'),
-      },
-      {
-        path: 'timestamp',
-        name: t('routes.demo.comp.time'),
       },
       {
         path: 'transition',
@@ -168,7 +164,6 @@ const menu: MenuModule = {
       {
         path: 'tree',
         name: t('routes.demo.comp.tree'),
-
         children: [
           {
             path: 'basic',
@@ -188,16 +183,9 @@ const menu: MenuModule = {
         name: t('routes.demo.editor.editor'),
         path: 'editor',
         tag: {
-          dot: true,
+          content: 'new',
         },
         children: [
-          {
-            path: 'json',
-            name: t('routes.demo.editor.jsonEditor'),
-            tag: {
-              content: 'new',
-            },
-          },
           {
             path: 'markdown',
             name: t('routes.demo.editor.markdown'),

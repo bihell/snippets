@@ -5,12 +5,10 @@ import type {
   ColumnProps,
   TableRowSelection as ITableRowSelection,
 } from 'ant-design-vue/lib/table/interface';
-
 import { ComponentType } from './componentType';
 import { VueNode } from '/@/utils/propTypes';
-
+// import { ColumnProps } from './column';
 export declare type SortOrder = 'ascend' | 'descend';
-
 export interface TableCurrentDataSource<T = Recordable> {
   currentDataSource: T[];
 }
@@ -87,8 +85,6 @@ export interface TableActionType {
   reload: (opt?: FetchParams) => Promise<void>;
   getSelectRows: <T = Recordable>() => T[];
   clearSelectedRowKeys: () => void;
-  expandAll: () => void;
-  collapseAll: () => void;
   getSelectRowKeys: () => string[];
   deleteSelectRowByKey: (key: string) => void;
   setPagination: (info: Partial<PaginationProps>) => void;
@@ -210,7 +206,7 @@ export interface BasicTableProps<T = any> {
    * @default 'children'
    * @type string | string[]
    */
-  childrenColumnName?: string;
+  childrenColumnName?: string | string[];
 
   /**
    * Override default table elements
@@ -402,7 +398,7 @@ export interface BasicColumn extends ColumnProps {
   flag?: 'INDEX' | 'DEFAULT' | 'CHECKBOX' | 'RADIO' | 'ACTION';
   customTitle?: VueNode;
 
-  slots?: Recordable;
+  slots?: Indexable;
 
   // Whether to hide the column by default, it can be displayed in the column configuration
   defaultHidden?: boolean;

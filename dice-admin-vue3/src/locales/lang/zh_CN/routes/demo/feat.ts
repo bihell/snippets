@@ -2,7 +2,6 @@ export default {
   feat: '功能',
   icon: '图标',
   tabs: '标签页操作',
-  print: '打印',
   contextMenu: '右键菜单',
   download: '文件下载',
   clickOutSide: 'ClickOutSide组件',
@@ -16,8 +15,6 @@ export default {
   tab: 'Tab带参',
   tab1: 'Tab带参1',
   tab2: 'Tab带参2',
-
-  ws: 'websocket测试',
 
   breadcrumb: '面包屑导航',
   breadcrumbFlat: '平级模式',

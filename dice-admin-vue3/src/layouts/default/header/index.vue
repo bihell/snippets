@@ -37,20 +37,20 @@
 
       <ErrorAction v-if="getUseErrorHandle" :class="`${prefixCls}-action__item error-action`" />
 
+      <LockItem v-if="getUseLockPage" :class="`${prefixCls}-action__item lock-item`" />
+
       <Notify v-if="getShowNotice" :class="`${prefixCls}-action__item notify-item`" />
 
       <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
 
+      <UserDropDown :theme="getHeaderTheme" />
+
       <AppLocalePicker
-        v-if="getShowLocalePicker"
+        v-if="getShowLocale"
         :reload="true"
         :showText="false"
         :class="`${prefixCls}-action__item`"
       />
-
-      <UserDropDown :theme="getHeaderTheme" />
-
-      <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
   </Header>
 </template>
@@ -61,7 +61,7 @@
 
   import { Layout } from 'ant-design-vue';
   import { AppLogo } from '/@/components/Application';
-  import LayoutMenu from '../menu/index.vue';
+  import LayoutMenu from '../menu';
   import LayoutTrigger from '../trigger/index.vue';
 
   import { AppSearch } from '/@/components/Application';
@@ -69,17 +69,21 @@
   import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
   import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
   import { useRootSetting } from '/@/hooks/setting/useRootSetting';
+  import { useLocaleSetting } from '/@/hooks/setting/useLocaleSetting';
 
   import { MenuModeEnum, MenuSplitTyeEnum } from '/@/enums/menuEnum';
-  import { SettingButtonPositionEnum } from '/@/enums/appEnum';
   import { AppLocalePicker } from '/@/components/Application';
 
-  import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';
+  import {
+    UserDropDown,
+    LayoutBreadcrumb,
+    FullScreen,
+    Notify,
+    LockItem,
+    ErrorAction,
+  } from './components';
   import { useAppInject } from '/@/hooks/web/useAppInject';
   import { useDesign } from '/@/hooks/web/useDesign';
-
-  import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
-  import { useLocale } from '/@/locales/useLocale';
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -93,11 +97,9 @@
       AppLocalePicker,
       FullScreen,
       Notify,
+      LockItem,
       AppSearch,
       ErrorAction,
-      SettingDrawer: createAsyncComponent(() => import('/@/layouts/default/setting/index.vue'), {
-        loading: true,
-      }),
     },
     props: {
       fixed: propTypes.bool,
@@ -112,11 +114,8 @@
         getMenuWidth,
         getIsMixSidebar,
       } = useMenuSetting();
-      const {
-        getUseErrorHandle,
-        getShowSettingButton,
-        getSettingButtonPosition,
-      } = useRootSetting();
+      const { getShowLocale } = useLocaleSetting();
+      const { getUseErrorHandle } = useRootSetting();
 
       const {
         getHeaderTheme,
@@ -126,10 +125,7 @@
         getShowContent,
         getShowBread,
         getShowHeaderLogo,
-        getShowHeader,
       } = useHeaderSetting();
-
-      const { getShowLocalePicker } = useLocale();
 
       const { getIsMobile } = useAppInject();
 
@@ -143,18 +139,6 @@
             [`${prefixCls}--${theme}`]: theme,
           },
         ];
-      });
-
-      const getShowSetting = computed(() => {
-        if (!unref(getShowSettingButton)) {
-          return false;
-        }
-        const settingButtonPosition = unref(getSettingButtonPosition);
-
-        if (settingButtonPosition === SettingButtonPositionEnum.AUTO) {
-          return unref(getShowHeader);
-        }
-        return settingButtonPosition === SettingButtonPositionEnum.HEADER;
       });
 
       const getLogoWidth = computed(() => {
@@ -186,15 +170,13 @@
         getSplit,
         getMenuMode,
         getShowTopMenu,
-        getShowLocalePicker,
+        getShowLocale,
         getShowFullScreen,
         getShowNotice,
         getUseLockPage,
         getUseErrorHandle,
         getLogoWidth,
         getIsMixSidebar,
-        getShowSettingButton,
-        getShowSetting,
       };
     },
   });

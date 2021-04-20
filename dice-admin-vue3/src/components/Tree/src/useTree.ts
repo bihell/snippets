@@ -1,34 +1,16 @@
-import type { InsertNodeParams, Keys, ReplaceFields } from './types';
+import type { InsertNodeParams, ReplaceFields, TreeItem } from './types';
 import type { Ref, ComputedRef } from 'vue';
-import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
 import { cloneDeep } from 'lodash-es';
 import { unref } from 'vue';
 import { forEach } from '/@/utils/helper/treeHelper';
 
 export function useTree(
-  treeDataRef: Ref<TreeDataItem[]>,
+  treeDataRef: Ref<TreeItem[]>,
   getReplaceFields: ComputedRef<ReplaceFields>
 ) {
-  function getAllKeys(list?: TreeDataItem[]) {
-    const keys: string[] = [];
-    const treeData = list || unref(treeDataRef);
-    const { key: keyField, children: childrenField } = unref(getReplaceFields);
-    if (!childrenField || !keyField) return keys;
-
-    for (let index = 0; index < treeData.length; index++) {
-      const node = treeData[index];
-      keys.push(node[keyField]!);
-      const children = node[childrenField];
-      if (children && children.length) {
-        keys.push(...(getAllKeys(children) as string[]));
-      }
-    }
-    return keys as Keys;
-  }
-
-  // Update node
-  function updateNodeByKey(key: string, node: TreeDataItem, list?: TreeDataItem[]) {
+  // 更新节点
+  function updateNodeByKey(key: string, node: TreeItem, list?: TreeItem[]) {
     if (!key) return;
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getReplaceFields);
@@ -48,15 +30,15 @@ export function useTree(
     }
   }
 
-  // Expand the specified level
-  function filterByLevel(level = 1, list?: TreeDataItem[], currentLevel = 1) {
+  // 展开指定级别
+  function filterByLevel(level = 1, list?: TreeItem[], currentLevel = 1) {
     if (!level) {
       return [];
     }
     const res: (string | number)[] = [];
     const data = list || unref(treeDataRef) || [];
     for (let index = 0; index < data.length; index++) {
-      const item = data[index];
+      const item = data[index] as any;
 
       const { key: keyField, children: childrenField } = unref(getReplaceFields);
       const key = keyField ? item[keyField] : '';
@@ -92,8 +74,8 @@ export function useTree(
     treeDataRef.value = treeData;
   }
 
-  // Delete node
-  function deleteNodeByKey(key: string, list?: TreeDataItem[]) {
+  // 删除节点
+  function deleteNodeByKey(key: string, list?: TreeItem[]) {
     if (!key) return;
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getReplaceFields);
@@ -111,5 +93,5 @@ export function useTree(
       }
     }
   }
-  return { deleteNodeByKey, insertNodeByKey, filterByLevel, updateNodeByKey, getAllKeys };
+  return { deleteNodeByKey, insertNodeByKey, filterByLevel, updateNodeByKey };
 }

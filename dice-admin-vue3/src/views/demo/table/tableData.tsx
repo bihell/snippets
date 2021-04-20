@@ -244,9 +244,22 @@ export function getFormConfig(): Partial<FormProps> {
       ...getAdvanceSchema(5),
       {
         field: `field11`,
-        label: `Slot示例`,
+        label: `字段33`,
         component: 'Select',
+        defaultValue: '1',
         slot: 'custom',
+        componentProps: {
+          options: [
+            {
+              label: '选项1',
+              value: '1',
+            },
+            {
+              label: '选项2',
+              value: '2',
+            },
+          ],
+        },
         colProps: {
           xl: 12,
           xxl: 8,

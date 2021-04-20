@@ -1,44 +1,31 @@
 <template>
-  <div :class="prefixCls" :style="getWrapStyle">
+  <div class="iframe-page" :style="getWrapStyle">
     <Spin :spinning="loading" size="large" :style="getWrapStyle">
-      <iframe :src="frameSrc" :class="`${prefixCls}__main`" ref="frameRef"></iframe>
+      <iframe :src="frameSrc" class="iframe-page__main" ref="frameRef"></iframe>
     </Spin>
   </div>
 </template>
 <script lang="ts">
-  import type { CSSProperties } from 'vue';
-  import { defineComponent, ref, unref, onMounted, nextTick, computed } from 'vue';
+  import { defineComponent, PropType, ref, unref, onMounted, nextTick, computed } from 'vue';
   import { Spin } from 'ant-design-vue';
 
   import { getViewportOffset } from '/@/utils/domUtils';
-
   import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
-
-  import { propTypes } from '/@/utils/propTypes';
-  import { useDesign } from '/@/hooks/web/useDesign';
 
   export default defineComponent({
     name: 'IFrame',
     components: { Spin },
     props: {
-      frameSrc: propTypes.string.def(''),
+      frameSrc: {
+        type: String as PropType<string>,
+        default: '',
+      },
     },
     setup() {
-      const loading = ref(false);
+      const loadingRef = ref(false);
       const topRef = ref(50);
       const heightRef = ref(window.innerHeight);
-      const frameRef = ref<HTMLFrameElement | null>(null);
-
-      const { prefixCls } = useDesign('iframe-page');
-      useWindowSizeFn(calcHeight, 150, { immediate: true });
-
-      const getWrapStyle = computed(
-        (): CSSProperties => {
-          return {
-            height: `${unref(heightRef)}px`,
-          };
-        }
-      );
+      const frameRef = ref<HTMLElement | null>(null);
 
       function calcHeight() {
         const iframe = unref(frameRef);
@@ -53,19 +40,21 @@
         iframe.style.height = `${clientHeight}px`;
       }
 
+      useWindowSizeFn(calcHeight, 150, { immediate: true });
+
       function hideLoading() {
-        loading.value = false;
+        loadingRef.value = false;
         calcHeight();
       }
 
       function init() {
         nextTick(() => {
           const iframe = unref(frameRef);
-          if (!iframe) return;
-
-          const _frame = iframe as any;
-          if (_frame.attachEvent) {
-            _frame.attachEvent('onload', () => {
+          if (!iframe) {
+            return;
+          }
+          if ((iframe as any).attachEvent) {
+            (iframe as any).attachEvent('onload', () => {
               hideLoading();
             });
           } else {
@@ -76,23 +65,23 @@
         });
       }
       onMounted(() => {
-        loading.value = true;
+        loadingRef.value = true;
         init();
       });
-
       return {
-        getWrapStyle,
-        loading,
+        getWrapStyle: computed(() => {
+          return {
+            height: `${unref(heightRef)}px`,
+          };
+        }),
+        loading: loadingRef,
         frameRef,
-        prefixCls,
       };
     },
   });
 </script>
 <style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-iframe-page';
-
-  .@{prefix-cls} {
+  .iframe-page {
     .ant-spin-nested-loading {
       position: relative;
       height: 100%;
@@ -116,7 +105,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: @component-background;
+      background: #fff;
       border: 0;
       box-sizing: border-box;
     }

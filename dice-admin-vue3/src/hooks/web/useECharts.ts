@@ -1,47 +1,31 @@
-import type { EChartsOption } from 'echarts';
-import type { Ref } from 'vue';
-
 import { useTimeoutFn } from '/@/hooks/core/useTimeout';
-import { tryOnUnmounted } from '@vueuse/core';
-import { unref, nextTick, watch, computed, ref } from 'vue';
-import { useDebounceFn } from '@vueuse/core';
+import { tryOnUnmounted } from '/@/utils/helper/vueHelper';
+import { unref, Ref, nextTick } from 'vue';
+import type { EChartOption, ECharts } from 'echarts';
+import echarts from 'echarts';
+import { useDebounce } from '/@/hooks/core/useDebounce';
 import { useEventListener } from '/@/hooks/event/useEventListener';
 import { useBreakpoint } from '/@/hooks/event/useBreakpoint';
 
-import echarts from '/@/utils/lib/echarts';
-import { useRootSetting } from '/@/hooks/setting/useRootSetting';
-
+export type { EChartOption, ECharts };
 export function useECharts(
   elRef: Ref<HTMLDivElement>,
   theme: 'light' | 'dark' | 'default' = 'light'
 ) {
-  const { getDarkMode } = useRootSetting();
-  let chartInstance: echarts.ECharts | null = null;
+  let chartInstance: Nullable<ECharts> = null;
   let resizeFn: Fn = resize;
-  const cacheOptions = ref<EChartsOption>({});
   let removeResizeFn: Fn = () => {};
 
-  resizeFn = useDebounceFn(resize, 200);
+  const [debounceResize] = useDebounce(resize, 200);
+  resizeFn = debounceResize;
 
-  const getOptions = computed(
-    (): EChartsOption => {
-      if (getDarkMode.value !== 'dark') {
-        return cacheOptions.value;
-      }
-      return {
-        backgroundColor: 'transparent',
-        ...cacheOptions.value,
-      };
-    }
-  );
-
-  function initCharts(t = theme) {
+  function init() {
     const el = unref(elRef);
     if (!el || !unref(el)) {
       return;
     }
 
-    chartInstance = echarts.init(el, t);
+    chartInstance = echarts.init(el, theme);
     const { removeEvent } = useEventListener({
       el: window,
       name: 'resize',
@@ -56,24 +40,23 @@ export function useECharts(
     }
   }
 
-  function setOptions(options: EChartsOption, clear = true) {
-    cacheOptions.value = options;
+  function setOptions(options: any, clear = true) {
     if (unref(elRef)?.offsetHeight === 0) {
       useTimeoutFn(() => {
-        setOptions(unref(getOptions));
+        setOptions(options);
       }, 30);
       return;
     }
     nextTick(() => {
       useTimeoutFn(() => {
         if (!chartInstance) {
-          initCharts(getDarkMode.value as 'default');
+          init();
 
           if (!chartInstance) return;
         }
         clear && chartInstance?.clear();
 
-        chartInstance?.setOption(unref(getOptions));
+        chartInstance?.setOption(options);
       }, 30);
     });
   }
@@ -81,17 +64,6 @@ export function useECharts(
   function resize() {
     chartInstance?.resize();
   }
-
-  watch(
-    () => getDarkMode.value,
-    (theme) => {
-      if (chartInstance) {
-        chartInstance.dispose();
-        initCharts(theme as 'default');
-        setOptions(cacheOptions.value);
-      }
-    }
-  );
 
   tryOnUnmounted(() => {
     if (!chartInstance) return;
@@ -102,7 +74,7 @@ export function useECharts(
 
   return {
     setOptions,
-    resize,
     echarts,
+    resize,
   };
 }

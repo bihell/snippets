@@ -1,21 +1,25 @@
-import type { Menu } from '/@/router/types';
-
-import { ref, onBeforeMount, unref, Ref, nextTick } from 'vue';
-
-import { getMenus } from '/@/router/menus';
-
 import { cloneDeep } from 'lodash-es';
+import { ref, onBeforeMount, unref, Ref, nextTick } from 'vue';
+import { useI18n } from '/@/hooks/web/useI18n';
+import { getMenus } from '/@/router/menus';
+import type { Menu } from '/@/router/types';
 import { filter, forEach } from '/@/utils/helper/treeHelper';
-
+import { useDebounce } from '/@/hooks/core/useDebounce';
 import { useGo } from '/@/hooks/web/usePage';
 import { useScrollTo } from '/@/hooks/event/useScrollTo';
-import { onKeyStroke, useDebounceFn } from '@vueuse/core';
-import { useI18n } from '/@/hooks/web/useI18n';
+import { useKeyPress } from '/@/hooks/event/useKeyPress';
 
 export interface SearchResult {
   name: string;
   path: string;
   icon?: string;
+}
+
+const enum KeyCodeEnum {
+  UP = 38,
+  DOWN = 40,
+  ENTER = 13,
+  ESC = 27,
 }
 
 // Translate special characters
@@ -39,7 +43,7 @@ export function useMenuSearch(refs: Ref<HTMLElement[]>, scrollWrap: Ref<ElRef>, 
 
   const { t } = useI18n();
   const go = useGo();
-  const handleSearch = useDebounceFn(search, 200);
+  const [handleSearch] = useDebounce(search, 200);
 
   onBeforeMount(async () => {
     const list = await getMenus();
@@ -84,7 +88,7 @@ export function useMenuSearch(refs: Ref<HTMLElement[]>, scrollWrap: Ref<ElRef>, 
     return ret;
   }
 
-  function handleMouseenter(e: any) {
+  function handleMouseenter(e: ChangeEvent) {
     const index = e.target.dataset.index;
     activeIndex.value = Number(index);
   }
@@ -144,10 +148,23 @@ export function useMenuSearch(refs: Ref<HTMLElement[]>, scrollWrap: Ref<ElRef>, 
     emit('close');
   }
 
-  onKeyStroke('Enter', handleEnter);
-  onKeyStroke('ArrowUp', handleUp);
-  onKeyStroke('ArrowDown', handleDown);
-  onKeyStroke('Escape', handleClose);
+  useKeyPress(['enter', 'up', 'down', 'esc'], (events) => {
+    const keyCode = events.keyCode;
+    switch (keyCode) {
+      case KeyCodeEnum.UP:
+        handleUp();
+        break;
+      case KeyCodeEnum.DOWN:
+        handleDown();
+        break;
+      case KeyCodeEnum.ENTER:
+        handleEnter();
+        break;
+      case KeyCodeEnum.ESC:
+        handleClose();
+        break;
+    }
+  });
 
   return { handleSearch, searchResult, keyword, activeIndex, handleMouseenter, handleEnter };
 }

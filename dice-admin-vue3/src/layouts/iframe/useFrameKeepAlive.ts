@@ -2,19 +2,18 @@ import type { AppRouteRecordRaw } from '/@/router/types';
 
 import { computed, toRaw, unref } from 'vue';
 
-import { useMultipleTabStore } from '/@/store/modules/multipleTab';
+import { tabStore } from '/@/store/modules/tab';
 
-import { uniqBy } from 'lodash-es';
+import { unique } from '/@/utils';
 
 import { useMultipleTabSetting } from '/@/hooks/setting/useMultipleTabSetting';
 
-import { useRouter } from 'vue-router';
+import router from '/@/router';
 
 export function useFrameKeepAlive() {
-  const router = useRouter();
   const { currentRoute } = router;
   const { getShowMultipleTab } = useMultipleTabSetting();
-  const tabStore = useMultipleTabStore();
+
   const getFramePages = computed(() => {
     const ret =
       getAllFramePages((toRaw(router.getRoutes()) as unknown) as AppRouteRecordRaw[]) || [];
@@ -22,7 +21,7 @@ export function useFrameKeepAlive() {
   });
 
   const getOpenTabList = computed((): string[] => {
-    return tabStore.getTabList.reduce((prev: string[], next) => {
+    return tabStore.getTabsState.reduce((prev: string[], next) => {
       if (next.meta && Reflect.has(next.meta, 'frameSrc')) {
         prev.push(next.name as string);
       }
@@ -41,7 +40,7 @@ export function useFrameKeepAlive() {
         res.push(...getAllFramePages(children));
       }
     }
-    res = uniqBy(res, 'name');
+    res = unique(res, 'name');
     return res;
   }
 

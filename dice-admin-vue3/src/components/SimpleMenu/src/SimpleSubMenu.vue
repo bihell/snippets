@@ -52,6 +52,7 @@
   import { propTypes } from '/@/utils/propTypes';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
+  const { t } = useI18n();
 
   export default defineComponent({
     name: 'SimpleSubMenu',
@@ -64,7 +65,7 @@
     props: {
       item: {
         type: Object as PropType<Menu>,
-        default: () => {},
+        default: {},
       },
       parent: propTypes.bool,
       collapsedShowTitle: propTypes.bool,
@@ -72,10 +73,12 @@
       theme: propTypes.oneOf(['dark', 'light']),
     },
     setup(props) {
-      const { t } = useI18n();
       const { prefixCls } = useDesign('simple-menu');
 
-      const getShowMenu = computed(() => !props.item?.meta?.hideMenu);
+      const getShowMenu = computed(() => {
+        return !props.item?.hideMenu;
+      });
+
       const getIcon = computed(() => props.item?.icon);
       const getI18nName = computed(() => t(props.item?.name));
       const getShowSubTitle = computed(() => !props.collapse || !props.parent);
@@ -91,7 +94,6 @@
 
       function menuHasChildren(menuTreeItem: Menu): boolean {
         return (
-          !menuTreeItem.meta?.hideChildrenInMenu &&
           Reflect.has(menuTreeItem, 'children') &&
           !!menuTreeItem.children &&
           menuTreeItem.children.length > 0

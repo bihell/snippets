@@ -2,15 +2,11 @@
   import { defineComponent, h, unref, computed } from 'vue';
 
   import { Popconfirm } from 'ant-design-vue';
-
   import BasicButton from './BasicButton.vue';
-
   import { propTypes } from '/@/utils/propTypes';
+  import { useI18n } from '/@/hooks/web/useI18n';
   import { extendSlots } from '/@/utils/helper/tsxHelper';
   import { omit } from 'lodash-es';
-
-  import { useAttrs } from '/@/hooks/core/useAttrs';
-  import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
     name: 'PopButton',
@@ -22,9 +18,8 @@
       okText: propTypes.string,
       cancelText: propTypes.string,
     },
-    setup(props, { slots }) {
+    setup(props, { slots, attrs }) {
       const { t } = useI18n();
-      const attrs = useAttrs();
 
       const getBindValues = computed(() => {
         const popValues = Object.assign(
@@ -36,11 +31,9 @@
         );
         return popValues;
       });
-
       return () => {
         const values = omit(unref(getBindValues), 'icon');
         const Button = h(BasicButton, values, extendSlots(slots));
-
         if (!props.enable) {
           return Button;
         }

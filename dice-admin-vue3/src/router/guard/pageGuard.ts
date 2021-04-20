@@ -1,5 +1,5 @@
 import type { Router } from 'vue-router';
-import { setRouteChange } from '/@/logics/mitt/routeChange';
+import { setLastChangeTab } from '/@/logics/mitt/tabChange';
 
 export function createPageGuard(router: Router) {
   const loadedPageMap = new Map<string, boolean>();
@@ -7,7 +7,7 @@ export function createPageGuard(router: Router) {
   router.beforeEach(async (to) => {
     to.meta.loaded = !!loadedPageMap.get(to.path);
     // Notify routing changes
-    setRouteChange(to);
+    setLastChangeTab(to);
 
     return true;
   });

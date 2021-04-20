@@ -24,6 +24,7 @@
   import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
   import { ScrollContainer } from '/@/components/Container';
 
+  // import { useElResize } from '/@/hooks/event/useElResize';
   import { propTypes } from '/@/utils/propTypes';
   import { createModalContext } from '../hooks/useModalContext';
 
@@ -54,7 +55,7 @@
 
       let stopElResizeFn: Fn = () => {};
 
-      useWindowSizeFn(setModalHeight.bind(null, false));
+      useWindowSizeFn(setModalHeight);
 
       createModalContext({
         redoModalHeight: setModalHeight,
@@ -96,21 +97,12 @@
         stopElResizeFn && stopElResizeFn();
       });
 
-      async function scrollTop() {
-        nextTick(() => {
-          const wrapperRefDom = unref(wrapperRef);
-          if (!wrapperRefDom) return;
-          (wrapperRefDom as any)?.scrollTo?.(0);
-        });
-      }
-
       async function setModalHeight() {
         // 解决在弹窗关闭的时候监听还存在,导致再次打开弹窗没有高度
         // 加上这个,就必须在使用的时候传递父级的visible
         if (!props.visible) return;
         const wrapperRefDom = unref(wrapperRef);
         if (!wrapperRefDom) return;
-
         const bodyDom = wrapperRefDom.$el.parentElement;
         if (!bodyDom) return;
         bodyDom.style.padding = '0';
@@ -158,7 +150,7 @@
         }
       }
 
-      return { wrapperRef, spinRef, spinStyle, scrollTop, setModalHeight };
+      return { wrapperRef, spinRef, spinStyle };
     },
   });
 </script>

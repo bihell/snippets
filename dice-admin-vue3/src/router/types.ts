@@ -1,12 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { RoleEnum } from '/@/enums/roleEnum';
 
-import { defineComponent } from 'vue';
-
-export type Component<T extends any = any> =
-  | ReturnType<typeof defineComponent>
-  | (() => Promise<typeof import('*.vue')>)
-  | (() => Promise<T>);
+import type { Component } from '/@/components/types';
 
 export interface RouteMeta {
   // title
@@ -30,9 +25,6 @@ export interface RouteMeta {
   // Whether the route has been dynamically added
   hideBreadcrumb?: boolean;
 
-  // Hide submenu
-  hideChildrenInMenu?: boolean;
-
   // Carrying parameters
   carryParam?: boolean;
 
@@ -47,8 +39,6 @@ export interface RouteMeta {
 
   // Never show in menu
   hideMenu?: boolean;
-
-  isLink?: boolean;
 }
 
 // @ts-ignore
@@ -93,6 +83,13 @@ export interface MenuModule {
   orderNo?: number;
   menu: Menu;
 }
+
+// interface RouteModule {
+//   layout: AppRouteRecordRaw;
+//   routes: AppRouteRecordRaw[];
+//   children?: AppRouteRecordRaw[];
+//   component?: Component;
+// }
 
 // export type AppRouteModule = RouteModule | AppRouteRecordRaw;
 export type AppRouteModule = AppRouteRecordRaw;

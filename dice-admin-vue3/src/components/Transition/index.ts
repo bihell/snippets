@@ -1,8 +1,10 @@
 import { createSimpleTransition, createJavascriptTransition } from './src/CreateTransition';
+import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
 import ExpandTransitionGenerator from './src/ExpandTransition';
 
-export { default as CollapseTransition } from './src/CollapseTransition.vue';
+export { default as CollapseTransition } from './src/CollapseTransition';
+// export { default as CollapseTransition } from './src/CollapseTransition';
 
 export const FadeTransition = createSimpleTransition('fade-transition');
 export const ScaleTransition = createSimpleTransition('scale-transition');
@@ -16,12 +18,15 @@ export const SlideXReverseTransition = createSimpleTransition('slide-x-reverse-t
 export const ScrollXReverseTransition = createSimpleTransition('scroll-x-reverse-transition');
 export const ScaleRotateTransition = createSimpleTransition('scale-rotate-transition');
 
+// Javascript transitions
+// export const ExpandTransition = createJavascriptTransition(
+//   'expand-transition',
+//   ExpandTransitionGenerator()
+// );
+
 export const ExpandXTransition = createJavascriptTransition(
   'expand-x-transition',
   ExpandTransitionGenerator('', true)
 );
 
-export const ExpandTransition = createJavascriptTransition(
-  'expand-transition',
-  ExpandTransitionGenerator('')
-);
+export const ExpandTransition = createAsyncComponent(() => import('./src/ExpandTransition.vue'));

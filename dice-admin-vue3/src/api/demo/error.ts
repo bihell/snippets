@@ -8,5 +8,9 @@ enum Api {
 /**
  * @description: Trigger ajax error
  */
-
-export const fireErrorApi = () => defHttp.get({ url: Api.Error });
+export function fireErrorApi() {
+  return defHttp.request({
+    url: Api.Error,
+    method: 'GET',
+  });
+}

@@ -1,5 +1,6 @@
-import BasicTree from './src/index.vue';
+import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
-export { BasicTree };
+export const BasicTree = createAsyncComponent(() => import('./src/BasicTree'));
+
 export type { ContextMenuItem } from '/@/hooks/web/useContextMenu';
 export * from './src/types';

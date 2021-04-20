@@ -4,7 +4,7 @@ import type { LoadingProps } from './types';
 import { createVNode, render, reactive, h } from 'vue';
 import Loading from './index.vue';
 
-export function createLoading(props?: Partial<LoadingProps>, target?: HTMLElement, wait = false) {
+export function createLoading(props?: Partial<LoadingProps>, target?: HTMLElement) {
   let vm: Nullable<VNode> = null;
   const data = reactive({
     tip: '',
@@ -13,21 +13,16 @@ export function createLoading(props?: Partial<LoadingProps>, target?: HTMLElemen
   });
 
   const LoadingWrap = defineComponent({
-    render() {
-      return h(Loading, { ...data });
+    setup() {
+      return () => {
+        return h(Loading, { ...data });
+      };
     },
   });
 
   vm = createVNode(LoadingWrap);
 
-  // TODO fix https://github.com/anncwb/vue-vben-admin/issues/438
-  if (wait) {
-    setTimeout(() => {
-      render(vm, document.createElement('div'));
-    }, 0);
-  } else {
-    render(vm, document.createElement('div'));
-  }
+  render(vm, document.createElement('div'));
 
   function close() {
     if (vm?.el && vm.el.parentNode) {

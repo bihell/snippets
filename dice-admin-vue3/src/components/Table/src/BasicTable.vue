@@ -1,5 +1,14 @@
 <template>
-  <div ref="wrapRef" :class="getWrapperClass">
+  <div
+    ref="wrapRef"
+    :class="[
+      prefixCls,
+      {
+        [`${prefixCls}-form-container`]: getBindValues.useSearchForm,
+        [`${prefixCls}--inset`]: getBindValues.inset,
+      },
+    ]"
+  >
     <BasicForm
       submitOnReset
       v-bind="getFormProps"
@@ -22,10 +31,9 @@
       v-show="getEmptyDataIsShowTable"
       @change="handleTableChange"
     >
-      <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
+      <template #[item]="data" v-for="item in Object.keys($slots)">
         <slot :name="item" v-bind="data"></slot>
       </template>
-
       <template #[`header-${column.dataIndex}`] v-for="column in columns" :key="column.dataIndex">
         <HeaderCell :column="column" />
       </template>
@@ -35,11 +43,11 @@
 <script lang="ts">
   import type { BasicTableProps, TableActionType, SizeType } from './types/table';
 
-  import { defineComponent, ref, computed, unref, toRaw } from 'vue';
+  import { defineComponent, ref, computed, unref } from 'vue';
   import { Table } from 'ant-design-vue';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import expandIcon from './components/ExpandIcon';
-  import HeaderCell from './components/HeaderCell.vue';
+
+  import { omit } from 'lodash-es';
 
   import { usePagination } from './hooks/usePagination';
   import { useColumns } from './hooks/useColumns';
@@ -50,21 +58,21 @@
   import { useCustomRow } from './hooks/useCustomRow';
   import { useTableStyle } from './hooks/useTableStyle';
   import { useTableHeader } from './hooks/useTableHeader';
-  import { useTableExpand } from './hooks/useTableExpand';
   import { createTableContext } from './hooks/useTableContext';
   import { useTableFooter } from './hooks/useTableFooter';
   import { useTableForm } from './hooks/useTableForm';
   import { useExpose } from '/@/hooks/core/useExpose';
   import { useDesign } from '/@/hooks/web/useDesign';
 
-  import { omit } from 'lodash-es';
   import { basicProps } from './props';
+  import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
+  import './style/index.less';
   export default defineComponent({
     components: {
       Table,
       BasicForm,
-      HeaderCell,
+      HeaderCell: createAsyncComponent(() => import('./components/HeaderCell.vue')),
     },
     props: basicProps,
     emits: [
@@ -80,12 +88,9 @@
       'edit-end',
       'edit-cancel',
       'edit-row-end',
-      'edit-change',
-      'expanded-rows-change',
     ],
     setup(props, { attrs, emit, slots }) {
       const tableElRef = ref<ComponentRef>(null);
-      const tableData = ref<Recordable[]>([]);
 
       const wrapRef = ref<Nullable<HTMLDivElement>>(null);
       const innerPropsRef = ref<Partial<BasicTableProps>>();
@@ -114,7 +119,7 @@
         getSelectRowKeys,
         deleteSelectRowByKey,
         setSelectedRowKeys,
-      } = useRowSelection(getProps, tableData, emit);
+      } = useRowSelection(getProps, emit);
 
       const {
         handleTableChange,
@@ -129,7 +134,6 @@
       } = useDataSource(
         getProps,
         {
-          tableData,
           getPaginationInfo,
           setLoading,
           setPagination,
@@ -152,8 +156,7 @@
         getProps,
         tableElRef,
         getColumnsRef,
-        getRowSelectionRef,
-        getDataSourceRef
+        getRowSelectionRef
       );
 
       const { customRow } = useCustomRow(getProps, {
@@ -165,8 +168,6 @@
       });
 
       const { getRowClassName } = useTableStyle(getProps, prefixCls);
-
-      const { getExpandOption, expandAll, collapseAll } = useTableExpand(getProps, tableData, emit);
 
       const { getHeaderProps } = useTableHeader(getProps, slots);
 
@@ -185,13 +186,10 @@
       } = useTableForm(getProps, slots, fetch);
 
       const getBindValues = computed(() => {
-        const dataSource = unref(getDataSourceRef);
         let propsData: Recordable = {
           size: 'middle',
-          // ...(dataSource.length === 0 ? { getPopupContainer: () => document.body } : {}),
           ...attrs,
           customRow,
-          expandIcon: expandIcon(),
           ...unref(getProps),
           ...unref(getHeaderProps),
           scroll: unref(getScrollRef),
@@ -199,30 +197,15 @@
           tableLayout: 'fixed',
           rowSelection: unref(getRowSelectionRef),
           rowKey: unref(getRowKey),
-          columns: toRaw(unref(getViewColumns)),
-          pagination: toRaw(unref(getPaginationInfo)),
-          dataSource,
+          columns: unref(getViewColumns),
+          pagination: unref(getPaginationInfo),
+          dataSource: unref(getDataSourceRef),
           footer: unref(getFooterProps),
-          ...unref(getExpandOption),
         };
         if (slots.expandedRowRender) {
           propsData = omit(propsData, 'scroll');
         }
-
-        propsData = omit(propsData, 'class');
         return propsData;
-      });
-
-      const getWrapperClass = computed(() => {
-        const values = unref(getBindValues);
-        return [
-          prefixCls,
-          attrs.class,
-          {
-            [`${prefixCls}-form-container`]: values.useSearchForm,
-            [`${prefixCls}--inset`]: values.inset,
-          },
-        ];
       });
 
       const getEmptyDataIsShowTable = computed(() => {
@@ -260,8 +243,6 @@
         setShowPagination,
         getShowPagination,
         setCacheColumnsByField,
-        expandAll,
-        collapseAll,
         getSize: () => {
           return unref(getBindValues).size as SizeType;
         },
@@ -287,99 +268,9 @@
         getFormProps,
         replaceFormSlotKey,
         getFormSlotKeys,
-        getWrapperClass,
+        prefixCls,
         columns: getViewColumns,
       };
     },
   });
 </script>
-<style lang="less">
-  @border-color: #cecece4d;
-
-  @prefix-cls: ~'@{namespace}-basic-table';
-
-  .@{prefix-cls} {
-    &-row__striped {
-      td {
-        background-color: content-background;
-      }
-    }
-
-    &-form-container {
-      padding: 16px;
-
-      .ant-form {
-        padding: 12px 10px 6px 10px;
-        margin-bottom: 16px;
-        background-color: @component-background;
-        border-radius: 4px;
-      }
-    }
-
-    &--inset {
-      .ant-table-wrapper {
-        padding: 0;
-      }
-    }
-
-    .ant-tag {
-      margin-right: 0;
-    }
-
-    .ant-table-wrapper {
-      padding: 6px;
-      background-color: @component-background;
-      border-radius: 2px;
-
-      .ant-table-title {
-        padding: 0 0 8px 0 !important;
-      }
-
-      .ant-table.ant-table-bordered .ant-table-title {
-        border: none !important;
-      }
-    }
-
-    .ant-table {
-      width: 100%;
-      overflow-x: hidden;
-
-      &-title {
-        display: flex;
-        padding: 8px 6px;
-        border-bottom: none;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .ant-table-tbody > tr.ant-table-row-selected td {
-        background-color: fade(@primary-color, 8%) !important;
-      }
-    }
-
-    .ant-pagination {
-      margin: 10px 0 0 0;
-    }
-
-    .ant-table-footer {
-      padding: 0;
-
-      .ant-table-wrapper {
-        padding: 0;
-      }
-
-      table {
-        border: none !important;
-      }
-
-      .ant-table-body {
-        overflow-x: hidden !important;
-        overflow-y: scroll !important;
-      }
-
-      td {
-        padding: 12px 8px;
-      }
-    }
-  }
-</style>

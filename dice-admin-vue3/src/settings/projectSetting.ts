@@ -1,26 +1,15 @@
-import type { ProjectConfig } from '/#/config';
+import type { ProjectConfig } from '/@/types/config';
+
 import { MenuTypeEnum, MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '/@/enums/menuEnum';
 import { CacheTypeEnum } from '/@/enums/cacheEnum';
-import {
-  ContentEnum,
-  PermissionModeEnum,
-  ThemeEnum,
-  RouterTransitionEnum,
-  SettingButtonPositionEnum,
-} from '/@/enums/appEnum';
-import { SIDE_BAR_BG_COLOR_LIST, HEADER_PRESET_BG_COLOR_LIST } from './designSetting';
-import { primaryColor } from '../../build/config/themeConfig';
+import { ContentEnum, PermissionModeEnum, ThemeEnum, RouterTransitionEnum } from '/@/enums/appEnum';
+import { primaryColor, themeMode } from '../../build/config/themeConfig';
+import { isProdMode } from '/@/utils/env';
 
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {
   // Whether to show the configuration button
   showSettingButton: true,
-
-  // Whether to show the theme switch button
-  showDarkModeToggle: true,
-
-  // `Settings` button position
-  settingButtonPosition: SettingButtonPositionEnum.AUTO,
 
   // Permission mode
   permissionMode: PermissionModeEnum.ROLE,
@@ -29,7 +18,10 @@ const setting: ProjectConfig = {
   permissionCacheType: CacheTypeEnum.LOCAL,
 
   // color
+  // TODO Theme color
   themeColor: primaryColor,
+  // TODO dark theme
+  themeMode: themeMode,
 
   // Website gray mode, open for possible mourning dates
   grayMode: false,
@@ -49,10 +41,21 @@ const setting: ProjectConfig = {
   // Whether to show footer
   showFooter: false,
 
+  // locale setting
+  locale: {
+    show: true,
+    // Locale
+    lang: 'zh_CN',
+    // Default locale
+    fallback: 'zh_CN',
+    // available Locales
+    availableLocales: ['zh_CN', 'en'],
+  },
+
   // Header configuration
   headerSetting: {
     // header bg color
-    bgColor: HEADER_PRESET_BG_COLOR_LIST[0],
+    bgColor: '#ffffff',
     // Fixed at the top
     fixed: true,
     // Whether to show top
@@ -61,6 +64,7 @@ const setting: ProjectConfig = {
     theme: ThemeEnum.LIGHT,
     // Whether to enable the lock screen function
     useLockPage: true,
+
     // Whether to show the full screen button
     showFullScreen: true,
     // Whether to show the document button
@@ -74,7 +78,7 @@ const setting: ProjectConfig = {
   // Menu configuration
   menuSetting: {
     // sidebar menu bg color
-    bgColor: SIDE_BAR_BG_COLOR_LIST[0],
+    bgColor: '#001529',
     //  Whether to fix the left menu
     fixed: true,
     // Menu collapse
@@ -114,13 +118,13 @@ const setting: ProjectConfig = {
 
   // Multi-label
   multiTabsSetting: {
-    cache: false,
     // Turn on
     show: true,
     // Is it possible to drag and drop sorting tabs
     canDrag: true,
     // Turn on quick actions
     showQuick: true,
+
     // Whether to show the refresh button
     showRedo: true,
     // Whether to show the collapse button
@@ -157,7 +161,7 @@ const setting: ProjectConfig = {
   showBreadCrumbIcon: false,
 
   // Use error-handler-plugin
-  useErrorHandle: false,
+  useErrorHandle: isProdMode(),
 
   // Whether to open back to top
   useOpenBackTop: true,

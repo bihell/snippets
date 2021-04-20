@@ -7,5 +7,4 @@ export default {
   ruleForm: 'Form validation',
   dynamicForm: 'Dynamic',
   customerForm: 'Custom',
-  appendForm: 'Append',
 };

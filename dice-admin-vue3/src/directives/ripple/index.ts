@@ -1,4 +1,4 @@
-import type { Directive } from 'vue';
+import { Directive } from 'vue';
 import './index.less';
 export interface RippleOptions {
   event: string;
@@ -181,7 +181,7 @@ function rippler({
   };
 }
 
-function setProps(modifiers: Recordable, props: Recordable) {
+function setProps(modifiers: Hash<any>, props: Recordable) {
   modifiers.forEach((item: Recordable) => {
     if (isNaN(Number(item))) props.event = item;
     else props.transition = item;

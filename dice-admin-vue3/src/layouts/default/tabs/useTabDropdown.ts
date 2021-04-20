@@ -1,28 +1,29 @@
 import type { TabContentProps } from './types';
 import type { DropMenu } from '/@/components/Dropdown';
-import type { ComputedRef } from 'vue';
 
 import { computed, unref, reactive } from 'vue';
-import { MenuEventEnum } from './types';
-import { useMultipleTabStore } from '/@/store/modules/multipleTab';
-import { RouteLocationNormalized, useRouter } from 'vue-router';
+import { TabContentEnum, MenuEventEnum } from './types';
+import { tabStore } from '/@/store/modules/tab';
+import router from '/@/router';
+import { RouteLocationNormalized } from 'vue-router';
 import { useTabs } from '/@/hooks/web/useTabs';
 import { useI18n } from '/@/hooks/web/useI18n';
 
-export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: ComputedRef<boolean>) {
+const { t } = useI18n();
+
+export function useTabDropdown(tabContentProps: TabContentProps) {
   const state = reactive({
     current: null as Nullable<RouteLocationNormalized>,
     currentIndex: 0,
   });
 
-  const { t } = useI18n();
-  const tabStore = useMultipleTabStore();
-  const { currentRoute } = useRouter();
-  const { refreshPage, closeAll, close, closeLeft, closeOther, closeRight } = useTabs();
+  const { currentRoute } = router;
 
-  const getTargetTab = computed(
+  const isTabs = computed(() => tabContentProps.type === TabContentEnum.TAB_TYPE);
+
+  const getCurrentTab = computed(
     (): RouteLocationNormalized => {
-      return unref(getIsTabs) ? tabContentProps.tabItem : unref(currentRoute);
+      return unref(isTabs) ? tabContentProps.tabItem : unref(currentRoute);
     }
   );
 
@@ -30,10 +31,8 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
    * @description: drop-down list
    */
   const getDropMenuList = computed(() => {
-    if (!unref(getTargetTab)) {
-      return;
-    }
-    const { meta } = unref(getTargetTab);
+    if (!unref(getCurrentTab)) return;
+    const { meta } = unref(getCurrentTab);
     const { path } = unref(currentRoute);
 
     // Refresh button
@@ -43,11 +42,11 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
     // Close left
     const closeLeftDisabled = index === 0;
 
-    const disabled = tabStore.getTabList.length === 1;
+    const disabled = tabStore.getTabsState.length === 1;
 
     // Close right
     const closeRightDisabled =
-      index === tabStore.getTabList.length - 1 && tabStore.getLastDragEndIndex >= 0;
+      index === tabStore.getTabsState.length - 1 && tabStore.getLastDragEndIndexState >= 0;
     const dropMenuList: DropMenu[] = [
       {
         icon: 'ion:reload-sharp',
@@ -59,7 +58,7 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
         icon: 'clarity:close-line',
         event: MenuEventEnum.CLOSE_CURRENT,
         text: t('layout.multipleTab.close'),
-        disabled: !!meta?.affix || disabled,
+        disabled: meta?.affix || disabled,
         divider: true,
       },
       {
@@ -93,13 +92,15 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
     return dropMenuList;
   });
 
+  const getTrigger = computed(() => {
+    return unref(isTabs) ? ['contextmenu'] : ['click'];
+  });
+
   function handleContextMenu(tabItem: RouteLocationNormalized) {
     return (e: Event) => {
-      if (!tabItem) {
-        return;
-      }
+      if (!tabItem) return;
       e?.preventDefault();
-      const index = tabStore.getTabList.findIndex((tab) => tab.path === tabItem.path);
+      const index = tabStore.getTabsState.findIndex((tab) => tab.path === tabItem.path);
       state.current = tabItem;
       state.currentIndex = index;
     };
@@ -107,8 +108,12 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
 
   // Handle right click event
   function handleMenuEvent(menu: DropMenu): void {
+    const { refreshPage, closeAll, close, closeLeft, closeOther, closeRight } = useTabs();
     const { event } = menu;
     switch (event) {
+      case MenuEventEnum.SCALE:
+        scaleScreen();
+        break;
       case MenuEventEnum.REFRESH_PAGE:
         // refresh page
         refreshPage();
@@ -135,5 +140,5 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
         break;
     }
   }
-  return { getDropMenuList, handleMenuEvent, handleContextMenu };
+  return { getDropMenuList, handleMenuEvent, handleContextMenu, getTrigger, isTabs };
 }

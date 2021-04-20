@@ -47,7 +47,7 @@
     nextTick,
   } from 'vue';
   import { Form, Row } from 'ant-design-vue';
-  import FormItem from './components/FormItem.vue';
+  import FormItem from './components/FormItem';
   import FormAction from './components/FormAction.vue';
 
   import { dateItemType } from './helper';
@@ -285,16 +285,9 @@
           display: flex;
         }
 
-        .ant-form-item-control {
-          margin-top: 4px;
-        }
-
         .suffix {
-          display: inline-flex;
+          display: inline-block;
           padding-left: 6px;
-          margin-top: 1px;
-          line-height: 1;
-          align-items: center;
         }
       }
     }

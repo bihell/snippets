@@ -11,7 +11,9 @@ export function useLoading(props: ComputedRef<BasicTableProps>) {
     }
   );
 
-  const getLoading = computed(() => unref(loadingRef));
+  const getLoading = computed(() => {
+    return unref(loadingRef);
+  });
 
   function setLoading(loading: boolean) {
     loadingRef.value = loading;

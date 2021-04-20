@@ -25,6 +25,4 @@ export default {
   list: 'List page',
   listCard: 'Card list',
   basic: 'Basic list',
-  listBasic: 'Basic list',
-  listSearch: 'Search list',
 };

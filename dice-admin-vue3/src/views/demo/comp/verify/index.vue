@@ -17,7 +17,7 @@
         text="拖动以进行校验"
         successText="校验成功"
         :barStyle="{
-          backgroundColor: '#018ffb',
+          background: '#018ffb',
         }"
       />
       <a-button type="primary" class="ml-2" @click="handleBtnClick(el3)"> 还原 </a-button>
@@ -92,6 +92,6 @@
 </script>
 <style lang="less" scoped>
   .bg-gray-700 {
-    background-color: #4a5568;
+    background: #4a5568;
   }
 </style>

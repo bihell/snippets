@@ -13,10 +13,7 @@
           :dropDownActions="[
             {
               label: '启用',
-              popConfirm: {
-                title: '是否启用？',
-                confirm: handleOpen.bind(null, record),
-              },
+              onClick: handleOpen.bind(null, record),
             },
           ]"
         />

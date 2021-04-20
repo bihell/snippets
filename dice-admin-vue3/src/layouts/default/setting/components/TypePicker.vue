@@ -74,8 +74,7 @@
         content: '';
       }
 
-      &--sidebar,
-      &--light {
+      &--sidebar {
         &::before {
           top: 0;
           left: 0;
@@ -125,10 +124,6 @@
         }
       }
 
-      &--dark {
-        background-color: #273352;
-      }
-
       &--mix-sidebar {
         &::before {
           top: 0;
@@ -156,6 +151,17 @@
           background-color: #fff;
         }
       }
+
+      // &::after {
+      //   position: absolute;
+      //   top: 50%;
+      //   left: 50%;
+      //   width: 0;
+      //   height: 0;
+      //   content: '';
+      //   opacity: 0;
+      //   transition: all 0.3s;
+      // }
 
       &:hover,
       &--active {

@@ -18,7 +18,6 @@
     getCurrentInstance,
     provide,
   } from 'vue';
-
   import { useDesign } from '/@/hooks/web/useDesign';
   import { propTypes } from '/@/utils/propTypes';
   import { createSimpleRootMenuContext } from './useSimpleMenuContext';
@@ -30,7 +29,7 @@
       activeName: propTypes.oneOfType([propTypes.string, propTypes.number]),
       openNames: {
         type: Array as PropType<string[]>,
-        default: () => [],
+        default: [],
       },
       accordion: propTypes.bool.def(true),
       width: propTypes.string.def('100%'),
@@ -39,7 +38,7 @@
       collapse: propTypes.bool.def(true),
       activeSubMenuNames: {
         type: Array as PropType<(string | number)[]>,
-        default: () => [],
+        default: [],
       },
     },
     emits: ['select', 'open-change'],
@@ -137,15 +136,6 @@
             props.collapse && removeAll();
           });
           emit('select', name);
-        });
-
-        rootMenuEmitter.on('open-name-change', ({ name, opened }) => {
-          if (opened && !openedNames.value.includes(name)) {
-            openedNames.value.push(name);
-          } else if (!opened) {
-            const index = openedNames.value.findIndex((item) => item === name);
-            index !== -1 && openedNames.value.splice(index, 1);
-          }
         });
       });
 

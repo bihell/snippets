@@ -2,7 +2,6 @@ export default {
   feat: 'Page Function',
   icon: 'Icon',
   tabs: 'Tabs',
-  print: 'Print',
   contextMenu: 'Context Menu',
   download: 'Download',
   clickOutSide: 'ClickOutSide',
@@ -16,8 +15,6 @@ export default {
   tab: 'Tab with parameters',
   tab1: 'Tab with parameter 1',
   tab2: 'Tab with parameter 2',
-
-  ws: 'Websocket test',
 
   breadcrumb: 'Breadcrumbs',
   breadcrumbFlat: 'Flat Mode',

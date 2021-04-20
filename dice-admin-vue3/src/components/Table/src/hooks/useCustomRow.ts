@@ -45,6 +45,7 @@ export function useCustomRow(
         if (!key) return;
 
         const isCheckbox = rowSelection.type === 'checkbox';
+
         if (isCheckbox) {
           if (!keys.includes(key)) {
             setSelectedRowKeys([...keys, key]);

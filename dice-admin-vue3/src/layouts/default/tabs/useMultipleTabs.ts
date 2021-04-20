@@ -1,17 +1,14 @@
 import { toRaw, ref, nextTick } from 'vue';
-import type { RouteLocationNormalized } from 'vue-router';
+import { RouteLocationNormalized } from 'vue-router';
+import { useProjectSetting } from '/@/hooks/setting';
 import { useDesign } from '/@/hooks/web/useDesign';
 import { useSortable } from '/@/hooks/web/useSortable';
-import { useMultipleTabStore } from '/@/store/modules/multipleTab';
+import router from '/@/router';
+import { tabStore } from '/@/store/modules/tab';
 import { isNullAndUnDef } from '/@/utils/is';
-import projectSetting from '/@/settings/projectSetting';
-import { useRouter } from 'vue-router';
 
 export function initAffixTabs(): string[] {
   const affixList = ref<RouteLocationNormalized[]>([]);
-
-  const tabStore = useMultipleTabStore();
-  const router = useRouter();
   /**
    * @description: Filter all fixed routes
    */
@@ -33,7 +30,7 @@ export function initAffixTabs(): string[] {
     const affixTabs = filterAffixTabs((router.getRoutes() as unknown) as RouteLocationNormalized[]);
     affixList.value = affixTabs;
     for (const tab of affixTabs) {
-      tabStore.addTab(({
+      tabStore.addTabAction(({
         meta: tab.meta,
         name: tab.name,
         path: tab.path,
@@ -42,17 +39,16 @@ export function initAffixTabs(): string[] {
   }
 
   let isAddAffix = false;
-
   if (!isAddAffix) {
     addAffixTabs();
     isAddAffix = true;
   }
-  return affixList.value.map((item) => item.meta?.title).filter(Boolean) as string[];
+  return affixList.value.map((item) => item.meta?.title).filter(Boolean);
 }
 
 export function useTabsDrag(affixTextList: string[]) {
-  const tabStore = useMultipleTabStore();
-  const { multiTabsSetting } = projectSetting;
+  const { multiTabsSetting } = useProjectSetting();
+
   const { prefixCls } = useDesign('multiple-tabs');
   nextTick(() => {
     if (!multiTabsSetting.canDrag) return;
@@ -70,7 +66,7 @@ export function useTabsDrag(affixTextList: string[]) {
           return;
         }
 
-        tabStore.sortTabs(oldIndex, newIndex);
+        tabStore.commitSortTabs({ oldIndex, newIndex });
       },
     });
     initSortable();

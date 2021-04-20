@@ -1,223 +1,237 @@
 <template>
-  <div :class="prefixCls" class="relative w-full h-full px-4">
-    <AppLocalePicker
-      class="absolute top-4 right-4 enter-x text-white xl:text-gray-600"
-      :showText="false"
-    />
-    <AppDarkModeToggle class="absolute top-3 right-7 enter-x" />
+  <div class="login">
+    <div class="login-mask"></div>
+    <div class="login-form-wrap">
+      <div class="mx-6 login-form">
+        <AppLocalePicker v-if="showLocale" class="login-form__locale" />
+        <div class="px-2 py-10 login-form__content">
+          <header>
+            <img :src="logo" class="mr-4" />
+            <h1>{{ title }}</h1>
+          </header>
 
-    <span class="-enter-x xl:hidden">
-      <AppLogo :alwaysShowTitle="true" />
-    </span>
+          <a-form class="login-form__main" :model="formData" :rules="formRules" ref="formRef">
+            <a-form-item name="account">
+              <a-input size="large" v-model:value="formData.account" placeholder="username: vben" />
+            </a-form-item>
+            <a-form-item name="password">
+              <a-input-password
+                size="large"
+                visibilityToggle
+                v-model:value="formData.password"
+                placeholder="password: 123456"
+              />
+            </a-form-item>
 
-    <div class="container relative h-full py-2 mx-auto sm:px-10">
-      <div class="flex h-full">
-        <div class="hidden xl:flex xl:flex-col xl:w-6/12 min-h-full mr-4 pl-4">
-          <AppLogo class="-enter-x" />
-          <div class="my-auto">
-            <img
-              :alt="title"
-              src="../../../assets/svg/login-box-bg.svg"
-              class="w-1/2 -mt-16 -enter-x"
-            />
-            <div class="mt-10 font-medium text-white -enter-x">
-              <span class="mt-4 text-3xl inline-block"> {{ t('sys.login.signInTitle') }}</span>
-            </div>
-            <div class="mt-5 text-md text-white font-normal dark:text-gray-500 -enter-x">
-              {{ t('sys.login.signInDesc') }}
-            </div>
-          </div>
-        </div>
-        <div class="h-full xl:h-auto flex py-5 xl:py-0 xl:my-0 w-full xl:w-6/12">
-          <div
-            :class="`${prefixCls}-form`"
-            class="my-auto mx-auto xl:ml-20 xl:bg-transparent px-5 py-8 sm:px-8 xl:p-4 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto enter-x relative"
-          >
-            <LoginForm />
-            <ForgetPasswordForm />
-            <RegisterForm />
-            <MobileForm />
-            <QrCodeForm />
-          </div>
+            <a-row>
+              <a-col :span="12">
+                <a-form-item>
+                  <!-- No logic, you need to deal with it yourself -->
+                  <a-checkbox v-model:checked="autoLogin" size="small">{{
+                    t('sys.login.autoLogin')
+                  }}</a-checkbox>
+                </a-form-item>
+              </a-col>
+              <a-col :span="12">
+                <a-form-item :style="{ 'text-align': 'right' }">
+                  <!-- No logic, you need to deal with it yourself -->
+                  <a-button type="link" size="small">
+                    {{ t('sys.login.forgetPassword') }}
+                  </a-button>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-form-item>
+              <a-button
+                type="primary"
+                size="large"
+                class="rounded-sm"
+                :block="true"
+                @click="login"
+                :loading="formState.loading"
+              >
+                {{ t('sys.login.loginButton') }}
+              </a-button>
+            </a-form-item>
+          </a-form>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, computed } from 'vue';
+  import { defineComponent, reactive, ref, unref, toRaw } from 'vue';
+  import { Checkbox, Form, Input, Row, Col } from 'ant-design-vue';
 
-  import { AppLogo } from '/@/components/Application';
-  import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
-  import LoginForm from './LoginForm.vue';
-  import ForgetPasswordForm from './ForgetPasswordForm.vue';
-  import RegisterForm from './RegisterForm.vue';
-  import MobileForm from './MobileForm.vue';
-  import QrCodeForm from './QrCodeForm.vue';
+  import { Button } from '/@/components/Button';
+  import { AppLocalePicker } from '/@/components/Application';
 
-  import { useGlobSetting } from '/@/hooks/setting';
+  import { userStore } from '/@/store/modules/user';
+
+  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useGlobSetting, useProjectSetting } from '/@/hooks/setting';
+  import logo from '/@/assets/images/logo.png';
   import { useI18n } from '/@/hooks/web/useI18n';
-  import { useDesign } from '/@/hooks/web/useDesign';
-  import { useLocaleStore } from '/@/store/modules/locale';
 
   export default defineComponent({
-    name: 'Login',
     components: {
-      AppLogo,
-      LoginForm,
-      ForgetPasswordForm,
-      RegisterForm,
-      MobileForm,
-      QrCodeForm,
+      [Checkbox.name]: Checkbox,
+      [Form.name]: Form,
+      [Form.Item.name]: Form.Item,
+      [Input.name]: Input,
+      [Input.Password.name]: Input.Password,
+      AButton: Button,
       AppLocalePicker,
-      AppDarkModeToggle,
+      [Row.name]: Row,
+      [Col.name]: Col,
     },
     setup() {
-      const globSetting = useGlobSetting();
-      const { prefixCls } = useDesign('login');
-      const { t } = useI18n();
-      const localeStore = useLocaleStore();
+      const formRef = ref<any>(null);
+      const autoLoginRef = ref(false);
 
+      const globSetting = useGlobSetting();
+      const { locale } = useProjectSetting();
+      const { notification } = useMessage();
+      const { t } = useI18n();
+
+      const formData = reactive({
+        account: 'vben',
+        password: '123456',
+      });
+
+      const formState = reactive({
+        loading: false,
+      });
+
+      const formRules = reactive({
+        account: [{ required: true, message: t('sys.login.accountPlaceholder'), trigger: 'blur' }],
+        password: [
+          { required: true, message: t('sys.login.passwordPlaceholder'), trigger: 'blur' },
+        ],
+      });
+
+      async function handleLogin() {
+        const form = unref(formRef);
+        if (!form) return;
+        formState.loading = true;
+        try {
+          const data = await form.validate();
+          const userInfo = await userStore.login(
+            toRaw({
+              password: data.password,
+              username: data.account,
+            })
+          );
+          if (userInfo) {
+            notification.success({
+              message: t('sys.login.loginSuccessTitle'),
+              description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+              duration: 3,
+            });
+          }
+        } catch (error) {
+        } finally {
+          formState.loading = false;
+        }
+      }
       return {
+        formRef,
+        formData,
+        formState,
+        formRules,
+        login: handleLogin,
+        autoLogin: autoLoginRef,
+        title: globSetting && globSetting.title,
+        logo,
         t,
-        prefixCls,
-        title: computed(() => globSetting?.title ?? ''),
-        showLocale: localeStore.getShowPicker,
+        showLocale: locale.show,
       };
     },
   });
 </script>
 <style lang="less">
-  @prefix-cls: ~'@{namespace}-login';
-  @logo-prefix-cls: ~'@{namespace}-app-logo';
-  @countdown-prefix-cls: ~'@{namespace}-countdown-input';
-  @dark-bg: #293146;
-
-  html[data-theme='dark'] {
-    .@{prefix-cls} {
-      background-color: @dark-bg;
-
-      &::before {
-        background-image: url(/@/assets/svg/login-bg-dark.svg);
-      }
-
-      .ant-input,
-      .ant-input-password {
-        background-color: #232a3b;
-      }
-
-      .ant-btn:not(.ant-btn-link):not(.ant-btn-primary) {
-        border: 1px solid #4a5569;
-      }
-
-      &-form {
-        background: transparent !important;
-      }
-
-      .app-iconify {
-        color: #fff;
-      }
-    }
+  .login-form__locale {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 1;
   }
 
-  .@{prefix-cls} {
-    overflow: hidden;
-    @media (max-width: @screen-xl) {
-      background-color: #293146;
+  .login {
+    position: relative;
+    height: 100vh;
+    background: url(../../../assets/images/login/login-bg.png) no-repeat;
+    background-size: 100% 100%;
 
-      .@{prefix-cls}-form {
-        background-color: #fff;
-      }
-    }
-
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+    &-mask {
+      display: none;
       height: 100%;
-      margin-left: -48%;
-      background-image: url(/@/assets/svg/login-bg.svg);
-      background-position: 100%;
-      background-repeat: no-repeat;
-      background-size: auto 100%;
-      content: '';
-      @media (max-width: @screen-xl) {
-        display: none;
-      }
+      background: url(../../../assets/images/login/login-in.png) no-repeat;
+      background-position: 30% 30%;
+      background-size: 80% 80%;
+
+      .respond-to(xlarge, { display: block;});
     }
 
-    .@{logo-prefix-cls} {
-      position: absolute;
-      top: 12px;
-      height: 30px;
+    &-form {
+      position: relative;
+      bottom: 60px;
+      width: 400px;
+      background: @white;
+      border: 10px solid rgba(255, 255, 255, 0.5);
+      border-width: 8px;
+      border-radius: 4px;
+      background-clip: padding-box;
+      .respond-to(xlarge, { margin: 0 120px 0 50px});
 
-      &__title {
-        font-size: 16px;
-        color: #fff;
+      &__main {
+        margin: 30px auto 0 auto !important;
       }
 
-      img {
-        width: 32px;
-      }
-    }
-
-    .container {
-      .@{logo-prefix-cls} {
+      &-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
         display: flex;
-        width: 60%;
-        height: 80px;
+        width: 100%;
+        height: 100%;
+        // height: 90%;
+        justify-content: center;
+        align-items: center;
+        .respond-to(xlarge, {
+        justify-content: flex-end;
+          });
+      }
 
-        &__title {
-          font-size: 24px;
-          color: #fff;
+      &__content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 60px 0 40px 0;
+        border: 1px solid #999;
+        border-radius: 2px;
+
+        header {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            display: inline-block;
+            width: 48px;
+          }
+
+          h1 {
+            margin-bottom: 0;
+            font-size: 24px;
+            text-align: center;
+          }
         }
 
-        img {
-          width: 48px;
+        form {
+          width: 80%;
         }
       }
-    }
-
-    &-sign-in-way {
-      .anticon {
-        font-size: 22px;
-        color: #888;
-        cursor: pointer;
-
-        &:hover {
-          color: @primary-color;
-        }
-      }
-    }
-
-    input:not([type='checkbox']) {
-      min-width: 360px;
-
-      @media (max-width: @screen-xl) {
-        min-width: 320px;
-      }
-
-      @media (max-width: @screen-lg) {
-        min-width: 260px;
-      }
-
-      @media (max-width: @screen-md) {
-        min-width: 240px;
-      }
-
-      @media (max-width: @screen-sm) {
-        min-width: 160px;
-      }
-    }
-    
-    .@{countdown-prefix-cls} input {
-      min-width: unset;
-    }
-
-    .ant-divider-inner-text {
-      font-size: 12px;
-      color: @text-color-secondary;
     }
   }
 </style>

@@ -1,17 +1,7 @@
 import type { BasicTableProps, FetchParams, SorterResult } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
 
-import {
-  ref,
-  unref,
-  ComputedRef,
-  computed,
-  onMounted,
-  watch,
-  reactive,
-  Ref,
-  watchEffect,
-} from 'vue';
+import { ref, unref, ComputedRef, computed, onMounted, watch, reactive } from 'vue';
 
 import { useTimeoutFn } from '/@/hooks/core/useTimeout';
 
@@ -27,7 +17,6 @@ interface ActionType {
   setLoading: (loading: boolean) => void;
   getFieldsValue: () => Recordable;
   clearSelectedRowKeys: () => void;
-  tableData: Ref<Recordable[]>;
 }
 
 interface SearchState {
@@ -42,7 +31,6 @@ export function useDataSource(
     setLoading,
     getFieldsValue,
     clearSelectedRowKeys,
-    tableData,
   }: ActionType,
   emit: EmitType
 ) {
@@ -52,9 +40,10 @@ export function useDataSource(
   });
   const dataSourceRef = ref<Recordable[]>([]);
 
-  watchEffect(() => {
-    tableData.value = unref(dataSourceRef);
-  });
+  // watchEffect(() => {
+  //   const { dataSource, api } = unref(propsRef);
+  //   !api && dataSource && (dataSourceRef.value = dataSource);
+  // });
 
   watch(
     () => unref(propsRef).dataSource,
@@ -150,15 +139,9 @@ export function useDataSource(
   }
 
   async function fetch(opt?: FetchParams) {
-    const {
-      api,
-      searchInfo,
-      fetchSetting,
-      beforeFetch,
-      afterFetch,
-      useSearchForm,
-      pagination,
-    } = unref(propsRef);
+    const { api, searchInfo, fetchSetting, beforeFetch, afterFetch, useSearchForm } = unref(
+      propsRef
+    );
     if (!api || !isFunction(api)) return;
     try {
       setLoading(true);
@@ -167,7 +150,7 @@ export function useDataSource(
 
       const { current = 1, pageSize = PAGE_SIZE } = unref(getPaginationInfo) as PaginationProps;
 
-      if ((isBoolean(pagination) && !pagination) || isBoolean(getPaginationInfo)) {
+      if (isBoolean(getPaginationInfo)) {
         pageParams = {};
       } else {
         pageParams[pageField] = (opt && opt.page) || current;

@@ -27,8 +27,8 @@ const demoList = (() => {
 
 export default [
   {
-    url: '/basic-api/table/getDemoList',
-    timeout: 100,
+    url: '/api/table/getDemoList',
+    timeout: 1000,
     method: 'get',
     response: ({ query }) => {
       const { page = 1, pageSize = 20 } = query;

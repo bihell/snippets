@@ -3,14 +3,12 @@ import { BasicDrawer } from '/@/components/Drawer/index';
 import { Divider } from 'ant-design-vue';
 import {
   TypePicker,
-  ThemeColorPicker,
+  ThemePicker,
   SettingFooter,
   SwitchItem,
   SelectItem,
   InputNumberItem,
 } from './components';
-
-import { AppDarkModeToggle } from '/@/components/Application';
 
 import { MenuTypeEnum, TriggerEnum } from '/@/enums/menuEnum';
 
@@ -54,7 +52,6 @@ export default defineComponent({
       getColorWeak,
       getGrayMode,
       getLockTime,
-      getShowDarkModeToggle,
       getThemeColor,
     } = useRootSetting();
 
@@ -119,7 +116,7 @@ export default defineComponent({
 
     function renderHeaderTheme() {
       return (
-        <ThemeColorPicker
+        <ThemePicker
           colorList={HEADER_PRESET_BG_COLOR_LIST}
           def={unref(getHeaderBgColor)}
           event={HandlerEnum.HEADER_THEME}
@@ -129,7 +126,7 @@ export default defineComponent({
 
     function renderSiderTheme() {
       return (
-        <ThemeColorPicker
+        <ThemePicker
           colorList={SIDE_BAR_BG_COLOR_LIST}
           def={unref(getMenuBgColor)}
           event={HandlerEnum.MENU_THEME}
@@ -139,7 +136,7 @@ export default defineComponent({
 
     function renderMainTheme() {
       return (
-        <ThemeColorPicker
+        <ThemePicker
           colorList={APP_PRESET_COLOR_LIST}
           def={unref(getThemeColor)}
           event={HandlerEnum.CHANGE_THEME_COLOR}
@@ -407,8 +404,6 @@ export default defineComponent({
         width={330}
         wrapClassName="setting-drawer"
       >
-        {unref(getShowDarkModeToggle) && <Divider>{() => t('layout.setting.darkMode')}</Divider>}
-        {unref(getShowDarkModeToggle) && <AppDarkModeToggle class="mx-auto" />}
         <Divider>{() => t('layout.setting.navMode')}</Divider>
         {renderSidebar()}
         <Divider>{() => t('layout.setting.sysTheme')}</Divider>

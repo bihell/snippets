@@ -6,15 +6,14 @@ const menu: MenuModule = {
   menu: {
     name: t('routes.demo.feat.feat'),
     path: '/feat',
+    tag: {
+      dot: true,
+    },
 
     children: [
       {
         path: 'icon',
         name: t('routes.demo.feat.icon'),
-      },
-      {
-        path: 'ws',
-        name: t('routes.demo.feat.ws'),
       },
       {
         path: 'tabs',
@@ -28,10 +27,6 @@ const menu: MenuModule = {
       {
         path: 'download',
         name: t('routes.demo.feat.download'),
-      },
-      {
-        path: 'print',
-        name: t('routes.demo.feat.print'),
       },
       {
         path: 'click-out-side',
@@ -56,6 +51,9 @@ const menu: MenuModule = {
       {
         path: 'ripple',
         name: t('routes.demo.feat.ripple'),
+        tag: {
+          content: 'new',
+        },
       },
       {
         path: 'full-screen',
@@ -91,16 +89,18 @@ const menu: MenuModule = {
       {
         name: t('routes.demo.feat.breadcrumb'),
         path: 'breadcrumb',
-
+        tag: {
+          content: 'new',
+        },
         children: [
-          // {
-          //   path: 'flat',
-          //   name: t('routes.demo.feat.breadcrumbFlat'),
-          // },
-          // {
-          //   path: 'flatDetail',
-          //   name: t('routes.demo.feat.breadcrumbFlatDetail'),
-          // },
+          {
+            path: 'flat',
+            name: t('routes.demo.feat.breadcrumbFlat'),
+          },
+          {
+            path: 'flatDetail',
+            name: t('routes.demo.feat.breadcrumbFlatDetail'),
+          },
           {
             path: 'children',
             name: t('routes.demo.feat.breadcrumbChildrenDetail'),

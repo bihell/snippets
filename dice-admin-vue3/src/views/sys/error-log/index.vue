@@ -1,9 +1,9 @@
 <template>
   <div class="p-4">
-    <template v-for="src in imgList" :key="src">
+    <template v-for="src in imgListRef" :key="src">
       <img :src="src" v-show="false" />
     </template>
-    <DetailModal :info="rowInfo" @register="registerModal" />
+    <DetailModal :info="rowInfoRef" @register="registerModal" />
     <BasicTable @register="register" class="error-handle-table">
       <template #toolbar>
         <a-button @click="fireVueError" type="primary">
@@ -28,8 +28,6 @@
 </template>
 
 <script lang="ts">
-  import type { ErrorLogInfo } from '/#/store';
-
   import { defineComponent, watch, ref, nextTick } from 'vue';
 
   import DetailModal from './DetailModal.vue';
@@ -39,23 +37,24 @@
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useI18n } from '/@/hooks/web/useI18n';
 
-  import { useErrorLogStore } from '/@/store/modules/errorLog';
+  import { errorStore, ErrorInfo } from '/@/store/modules/error';
 
   import { fireErrorApi } from '/@/api/demo/error';
 
   import { getColumns } from './data';
 
   import { cloneDeep } from 'lodash-es';
+  import { isDevMode } from '/@/utils/env';
 
   export default defineComponent({
     name: 'ErrorHandler',
     components: { DetailModal, BasicTable, TableAction },
     setup() {
-      const rowInfo = ref<ErrorLogInfo>();
-      const imgList = ref<string[]>([]);
+      const rowInfoRef = ref<ErrorInfo>();
+      const imgListRef = ref<string[]>([]);
 
       const { t } = useI18n();
-      const errorLogStore = useErrorLogStore();
+
       const [register, { setTableData }] = useTable({
         title: t('sys.errorLog.tableTitle'),
         columns: getColumns(),
@@ -69,7 +68,7 @@
       const [registerModal, { openModal }] = useModal();
 
       watch(
-        () => errorLogStore.getErrorLogInfoList,
+        () => errorStore.getErrorInfoState,
         (list) => {
           nextTick(() => {
             setTableData(cloneDeep(list));
@@ -80,12 +79,12 @@
         }
       );
       const { createMessage } = useMessage();
-      if (import.meta.env.DEV) {
+      if (isDevMode()) {
         createMessage.info(t('sys.errorLog.enableMessage'));
       }
       // 查看详情
-      function handleDetail(row: ErrorLogInfo) {
-        rowInfo.value = row;
+      function handleDetail(row: ErrorInfo) {
+        rowInfoRef.value = row;
         openModal(true);
       }
 
@@ -94,7 +93,7 @@
       }
 
       function fireResourceError() {
-        imgList.value.push(`${new Date().getTime()}.png`);
+        imgListRef.value.push(`${new Date().getTime()}.png`);
       }
 
       async function fireAjaxError() {
@@ -108,8 +107,8 @@
         fireVueError,
         fireResourceError,
         fireAjaxError,
-        imgList,
-        rowInfo,
+        imgListRef,
+        rowInfoRef,
         t,
       };
     },

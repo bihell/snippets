@@ -3,9 +3,11 @@
 -->
 <script lang="ts">
   import type { PropType } from 'vue';
-  import { defineComponent } from 'vue';
+  import { defineComponent, unref } from 'vue';
 
+  import { PermissionModeEnum } from '/@/enums/appEnum';
   import { RoleEnum } from '/@/enums/roleEnum';
+  import { useRootSetting } from '/@/hooks/setting/useRootSetting';
 
   import { usePermission } from '/@/hooks/web/usePermission';
 
@@ -26,12 +28,23 @@
       },
     },
     setup(props, { slots }) {
+      const { getPermissionMode } = useRootSetting();
       const { hasPermission } = usePermission();
 
       /**
        * Render role button
        */
-      function renderAuth() {
+      function renderRoleAuth() {
+        const { value } = props;
+        if (!value) {
+          return getSlot(slots);
+        }
+        return hasPermission(value) ? getSlot(slots) : null;
+      }
+
+      //  Render coding button
+      // Here only judge whether it is included, the specific implementation can be written according to the project logic
+      function renderCodeAuth() {
         const { value } = props;
         if (!value) {
           return getSlot(slots);
@@ -40,8 +53,18 @@
       }
 
       return () => {
+        const mode = unref(getPermissionMode);
         // Role-based value control
-        return renderAuth();
+        if (mode === PermissionModeEnum.ROLE) {
+          return renderRoleAuth();
+        }
+
+        // Based on background role permission control
+        if (mode === PermissionModeEnum.BACK) {
+          return renderCodeAuth();
+        }
+
+        return getSlot(slots);
       };
     },
   });

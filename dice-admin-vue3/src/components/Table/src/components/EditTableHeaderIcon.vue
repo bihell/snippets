@@ -6,15 +6,16 @@
   </span>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, PropType } from 'vue';
   import { FormOutlined } from '@ant-design/icons-vue';
-
-  import { propTypes } from '/@/utils/propTypes';
   export default defineComponent({
     name: 'EditTableHeaderIcon',
     components: { FormOutlined },
     props: {
-      title: propTypes.string.def(''),
+      title: {
+        type: String as PropType<string>,
+        default: '',
+      },
     },
   });
 </script>

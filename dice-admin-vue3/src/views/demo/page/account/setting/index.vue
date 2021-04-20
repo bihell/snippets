@@ -48,14 +48,14 @@
 <style lang="less">
   .account-setting {
     margin: 12px;
-    background-color: @component-background;
+    background: #fff;
 
     .base-title {
       padding-left: 0;
     }
 
     .ant-tabs-tab-active {
-      background-color: @item-active-bg;
+      background-color: #e6f7ff;
     }
   }
 </style>

@@ -33,7 +33,7 @@
       height: 2000px;
       margin: 20px auto;
       text-align: center;
-      background-color: @component-background;
+      background: #fff;
       justify-content: center;
       flex-direction: column;
       align-items: center;

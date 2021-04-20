@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { addResizeListener, removeResizeListener } from '/@/utils/event';
+  import { addResizeListener, removeResizeListener } from '/@/utils/event/resizeEvent';
   import componentSetting from '/@/settings/componentSetting';
   const { scrollbar } = componentSetting;
   import { toObject } from './util';
@@ -29,7 +29,6 @@
     nextTick,
     provide,
     computed,
-    unref,
   } from 'vue';
   import Bar from './bar';
 
@@ -69,30 +68,23 @@
       const sizeHeight = ref('0');
       const moveX = ref(0);
       const moveY = ref(0);
-      const wrap = ref();
-      const resize = ref();
+      const wrap = ref<any>(null);
+      const resize = ref<any>(null);
 
       provide('scroll-bar-wrap', wrap);
 
-      const style = computed(() => {
-        if (Array.isArray(props.wrapStyle)) {
-          return toObject(props.wrapStyle);
-        }
-        return props.wrapStyle;
-      });
-
       const handleScroll = () => {
         if (!props.native) {
-          moveY.value = (unref(wrap).scrollTop * 100) / unref(wrap).clientHeight;
-          moveX.value = (unref(wrap).scrollLeft * 100) / unref(wrap).clientWidth;
+          moveY.value = (wrap.value.scrollTop * 100) / wrap.value.clientHeight;
+          moveX.value = (wrap.value.scrollLeft * 100) / wrap.value.clientWidth;
         }
       };
 
       const update = () => {
-        if (!unref(wrap)) return;
+        if (!wrap.value) return;
 
-        const heightPercentage = (unref(wrap).clientHeight * 100) / unref(wrap).scrollHeight;
-        const widthPercentage = (unref(wrap).clientWidth * 100) / unref(wrap).scrollWidth;
+        const heightPercentage = (wrap.value.clientHeight * 100) / wrap.value.scrollHeight;
+        const widthPercentage = (wrap.value.clientWidth * 100) / wrap.value.scrollWidth;
 
         sizeHeight.value = heightPercentage < 100 ? heightPercentage + '%' : '';
         sizeWidth.value = widthPercentage < 100 ? widthPercentage + '%' : '';
@@ -102,21 +94,25 @@
         if (props.native) return;
         nextTick(update);
         if (!props.noresize) {
-          addResizeListener(unref(resize), update);
-          addResizeListener(unref(wrap), update);
-          addEventListener('resize', update);
+          addResizeListener(resize.value, update);
+          addResizeListener(wrap.value, update);
         }
       });
 
       onBeforeUnmount(() => {
         if (props.native) return;
         if (!props.noresize) {
-          removeResizeListener(unref(resize), update);
-          removeResizeListener(unref(wrap), update);
-          removeEventListener('resize', update);
+          removeResizeListener(resize.value, update);
+          removeResizeListener(wrap.value, update);
         }
       });
-
+      const style = computed(() => {
+        let style: any = props.wrapStyle;
+        if (Array.isArray(props.wrapStyle)) {
+          style = toObject(props.wrapStyle);
+        }
+        return style;
+      });
       return {
         moveX,
         moveY,

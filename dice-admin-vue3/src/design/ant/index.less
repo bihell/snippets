@@ -7,16 +7,6 @@
   width: 100%;
 }
 
-.ant-image-preview-root {
-  img {
-    display: unset;
-  }
-}
-
-span.anticon:not(.app-iconify) {
-  vertical-align: 0.125em !important;
-}
-
 .ant-back-top {
   right: 20px;
   bottom: 20px;
@@ -29,7 +19,7 @@ span.anticon:not(.app-iconify) {
 }
 
 .ant-image-preview-operations {
-  background-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .ant-popover {
@@ -37,6 +27,17 @@ span.anticon:not(.app-iconify) {
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   }
 }
+
+// =================================
+// ==============descriptions=======
+// =================================
+// .ant-descriptions-bordered .ant-descriptions-item-label {
+//   background-color: @background-color-light;
+// }
+
+// .ant-descriptions .ant-descriptions-item-content {
+//   color: @text-color-call-out;
+// }
 
 // =================================
 // ==============modal message======
@@ -55,4 +56,19 @@ span.anticon:not(.app-iconify) {
 
 .modal-icon-info {
   color: @primary-color !important;
+}
+
+// =================================
+// ==============empty==============
+// =================================
+.ant-empty-image {
+  max-height: 144px;
+  min-height: 60px;
+}
+
+.ant-empty-description {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 24px;
+  color: @text-color-call-out;
 }

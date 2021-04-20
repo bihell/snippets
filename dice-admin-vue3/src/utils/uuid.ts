@@ -2,7 +2,6 @@ const hexList: string[] = [];
 for (let i = 0; i <= 15; i++) {
   hexList[i] = i.toString(16);
 }
-
 export function buildUUID(): string {
   let uuid = '';
   for (let i = 1; i <= 36; i++) {
@@ -20,7 +19,7 @@ export function buildUUID(): string {
 }
 
 let unique = 0;
-export function buildShortUUID(prefix = ''): string {
+export function snowUuid(prefix = ''): string {
   const time = Date.now();
   const random = Math.floor(Math.random() * 1000000000);
   unique++;

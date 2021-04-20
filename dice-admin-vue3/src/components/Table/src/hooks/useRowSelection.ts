@@ -1,13 +1,9 @@
 import type { BasicTableProps, TableRowSelection } from '../types/table';
 
-import { computed, ref, unref, ComputedRef, Ref, toRaw } from 'vue';
-import { ROW_KEY } from '../const';
+import { computed, ref, unref, ComputedRef } from 'vue';
 
-export function useRowSelection(
-  propsRef: ComputedRef<BasicTableProps>,
-  tableData: Ref<Recordable[]>,
-  emit: EmitType
-) {
+/* eslint-disable */
+export function useRowSelection(propsRef: ComputedRef<BasicTableProps>, emit: EmitType) {
   const selectedRowKeysRef = ref<string[]>([]);
   const selectedRowRef = ref<Recordable[]>([]);
 
@@ -16,11 +12,10 @@ export function useRowSelection(
     if (!rowSelection) {
       return null;
     }
-
     return {
       selectedRowKeys: unref(selectedRowKeysRef),
       hideDefaultSelections: false,
-      onChange: (selectedRowKeys: string[], selectedRows: Recordable[]) => {
+      onChange: (selectedRowKeys: string[], selectedRows: any[]) => {
         selectedRowKeysRef.value = selectedRowKeys;
         selectedRowRef.value = selectedRows;
         emit('selection-change', {
@@ -28,30 +23,12 @@ export function useRowSelection(
           rows: selectedRows,
         });
       },
-      ...(rowSelection === undefined ? {} : rowSelection),
+      ...rowSelection,
     };
-  });
-
-  const getAutoCreateKey = computed(() => {
-    return unref(propsRef).autoCreateKey && !unref(propsRef).rowKey;
-  });
-
-  const getRowKey = computed(() => {
-    const { rowKey } = unref(propsRef);
-    return unref(getAutoCreateKey) ? ROW_KEY : rowKey;
   });
 
   function setSelectedRowKeys(rowKeys: string[]) {
     selectedRowKeysRef.value = rowKeys;
-
-    const rows = toRaw(unref(tableData)).filter((item) =>
-      rowKeys.includes(item[unref(getRowKey) as string])
-    );
-    selectedRowRef.value = rows;
-  }
-
-  function setSelectedRows(rows: Recordable[]) {
-    selectedRowRef.value = rows;
   }
 
   function clearSelectedRowKeys() {
@@ -88,6 +65,5 @@ export function useRowSelection(
     setSelectedRowKeys,
     clearSelectedRowKeys,
     deleteSelectRowByKey,
-    setSelectedRows,
   };
 }

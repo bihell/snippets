@@ -1,20 +1,18 @@
 // #!/usr/bin/env node
 
+import { argv } from 'yargs';
 import { runBuildConfig } from './buildConf';
 import chalk from 'chalk';
 
-import pkg from '../../package.json';
-
 export const runBuild = async () => {
   try {
-    const argvList = process.argv.splice(2);
+    const argvList = argv._;
 
     // Generate configuration file
-    if (!argvList.includes('disabled-config')) {
+    if (!argvList.includes('no-conf')) {
       await runBuildConfig();
     }
-
-    console.log(`✨ ${chalk.cyan(`[${pkg.name}]`)}` + ' - build successfully!');
+    console.log(chalk.green.bold('✨ vite build successfully!\n'));
   } catch (error) {
     console.log(chalk.red('vite build error:\n' + error));
     process.exit(1);

@@ -1,27 +1,31 @@
 <template>
   <div :class="`${prefixCls}`">
-    <AppSearchKeyItem :class="`${prefixCls}__item`" icon="ant-design:enter-outlined" />
+    <span :class="`${prefixCls}__item`">
+      <g-icon icon="ant-design:enter-outlined" />
+    </span>
     <span>{{ t('component.app.toSearch') }}</span>
 
-    <AppSearchKeyItem :class="`${prefixCls}__item`" icon="ion:arrow-up-outline" />
-    <AppSearchKeyItem :class="`${prefixCls}__item`" icon="ion:arrow-down-outline" />
+    <span :class="`${prefixCls}__item`">
+      <g-icon icon="bi:arrow-up" />
+    </span>
+    <span :class="`${prefixCls}__item`">
+      <g-icon icon="bi:arrow-down" />
+    </span>
     <span>{{ t('component.app.toNavigate') }}</span>
-    <AppSearchKeyItem :class="`${prefixCls}__item`" icon="mdi:keyboard-esc" />
-
+    <span :class="`${prefixCls}__item`">
+      <g-icon icon="mdi:keyboard-esc" />
+    </span>
     <span>{{ t('common.closeText') }}</span>
   </div>
 </template>
-
 <script lang="ts">
   import { defineComponent } from 'vue';
-
-  import AppSearchKeyItem from './AppSearchKeyItem.vue';
 
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
     name: 'AppSearchFooter',
-    components: { AppSearchKeyItem },
+    components: {},
     setup() {
       const { prefixCls } = useDesign('app-search-footer');
       const { t } = useI18n();
@@ -42,9 +46,9 @@
     padding: 0 16px;
     font-size: 12px;
     color: #666;
-    background-color: @component-background;
-    border-top: 1px solid @border-color-base;
+    background: rgb(255 255 255);
     border-radius: 0 0 16px 16px;
+    box-shadow: 0 -1px 0 0 #e0e3e8, 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
     align-items: center;
     flex-shrink: 0;
 
@@ -54,7 +58,7 @@
       height: 18px;
       padding-bottom: 2px;
       margin-right: 0.4em;
-      background-color: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
+      background: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
       border-radius: 2px;
       box-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff,
         0 1px 2px 1px rgba(30, 35, 90, 0.4);

@@ -23,7 +23,7 @@
     height: 300px;
     font-size: 24px;
     color: #fff;
-    background-color: #408ede;
+    background: #408ede;
     border-radius: 10px;
     justify-content: center;
     align-items: center;

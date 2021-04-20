@@ -25,6 +25,7 @@ export const basicProps = {
   schemas: {
     type: [Array] as PropType<FormSchema[]>,
     default: () => [],
+    required: true,
   },
   mergeDynamicData: {
     type: Object as PropType<Recordable>,

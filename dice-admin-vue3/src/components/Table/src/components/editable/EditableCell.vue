@@ -17,7 +17,7 @@
         ref="elRef"
         @change="handleChange"
         @options-change="handleOptionsChange"
-        @pressEnter="handleEnter"
+        @pressEnter="handleSubmit"
       />
       <div :class="`${prefixCls}__action`" v-if="!getRowEditable">
         <CheckOutlined :class="[`${prefixCls}__icon`, 'mx-2']" @click="handleSubmit" />
@@ -29,20 +29,20 @@
 <script lang="ts">
   import type { CSSProperties, PropType } from 'vue';
   import type { BasicColumn } from '../../types/table';
-  import type { EditRecordRow } from './index';
 
-  import { defineComponent, ref, unref, nextTick, computed, watchEffect, toRaw } from 'vue';
+  import { defineComponent, ref, unref, nextTick, computed, watchEffect } from 'vue';
   import { FormOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons-vue';
-  import { CellComponent } from './CellComponent';
 
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { useTableContext } from '../../hooks/useTableContext';
-
+  import { isString, isBoolean, isFunction, isNumber, isArray } from '/@/utils/is';
   import clickOutside from '/@/directives/clickOutside';
 
+  import { CellComponent } from './CellComponent';
+  import { useTableContext } from '../../hooks/useTableContext';
   import { propTypes } from '/@/utils/propTypes';
-  import { isString, isBoolean, isFunction, isNumber, isArray } from '/@/utils/is';
   import { createPlaceholderMessage } from './helper';
+
+  import type { EditRecordRow } from './index';
 
   export default defineComponent({
     name: 'EditableCell',
@@ -60,14 +60,14 @@
       },
       column: {
         type: Object as PropType<BasicColumn>,
-        default: () => {},
+        default: {},
       },
       index: propTypes.number,
     },
     setup(props) {
       const table = useTableContext();
       const isEdit = ref(false);
-      const elRef = ref();
+      const elRef = ref<any>(null);
       const ruleVisible = ref(false);
       const ruleMessage = ref('');
       const optionsRef = ref<LabelValueOptions>([]);
@@ -82,6 +82,18 @@
       const getRuleVisible = computed(() => {
         return unref(ruleMessage) && unref(ruleVisible);
       });
+
+      // const getSize = computed(() => {
+      //   const size = table?.getSize?.();
+      //   if (size === 'middle' || !size) {
+      //     return;
+      //   }
+
+      //   if (size === 'default') {
+      //     return 'large';
+      //   }
+      //   return size;
+      // });
 
       const getIsCheckComp = computed(() => {
         const component = unref(getComponent);
@@ -124,11 +136,9 @@
         if (!component.includes('Select')) {
           return value;
         }
-
         const options: LabelValueOptions = editComponentProps?.options ?? (unref(optionsRef) || []);
         const option = options.find((item) => `${item.value}` === `${value}`);
-
-        return option?.label ?? value;
+        return option?.label;
       });
 
       const getWrapperStyle = computed(
@@ -170,21 +180,14 @@
 
       async function handleChange(e: any) {
         const component = unref(getComponent);
-        if (!e) {
-          currentValueRef.value = e;
-        } else if (e?.target && Reflect.has(e.target, 'value')) {
+        if (e?.target && Reflect.has(e.target, 'value')) {
           currentValueRef.value = (e as ChangeEvent).target.value;
-        } else if (component === 'Checkbox') {
+        }
+        if (component === 'Checkbox') {
           currentValueRef.value = (e as ChangeEvent).target.checked;
         } else if (isString(e) || isBoolean(e) || isNumber(e)) {
           currentValueRef.value = e;
         }
-
-        table.emit?.('edit-change', {
-          column: props.column,
-          value: unref(currentValueRef),
-          record: toRaw(props.record),
-        });
         handleSubmiRule();
       }
 
@@ -217,29 +220,18 @@
         return true;
       }
 
-      async function handleSubmit(needEmit = true, valid = true) {
-        if (valid) {
-          const isPass = await handleSubmiRule();
-          if (!isPass) return false;
-        }
-
+      async function handleSubmit(needEmit = true) {
+        const isPass = await handleSubmiRule();
+        if (!isPass) return false;
         const { column, index } = props;
         const { key, dataIndex } = column;
         const value = unref(currentValueRef);
         if (!key || !dataIndex) return;
-
         const dataKey = (dataIndex || key) as string;
 
         const record = await table.updateTableData(index, dataKey, value);
         needEmit && table.emit?.('edit-end', { record, index, key, value });
         isEdit.value = false;
-      }
-
-      async function handleEnter() {
-        if (props.column?.editRow) {
-          return;
-        }
-        handleSubmit();
       }
 
       function handleCancel() {
@@ -288,15 +280,15 @@
             const validFns = (props.record?.validCbs || []).map((fn) => fn());
 
             const res = await Promise.all(validFns);
-
             const pass = res.every((item) => !!item);
 
             if (!pass) return;
             const submitFns = props.record?.submitCbs || [];
-            submitFns.forEach((fn) => fn(false, false));
+            submitFns.forEach((fn) => fn(false));
             table.emit?.('edit-row-end');
             return true;
           }
+          // isArray(props.record?.submitCbs) && props.record?.submitCbs.forEach((fn) => fn());
         };
       }
 
@@ -319,7 +311,6 @@
         getWrapperStyle,
         getRowEditable,
         getValues,
-        handleEnter,
         // getSize,
       };
     },
@@ -329,6 +320,10 @@
   @prefix-cls: ~'@{namespace}-editable-cell';
 
   .edit-cell-rule-popover {
+    // .ant-popover-arrow {
+    //   // border-color: transparent @error-color @error-color transparent !important;
+    // }
+
     .ant-popover-inner-content {
       padding: 4px 8px;
       color: @error-color;
@@ -343,10 +338,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      > .ant-select {
-        min-width: calc(100% - 50px);
-      }
     }
 
     &__icon {
@@ -360,6 +351,8 @@
     }
 
     &__normal {
+      padding-right: 48px;
+
       &-icon {
         position: absolute;
         top: 4px;

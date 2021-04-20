@@ -8,12 +8,13 @@ enum Api {
 /**
  * @description: Get sample list value
  */
-
-export const demoListApi = (params: DemoParams) =>
-  defHttp.get<DemoListGetResultModel>({
+export function demoListApi(params: DemoParams) {
+  return defHttp.request<DemoListGetResultModel>({
     url: Api.DEMO_LIST,
+    method: 'GET',
     params,
     headers: {
       ignoreCancelToken: true,
     },
   });
+}

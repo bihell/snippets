@@ -17,4 +17,12 @@ module.exports = {
   htmlWhitespaceSensitivity: 'strict',
   endOfLine: 'lf',
   rangeStart: 0,
+  overrides: [
+    {
+      files: '*.md',
+      options: {
+        tabWidth: 2,
+      },
+    },
+  ],
 };

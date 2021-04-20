@@ -1,54 +1,46 @@
 <template>
-  <PageWrapper>
-    <template #headerContent> <WorkbenchHeader /> </template>
-    <div class="lg:flex">
-      <div class="lg:w-7/10 w-full !mr-4 enter-y">
-        <ProjectCard :loading="loading" class="enter-y" />
-        <DynamicInfo :loading="loading" class="!my-4 enter-y" />
-      </div>
-      <div class="lg:w-3/10 w-full enter-y">
-        <QuickNav :loading="loading" class="enter-y" />
-
-        <Card class="!my-4 enter-y" :loading="loading">
-          <img class="xl:h-50 h-30 mx-auto" src="../../../assets/svg/illustration.svg" />
-        </Card>
-
-        <SaleRadar :loading="loading" class="enter-y" />
-      </div>
-    </div>
-  </PageWrapper>
+  <a-row class="workbench p-4" :gutter="12">
+    <a-col :md="24" :lg="17">
+      <ProdTotal class="mb-3" />
+      <TodoList class="mb-3" />
+      <NewsList class="mb-3" />
+    </a-col>
+    <a-col :md="24" :lg="7">
+      <img src="/@/assets/images/dashboard/wokb/wokb.png" class="workbench__wokb-img mb-3" />
+      <ShortCuts class="mb-3" />
+      <Week class="mb-3" />
+    </a-col>
+  </a-row>
 </template>
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
-
-  import { Card } from 'ant-design-vue';
-  import { PageWrapper } from '/@/components/Page';
-  import WorkbenchHeader from './components/WorkbenchHeader.vue';
-  import ProjectCard from './components/ProjectCard.vue';
-  import QuickNav from './components/QuickNav.vue';
-  import DynamicInfo from './components/DynamicInfo.vue';
-  import SaleRadar from './components/SaleRadar.vue';
+  import { defineComponent } from 'vue';
+  import ProdTotal from './components/ProdTotal.vue';
+  import TodoList from './components/TodoList.vue';
+  import Week from './components/Week.vue';
+  import NewsList from './components/NewsList.vue';
+  import ShortCuts from './components/ShortCuts.vue';
+  import { Row, Col } from 'ant-design-vue';
 
   export default defineComponent({
     components: {
-      PageWrapper,
-      WorkbenchHeader,
-      ProjectCard,
-      QuickNav,
-      DynamicInfo,
-      SaleRadar,
-      Card,
+      ProdTotal,
+      TodoList,
+      Week,
+      ShortCuts,
+      NewsList,
+      [Row.name]: Row,
+      [Col.name]: Col,
     },
     setup() {
-      const loading = ref(true);
-
-      setTimeout(() => {
-        loading.value = false;
-      }, 1500);
-
-      return {
-        loading,
-      };
+      return {};
     },
   });
 </script>
+<style lang="less" scoped>
+  .workbench {
+    &__wokb-img {
+      width: 100%;
+      height: 240px;
+    }
+  }
+</style>

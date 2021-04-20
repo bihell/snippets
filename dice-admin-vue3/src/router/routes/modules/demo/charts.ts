@@ -7,37 +7,20 @@ const charts: AppRouteModule = {
   path: '/charts',
   name: 'Charts',
   component: LAYOUT,
-  redirect: '/charts/echarts/map',
+  redirect: '/charts/apexChart',
   meta: {
-    icon: 'ion:bar-chart-outline',
+    icon: 'vaadin:spline-area-chart',
     title: t('routes.demo.charts.charts'),
   },
   children: [
     {
-      path: 'baiduMap',
-      name: 'BaiduMap',
+      path: 'apexChart',
+      name: 'ApexChart',
       meta: {
-        title: t('routes.demo.charts.baiduMap'),
+        title: t('routes.demo.charts.apexChart'),
       },
-      component: () => import('/@/views/demo/charts/map/Baidu.vue'),
+      component: () => import('/@/views/demo/echarts/apex/index.vue'),
     },
-    {
-      path: 'aMap',
-      name: 'AMap',
-      meta: {
-        title: t('routes.demo.charts.aMap'),
-      },
-      component: () => import('/@/views/demo/charts/map/Gaode.vue'),
-    },
-    {
-      path: 'googleMap',
-      name: 'GoogleMap',
-      meta: {
-        title: t('routes.demo.charts.googleMap'),
-      },
-      component: () => import('/@/views/demo/charts/map/Google.vue'),
-    },
-
     {
       path: 'echarts',
       name: 'Echarts',
@@ -50,7 +33,7 @@ const charts: AppRouteModule = {
         {
           path: 'map',
           name: 'Map',
-          component: () => import('/@/views/demo/charts/Map.vue'),
+          component: () => import('/@/views/demo/echarts/Map.vue'),
           meta: {
             title: t('routes.demo.charts.map'),
           },
@@ -58,7 +41,7 @@ const charts: AppRouteModule = {
         {
           path: 'line',
           name: 'Line',
-          component: () => import('/@/views/demo/charts/Line.vue'),
+          component: () => import('/@/views/demo/echarts/Line.vue'),
           meta: {
             title: t('routes.demo.charts.line'),
           },
@@ -66,7 +49,7 @@ const charts: AppRouteModule = {
         {
           path: 'pie',
           name: 'Pie',
-          component: () => import('/@/views/demo/charts/Pie.vue'),
+          component: () => import('/@/views/demo/echarts/Pie.vue'),
           meta: {
             title: t('routes.demo.charts.pie'),
           },

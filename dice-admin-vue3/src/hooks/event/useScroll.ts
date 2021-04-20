@@ -1,8 +1,8 @@
 import type { Ref } from 'vue';
 
 import { ref, onMounted, watch, onUnmounted } from 'vue';
+import { useThrottle } from '/@/hooks/core/useThrottle';
 import { isWindow, isObject } from '/@/utils/is';
-import { useThrottleFn } from '@vueuse/core';
 
 export function useScroll(
   refEl: Ref<Element | Window | null>,
@@ -31,7 +31,8 @@ export function useScroll(
       Reflect.deleteProperty(options, 'wait');
     }
 
-    handler = useThrottleFn(handler, wait);
+    const [throttleHandle] = useThrottle(handler, wait);
+    handler = throttleHandle;
   }
 
   let stopWatch: () => void;

@@ -28,6 +28,6 @@
 </script>
 <style lang="less" scoped>
   .bg-gray-700 {
-    background-color: #4a5568;
+    background: #4a5568;
   }
 </style>

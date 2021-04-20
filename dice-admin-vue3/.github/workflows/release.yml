@@ -1,4 +1,4 @@
-name: Create Release
+name: Release
 
 on:
   push:
@@ -6,19 +6,10 @@ on:
       - v*
 
 jobs:
-  build:
-    name: Create Release
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Create Release for Tag
-        id: release_tag
-        uses: yyx990803/release-tag@master
+      - uses: actions/checkout@v2
+      - run: npx conventional-github-releaser -p angular
         env:
-          GITHUB_TOKEN: ${{ secrets.OPER_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          body: |
-            Please refer to [CHANGELOG.md](https://github.com/anncwb/vue-vben-admin/blob/main/CHANGELOG.md) for details.
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}

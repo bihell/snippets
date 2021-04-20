@@ -3,26 +3,18 @@ import { updateHeaderBgColor, updateSidebarBgColor } from '/@/logics/theme/updat
 import { updateColorWeak } from '/@/logics/theme/updateColorWeak';
 import { updateGrayMode } from '/@/logics/theme/updateGrayMode';
 
-import { useAppStore } from '/@/store/modules/app';
-import { ProjectConfig } from '/#/config';
+import { appStore } from '/@/store/modules/app';
+import { ProjectConfig } from '/@/types/config';
 import { changeTheme } from '/@/logics/theme';
-import { updateDarkTheme } from '/@/logics/theme/dark';
 import { useRootSetting } from '/@/hooks/setting/useRootSetting';
 
 export function baseHandler(event: HandlerEnum, value: any) {
-  const appStore = useAppStore();
   const config = handler(event, value);
-  appStore.setProjectConfig(config);
-  if (event === HandlerEnum.CHANGE_THEME) {
-    updateHeaderBgColor();
-    updateSidebarBgColor();
-  }
+  appStore.commitProjectConfigState(config);
 }
 
 export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConfig> {
-  const appStore = useAppStore();
-
-  const { getThemeColor, getDarkMode } = useRootSetting();
+  const { getThemeColor } = useRootSetting();
   switch (event) {
     case HandlerEnum.CHANGE_LAYOUT:
       const { mode, type, split } = value;
@@ -44,16 +36,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
         return {};
       }
       changeTheme(value);
-
       return { themeColor: value };
-
-    case HandlerEnum.CHANGE_THEME:
-      if (getDarkMode.value === value) {
-        return {};
-      }
-      updateDarkTheme(value);
-
-      return {};
 
     case HandlerEnum.MENU_HAS_DRAG:
       return { menuSetting: { canDrag: value } };
@@ -100,7 +83,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
 
     // ============transition==================
     case HandlerEnum.OPEN_PAGE_LOADING:
-      appStore.setPageLoading(false);
+      appStore.commitPageLoadingState(false);
       return { transitionSetting: { openPageLoading: value } };
 
     case HandlerEnum.ROUTER_TRANSITION:

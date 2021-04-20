@@ -11,7 +11,7 @@
     height: 300px;
     font-size: 24px;
     color: #fff;
-    background-color: #409efe;
+    background: #409efe;
     border-radius: 12px;
     justify-content: center;
     align-items: center;

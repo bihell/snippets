@@ -1,5 +1,5 @@
 <template>
-  <div :class="prefixCls" class="relative">
+  <div :class="prefixCls">
     <InputPassword
       v-if="showInput"
       v-bind="$attrs"
@@ -19,20 +19,27 @@
 </template>
 
 <script lang="ts">
+  import { PropType } from 'vue';
+
   import { defineComponent, computed, ref, watch, unref, watchEffect } from 'vue';
 
   import { Input } from 'ant-design-vue';
 
-  // @ts-ignore
-  import { zxcvbn } from '@zxcvbn-ts/core';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import zxcvbn from 'zxcvbn';
   import { propTypes } from '/@/utils/propTypes';
+  import { useDesign } from '/@/hooks/web/useDesign';
 
   export default defineComponent({
     name: 'StrengthMeter',
     components: { InputPassword: Input.Password },
     props: {
       value: propTypes.string,
+
+      userInputs: {
+        type: Array as PropType<string[]>,
+        default: () => [],
+      },
+
       showInput: propTypes.bool.def(true),
       disabled: propTypes.bool,
     },
@@ -42,10 +49,12 @@
       const { prefixCls } = useDesign('strength-meter');
 
       const getPasswordStrength = computed(() => {
-        const { disabled } = props;
-        if (disabled) return -1;
+        const { userInputs, disabled } = props;
+        if (disabled) return null;
         const innerValue = unref(innerValueRef);
-        const score = innerValue ? zxcvbn(unref(innerValueRef)).score : -1;
+        const score = innerValue
+          ? zxcvbn(unref(innerValueRef), (userInputs as string[]) || null).score
+          : null;
         emit('score-change', score);
         return score;
       });
@@ -57,7 +66,6 @@
       watchEffect(() => {
         innerValueRef.value = props.value || '';
       });
-
       watch(
         () => unref(innerValueRef),
         (val) => {
@@ -78,12 +86,14 @@
   @prefix-cls: ~'@{namespace}-strength-meter';
 
   .@{prefix-cls} {
+    position: relative;
+
     &-bar {
       position: relative;
-      height: 6px;
+      height: 4px;
       margin: 10px auto 6px;
-      background-color: @disabled-color;
-      border-radius: 6px;
+      background: @disabled-color;
+      border-radius: 3px;
 
       &::before,
       &::after {
@@ -92,7 +102,7 @@
         display: block;
         width: 20%;
         height: inherit;
-        background-color: transparent;
+        background: transparent;
         border-color: @white;
         border-style: solid;
         border-width: 0 5px 0 5px;
@@ -111,33 +121,33 @@
         position: absolute;
         width: 0;
         height: inherit;
-        background-color: transparent;
+        background: transparent;
         border-radius: inherit;
         transition: width 0.5s ease-in-out, background 0.25s;
 
         &[data-score='0'] {
           width: 20%;
-          background-color: darken(@error-color, 10%);
+          background: darken(@error-color, 10%);
         }
 
         &[data-score='1'] {
           width: 40%;
-          background-color: @error-color;
+          background: @error-color;
         }
 
         &[data-score='2'] {
           width: 60%;
-          background-color: @warning-color;
+          background: @warning-color;
         }
 
         &[data-score='3'] {
           width: 80%;
-          background-color: fade(@success-color, 50%);
+          background: fade(@success-color, 50%);
         }
 
         &[data-score='4'] {
           width: 100%;
-          background-color: @success-color;
+          background: @success-color;
         }
       }
     }

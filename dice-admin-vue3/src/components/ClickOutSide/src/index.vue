@@ -4,15 +4,18 @@
   </div>
 </template>
 <script lang="ts">
+  import type { Ref } from 'vue';
   import { defineComponent, ref, onMounted } from 'vue';
-  import { onClickOutside } from '@vueuse/core';
+
+  import { useClickOutside } from '/@/hooks/web/useClickOutside';
+
   export default defineComponent({
     name: 'ClickOutSide',
     emits: ['mounted', 'clickOutside'],
     setup(_, { emit }) {
       const wrap = ref<ElRef>(null);
 
-      onClickOutside(wrap, () => {
+      useClickOutside(wrap as Ref<HTMLDivElement>, () => {
         emit('clickOutside');
       });
 

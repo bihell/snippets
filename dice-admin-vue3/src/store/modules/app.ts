@@ -1,102 +1,90 @@
-import type { ProjectConfig } from '/#/config';
-import type { BeforeMiniState } from '/#/store';
+import type { ProjectConfig } from '/@/types/config';
 
-import { defineStore } from 'pinia';
-import { store } from '/@/store';
+import { VuexModule, getModule, Module, Mutation, Action } from 'vuex-module-decorators';
+import store from '/@/store';
 
-import { ThemeEnum } from '/@/enums/appEnum';
-import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '/@/enums/cacheEnum';
-import { Persistent } from '/@/utils/cache/persistent';
-import { darkMode } from '/@/settings/designSetting';
-import { resetRouter } from '/@/router';
+import { PROJ_CFG_KEY } from '/@/enums/cacheEnum';
+
+import { hotModuleUnregisterModule } from '/@/utils/helper/vuexHelper';
+import { setLocal, getLocal, clearSession, clearLocal } from '/@/utils/helper/persistent';
 import { deepMerge } from '/@/utils';
 
-interface AppState {
-  darkMode?: ThemeEnum;
-  // Page loading status
-  pageLoading: boolean;
-  // project config
-  projectConfig: ProjectConfig | null;
-  // When the window shrinks, remember some states, and restore these states when the window is restored
-  beforeMiniInfo: BeforeMiniState;
+import { resetRouter } from '/@/router';
+import { permissionStore } from './permission';
+import { tabStore } from './tab';
+
+import { userStore } from './user';
+
+export interface LockInfo {
+  pwd: string | undefined;
+  isLock: boolean;
 }
+
 let timeId: TimeoutHandle;
-export const useAppStore = defineStore({
-  id: 'app',
-  state: (): AppState => ({
-    darkMode: undefined,
-    pageLoading: false,
-    projectConfig: Persistent.getLocal(PROJ_CFG_KEY),
-    beforeMiniInfo: {},
-  }),
-  getters: {
-    getPageLoading() {
-      return this.pageLoading;
-    },
-    getDarkMode(): 'light' | 'dark' | string {
-      return this.darkMode || localStorage.getItem(APP_DARK_MODE_KEY_) || darkMode;
-    },
+const NAME = 'app';
+hotModuleUnregisterModule(NAME);
+@Module({ dynamic: true, namespaced: true, store, name: NAME })
+class App extends VuexModule {
+  // Page loading status
+  private pageLoadingState = false;
 
-    getBeforeMiniInfo() {
-      return this.beforeMiniInfo;
-    },
+  // project config
+  private projectConfigState: ProjectConfig | null = getLocal(PROJ_CFG_KEY);
 
-    getProjectConfig(): ProjectConfig {
-      return this.projectConfig || ({} as ProjectConfig);
-    },
+  // set main overflow hidden
+  private lockMainScrollState = false;
 
-    getHeaderSetting() {
-      return this.getProjectConfig.headerSetting;
-    },
-    getMenuSetting() {
-      return this.getProjectConfig.menuSetting;
-    },
-    getTransitionSetting() {
-      return this.getProjectConfig.transitionSetting;
-    },
-    getMultiTabsSetting() {
-      return this.getProjectConfig.multiTabsSetting;
-    },
-  },
-  actions: {
-    setPageLoading(loading: boolean): void {
-      this.pageLoading = loading;
-    },
+  get getPageLoading() {
+    return this.pageLoadingState;
+  }
 
-    setDarkMode(mode: ThemeEnum): void {
-      this.darkMode = mode;
-      localStorage.setItem(APP_DARK_MODE_KEY_, mode);
-    },
+  get getLockMainScrollState() {
+    return this.lockMainScrollState;
+  }
 
-    setBeforeMiniInfo(state: BeforeMiniState): void {
-      this.beforeMiniInfo = state;
-    },
+  get getProjectConfig(): ProjectConfig {
+    return this.projectConfigState || ({} as ProjectConfig);
+  }
 
-    setProjectConfig(config: DeepPartial<ProjectConfig>): void {
-      this.projectConfig = deepMerge(this.projectConfig || {}, config);
-      Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig);
-    },
+  @Mutation
+  commitPageLoadingState(loading: boolean): void {
+    this.pageLoadingState = loading;
+  }
 
-    async resetAllState() {
-      resetRouter();
-      Persistent.clearAll();
-    },
-    async setPageLoadingAction(loading: boolean): Promise<void> {
-      if (loading) {
-        clearTimeout(timeId);
-        // Prevent flicker
-        timeId = setTimeout(() => {
-          this.setPageLoading(loading);
-        }, 50);
-      } else {
-        this.setPageLoading(loading);
-        clearTimeout(timeId);
-      }
-    },
-  },
-});
+  @Mutation
+  commitLockMainScrollState(lock: boolean): void {
+    this.lockMainScrollState = lock;
+  }
 
-// Need to be used outside the setup
-export function useAppStoreWidthOut() {
-  return useAppStore(store);
+  @Mutation
+  commitProjectConfigState(proCfg: DeepPartial<ProjectConfig>): void {
+    this.projectConfigState = deepMerge(this.projectConfigState || {}, proCfg);
+    setLocal(PROJ_CFG_KEY, this.projectConfigState);
+  }
+
+  @Action
+  async resumeAllState() {
+    resetRouter();
+    clearSession();
+    clearLocal();
+
+    permissionStore.commitResetState();
+    tabStore.commitResetState();
+    userStore.commitResetState();
+  }
+
+  @Action
+  public async setPageLoadingAction(loading: boolean): Promise<void> {
+    if (loading) {
+      clearTimeout(timeId);
+      // Prevent flicker
+      timeId = setTimeout(() => {
+        this.commitPageLoadingState(loading);
+      }, 50);
+    } else {
+      this.commitPageLoadingState(loading);
+      clearTimeout(timeId);
+    }
+  }
 }
+export const appStore = getModule<App>(App);

@@ -2,9 +2,13 @@
   <Layout :class="prefixCls">
     <LayoutFeatures />
     <LayoutHeader fixed v-if="getShowFullHeaderRef" />
-    <Layout :class="layoutClass">
+    <Layout
+      :class="{
+        'ant-layout-has-sider': getIsMixSidebar,
+      }"
+    >
       <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
-      <Layout :class="`${prefixCls}-main`">
+      <Layout :class="`${prefixCls}__main`">
         <LayoutMultipleHeader />
         <LayoutContent />
         <LayoutFooter />
@@ -14,7 +18,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, unref } from 'vue';
+  import { defineComponent } from 'vue';
   import { Layout } from 'ant-design-vue';
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
@@ -42,10 +46,12 @@
     },
     setup() {
       const { prefixCls } = useDesign('default-layout');
+
       const { getIsMobile } = useAppInject();
+
       const { getShowFullHeaderRef } = useHeaderSetting();
+
       const { getShowSidebar, getIsMixSidebar } = useMenuSetting();
-      const layoutClass = computed(() => ({ 'ant-layout-has-sider': unref(getIsMixSidebar) }));
 
       return {
         getShowFullHeaderRef,
@@ -53,7 +59,6 @@
         prefixCls,
         getIsMobile,
         getIsMixSidebar,
-        layoutClass,
       };
     },
   });
@@ -65,14 +70,14 @@
     display: flex;
     width: 100%;
     min-height: 100%;
-    background-color: @content-bg;
+    background: @content-bg;
     flex-direction: column;
 
     > .ant-layout {
       min-height: 100%;
     }
 
-    &-main {
+    &__main {
       margin-left: 1px;
     }
   }

@@ -1,8 +1,6 @@
 <template>
-  <div @click.stop="toggleCollapsed">
-    <DoubleRightOutlined v-if="getCollapsed" />
-    <DoubleLeftOutlined v-else />
-  </div>
+  <DoubleRightOutlined v-if="getCollapsed" />
+  <DoubleLeftOutlined v-else />
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
@@ -13,9 +11,8 @@
     name: 'SiderTrigger',
     components: { DoubleRightOutlined, DoubleLeftOutlined },
     setup() {
-      const { getCollapsed, toggleCollapsed } = useMenuSetting();
-
-      return { getCollapsed, toggleCollapsed };
+      const { getCollapsed } = useMenuSetting();
+      return { getCollapsed };
     },
   });
 </script>

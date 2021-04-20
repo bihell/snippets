@@ -11,9 +11,10 @@
     collapsible
     :class="getSiderClass"
     :width="getMenuWidth"
-    :collapsed="getCollapsed"
+    :collapsed="getIsMobile ? false : getCollapsed"
     :collapsedWidth="getCollapsedWidth"
     :theme="getMenuTheme"
+    @collapse="onCollapseChange"
     @breakpoint="onBreakpointChange"
     v-bind="getTriggerAttr"
   >
@@ -28,7 +29,7 @@
   import { computed, defineComponent, ref, unref, CSSProperties } from 'vue';
 
   import { Layout } from 'ant-design-vue';
-  import LayoutMenu from '../menu/index.vue';
+  import LayoutMenu from '../menu';
   import LayoutTrigger from '/@/layouts/default/trigger/index.vue';
 
   import { MenuModeEnum, MenuSplitTyeEnum } from '/@/enums/menuEnum';
@@ -65,7 +66,7 @@
 
       useDragLine(sideRef, dragBarRef);
 
-      const { getCollapsedWidth, onBreakpointChange } = useSiderEvent();
+      const { getCollapsedWidth, onBreakpointChange, onCollapseChange } = useSiderEvent();
 
       const getMode = computed(() => {
         return unref(getSplit) ? MenuModeEnum.INLINE : null;
@@ -120,6 +121,7 @@
         onBreakpointChange,
         getMode,
         getSplitType,
+        onCollapseChange,
         getShowTrigger,
       };
     },
@@ -144,15 +146,15 @@
     }
 
     &.ant-layout-sider-dark {
-      background-color: @sider-dark-bg-color;
+      background: @sider-dark-bg-color;
 
       .ant-layout-sider-trigger {
         color: darken(@white, 25%);
-        background-color: @trigger-dark-bg-color;
+        background: @trigger-dark-bg-color;
 
         &:hover {
           color: @white;
-          background-color: @trigger-dark-hover-bg-color;
+          background: @trigger-dark-hover-bg-color;
         }
       }
     }

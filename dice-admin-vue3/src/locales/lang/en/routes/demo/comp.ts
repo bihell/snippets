@@ -12,7 +12,7 @@ export default {
   tree: 'Tree',
 
   treeBasic: 'Basic',
-  editTree: 'Searchable/toolbar',
+  editTree: 'Right-click',
   actionTree: 'Function operation',
 
   modal: 'Modal',
@@ -32,7 +32,4 @@ export default {
   upload: 'Upload',
 
   loading: 'Loading',
-
-  time: 'Relative Time',
-  cropperImage: 'Cropper Image',
 };

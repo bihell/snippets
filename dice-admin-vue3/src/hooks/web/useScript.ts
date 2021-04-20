@@ -12,7 +12,6 @@ export function useScript(opts: ScriptOptions) {
   const promise = new Promise((resolve, reject) => {
     onMounted(() => {
       const script = document.createElement('script');
-      script.type = 'text/javascript';
       script.onload = function () {
         isLoading.value = false;
         success.value = true;

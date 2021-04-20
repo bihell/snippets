@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BasicTable @register="registerTable" @edit-change="handleEditChange">
+    <BasicTable @register="registerTable">
       <template #action="{ record, column }">
         <TableAction :actions="createActions(record, column)" />
       </template>
@@ -29,11 +29,14 @@
       title: '工号',
       dataIndex: 'no',
       editRow: true,
+      // customRender: renderEditableRow({ dataIndex: 'no', placeholder: '请输入工号' }),
     },
     {
       title: '所属部门',
       dataIndex: 'dept',
       editRow: true,
+
+      // customRender: renderEditableRow({ dataIndex: 'dept', placeholder: '请输入所属部门' }),
     },
   ];
 
@@ -87,10 +90,6 @@
         record.onEdit?.(false, true);
       }
 
-      function handleEditChange(data: Recordable) {
-        console.log(data);
-      }
-
       function handleAdd() {
         const data = getDataSource();
         const addRow: EditRecordRow = {
@@ -99,7 +98,6 @@
           dept: '',
           editable: true,
           isNew: true,
-          key: `${Date.now()}`,
         };
         data.push(addRow);
       }
@@ -137,7 +135,6 @@
         createActions,
         handleAdd,
         getDataSource,
-        handleEditChange,
       };
     },
   });

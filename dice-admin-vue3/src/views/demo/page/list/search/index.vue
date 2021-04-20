@@ -38,7 +38,7 @@
                   {{ item.title }}
                 </p>
                 <div>
-                  <template v-for="(tag, index) in item.description" :key="`${index}`">
+                  <template v-for="(tag, index) in item.description" :key="index">
                     <Tag class="mb-2">
                       {{ tag }}
                     </Tag>
@@ -91,7 +91,7 @@
 
     &__container {
       padding: 12px;
-      background-color: @component-background;
+      background: #fff;
     }
 
     &__title {
@@ -100,7 +100,7 @@
     }
 
     &__content {
-      color: @text-color-secondary;
+      color: rgba(0, 0, 0, 0.65);
     }
 
     &__action {
@@ -109,7 +109,7 @@
       &-item {
         display: inline-block;
         padding: 0 16px;
-        color: @text-color-secondary;
+        color: rgba(0, 0, 0, 0.45);
 
         &:nth-child(1) {
           padding-left: 0;
@@ -117,7 +117,7 @@
 
         &:nth-child(1),
         &:nth-child(2) {
-          border-right: 1px solid @border-color-base;
+          border-right: 1px solid rgba(206, 206, 206, 0.4);
         }
       }
 

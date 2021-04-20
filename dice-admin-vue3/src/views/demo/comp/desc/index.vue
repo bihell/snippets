@@ -78,7 +78,6 @@
         data: mockData,
         schema: schema,
       });
-
       return { mockData, schema, register, register1 };
     },
   });

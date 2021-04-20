@@ -53,11 +53,12 @@ export function getColumns(): BasicColumn[] {
     {
       dataIndex: 'stack',
       title: t('sys.errorLog.tableColumnStackMsg'),
+      width: 300,
     },
   ];
 }
 
-export function getDescSchema(): any {
+export function getDescSchema() {
   return getColumns().map((column) => {
     return {
       field: column.dataIndex!,

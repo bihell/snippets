@@ -9,7 +9,7 @@ const feat: AppRouteModule = {
   component: LAYOUT,
   redirect: '/feat/icon',
   meta: {
-    icon: 'ion:git-compare-outline',
+    icon: 'ic:outline-featured-play-list',
     title: t('routes.demo.feat.feat'),
   },
   children: [
@@ -19,22 +19,6 @@ const feat: AppRouteModule = {
       component: () => import('/@/views/demo/feat/icon/index.vue'),
       meta: {
         title: t('routes.demo.feat.icon'),
-      },
-    },
-    {
-      path: 'ws',
-      name: 'WebSocket',
-      component: () => import('/@/views/demo/feat/ws/index.vue'),
-      meta: {
-        title: t('routes.demo.feat.ws'),
-      },
-    },
-    {
-      path: 'print',
-      name: 'Print',
-      component: () => import('/@/views/demo/feat/print/index.vue'),
-      meta: {
-        title: t('routes.demo.feat.print'),
       },
     },
     {
@@ -89,7 +73,7 @@ const feat: AppRouteModule = {
               component: () => import('/@/views/demo/feat/breadcrumb/ChildrenList.vue'),
               meta: {
                 title: t('routes.demo.feat.breadcrumbChildren'),
-                // hideBreadcrumb: true,
+                hideBreadcrumb: true,
               },
             },
             {
@@ -100,7 +84,7 @@ const feat: AppRouteModule = {
                 currentActiveMenu: '/feat/breadcrumb/children',
                 title: t('routes.demo.feat.breadcrumbChildrenDetail'),
                 hideTab: true,
-                // hideMenu: true,
+                hideMenu: true,
               },
             },
           ],
