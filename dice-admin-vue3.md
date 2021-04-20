@@ -869,6 +869,4 @@ export default {
 /Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/CHANGELOG.en_US.md
 /Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/CHANGELOG.md
 /Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/CHANGELOG.zh_CN.md
-/Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/src/views/demo
-/Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/src/router/routes/modules/demo
 
