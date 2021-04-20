@@ -17,7 +17,7 @@ import { useMessage } from '/@/hooks/web/useMessage';
 
 import router from '/@/router';
 
-import { loginApi, getUserInfoById } from '/@/api/sys/user';
+import { loginApi } from '/@/api/sys/user';
 
 import { useI18n } from '/@/hooks/web/useI18n';
 import { ErrorMessageMode } from '/@/utils/http/axios/types';
@@ -105,7 +105,16 @@ class User extends VuexModule {
 
   @Action
   async getUserInfoAction({ userId }: GetUserInfoByUserIdParams) {
-    const userInfo = await getUserInfoById({ userId });
+    // const userInfo = await getUserInfoById({ userId });
+    const userInfo = {
+      userId: userId,
+      username: 'vben',
+      realName: 'Vben Admin',
+      desc: 'manager',
+      password: '123456',
+      token: 'fakeToken1',
+      roles: [{ roleName: 'Super Admin', value: 'super' }],
+    };
     const { roles } = userInfo;
     const roleList = roles.map((item) => item.value) as RoleEnum[];
     this.commitUserInfoState(userInfo);
