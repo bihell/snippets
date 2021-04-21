@@ -11,7 +11,7 @@ export default {
 
   tree: 'Tree',
   treeBasic: '基础树',
-  editTree: '右键示例',
+  editTree: '可搜索/工具栏',
   actionTree: '函数操作示例',
 
   modal: '弹窗扩展',
@@ -31,4 +31,7 @@ export default {
   upload: '上传组件',
 
   loading: 'Loading',
+
+  time: '相对时间',
+  cropperImage: '图片裁剪',
 };
