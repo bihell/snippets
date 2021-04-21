@@ -5,7 +5,7 @@
       <div :class="`${prefixCls}__link`">
         <a><Icon icon="bx:bx-paper-plane" color="#1890ff" /><span>开始</span></a>
         <a><Icon icon="carbon:warning" color="#1890ff" /><span>简介</span></a>
-        <a><Icon icon="gg:loadbar-doc" color="#1890ff" /><span>文档</span></a>
+        <a><Icon icon="ion:document-text-outline" color="#1890ff" /><span>文档</span></a>
       </div>
     </template>
 
@@ -84,7 +84,7 @@
         margin-bottom: 5px;
         font-size: 16px;
         font-weight: 500;
-        color: rgba(0, 0, 0, 0.85);
+        color: @text-color;
 
         .icon {
           margin-top: -5px;
@@ -97,7 +97,7 @@
         padding-top: 10px;
         padding-left: 30px;
         font-size: 14px;
-        color: rgba(0, 0, 0, 0.5);
+        color: @text-color-secondary;
       }
     }
   }
