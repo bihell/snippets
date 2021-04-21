@@ -1,6 +1,7 @@
 <template>
   <div :class="prefixCls" :style="{ width: containerWidth }">
     <ImgUpload
+      :fullscreen="fullscreen"
       @uploading="handleImageUploading"
       @done="handleDone"
       v-if="showImageUpload"
@@ -11,6 +12,40 @@
 </template>
 
 <script lang="ts">
+  import tinymce from 'tinymce/tinymce';
+  import 'tinymce/themes/silver';
+
+  import 'tinymce/icons/default/icons';
+  import 'tinymce/plugins/advlist';
+  import 'tinymce/plugins/anchor';
+  import 'tinymce/plugins/autolink';
+  import 'tinymce/plugins/autosave';
+  import 'tinymce/plugins/code';
+  import 'tinymce/plugins/codesample';
+  import 'tinymce/plugins/directionality';
+  import 'tinymce/plugins/fullscreen';
+  import 'tinymce/plugins/hr';
+  import 'tinymce/plugins/insertdatetime';
+  import 'tinymce/plugins/link';
+  import 'tinymce/plugins/lists';
+  import 'tinymce/plugins/media';
+  import 'tinymce/plugins/nonbreaking';
+  import 'tinymce/plugins/noneditable';
+  import 'tinymce/plugins/pagebreak';
+  import 'tinymce/plugins/paste';
+  import 'tinymce/plugins/preview';
+  import 'tinymce/plugins/print';
+  import 'tinymce/plugins/save';
+  import 'tinymce/plugins/searchreplace';
+  import 'tinymce/plugins/spellchecker';
+  import 'tinymce/plugins/tabfocus';
+  // import 'tinymce/plugins/table';
+  import 'tinymce/plugins/template';
+  import 'tinymce/plugins/textpattern';
+  import 'tinymce/plugins/visualblocks';
+  import 'tinymce/plugins/visualchars';
+  import 'tinymce/plugins/wordcount';
+
   import {
     defineComponent,
     computed,
@@ -21,68 +56,96 @@
     onUnmounted,
     onDeactivated,
   } from 'vue';
-  import { basicProps } from './props';
-  import toolbar from './toolbar';
-  import plugins from './plugins';
-  import { getTinymce } from './getTinymce';
-  import { useScript } from '/@/hooks/web/useScript';
-  import { snowUuid } from '/@/utils/uuid';
-  import { bindHandlers } from './helper';
-  import lineHeight from './lineHeight';
-  import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
+
   import ImgUpload from './ImgUpload.vue';
+
+  import { toolbar, plugins } from './tinymce';
+
+  import { buildShortUUID } from '/@/utils/uuid';
+  import { bindHandlers } from './helper';
+  import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
   import { useDesign } from '/@/hooks/web/useDesign';
+  import { isNumber } from '/@/utils/is';
 
-  const CDN_URL = 'https://cdn.bootcdn.net/ajax/libs/tinymce/5.5.1';
+  const tinymceProps = {
+    options: {
+      type: Object as PropType<any>,
+      default: {},
+    },
+    value: {
+      type: String,
+    },
 
-  const tinymceScriptSrc = `${CDN_URL}/tinymce.min.js`;
+    toolbar: {
+      type: Array as PropType<string[]>,
+      default: toolbar,
+    },
+    plugins: {
+      type: Array as PropType<string[]>,
+      default: plugins,
+    },
+    modelValue: {
+      type: String,
+    },
+    height: {
+      type: [Number, String] as PropType<string | number>,
+      required: false,
+      default: 400,
+    },
+
+    width: {
+      type: [Number, String] as PropType<string | number>,
+      required: false,
+      default: 'auto',
+    },
+    showImageUpload: {
+      type: Boolean,
+      default: true,
+    },
+  };
 
   export default defineComponent({
     name: 'Tinymce',
     components: { ImgUpload },
     inheritAttrs: false,
-    props: basicProps,
+    props: tinymceProps,
     emits: ['change', 'update:modelValue'],
     setup(props, { emit, attrs }) {
-      const editorRef = ref<any>(null);
-      const tinymceId = ref<string>(snowUuid('tiny-vue'));
+      const editorRef = ref();
+      const fullscreen = ref(false);
+      const tinymceId = ref<string>(buildShortUUID('tiny-vue'));
       const elRef = ref<Nullable<HTMLElement>>(null);
 
       const { prefixCls } = useDesign('tinymce-container');
 
-      const tinymceContent = computed(() => {
-        return props.modelValue;
-      });
+      const tinymceContent = computed(() => props.modelValue);
 
       const containerWidth = computed(() => {
         const width = props.width;
-        if (/^[\d]+(\.[\d]+)?$/.test(width.toString())) {
+        if (isNumber(width)) {
           return `${width}px`;
         }
         return width;
       });
 
       const initOptions = computed(() => {
-        const { height, options } = props;
+        const { height, options, toolbar, plugins } = props;
+        const publicPath = import.meta.env.VITE_PUBLIC_PATH || '/';
         return {
           selector: `#${unref(tinymceId)}`,
-          base_url: CDN_URL,
-          suffix: '.min',
-          height: height,
-          toolbar: toolbar,
+          height,
+          toolbar,
           menubar: 'file edit insert view format table',
-          plugins: plugins,
-          // 语言包
-          language_url: 'resource/tinymce/langs/zh_CN.js',
-          // 中文
+          plugins,
+          language_url: publicPath + 'resource/tinymce/langs/zh_CN.js',
           language: 'zh_CN',
+          branding: false,
           default_link_target: '_blank',
           link_title: false,
-          advlist_bullet_styles: 'square',
-          advlist_number_styles: 'default',
           object_resizing: false,
-          fontsize_formats: '10px 11px 12px 14px 16px 18px 20px 24px 36px 48px',
-          lineheight_formats: '1 1.5 1.75 2.0 3.0 4.0 5.0',
+          skin: 'oxide',
+          skin_url: publicPath + 'resource/tinymce/skins/ui/oxide',
+          content_css: publicPath + 'resource/tinymce/skins/ui/oxide/content.min.css',
           ...options,
           setup: (editor: any) => {
             editorRef.value = editor;
@@ -91,22 +154,23 @@
         };
       });
 
-      const { toPromise } = useScript({
-        src: tinymceScriptSrc,
-      });
-
       watch(
         () => attrs.disabled,
         () => {
           const editor = unref(editorRef);
-          if (!editor) return;
+          if (!editor) {
+            return;
+          }
           editor.setMode(attrs.disabled ? 'readonly' : 'design');
         }
       );
+
       onMountedOrActivated(() => {
-        tinymceId.value = snowUuid('tiny-vue');
+        tinymceId.value = buildShortUUID('tiny-vue');
         nextTick(() => {
-          init();
+          setTimeout(() => {
+            initEditor();
+          }, 30);
         });
       });
 
@@ -119,31 +183,24 @@
       });
 
       function destory() {
-        if (getTinymce() !== null) {
-          getTinymce()?.remove?.(unref(editorRef));
+        if (tinymce !== null) {
+          tinymce?.remove?.(unref(editorRef));
         }
       }
 
-      function init() {
-        toPromise().then(() => {
-          setTimeout(() => {
-            initEditor();
-          }, 0);
-        });
-      }
-
       function initEditor() {
-        getTinymce().PluginManager.add('lineHeight', lineHeight(getTinymce()));
         const el = unref(elRef);
         if (el) {
           el.style.visibility = '';
         }
-        getTinymce().init(unref(initOptions));
+        tinymce.init(unref(initOptions));
       }
 
       function initSetup(e: Event) {
         const editor = unref(editorRef);
-        if (!editor) return;
+        if (!editor) {
+          return;
+        }
         const value = props.modelValue || '';
 
         editor.setContent(value);
@@ -188,25 +245,32 @@
           emit('update:modelValue', content);
           emit('change', content);
         });
+
+        editor.on('FullscreenStateChanged', (e) => {
+          fullscreen.value = e.state;
+        });
       }
 
       function handleImageUploading(name: string) {
         const editor = unref(editorRef);
-        if (!editor) return;
+        if (!editor) {
+          return;
+        }
         const content = editor?.getContent() ?? '';
-        setValue(editor, `${content}\n${getImgName(name)}`);
+        setValue(editor, `${content}\n${getUploadingImgName(name)}`);
       }
 
       function handleDone(name: string, url: string) {
         const editor = unref(editorRef);
-        if (!editor) return;
-
+        if (!editor) {
+          return;
+        }
         const content = editor?.getContent() ?? '';
-        const val = content?.replace(getImgName(name), `<img src="${url}"/>`) ?? '';
+        const val = content?.replace(getUploadingImgName(name), `<img src="${url}"/>`) ?? '';
         setValue(editor, val);
       }
 
-      function getImgName(name: string) {
+      function getUploadingImgName(name: string) {
         return `[uploading:${name}]`;
       }
 
@@ -215,12 +279,12 @@
         containerWidth,
         initOptions,
         tinymceContent,
-        tinymceScriptSrc,
         elRef,
         tinymceId,
         handleImageUploading,
         handleDone,
         editorRef,
+        fullscreen,
       };
     },
   });
