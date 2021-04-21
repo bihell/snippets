@@ -11,27 +11,31 @@
 
   &-dark&-vertical .@{simple-prefix-cls}__children,
   &-dark&-popup .@{simple-prefix-cls}__children {
-    background-color: @sider-dark-lighten-1-bg-color;
+    background-color: @sider-dark-lighten-bg-color;
     > .@{prefix-cls}-submenu-title {
-      background-color: @sider-dark-lighten-1-bg-color;
+      background-color: @sider-dark-lighten-bg-color;
     }
   }
 
   .collapse-title {
+    overflow: hidden;
     font-size: 12px;
-    .text-truncate();
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .@{simple-prefix-cls} {
   &-sub-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     transition: all 0.3s;
-    .text-truncate();
   }
 
   &-tag {
     position: absolute;
-    top: calc(50% - 10px);
+    top: calc(50% - 8px);
     right: 30px;
     display: inline-block;
     padding: 2px 3px;
@@ -47,7 +51,7 @@
     }
 
     &--dot {
-      top: calc(50% - 4px);
+      top: calc(50% - 2px);
       width: 6px;
       height: 6px;
       padding: 0;
@@ -55,19 +59,19 @@
     }
 
     &--primary {
-      background: @primary-color;
+      background-color: @primary-color;
     }
 
     &--error {
-      background: @error-color;
+      background-color: @error-color;
     }
 
     &--success {
-      background: @success-color;
+      background-color: @success-color;
     }
 
     &--warn {
-      background: @warning-color;
+      background-color: @warning-color;
     }
   }
 }

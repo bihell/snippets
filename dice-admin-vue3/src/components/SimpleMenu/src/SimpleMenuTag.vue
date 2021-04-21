@@ -3,23 +3,21 @@
 </template>
 <script lang="ts">
   import type { Menu } from '/@/router/types';
-  import type { PropType } from 'vue';
 
   import { defineComponent, computed } from 'vue';
 
   import { useDesign } from '/@/hooks/web/useDesign';
+  import { propTypes } from '/@/utils/propTypes';
 
   export default defineComponent({
     name: 'SimpleMenuTag',
     props: {
       item: {
         type: Object as PropType<Menu>,
-        default: {},
+        default: () => {},
       },
-      collapseParent: {
-        type: Boolean as PropType<boolean>,
-        default: false,
-      },
+      dot: propTypes.bool,
+      collapseParent: propTypes.bool,
     },
     setup(props) {
       const { prefixCls } = useDesign('simple-menu');
@@ -56,7 +54,7 @@
           [`${tagCls}--${type}`],
           {
             [`${tagCls}--collapse`]: collapseParent,
-            [`${tagCls}--dot`]: dot,
+            [`${tagCls}--dot`]: dot || props.dot,
           },
         ];
       });
