@@ -1,6 +1,5 @@
 @header-trigger-prefix-cls: ~'@{namespace}-layout-header-trigger';
 @header-prefix-cls: ~'@{namespace}-layout-header';
-@locale-prefix-cls: ~'@{namespace}-app-locale-picker';
 @breadcrumb-prefix-cls: ~'@{namespace}-layout-breadcrumb';
 @logo-prefix-cls: ~'@{namespace}-app-logo';
 
@@ -11,7 +10,7 @@
   margin-left: -1px;
   line-height: @header-height;
   color: @white;
-  background: @white;
+  background-color: @white;
   align-items: center;
   justify-content: space-between;
 
@@ -68,7 +67,7 @@
     .@{header-trigger-prefix-cls} {
       display: flex;
       height: 100%;
-      padding: 1px 10px 0 16px;
+      padding: 1px 10px 0 10px;
       cursor: pointer;
       align-items: center;
 
@@ -78,7 +77,7 @@
 
       &.light {
         &:hover {
-          background: @header-light-bg-hover-color;
+          background-color: @header-light-bg-hover-color;
         }
 
         svg {
@@ -88,7 +87,7 @@
 
       &.dark {
         &:hover {
-          background: @header-dark-bg-hover-color;
+          background-color: @header-dark-bg-hover-color;
         }
       }
     }
@@ -104,7 +103,7 @@
   &-action {
     display: flex;
     min-width: 180px;
-    padding-right: 12px;
+    // padding-right: 12px;
     align-items: center;
 
     &__item {
@@ -132,7 +131,7 @@
   }
 
   &--light {
-    background: @white;
+    background-color: @white !important;
     border-bottom: 1px solid @header-light-bottom-border-color;
     border-left: 1px solid @header-light-bottom-border-color;
 
@@ -140,19 +139,21 @@
       color: @text-color-base;
 
       &:hover {
-        background: @header-light-bg-hover-color;
+        background-color: @header-light-bg-hover-color;
       }
     }
 
     .@{header-prefix-cls}-action {
       &__item {
-        &:hover {
-          background: @header-light-bg-hover-color;
+        color: @text-color-base;
+
+        .app-iconify {
+          padding: 0 10px;
+          font-size: 16px !important;
         }
 
-        .@{locale-prefix-cls} {
-          padding: 0 6px;
-          color: rgba(0, 0, 0, 0.65);
+        &:hover {
+          background-color: @header-light-bg-hover-color;
         }
       }
 
@@ -164,18 +165,24 @@
   }
 
   &--dark {
-    background: @header-dark-bg-color;
-
+    background-color: @header-dark-bg-color !important;
+    border-bottom: 1px solid @border-color-base;
+    border-left: 1px solid @border-color-base;
     .@{header-prefix-cls}-logo {
       &:hover {
-        background: @header-dark-bg-hover-color;
+        background-color: @header-dark-bg-hover-color;
       }
     }
 
     .@{header-prefix-cls}-action {
       &__item {
+        .app-iconify {
+          padding: 0 10px;
+          font-size: 16px !important;
+        }
+
         &:hover {
-          background: @header-dark-bg-hover-color;
+          background-color: @header-dark-bg-hover-color;
         }
       }
     }
