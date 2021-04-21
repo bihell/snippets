@@ -1030,3 +1030,8 @@ export function registerGlobComp(app: App) {
 /dice-admin-vue3/src/router/menus/modules/about.ts
 /dice-admin-vue3/src/router/menus/modules/dashboard.ts
 /dice-admin-vue3/src/router/menus/modules/demo
+/dice-admin-vue3/.github
+.gitignore
+.vscode
+README.md
+README.zh-CN.md
