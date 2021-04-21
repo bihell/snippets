@@ -992,7 +992,16 @@ export function registerGlobComp(app: App) {
 
 # 删文件
 
-/Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/CHANGELOG.en_US.md
-/Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/CHANGELOG.md
-/Users/haseochen/Documents/SourceCode/GitHub/snippets/dice-admin-vue3/CHANGELOG.zh_CN.md
-
+/dice-admin-vue3/CHANGELOG.en_US.md
+/dice-admin-vue3/CHANGELOG.md
+/dice-admin-vue3/CHANGELOG.zh_CN.md
+/dice-admin-vue3/src/views/demo
+/dice-admin-vue3/src/router/routes/modules/demo
+/dice-admin-vue3/src/router/routes/modules/about.ts
+/dice-admin-vue3/src/views/sys/about
+/dice-admin-vue3/src/views/dashboard
+/dice-admin-vue3/src/router/routes/modules/dashboard.ts
+/dice-admin-vue3/src/views/dashboard
+/dice-admin-vue3/src/router/menus/modules/about.ts
+/dice-admin-vue3/src/router/menus/modules/dashboard.ts
+/dice-admin-vue3/src/router/menus/modules/demo
