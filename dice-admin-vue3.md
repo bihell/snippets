@@ -116,10 +116,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 ```
 // app router
 const router = createRouter({
-  history: createWebHistory(),
-  routes: basicRoutes as RouteRecordRaw[],
+  history: createWebHistory(import.meta.env.VITE_PUBLIC_PATH),
+  routes: (basicRoutes as unknown) as RouteRecordRaw[],
   strict: true,
-  scrollBehavior: scrollBehavior,
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 ```
 
