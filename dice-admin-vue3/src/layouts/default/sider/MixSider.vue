@@ -1,6 +1,5 @@
 <template>
   <div :class="`${prefixCls}-dom`" :style="getDomStyle"></div>
-
   <div
     v-click-outside="handleClickOutside"
     :style="getWrapStyle"
@@ -27,15 +26,15 @@
               [`${prefixCls}-module__item--active`]: item.path === activePath,
             },
           ]"
+          v-bind="getItemEvents(item)"
           v-for="item in menuModules"
           :key="item.path"
-          v-bind="getItemEvents(item)"
         >
-          <MenuTag :item="item" :showTitle="false" :isHorizontal="false" />
+          <SimpleMenuTag :item="item" collapseParent dot />
           <Icon
             :class="`${prefixCls}-module__icon`"
             :size="getCollapsed ? 16 : 20"
-            :icon="item.meta && item.meta.icon"
+            :icon="item.icon || (item.meta && item.meta.icon)"
           />
           <p :class="`${prefixCls}-module__name`">
             {{ t(item.name) }}
@@ -85,8 +84,8 @@
 
   import { defineComponent, onMounted, ref, computed, unref } from 'vue';
 
-  import { MenuTag } from '/@/components/Menu';
   import { ScrollContainer } from '/@/components/Container';
+  import { SimpleMenuTag } from '/@/components/SimpleMenu';
   import Icon from '/@/components/Icon';
   import { AppLogo } from '/@/components/Application';
   import Trigger from '../trigger/HeaderTrigger.vue';
@@ -102,7 +101,7 @@
 
   import clickOutside from '/@/directives/clickOutside';
   import { getShallowMenus, getChildrenMenus, getCurrentParentPath } from '/@/router/menus';
-  import { listenerLastChangeTab } from '/@/logics/mitt/tabChange';
+  import { listenerRouteChange } from '/@/logics/mitt/routeChange';
   import { SimpleMenu } from '/@/components/SimpleMenu';
 
   export default defineComponent({
@@ -111,9 +110,9 @@
       ScrollContainer,
       AppLogo,
       SimpleMenu,
-      MenuTag,
       Icon,
       Trigger,
+      SimpleMenuTag,
     },
     directives: {
       clickOutside,
@@ -203,7 +202,7 @@
         menuModules.value = await getShallowMenus();
       });
 
-      listenerLastChangeTab((route) => {
+      listenerRouteChange((route) => {
         currentRoute.value = route;
         setActive(true);
         if (unref(getCloseMixSidebarOnChange)) {
@@ -337,8 +336,6 @@
 </script>
 <style lang="less">
   @prefix-cls: ~'@{namespace}-layout-mix-sider';
-  @tag-prefix-cls: ~'@{namespace}-basic-menu-item-tag';
-  @menu-prefix-cls: ~'@{namespace}-menu';
   @width: 80px;
   .@{prefix-cls} {
     position: fixed;
@@ -347,17 +344,8 @@
     z-index: @layout-mix-sider-fixed-z-index;
     height: 100%;
     overflow: hidden;
-    background: @sider-dark-bg-color;
+    background-color: @sider-dark-bg-color;
     transition: all 0.2s ease 0s;
-    .@{tag-prefix-cls} {
-      position: absolute;
-      top: 6px;
-      right: 2px;
-    }
-
-    .@{menu-prefix-cls} {
-      width: 100% !important;
-    }
 
     &-dom {
       height: 100%;
@@ -395,7 +383,7 @@
 
           &--active {
             color: @primary-color;
-            background: unset;
+            background-color: unset;
           }
         }
       }
@@ -415,12 +403,12 @@
         }
       }
     }
-    @border-color: @sider-dark-lighten-1-bg-color;
+    @border-color: @sider-dark-lighten-bg-color;
 
     &.dark {
       &.open {
         .@{prefix-cls}-logo {
-          border-bottom: 1px solid @border-color;
+          // border-bottom: 1px solid @border-color;
         }
 
         > .scrollbar {
@@ -428,7 +416,7 @@
         }
       }
       .@{prefix-cls}-menu-list {
-        background: @sider-dark-bg-color;
+        background-color: @sider-dark-bg-color;
 
         &__title {
           color: @white;
@@ -471,7 +459,7 @@
         &--active {
           font-weight: 700;
           color: @white;
-          background: @sider-dark-darken-bg-color;
+          background-color: @sider-dark-darken-bg-color;
 
           &::before {
             position: absolute;
@@ -479,7 +467,7 @@
             left: 0;
             width: 3px;
             height: 100%;
-            background: @primary-color;
+            background-color: @primary-color;
             content: '';
           }
         }
@@ -508,12 +496,12 @@
       font-size: 18px;
       color: rgba(255, 255, 255, 0.65);
       cursor: pointer;
-      background: @sider-dark-bg-color;
+      background-color: @sider-dark-bg-color;
     }
 
     &.light &-trigger {
       color: rgba(0, 0, 0, 0.65);
-      background: #fff;
+      background-color: #fff;
     }
 
     &-menu-list {
@@ -522,18 +510,8 @@
       width: 0;
       width: 200px;
       height: calc(100%);
-      background: #fff;
+      background-color: #fff;
       transition: all 0.2s;
-      .@{tag-prefix-cls} {
-        position: absolute;
-        top: 10px;
-        right: 30px;
-
-        &--dot {
-          top: 50%;
-          margin-top: -3px;
-        }
-      }
 
       &__title {
         display: flex;
@@ -595,7 +573,7 @@
       width: 1px;
       height: calc(100% - 50px);
       cursor: ew-resize;
-      background: #f8f8f9;
+      background-color: #f8f8f9;
       border-top: none;
       border-bottom: none;
       box-shadow: 0 0 4px 0 rgba(28, 36, 56, 0.15);
