@@ -1,6 +1,9 @@
-import { VitePWA } from 'vite-plugin-pwa';
+/**
+ * Zero-config PWA for Vite
+ * https://github.com/antfu/vite-plugin-pwa
+ */
 
-import { ViteEnv } from '../../utils';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export function configPwaConfig(env: ViteEnv) {
   const { VITE_USE_PWA, VITE_GLOB_APP_TITLE, VITE_GLOB_APP_SHORT_NAME } = env;

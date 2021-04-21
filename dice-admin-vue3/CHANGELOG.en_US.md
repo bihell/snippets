@@ -1,3 +1,227 @@
+## 2.3.0 (2021-04-10)
+
+## (Breaking changes) Breaking changes
+
+- Use `pinia` to replace `vuex`, `vuex-module-decorators`.
+
+  -Impact, if you used vuex-module-decorators yourself before, you need to transform it to pinia.
+
+  - the reason: -pinia is basically similar to vuex5api and is easy to understand. -Subsequent switching to vuex5 has a very low cost and can also be used as a third-party state management library
+
+- Remove `useKeyPress` and use `vueuse`-`onKeyStroke` instead
+- Remove `useDebounceFn` and use `vueuse`-`useDebounceFn` instead
+- Remove `useThrottle` and use `vueuse`-`useThrottleFn` instead
+
+### ✨ Features
+
+- Tabs support persistent storage
+
+### ✨ Refactor
+
+- Remove `useElResize`
+
+### 🐛 Bug Fixes
+
+- Login page style fix
+- Fix the known problems of the menu
+- Fix the problem of theme style switching
+
+## 2.2.0 (2021-04-06)
+
+### ✨ Features
+
+- Added `headerTitle` slot
+- New printing example
+- Added about interface
+
+### ✨ Refactor
+
+- Remove useFullScreen function
+- tinymce changed from Cdn to npm (the package size is too large)
+- Dashboard refactoring
+- Remove ApexCharts and examples
+
+### 🐛 Bug Fixes
+
+- Make sure the breadcrumbs are displayed correctly
+- Fixed the issue of tinymce upload button disappearing in full screen mode
+- Make sure that the title changes normally after logging in again
+- Ensure that the background mode login is normal
+- Fix TableAction click event issue
+
+## 2.1.1 (2021-03-26)
+
+### ✨ Features
+
+- Added hideChildrenInMenu configuration for routing. Used to hide submenu
+- Built-in expand/collapse all functions in the tree form
+
+### ✨ Refactor
+
+- Refactor the routing multi-layer mode to solve the problem of multiple implementations of nested keepalives
+
+### 🐛 Bug Fixes
+
+- Ensure that the CountDownInput component is reset to the empty value
+- Fix the display problem on the small screen in split mode
+- Fix table height calculation problem
+- Fix the problem that components cannot be obtained by background routing
+- Fix Modal component loadingTip configuration does not take effect
+- Fix the background permission command does not take effect
+- Make sure the progress bar is closed properly
+- Fix the problem of invalid table check column configuration
+- Ensure that the first level menu can be hidden
+- Ensure that the hidden fields of the form are verified properly
+
+### 🎫 Chores
+
+- Remove ls-lint
+
+### 🎫 Chores
+
+- 移除 ls-lint
+
+## 2.1.0 (2021-03-15)
+
+### ✨ Features
+
+- Added svg mode to icon selector
+- Added time component
+- Added AutoNavi/Baidu/Google Map example
+
+### ✨ Refactor
+
+- Refactor the project to solve the hot update problem caused by circular dependencies
+- Remove vueHelper/useClickoutside, use @vueuse/core instead
+
+### 🐛 Bug Fixes
+
+- Ensure that the value of `table action` is updated correctly
+- Fix the animation of page switching cannot be closed
+- Fix `PageWrapper`title not showing
+- Fix the known issues of the table
+- Fix the problem that the BasicTree component can't customize the title
+- Fix the button style problem after theme switching
+
+## 2.0.3 (2021-03-07)
+
+### ✨ Features
+
+- `BasicTree` added `clickRowToExpand`, used to click tree node to expand
+- Added SvgIcon plugin and examples
+- Add the department tree on the left side of the account management interface·
+
+### ⚡ Performance Improvements
+
+- Pagination parameters are no longer carried when the table is closed
+- The login page monitors the carriage return event to log in
+- When the adaptive size of the table is set, the height is filled according to the screen.
+- Tree scroll bar optimization
+- Optimize the loading speed of local development
+
+### 🐛 Bug Fixes
+
+- Fix known issues with `Description`
+- Fix known issues with `BasicForm`
+- Fix the logic problem of show attribute of ActionItem under `BasicTree`
+- Fix the style error of the tree component demo example
+- Repair account management to add new but not cleared old data
+- The form component should allow the setFieldsValue method to be null or undefined
+- Ensure that the single-level breadcrumbs jump correctly
+- Ensure that the Form component does not verify hidden form items
+
+## 2.0.2 (2021-03-04)
+
+### ✨ Refactor
+
+- Refactored multi-language modules to support lazy loading and remote loading
+
+### ✨ Features
+
+- axios supports form-data format request
+- Added icon selector component (support local and online methods)
+- Added WebSocket examples and service scripts
+- Added the `renderIcon` property to the Tree component to control the display of level icons
+- Tree->actionItem added show attribute, used to dynamically control button display
+- New toolbar/title/search function for Tree
+- Added department management/password modification/account management/role management/menu management sample interface
+
+### ⚡ Performance Improvements
+
+- Optimized login interface animation
+- Fix the problem of excessively large github warehouse.
+- Hide table full screen button by default
+- `crypto-es` is changed to `crypto-js` to reduce the package size
+- `types` directory moved to the root directory, compatible with other directory global types
+
+### 🐛 Bug Fixes
+
+- Fix the warning problem of verification code component
+- Fix the table cannot get the selected row correctly
+- Fixed modal height calculation error in full screen state
+- Fix some table style issues
+- Fix the invalidation of the tree form `indentSize` setting
+
+## 2.0.1 (2021-02-21)
+
+### ✨ Refactor
+
+- Refactored login page, new registration page/reset password page/mobile phone login/QR code login
+
+### ✨ Features
+
+- Added the `settingButtonPosition` configuration item for configuring the position of the `settings` button
+- `modal` can switch the full screen by double-clicking the head
+- Added `CountDownInput` component
+
+### ⚡ Performance Improvements
+
+- Optimize the editable center style and the width of the drop-down box is too short
+- The `edit-change` event listener when the table is added and edited
+
+### 🐛 Bug Fixes
+
+- Fix image preview style error
+- Fix icon style problem
+- Fix the drop-down echo problem of editable table
+
+## 2.0.0 (2021-02-18)
+
+## Breaking changes
+
+- `echarts` is upgraded to 5.0 and introduced on demand (just use `useECharts`).
+
+### ✨ Refactor
+
+- Removed `global.less`, `mixin.less`, `design/helper`, replaced by `windicss`, and need to modify the corresponding styles if they are useful
+
+### ✨ Features
+
+- useModal adds the return value function `redoModalHeight`, which is used to refresh the modal height when the modal is dynamic content
+- Upgrade husky to 5.0
+- Added `brotli`|`gzip` compression and related test commands
+- Re-introduction of `windicss` (same as `tailwind`). Faster in speed
+
+### ⚡ Performance Improvements
+
+- Adjust the return value of the interface to obtain user information in array format
+- Fix the error-log list as the system route
+
+### 🐛 Bug Fixes
+
+- Fix the issue of upload component maxNumber invalid
+- Fix package sourcemap error report
+- Fix code debugger location display error
+- Fix the issue of mock plugin post request error
+- Fix some themes color value error
+- Fix the table in editable row status and press Enter to confirm
+
+### 🎫 Chores
+
+- Documentation update
+- Upgrade ant-design-vue to `2.0.0`
+- Upgrade vite to `2.0.0`
+
 ## 2.0.0-rc.18 (2021-02-05)
 
 ### ✨ Features
