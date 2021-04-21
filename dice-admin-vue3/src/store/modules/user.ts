@@ -15,7 +15,7 @@ import {
   LoginParams,
 } from '/@/api/sys/model/userModel';
 
-import { getUserInfoById, loginApi } from '/@/api/sys/user';
+import { loginApi } from '/@/api/sys/user';
 
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
@@ -92,7 +92,16 @@ export const useUserStore = defineStore({
       }
     },
     async getUserInfoAction({ userId }: GetUserInfoByUserIdParams) {
-      const userInfo = await getUserInfoById({ userId });
+      // const userInfo = await getUserInfoById({ userId });
+      const userInfo = {
+        userId: userId,
+        username: 'vben',
+        realName: 'Vben Admin',
+        desc: 'manager',
+        password: '123456',
+        token: 'fakeToken1',
+        roles: [{ roleName: 'Super Admin', value: 'super' }],
+      };
       const { roles } = userInfo;
       const roleList = roles.map((item) => item.value) as RoleEnum[];
       this.setUserInfo(userInfo);
