@@ -4,24 +4,26 @@
       <div :class="getClass" @click.stop v-if="visible">
         <div :class="`${prefixCls}-content`" v-click-outside="handleClose">
           <div :class="`${prefixCls}-input__wrapper`">
-            <a-input
+            <Input
               :class="`${prefixCls}-input`"
               :placeholder="t('common.searchText')"
               allow-clear
               @change="handleSearch"
             >
               <template #prefix>
+                <!-- <Icon icon="ion:search"/> -->
                 <SearchOutlined />
               </template>
-            </a-input>
-            <span :class="`${prefixCls}-cancel`" @click="handleClose">{{
-              t('common.cancelText')
-            }}</span>
+            </Input>
+            <span :class="`${prefixCls}-cancel`" @click="handleClose">
+              {{ t('common.cancelText') }}
+            </span>
           </div>
 
           <div :class="`${prefixCls}-not-data`" v-show="getIsNotData">
             {{ t('component.app.searchNotData') }}
           </div>
+
           <ul :class="`${prefixCls}-list`" v-show="!getIsNotData" ref="scrollWrap">
             <li
               :ref="setRefs(index)"
@@ -38,13 +40,13 @@
               ]"
             >
               <div :class="`${prefixCls}-list__item-icon`">
-                <g-icon :icon="item.icon || 'mdi:form-select'" :size="20" />
+                <Icon :icon="item.icon || 'mdi:form-select'" :size="20" />
               </div>
               <div :class="`${prefixCls}-list__item-text`">
                 {{ item.name }}
               </div>
               <div :class="`${prefixCls}-list__item-enter`">
-                <g-icon icon="ant-design:enter-outlined" :size="20" />
+                <Icon icon="ant-design:enter-outlined" :size="20" />
               </div>
             </li>
           </ul>
@@ -57,25 +59,29 @@
 <script lang="ts">
   import { defineComponent, computed, unref, ref } from 'vue';
 
+  import { SearchOutlined } from '@ant-design/icons-vue';
+  import { Input } from 'ant-design-vue';
+  import AppSearchFooter from './AppSearchFooter.vue';
+  import Icon from '/@/components/Icon';
+
+  import clickOutside from '/@/directives/clickOutside';
+
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useRefs } from '/@/hooks/core/useRefs';
   import { useMenuSearch } from './useMenuSearch';
-  import { SearchOutlined } from '@ant-design/icons-vue';
-  import AppSearchFooter from './AppSearchFooter.vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useAppInject } from '/@/hooks/web/useAppInject';
-  import clickOutside from '/@/directives/clickOutside';
-  import { Input } from 'ant-design-vue';
+
+  import { propTypes } from '/@/utils/propTypes';
 
   export default defineComponent({
     name: 'AppSearchModal',
-    components: { SearchOutlined, AppSearchFooter, [Input.name]: Input },
+    components: { Icon, SearchOutlined, AppSearchFooter, Input },
     directives: {
       clickOutside,
     },
-
     props: {
-      visible: Boolean,
+      visible: propTypes.bool,
     },
     emits: ['close'],
     setup(_, { emit }) {
@@ -107,6 +113,11 @@
         ];
       });
 
+      function handleClose() {
+        searchResult.value = [];
+        emit('close');
+      }
+
       return {
         t,
         prefixCls,
@@ -119,10 +130,7 @@
         setRefs,
         scrollWrap,
         handleMouseenter,
-        handleClose: () => {
-          searchResult.value = [];
-          emit('close');
-        },
+        handleClose,
       };
     },
   });
@@ -139,10 +147,8 @@
     width: 100%;
     height: 100%;
     padding-top: 50px;
-    // background: #656c85cc;
-    background: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.25);
     justify-content: center;
-    // backdrop-filter: blur(2px);
 
     &--mobile {
       padding: 0;
@@ -184,12 +190,10 @@
     &-content {
       position: relative;
       width: 632px;
-      // padding: 14px;
       margin: 0 auto auto auto;
-      background: #f5f6f7;
+      background-color: @component-background;
       border-radius: 16px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      // box-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5), 0 3px 8px 0 #555a64;
       flex-direction: column;
     }
 
@@ -247,15 +251,20 @@
         font-size: 14px;
         color: @text-color-base;
         cursor: pointer;
-        // background: @primary-color;
-        background: #fff;
+        background-color: @component-background;
         border-radius: 4px;
         box-shadow: 0 1px 3px 0 #d4d9e1;
         align-items: center;
 
+        > div:first-child,
+        > div:last-child {
+          display: flex;
+          align-items: center;
+        }
+
         &--active {
           color: #fff;
-          background: @primary-color;
+          background-color: @primary-color;
 
           .@{prefix-cls}-list__item-enter {
             opacity: 1;

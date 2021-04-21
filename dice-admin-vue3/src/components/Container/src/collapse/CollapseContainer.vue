@@ -1,37 +1,44 @@
 <template>
-  <div :class="['p-2', prefixCls]">
-    <CollapseHeader v-bind="$props" :prefixCls="prefixCls" :show="show" @expand="handleExpand">
+  <div :class="prefixCls">
+    <CollapseHeader
+      v-bind="getBindValues"
+      :prefixCls="prefixCls"
+      :show="show"
+      @expand="handleExpand"
+    >
       <template #title>
         <slot name="title"></slot>
       </template>
+      <template #action>
+        <slot name="action"></slot>
+      </template>
     </CollapseHeader>
 
-    <CollapseTransition :enable="canExpan">
-      <Skeleton v-if="loading" />
-      <div :class="`${prefixCls}__body`" v-else v-show="show">
-        <LazyContainer :timeout="lazyTime" v-if="lazy">
+    <div class="p-2">
+      <CollapseTransition :enable="canExpan">
+        <Skeleton v-if="loading" :active="active" />
+        <div :class="`${prefixCls}__body`" v-else v-show="show">
           <slot></slot>
-          <template #skeleton>
-            <slot name="lazySkeleton"></slot>
-          </template>
-        </LazyContainer>
-        <slot v-else></slot>
-      </div>
-    </CollapseTransition>
+        </div>
+      </CollapseTransition>
+    </div>
+
+    <div :class="`${prefixCls}__footer`" v-if="$slots.footer">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 <script lang="ts">
   import type { PropType } from 'vue';
 
-  import { defineComponent, ref } from 'vue';
+  import { defineComponent, ref, computed } from 'vue';
 
   // component
   import { Skeleton } from 'ant-design-vue';
-  import { CollapseTransition } from '/@/components/Transition/index';
+  import { CollapseTransition } from '/@/components/Transition';
   import CollapseHeader from './CollapseHeader.vue';
-  import LazyContainer from '../LazyContainer.vue';
 
-  import { triggerWindowResize } from '/@/utils/event/triggerWindowResizeEvent';
+  import { triggerWindowResize } from '/@/utils/event';
   // hook
   import { useTimeoutFn } from '/@/hooks/core/useTimeout';
   import { propTypes } from '/@/utils/propTypes';
@@ -41,7 +48,6 @@
     name: 'CollapseContainer',
     components: {
       Skeleton,
-      LazyContainer,
       CollapseHeader,
       CollapseTransition,
     },
@@ -57,9 +63,8 @@
       // Whether to trigger window.resize when expanding and contracting,
       // Can adapt to tables and forms, when the form shrinks, the form triggers resize to adapt to the height
       triggerWindowResize: propTypes.bool,
-      loading: propTypes.bool,
-      // Delayed loading
-      lazy: propTypes.bool,
+      loading: propTypes.bool.def(false),
+      active: propTypes.bool.def(true),
       // Delayed loading time
       lazyTime: propTypes.number.def(0),
     },
@@ -78,10 +83,16 @@
           useTimeoutFn(triggerWindowResize, 200);
         }
       }
+
+      const getBindValues = computed((): any => {
+        return props;
+      });
+
       return {
         show,
         handleExpand,
         prefixCls,
+        getBindValues,
       };
     },
   });
@@ -90,16 +101,20 @@
   @prefix-cls: ~'@{namespace}-collapse-container';
 
   .@{prefix-cls} {
-    background: #fff;
+    background-color: @component-background;
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 
     &__header {
       display: flex;
       height: 32px;
-      margin-bottom: 10px;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid @border-color-light;
+    }
+
+    &__footer {
+      border-top: 1px solid @border-color-light;
     }
 
     &__action {
