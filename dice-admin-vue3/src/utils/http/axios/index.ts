@@ -2,11 +2,10 @@
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
 import type { AxiosResponse } from 'axios';
-import type { CreateAxiosOptions, RequestOptions, Result } from './types';
-import { VAxios } from './Axios';
-import { getToken } from '/@/utils/auth';
-import { AxiosTransform } from './axiosTransform';
+import type { RequestOptions, Result } from './types';
+import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 
+import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
 
 import { useGlobSetting } from '/@/hooks/setting';
@@ -15,8 +14,10 @@ import { useMessage } from '/@/hooks/web/useMessage';
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '/@/enums/httpEnum';
 
 import { isString } from '/@/utils/is';
+import { getToken } from '/@/utils/auth';
 import { setObjToUrlParams, deepMerge } from '/@/utils';
-import { errorStore } from '/@/store/modules/error';
+import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog';
+
 import { errorResult } from './const';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { createNow, formatRequestDate } from './helper';
@@ -32,7 +33,7 @@ const transform: AxiosTransform = {
   /**
    * @description: 处理请求数据
    */
-  transformRequestData: (res: AxiosResponse<Result>, options: RequestOptions) => {
+  transformRequestHook: (res: AxiosResponse<Result>, options: RequestOptions) => {
     const { t } = useI18n();
     const { isTransformRequestResult } = options;
     // 不进行任何处理，直接返回
@@ -150,7 +151,8 @@ const transform: AxiosTransform = {
    */
   responseInterceptorsCatch: (error: any) => {
     const { t } = useI18n();
-    errorStore.setupErrorHandle(error);
+    const errorLogStore = useErrorLogStoreWithOut();
+    errorLogStore.addAjaxErrorInfo(error);
     const { response, code, message } = error || {};
     const msg: string = response?.data?.error?.message ?? '';
     const err: string = error?.toString?.() ?? '';
@@ -202,6 +204,8 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
           apiUrl: globSetting.apiUrl,
           //  是否加入时间戳
           joinTime: true,
+          // 忽略重复请求
+          ignoreCancelToken: true,
         },
       },
       opt || {}
