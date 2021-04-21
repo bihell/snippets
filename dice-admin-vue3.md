@@ -988,6 +988,31 @@ export function registerGlobComp(app: App) {
 }
 ```
 
+# package.json
+
+```Json
+  "name": "dice-admin",
+  "version": "2.0.0 alpha",
+  "author": {
+    "name": "tpxcer",
+    "email": "tpxcer@outlook.com",
+    "url": "https://github.com/bihell/Dice"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bihell/Dice.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bihell/Dice/issues"
+  },
+  "homepage": "https://github.com/bihell/Dice",
+  "engines": {
+    "node": "^12 || >=14"
+  }
+```
+
 
 
 # 删文件
