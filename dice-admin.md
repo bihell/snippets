@@ -1013,6 +1013,21 @@ export function registerGlobComp(app: App) {
   }
 ```
 
+# src/enums/pageEnum.ts
+
+```
+export enum PageEnum {
+  // basic login path
+  BASE_LOGIN = '/login',
+  // basic home path
+  BASE_HOME = '/blog',
+  // error page path
+  ERROR_PAGE = '/exception',
+  // error log page path
+  ERROR_LOG_PAGE = '/error-log/list',
+}
+```
+
 
 
 # 删文件
@@ -1035,3 +1050,6 @@ export function registerGlobComp(app: App) {
 .vscode
 README.md
 README.zh-CN.md
+
+
+

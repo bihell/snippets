@@ -6,7 +6,7 @@ const blog: AppRouteModule = {
   path: '/blog',
   name: 'Blog',
   component: LAYOUT,
-  redirect: '/blog/article',
+  redirect: '/blog/posts',
   meta: {
     icon: 'carbon:blog',
     title: '博客',
