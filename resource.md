@@ -817,3 +817,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [给顶级开源项目 Spring Boot 贡献代码是一种什么样的体验？](https://segmentfault.com/a/1190000039785482)
 [zhangdaiscott / JimuReport](https://github.com/zhangdaiscott/JimuReport) 一款免费的数据可视化工具，报表与大屏设计！类似于excel操作风格，在线拖拽完成报表设计！功能涵盖: 报表设计、图形报表、打印设计、大屏设计等，永久免费！
 [mini-LED 是什么？配备它的新款 iPad Pro、 Macbook 或许很快到来](https://sspai.com/post/65708)
+[flinkx](https://github.com/DTStack/flinkx)
