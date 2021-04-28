@@ -35,11 +35,11 @@ judge(){
 working_dir=`pwd`
 
 # 安装 Dice-Admin 依赖
-cd $working_dir/dice-admin/ && npm install
+cd $working_dir/dice-admin/ && yarn install
 judge "安装 Dice-Admin 项目依赖"
 
 # 编译 Dice-Admin 项目
-npm run build:prod
+yarn run build
 judge "编译 Dice-Admin 项目"
 
 cd $working_dir/dice-server/ && mvn clean package -P docker,release
