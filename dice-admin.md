@@ -1050,6 +1050,5 @@ export enum PageEnum {
 .vscode
 README.md
 README.zh-CN.md
-
-
+.husky
 

@@ -39,7 +39,7 @@ cd $working_dir/dice-admin/ && yarn install
 judge "安装 Dice-Admin 项目依赖"
 
 # 编译 Dice-Admin 项目
-yarn run build
+yarn build
 judge "编译 Dice-Admin 项目"
 
 cd $working_dir/dice-server/ && mvn clean package -P docker,release
