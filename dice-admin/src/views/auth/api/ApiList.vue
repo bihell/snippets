@@ -1,31 +1,33 @@
 <template>
-  <BasicTable @register="registerTable">
-    <template #form-apiAdd>
-      <a-button type="primary" @click="apiAdd"> <FileAddOutlined /> 新增API </a-button>
-    </template>
-    <template #action="{ record }">
-      <TableAction
-        :drop-down-actions="[
-          {
-            label: '编辑',
-            onClick: apiAdd,
-          },
-          {
-            label: '删除',
-            onClick: handleDeleteClick.bind(null, record),
-          },
-        ]"
-        :divider="false"
-      >
-        <template #more>
-          <a-button shape="circle" class="border-none">
-            <FormOutlined />
-          </a-button>
-        </template>
-      </TableAction>
-    </template>
-  </BasicTable>
-  <Modal1 @register="register1" />
+  <div>
+    <BasicTable @register="registerTable">
+      <template #form-apiAdd>
+        <a-button type="primary" @click="apiAdd"> <FileAddOutlined /> 新增API </a-button>
+      </template>
+      <template #action="{ record }">
+        <TableAction
+          :drop-down-actions="[
+            {
+              label: '编辑',
+              onClick: apiAdd,
+            },
+            {
+              label: '删除',
+              onClick: handleDeleteClick.bind(null, record),
+            },
+          ]"
+          :divider="false"
+        >
+          <template #more>
+            <a-button shape="circle" class="border-none">
+              <FormOutlined />
+            </a-button>
+          </template>
+        </TableAction>
+      </template>
+    </BasicTable>
+    <Modal1 @register="register1" />
+  </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
