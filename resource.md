@@ -5,19 +5,11 @@
 [ls0f/phone](https://github.com/ls0f/phone) | 手机号码归属地库
 [SpringBoot2.0 整合 WebSocket，实现后端数据实时推送！](https://juejin.im/post/5ddc7ff7518825731c34b332)
 [OXYGEN](https://jeasonstudio.github.io/oxygen-demo/) | 这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HpaYwf2Pv)
-
-
-
-[chaosblade-io/chaosblade](https://github.com/chaosblade-io/chaosblade) | An easy to use and powerful chaos engineering experiment toolkit.（阿里巴巴开源的一款简单易用、功能强大的混沌实验注入工具） | 2.1k | Go | 11/29 |
-[利用神器 BTrace 追踪线上 Spring Boot 应用运行时信息](https://www.codesheep.cn/2019/01/17/springbt-btrace/)
 [ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)：《笨方法学 FFmpeg libav》
-[xxl-job](https://github.com/xuxueli/xxl-job/)：轻量级分布式任务调度框架，其核心设计目标是：开发迅速、学习简单、轻量级、易扩展，文档齐全。
-[vue 项目中使用百度地图(vue-baidu-map)](https://segmentfault.com/a/1190000019982269)
-[[译] Java 不同压缩算法的性能比较](http://it.deepinmind.com/java/2015/01/04/performance-general-compression.html)
-[Java 并发容器](https://github.com/dunwu/javacore/blob/master/docs/concurrent/java-concurrent-container.md) - 关键词：`ConcurrentHashMap`、`CopyOnWriteArrayList`
-[NLPchina/ansj_seg](https://github.com/NLPchina/ansj_seg) | ansj 分词.ict 的真正 java 实现.分词效果速度都超过开源版的 ict. 中文分词
-[如何优雅关闭 Spring Boot 应用](https://juejin.im/post/5d3869585188257f6a20a02c)
-[Flink 与 Hive 的磨合期 - InfoQ 写作平台](https://xie.infoq.cn/article/73c7ecb7ebb6c66b1713dcca5)
+
+
+
+
 [【自荐】一个基于 Redisson 开发的可以支持多个 Redis 组件的 Java 客户端 · Issue #88 · GitHubDaily/GitHubDaily](https://github.com/GitHubDaily/GitHubDaily/issues/88)
 [Spring Boot 一个依赖搞定 session 共享，没有比这更简单的方案了！](https://www.cnblogs.com/lenve/p/10971384.html)
 [IDE 插件 Cloud Toolkit]Cloud Toolkit 是一款 IDE 插件，可以帮助开发者更高效地开发、测试、诊断并部署应用。通过 Cloud Toolkit，开发者能够方便地将本地应用一键部署到任意机器（本地或云端），并内置 Arthas 诊断、高效执行终端命令和 SQL 等，提供 IntelliJ IDEA 版，Eclipse 版，PyCharm 版和 Maven 版。 每次修改完代码后，是否正在经历反复地打包？在 Maven 、Git 以及其他运维脚本和工具的之间频繁切换？采用 SCP 工具上传？使用 XShell 或 SecureCRT 登陆服务器？替换部署包？重启？文件上传到服务器指定目录，在各种 FTP、SCP 工具之间频繁切换 ？](https://help.aliyun.com/document_detail/98762.html)
@@ -774,7 +766,13 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [BiliExp](https://github.com/happy888888/BiliExp) B 站辅助脚本:投币, 签到, 抽奖等日常操作(云函数), 漫画下载,视频番剧下载。发布专栏,视频。
 [async 与 await 的用法详解](https://knightyun.github.io/2019/08/02/js-async-await)
 [Redis 持久化](https://github.com/ZXZxin/ZXBlog/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96.md)
-
+[xxl-job](https://github.com/xuxueli/xxl-job/)：轻量级分布式任务调度框架，其核心设计目标是：开发迅速、学习简单、轻量级、易扩展，文档齐全。
+[vue 项目中使用百度地图(vue-baidu-map)](https://segmentfault.com/a/1190000019982269)
+[[译] Java 不同压缩算法的性能比较](http://it.deepinmind.com/java/2015/01/04/performance-general-compression.html)
+[Java 并发容器](https://github.com/dunwu/javacore/blob/master/docs/concurrent/java-concurrent-container.md) - 关键词：`ConcurrentHashMap`、`CopyOnWriteArrayList`
+[NLPchina/ansj_seg](https://github.com/NLPchina/ansj_seg) | ansj 分词.ict 的真正 java 实现.分词效果速度都超过开源版的 ict. 中文分词
+[如何优雅关闭 Spring Boot 应用](https://juejin.im/post/5d3869585188257f6a20a02c)
+[Flink 与 Hive 的磨合期 - InfoQ 写作平台](https://xie.infoq.cn/article/73c7ecb7ebb6c66b1713dcca5)
 
 
 
@@ -839,3 +837,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Jack-Cherish/python-spider](https://github.com/Jack-Cherish/python-spider) Python3网络爬虫实战：淘宝、京东、网易云、B站、12306、抖音、笔趣阁、漫画小说下载、音乐电影下载等。
 [DouBanSpider](https://github.com/lanbing510/DouBanSpider)：豆瓣读书的爬虫
 [深入解密来自未来的缓存-caffeine](https://github.com/javagrowing/JGrowing/blob/master/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6/%E6%B7%B1%E5%85%A5%E8%A7%A3%E5%AF%86%E6%9D%A5%E8%87%AA%E6%9C%AA%E6%9D%A5%E7%9A%84%E7%BC%93%E5%AD%98-Caffeine.md)
+[chaosblade-io/chaosblade](https://github.com/chaosblade-io/chaosblade) | An easy to use and powerful chaos engineering experiment toolkit.（阿里巴巴开源的一款简单易用、功能强大的混沌实验注入工具） | 2.1k | Go | 11/29 |
+[利用神器 BTrace 追踪线上 Spring Boot 应用运行时信息](https://www.codesheep.cn/2019/01/17/springbt-btrace/)
