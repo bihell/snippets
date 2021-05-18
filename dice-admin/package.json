@@ -1,10 +1,10 @@
 {
-  "name": "vben-admin",
-  "version": "2.3.0",
+  "name": "dice-admin",
+  "version": "2.0.0 alpha",
   "author": {
-    "name": "vben",
-    "email": "anncwb@126.com",
-    "url": "https://github.com/anncwb"
+    "name": "tpxcer",
+    "email": "tpxcer@outlook.com",
+    "url": "https://github.com/bihell/Dice"
   },
   "scripts": {
     "bootstrap": "yarn install",
@@ -27,9 +27,7 @@
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "install:husky": "is-ci || husky install",
-    "gen:icon": "esno ./build/generate/icon/index.ts",
-    "postinstall": "npm run install:husky"
+    "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "dependencies": {
     "@iconify/iconify": "^2.0.1",
@@ -131,13 +129,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anncwb/vue-vben-admin.git"
+    "url": "git+https://github.com/bihell/Dice.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anncwb/vue-vben-admin/issues"
+    "url": "https://github.com/bihell/Dice/issues"
   },
-  "homepage": "https://github.com/anncwb/vue-vben-admin",
+  "homepage": "https://github.com/bihell/Dice",
   "engines": {
     "node": "^12 || >=14"
   }
