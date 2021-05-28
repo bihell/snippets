@@ -839,3 +839,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [深入解密来自未来的缓存-caffeine](https://github.com/javagrowing/JGrowing/blob/master/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6/%E6%B7%B1%E5%85%A5%E8%A7%A3%E5%AF%86%E6%9D%A5%E8%87%AA%E6%9C%AA%E6%9D%A5%E7%9A%84%E7%BC%93%E5%AD%98-Caffeine.md)
 [chaosblade-io/chaosblade](https://github.com/chaosblade-io/chaosblade) | An easy to use and powerful chaos engineering experiment toolkit.（阿里巴巴开源的一款简单易用、功能强大的混沌实验注入工具） | 2.1k | Go | 11/29 |
 [利用神器 BTrace 追踪线上 Spring Boot 应用运行时信息](https://www.codesheep.cn/2019/01/17/springbt-btrace/)
+[curtinlv/JD-Script](https://github.com/curtinlv/JD-Script) 
