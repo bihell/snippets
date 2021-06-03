@@ -840,3 +840,12 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [chaosblade-io/chaosblade](https://github.com/chaosblade-io/chaosblade) | An easy to use and powerful chaos engineering experiment toolkit.（阿里巴巴开源的一款简单易用、功能强大的混沌实验注入工具） | 2.1k | Go | 11/29 |
 [利用神器 BTrace 追踪线上 Spring Boot 应用运行时信息](https://www.codesheep.cn/2019/01/17/springbt-btrace/)
 [curtinlv/JD-Script](https://github.com/curtinlv/JD-Script) 
+[duf](https://github.com/muesli/duf) 一款查看磁盘空间情况的命令行工具，足以代替 df 命令。它上手简单使用方便，界面简洁且友好同时支持 Linux、macOS 和 Windows 操作系统
+[cointop](https://github.com/miguelmota/cointop) 用于追踪加密货币行情的命令行工具。界面仿照 htop 支持类似 Vim 的快捷键，程序员摸鱼神器。在线体验
+[onedev](https://github.com/theonedev/onedev) 一个用 Java 写的 Git 仓库管理平台。包含 Git 版本管理、持续集成、Issue 管理、代码搜索和审查等功能
+[amis](https://github.com/baidu/amis) 通过 JSON 配置就能生成各种后台页面。这是百度开源的前端低代码框架，中文文档快速上手
+[playground-macos](https://github.com/Renovamen/playground-macos) 模拟 macOS 桌面样式的个人简介展示页
+[Ink-wash-docs](https://github.com/huangwei9527/Ink-wash-docs) 一款基于 egg.js+Vue.js 的在线文档管理平台。功能包含：文档编辑和预览、团队管理、访问权限、协作编辑等
+[react-resume-site](https://github.com/hua1995116/react-resume-site) 一款免费的简历在线制作工具。用写 Markdown 的方式制作出好看的简历，在线尝试
+[tabix](https://github.com/tabixio/tabix) 一款 ClickHouse 的 Web 可视化查询和分析工具。通过它可以在浏览器上轻松查询 CH 的数据，还有丰富的图表帮助分析数据，最后还可选择内网搭建或者直接在线使用
+[如何使用 Python 开发一个【抖音视频下载神器】](https://vip.fxxkpython.com/?p=6448)
