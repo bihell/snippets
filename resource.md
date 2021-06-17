@@ -10,11 +10,6 @@
 
 
 
-[Pixel-Web：Vue 微博客户端](https://github.com/werbhelius/Pixel-Web?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
-[amCharts](https://www.amcharts.com/) 已经推出了第 4 版，历史也挺长了。此版本支持 SVG 动画引擎，可帮助开发人员创建电影级场景。它的示例图表非常漂亮，大多数示例都提供了滑块 UI，还附带许多调节器可以实时调整图表的变量。它的文档包括完整的 API 属性描述和许多教程。它提供了一个声明性 API 来创建图表，与基于配置的方法略有不同。它有很好的代码自动完成功能，但在配置图表时需要的代码略多。amCharts 的水印版图表是免费的，去掉水印需要付费。
-[PrefectHQ/prefect](https://github.com/PrefectHQ/prefect) A modern data workflow platform https://www.prefect.io/
-[Guava 快速入门](https://zhuanlan.zhihu.com/p/20637960)
-[pkuseg-python](https://github.com/lancopku/PKUSeg-python)：大开源的多领域中文分词 Python 工具包，拥有多领域分词、分词准确率高、支持用户自训练模型等特点
 [MyBatis 核心配置综述之 细说一级缓存](http://www.justdojava.com/2019/07/13/MyBatis-OneLevelCache/)
 [KGQA-Based-On-medicine](https://github.com/YeYzheng/KGQA-Based-On-medicine) | 一个基于医药知识图谱的智能问答系统，支持疾病症状、疾病用药、药品查询等功能 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HxaTtmRx6)
 [pngquant](https://pngquant.org/)：一个开源的 png 图片压缩器
@@ -849,3 +844,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Spring Boot 一个依赖搞定 session 共享，没有比这更简单的方案了！](https://www.cnblogs.com/lenve/p/10971384.html)
 [IDE 插件 Cloud Toolkit]Cloud Toolkit 是一款 IDE 插件，可以帮助开发者更高效地开发、测试、诊断并部署应用。通过 Cloud Toolkit，开发者能够方便地将本地应用一键部署到任意机器（本地或云端），并内置 Arthas 诊断、高效执行终端命令和 SQL 等，提供 IntelliJ IDEA 版，Eclipse 版，PyCharm 版和 Maven 版。 每次修改完代码后，是否正在经历反复地打包？在 Maven 、Git 以及其他运维脚本和工具的之间频繁切换？采用 SCP 工具上传？使用 XShell 或 SecureCRT 登陆服务器？替换部署包？重启？文件上传到服务器指定目录，在各种 FTP、SCP 工具之间频繁切换 ？](https://help.aliyun.com/document_detail/98762.html)
 [基于 Vue + axios + WebApi + NPOI 导出 Excel 文件](https://www.cnblogs.com/xyb0226/p/10976819.html)
+[Pixel-Web：Vue 微博客户端](https://github.com/werbhelius/Pixel-Web?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+[amCharts](https://www.amcharts.com/) 已经推出了第 4 版，历史也挺长了。此版本支持 SVG 动画引擎，可帮助开发人员创建电影级场景。它的示例图表非常漂亮，大多数示例都提供了滑块 UI，还附带许多调节器可以实时调整图表的变量。它的文档包括完整的 API 属性描述和许多教程。它提供了一个声明性 API 来创建图表，与基于配置的方法略有不同。它有很好的代码自动完成功能，但在配置图表时需要的代码略多。amCharts 的水印版图表是免费的，去掉水印需要付费。
+[Guava 快速入门](https://zhuanlan.zhihu.com/p/20637960)
+[pkuseg-python](https://github.com/lancopku/PKUSeg-python)：大开源的多领域中文分词 Python 工具包，拥有多领域分词、分词准确率高、支持用户自训练模型等特点
