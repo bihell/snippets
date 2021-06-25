@@ -848,3 +848,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [amCharts](https://www.amcharts.com/) 已经推出了第 4 版，历史也挺长了。此版本支持 SVG 动画引擎，可帮助开发人员创建电影级场景。它的示例图表非常漂亮，大多数示例都提供了滑块 UI，还附带许多调节器可以实时调整图表的变量。它的文档包括完整的 API 属性描述和许多教程。它提供了一个声明性 API 来创建图表，与基于配置的方法略有不同。它有很好的代码自动完成功能，但在配置图表时需要的代码略多。amCharts 的水印版图表是免费的，去掉水印需要付费。
 [Guava 快速入门](https://zhuanlan.zhihu.com/p/20637960)
 [pkuseg-python](https://github.com/lancopku/PKUSeg-python)：大开源的多领域中文分词 Python 工具包，拥有多领域分词、分词准确率高、支持用户自训练模型等特点
+[plow](https://github.com/six-ddc/plow) A high-performance HTTP benchmarking tool with real-time web UI and terminal displaying
+
