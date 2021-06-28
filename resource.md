@@ -849,4 +849,13 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Guava 快速入门](https://zhuanlan.zhihu.com/p/20637960)
 [pkuseg-python](https://github.com/lancopku/PKUSeg-python)：大开源的多领域中文分词 Python 工具包，拥有多领域分词、分词准确率高、支持用户自训练模型等特点
 [plow](https://github.com/six-ddc/plow) A high-performance HTTP benchmarking tool with real-time web UI and terminal displaying
-
+[traccar](https://github.com/traccar/traccar) GPS 追踪平台。此项目支持 170 多种 GPS 协议，1500 多种型号的 GPS 设备，功能包含：实时 GPS 追踪、数据统计报告、报警和通知等等
+[Ward](https://github.com/B-Software/Ward) 拥有漂亮仪表盘的服务器监控工具
+[moovie.js](https://github.com/BMSVieira/moovie.js) 专注于电影的 HTML5 播放器。容易上手和使用，支持倍速播放、快捷键操作、字幕偏移即时调整等功能
+[nativefier](https://github.com/nativefier/nativefier) 能够把 Web 页面变成本地应用的命令行工具。通过 Electron+Chromium 把网站包装成本地 .app、.exe 等可执行文件，支持运行在 Windows、macOS 和 Linux 操作系统上
+[lowdb](https://github.com/typicode/lowdb) 支持浏览器和 Electron 的轻量级 JSON 文件数据库。如果是创建没有后端的小型前端项目，但还有存储和管理数据的需求，那就快试试 lowdb 吧
+[eruda](https://github.com/liriliri/eruda) 一个专为手机端设计的前端页面调试工具。类似手机端迷你版开发者模式，可用于在手机端调试页面。主要功能包括：显示 console 日志、检查元素状态、捕获 XHR 请求、显示本地存储和 Cookie 等信息
+[cusdis](https://github.com/djyde/cusdis) 这是一个界面清爽、注重隐私的轻量级博客评论系统。可以很方便地与 React、Vue 或其他博客系统结合，并且还提供了一个后台来管理所有的评论。除此之外，还支持一键从 Disqus 导入、邮件通知等强大的功能
+[forem](https://github.com/forem/forem) 用来构建社区的 Ruby 开源项目。一款开源、现成的论坛项目，能够让你快速搭建起来一个社区平台。国外知名的程序员社区 dev 用的就是它
+[rustdesk](https://github.com/rustdesk/rustdesk) 免费开源的远程桌面软件。开箱即用无需任何配置，支持 Linux/Mac/Win/Android 等平台。还能够自行搭建服务器，由用户自己掌控数据，不必担心隐私数据泄露的问题。在当下越来越多的远程桌面软件都收费的情况下的另一个选择
+[Real-Time-Voice-Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning) 克隆某个人说话声音的 AI 项目。仅需几秒音频，就能模仿出原音频的人声
