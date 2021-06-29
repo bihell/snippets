@@ -859,3 +859,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [forem](https://github.com/forem/forem) 用来构建社区的 Ruby 开源项目。一款开源、现成的论坛项目，能够让你快速搭建起来一个社区平台。国外知名的程序员社区 dev 用的就是它
 [rustdesk](https://github.com/rustdesk/rustdesk) 免费开源的远程桌面软件。开箱即用无需任何配置，支持 Linux/Mac/Win/Android 等平台。还能够自行搭建服务器，由用户自己掌控数据，不必担心隐私数据泄露的问题。在当下越来越多的远程桌面软件都收费的情况下的另一个选择
 [Real-Time-Voice-Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning) 克隆某个人说话声音的 AI 项目。仅需几秒音频，就能模仿出原音频的人声
+[amis-admin](https://github.com/aisuda/amis-admin) 基于 amis 的后台项目前端模板
+[amis-editor-demo](https://github.com/aisuda/amis-editor-demo)  amis 可视化编辑器示例 http://aisuda.github.io/amis-editor-demo
+
