@@ -6,8 +6,8 @@
 [SpringBoot2.0 整合 WebSocket，实现后端数据实时推送！](https://juejin.im/post/5ddc7ff7518825731c34b332)
 [OXYGEN](https://jeasonstudio.github.io/oxygen-demo/) | 这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HpaYwf2Pv)
 [ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)：《笨方法学 FFmpeg libav》
-
-
+[RuoYi](https://gitee.com/y_project/RuoYi) 基于SpringBoot的权限管理系统 易读易懂、界面简洁美观。 核心技术采用Spring、MyBatis、Shiro没有任何其它重度依赖。直接运行即可用  http://ruoyi.vip
+ 
 
 
 [MyBatis 核心配置综述之 细说一级缓存](http://www.justdojava.com/2019/07/13/MyBatis-OneLevelCache/)
@@ -861,4 +861,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Real-Time-Voice-Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning) 克隆某个人说话声音的 AI 项目。仅需几秒音频，就能模仿出原音频的人声
 [amis-admin](https://github.com/aisuda/amis-admin) 基于 amis 的后台项目前端模板
 [amis-editor-demo](https://github.com/aisuda/amis-editor-demo)  amis 可视化编辑器示例 http://aisuda.github.io/amis-editor-demo
-
+[一日一技｜macOS 如何限制进程 CPU 占用](https://sspai.com/post/67331)
