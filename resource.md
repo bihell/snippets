@@ -862,3 +862,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [amis-admin](https://github.com/aisuda/amis-admin) 基于 amis 的后台项目前端模板
 [amis-editor-demo](https://github.com/aisuda/amis-editor-demo)  amis 可视化编辑器示例 http://aisuda.github.io/amis-editor-demo
 [一日一技｜macOS 如何限制进程 CPU 占用](https://sspai.com/post/67331)
+[让练习打字这件事不那么枯燥，你可以试试这几个网站](https://sspai.com/post/67535)
