@@ -862,4 +862,9 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [amis-admin](https://github.com/aisuda/amis-admin) 基于 amis 的后台项目前端模板
 [amis-editor-demo](https://github.com/aisuda/amis-editor-demo)  amis 可视化编辑器示例 http://aisuda.github.io/amis-editor-demo
 [一日一技｜macOS 如何限制进程 CPU 占用](https://sspai.com/post/67331)
-[让练习打字这件事不那么枯燥，你可以试试这几个网站](https://sspai.com/post/67535)
+[让练习打字这件事不那么枯燥，你可以试试这几个网站](https://sspai.com/post/67535) 
+[dromara / Sa-Token](https://github.com/dromara/Sa-Token) 这可能是史上功能最全的Java权限认证框架！目前已集成——登录认证、权限认证、分布式Session会话、微服务网关鉴权、单点登录、OAuth2.0、踢人下线、Redis集成、前后台分离、记住我模式、模拟他人账号、临时身份切换、账号封禁、多账号认证体系、注解式鉴权、路由拦截式鉴权、花式token生成、自动续签、同端互斥登录、会话治理、密码加密、jwt集成、Spring集成、WebFlux集成...
+[dbdoc](https://dbdocs.io/) 把你的数据库生成文档，并且可以在线使用和分享。你可以使用简单的 DSL 语言将数据表结构生成可视化文档
+
+
+
