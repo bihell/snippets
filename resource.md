@@ -865,6 +865,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [让练习打字这件事不那么枯燥，你可以试试这几个网站](https://sspai.com/post/67535) 
 [dromara / Sa-Token](https://github.com/dromara/Sa-Token) 这可能是史上功能最全的Java权限认证框架！目前已集成——登录认证、权限认证、分布式Session会话、微服务网关鉴权、单点登录、OAuth2.0、踢人下线、Redis集成、前后台分离、记住我模式、模拟他人账号、临时身份切换、账号封禁、多账号认证体系、注解式鉴权、路由拦截式鉴权、花式token生成、自动续签、同端互斥登录、会话治理、密码加密、jwt集成、Spring集成、WebFlux集成...
 [dbdoc](https://dbdocs.io/) 把你的数据库生成文档，并且可以在线使用和分享。你可以使用简单的 DSL 语言将数据表结构生成可视化文档
-
-
-
+[]jetlinks/jetlinks-community](https://github.com/jetlinks/jetlinks-community) JetLinks 基于Java8,Spring Boot 2.x ,WebFlux,Netty,Vert.x,Reactor等开发, 是一个全响应式的企业级物联网平台。支持统一物模型管理,多种设备,多种厂家,统一管理。统一设备连接管理,多协议适配(TCP,MQTT,UDP,CoAP,HTTP等),屏蔽网络编程复杂性,灵活接入不同厂家不同协议等设备。实时数据处理,设备告警,消息通知,数据转发。地理位置,数据可视化等。能帮助你快速建立物联网相关业务系统。
+[hehonghui/the-economist-ebooks](https://github.com/hehonghui/the-economist-ebooks) 经济学人(含音频)、纽约客、自然、新科学人、卫报、科学美国人、连线、大西洋月刊、新闻周刊、国家地理等英语杂志免费下载、订阅(kindle推送),支持epub、mobi、pdf格式, 每周更新. The Economist 、The New Yorker 、Nature、The Atlantic 、New Scientist、The Guardian、Scientific American、Wired、Newsweek magazines, free download and subscription for kindle, mobi、epub、pdf format.
+[awesome-fenix](https://github.com/fenixsoft/awesome-fenix) 项目作者从事大型企业级软件的架构研发工作，凤凰架构项目时作者系统性地整理自己的知识，查缺补漏，将它们都融入既有的知识框架之中。这是一部以“如何构建一套可靠的分布式大型软件系统”为叙事主线的开源文档，是一幅帮助开发人员整理现代软件架构各条分支中繁多知识点的技能地图。除文档部分外，做还建立了若干配套的代码工程，这是针对不同架构、技术方案（如单体架构、微服务、服务网格、无服务架构，等等）的演示程序。它们既是文档中所述知识的实践示例，亦可作为实际项目新创建时的可参考引用的基础代码。
+[Fakeflix](https://github.com/Th3Wall/Fakeflix) 如果你想构建一个集成 Redux 中等复杂度的 Web 应用程序，这个 Netflix 高仿项目能够帮到你。作者尽可能地复制原始布局，并且还在插入路线动画和微交互的某些模块进行了一些改进。
