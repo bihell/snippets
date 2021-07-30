@@ -869,3 +869,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [hehonghui/the-economist-ebooks](https://github.com/hehonghui/the-economist-ebooks) 经济学人(含音频)、纽约客、自然、新科学人、卫报、科学美国人、连线、大西洋月刊、新闻周刊、国家地理等英语杂志免费下载、订阅(kindle推送),支持epub、mobi、pdf格式, 每周更新. The Economist 、The New Yorker 、Nature、The Atlantic 、New Scientist、The Guardian、Scientific American、Wired、Newsweek magazines, free download and subscription for kindle, mobi、epub、pdf format.
 [awesome-fenix](https://github.com/fenixsoft/awesome-fenix) 项目作者从事大型企业级软件的架构研发工作，凤凰架构项目时作者系统性地整理自己的知识，查缺补漏，将它们都融入既有的知识框架之中。这是一部以“如何构建一套可靠的分布式大型软件系统”为叙事主线的开源文档，是一幅帮助开发人员整理现代软件架构各条分支中繁多知识点的技能地图。除文档部分外，做还建立了若干配套的代码工程，这是针对不同架构、技术方案（如单体架构、微服务、服务网格、无服务架构，等等）的演示程序。它们既是文档中所述知识的实践示例，亦可作为实际项目新创建时的可参考引用的基础代码。
 [Fakeflix](https://github.com/Th3Wall/Fakeflix) 如果你想构建一个集成 Redux 中等复杂度的 Web 应用程序，这个 Netflix 高仿项目能够帮到你。作者尽可能地复制原始布局，并且还在插入路线动画和微交互的某些模块进行了一些改进。
+[X-TRACK](https://github.com/FASTSHIFT/X-TRACK) 开源的 GPS 自行车码表。功能齐全且拥有美观的界面，支持离线地图、显示轨迹等功能。
+[erda](https://github.com/erda-project/erda) 企业级一站式 PaaS 平台。基于 Kubernetes 以应用为中心的 DevOps 且支持微服务治理的多云架构，可以让复杂业务的开发、运维、监控和问题诊断变得更简单、更高效。能减轻使用不同的工具混搭技术底座和云平台的运维难度，同时还有漂亮、简单易用的界面设计
+[TopList](https://github.com/tophubs/TopList) 各大网站热门头条的聚合网站。
+[dataease](https://github.com/dataease/dataease) 开源的数据可视化和分析工具。采用 SpringBoot+Vue.js 技术栈实现，通过丰富的可视化图表让数据更加直观
