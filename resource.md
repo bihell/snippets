@@ -1,16 +1,13 @@
-[oxygen-demo](https://jeasonstudio.github.io/oxygen-demo/)：这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感。	0.914413565			
 [a597873885/webfunny_monitor](https://github.com/a597873885/webfunny_monitor) | 通过向 html 页面中插入一段简单的 JS 探针代码，实现无埋点监控前端页面的用户行为，包括但不限于 PV/UV、报错日志、请求日志、静态资源加载情况、用户点击行为以及截图信息等等，目的在于帮助前端开发提高解决线上问题的效率。页面 DEMO: | 520 | CSS | 11/29 |
 [【自荐项目】基于 OpenResty 的高性能 API 网关系统](https://github.com/apioak/apioak)
 [xluohome/phonedata](https://github.com/xluohome/phonedata) | 手机号码归属地信息库、手机号归属地查询 phone.dat 最后更新：2019 年 11 月 | 656 | Go | 11/16 |
 [ls0f/phone](https://github.com/ls0f/phone) | 手机号码归属地库
 [SpringBoot2.0 整合 WebSocket，实现后端数据实时推送！](https://juejin.im/post/5ddc7ff7518825731c34b332)
-[OXYGEN](https://jeasonstudio.github.io/oxygen-demo/) | 这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HpaYwf2Pv)
 [ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)：《笨方法学 FFmpeg libav》
 [RuoYi](https://gitee.com/y_project/RuoYi) 基于SpringBoot的权限管理系统 易读易懂、界面简洁美观。 核心技术采用Spring、MyBatis、Shiro没有任何其它重度依赖。直接运行即可用  http://ruoyi.vip
  
 
 
-[MyBatis 核心配置综述之 细说一级缓存](http://www.justdojava.com/2019/07/13/MyBatis-OneLevelCache/)
 [KGQA-Based-On-medicine](https://github.com/YeYzheng/KGQA-Based-On-medicine) | 一个基于医药知识图谱的智能问答系统，支持疾病症状、疾病用药、药品查询等功能 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HxaTtmRx6)
 [pngquant](https://pngquant.org/)：一个开源的 png 图片压缩器
 [TeaWeb/build](https://github.com/TeaWeb/build) | TeaWeb-可视化的 Web 代理服务。DEMO: http://teaos.cn:7777 | 382 | Go | 11/26 |
@@ -205,7 +202,6 @@
 [sohutv/cachecloud](https://github.com/sohutv/cachecloud) | 搜狐视频(sohu tv)Redis 私有云平台 | 4.6k | Java | 11/14 |
 [ColdDay/mp4ToGif](https://github.com/ColdDay/mp4ToGif) | 视频转 gif 制作表情包插件（可以添加文字） | 108 | CSS | 06/22 |
 Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 https://www.cnblogs.com/smartloli/p/12499142.html
-[oxygen-demo](https://jeasonstudio.github.io/oxygen-demo/)：这个网站可以帮你生成手绘风格的流程图或架构图，写文章的时候随手插入几张应该很有艺术感。
 [tianliangyihou/LBPhotoBrowser](https://github.com/tianliangyihou/LBPhotoBrowser) | 高仿微信和今日头条图片浏览器(LBPhotoBrowser) | 350 | Objective-C | 04/24 |
 [JiaGou-XiaoGe/webappchat](https://gitee.com/JiaGou-XiaoGe/webappchat)Spring Boot mybatis mysql 后台商城 h5 小程序
 [Hyper](https://github.com/zeit/hyper)：一个 JS 写的 Terminal
