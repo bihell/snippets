@@ -87,7 +87,6 @@
 [anychat](https://github.com/dianbaer/anychat)：纯净的 WebSocket 聊天插件。服务器绝对控制权的推送机制，合理的线程设计。
 [Zulko/eagle.js](https://github.com/zulko/eagle.js/) Eagle.js 是一个使用 Vue 构建的功能强大、灵活且独特的幻灯片系统。你可以在演示中创建易复用的组件、幻灯片和样式。它还支持动画、主题和交互式小部件，非常适合制作网络演示内容。Eagle.js 有一个简单且可调整的 API，因此你可以自由地制作所需的幻灯片。
 [Ehco1996/django-sspanel](https://github.com/Ehco1996/django-sspanel) | 用 diango 开发的全新的 shadowsocks 网络面板 | 1.6k | Python | 11/08 |
-[Lxxyx/LxxyxResume](https://github.com/Lxxyx/LxxyxResume) | 前端简历生成器 | 114 | CSS | 07/12 |
 [playwright-python](https://github.com/microsoft/playwright-python) 微软开源的浏览器自动化工具，可以用 Python 语言操作浏览器啦。支持 Linux、macOS、Windows 系统下的 Chromium、Firefox 和 WebKit 浏览器
 [ChinaMobilePhoneNumberRegex](https://github.com/VincentSit/ChinaMobilePhoneNumberRegex)：一组匹配中国大陆手机号码的正则表达式
 [Sioxas/vue-music](https://github.com/Sioxas/vue-music) Vue 音乐搜索、播放 Demo
@@ -286,7 +285,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [ChinaMobilePhoneNumberRegex](https://github.com/VincentSit/ChinaMobilePhoneNumberRegex)：一组匹配中国大陆手机号码的正则表达式
 [zwczou/weixin-python](https://github.com/zwczou/weixin-python) | 微信 SDK - 包括微信支付
 [ltp](https://github.com/HIT-SCIR/ltp)：语言技术平台（Language Technology Platform，LTP）是哈工大社会计算与信息检索研究中心历时十年开发的一整套中文语言处理系统。
-[yujiangshui/about-me](https://github.com/yujiangshui/about-me) | 个人网页简历的源代码 | 143 | CSS | 02/19 |
 [vue-bnhcp：基于 Vue + Nuxt 打造的 O2O 教育商城系统](https://github.com/github1586/nuxt-bnhcp?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [[PDF] 阿里巴巴 Java 开发手册](https://weekly.manong.io/bounce?nid=154&aid=8674&url=https%3A%2F%2Ftoutiao.io%2Fk%2Ff63cew)
 [ChatBotCourse](https://github.com/warmheartli/ChatBotCourse)：该项目介绍了如何自己动手做聊天机器人。全面地介绍了所需要的技术：自然语言识别、分词、语料库、机器学习等，包含所需的 Java 和 Python 代码
