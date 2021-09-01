@@ -336,7 +336,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [几种缓存更新的设计方法，值得一看](https://developer.51cto.com/art/202010/628923.htm)
 [eyebluecn/tank-front](https://github.com/eyebluecn/tank-front) | 蓝眼系列软件之《蓝眼云盘》前端项目 | 402 | Vue | 11/19 |
 [makegirlsmoe_web](https://github.com/makegirlsmoe/makegirlsmoe_web)：动漫角色图片生成工具。支持：选择发色、发型、眼睛、皮肤、微笑、风格等等特征生成二次元图片。自定义生成可爱的二次元头像，二次元界福音。
-[CyC2018/Markdown-Resume](https://github.com/CyC2018/Markdown-Resume) | ⭐️ Markdown 简历模版 | 636 | HTML | 10/30 |
 [vue-simple-uploader：强大的 Vue 上传组件](https://github.com/simple-uploader/vue-uploader?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
 [基于 Apache Flink 的爱奇艺实时计算平台建设实践](https://www.infoq.cn/article/ldTrg5m5wU9MVBmYsuzV?utm_source=rss&utm_medium=article)
 [阿里巴巴 Flink 踩坑经验：如何大幅降低 HDFS 压力？-InfoQ](https://www.infoq.cn/article/OLlJNzQpTOHfyrgOG8xq)
@@ -604,7 +603,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [jd_seckill](https://github.com/huanghyw/jd_seckill) 京东茅台抢购，不支持其他商品！愿大家与黄牛站在同一个起跑线，公平的参与这场抢茅大赛。
   [[手把手系列之] Jenkins+Docker 自动化部署 vue 项目](https://segmentfault.com/a/1190000020868116)
   [spug](https://github.com/openspug/spug)：使用 Python+Vue 实现的开源运维平台，前后端分离方便二次开发。该项目基于 Docker 镜像发布部署，方便安装和升级。支持运维常见功能：主机管理、任务计划管理、发布部署、监控告警等
-  [awesome-resume-for-chinese](https://github.com/dyweb/awesome-resume-for-chinese) | 收集了一些适合中文的简历模板 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HwMllvEjG)
   [vue3.0 从 0 到 1 实战电商管理系统（第一天） - 掘金](https://juejin.im/post/5eae5d92e51d451b2e03255c)
   [huangruiLearn / flutter_hrlweibo](https://github.com/huangruiLearn/flutter_hrlweibo) Flutter 仿微博客户端
   [crownpku/Information-Extraction-Chinese](https://github.com/crownpku/Information-Extraction-Chinese) Chinese Named Entity Recognition with IDCNN/biLSTM+CRF, and Relation Extraction with biGRU+2ATT 中文实体识别与关系提取
@@ -867,3 +865,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [erda](https://github.com/erda-project/erda) 企业级一站式 PaaS 平台。基于 Kubernetes 以应用为中心的 DevOps 且支持微服务治理的多云架构，可以让复杂业务的开发、运维、监控和问题诊断变得更简单、更高效。能减轻使用不同的工具混搭技术底座和云平台的运维难度，同时还有漂亮、简单易用的界面设计
 [TopList](https://github.com/tophubs/TopList) 各大网站热门头条的聚合网站。
 [dataease](https://github.com/dataease/dataease) 开源的数据可视化和分析工具。采用 SpringBoot+Vue.js 技术栈实现，通过丰富的可视化图表让数据更加直观
+[iDataV](https://github.com/yyhsong/iDataV) 大屏数据可视化项目集合。
+[weiboSpider]https://github.com/dataabc/weiboSpider)
