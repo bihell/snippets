@@ -259,7 +259,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [dyq086/wepy-mall](https://github.com/dyq086/wepy-mall) | 微信小程序--基于 wepy 商城(微店)微信小程序 欢迎学习交流 wxYuHanStore | 2.8k | JavaScript | 09/17 |
 [chinese-xinhua](https://github.com/pwxcoo/chinese-xinhua)：中华新华字典数据库。包括歇后语，成语，词语，汉字
 [phanan/koel](https://github.com/phanan/koel) 🐦 A personal music streaming server that works. https://koel.phanan.net
-[o2oa / o2oa](https://github.com/o2oa/o2oa) O2OA - Java 企业信息化系统
+[o2oa / o2oa](https://github.com/o2oa/o2oa) 国产的 OA 系统。功能齐全支持考勤、会议管理、云盘等，适用于企业 OA、协同办公
 [bbfamily/abu](https://github.com/bbfamily/abu) | 阿布量化交易系统(股票，期权，期货，比特币，机器学习) 基于 python 的开源量化交易，量化投资架构 | 5.6k | Python | 09/22 |
 [Exrick/xmall-front](https://github.com/Exrick/xmall-front) | 基于 Vue 开发的 XMall 商城前台页面 PC 端 | 1.4k | Vue | 11/02 |
 [swoole-vue-webim：基于 Vue 和 Swoole 构建的 Web 聊天应用](https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F88f1l1&aid=8186&nid=146)
@@ -867,3 +867,14 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [dataease](https://github.com/dataease/dataease) 开源的数据可视化和分析工具。采用 SpringBoot+Vue.js 技术栈实现，通过丰富的可视化图表让数据更加直观
 [iDataV](https://github.com/yyhsong/iDataV) 大屏数据可视化项目集合。
 [weiboSpider]https://github.com/dataabc/weiboSpider)
+[Docusaurus](https://docusaurus.io/zh-CN/) 快速构建以内容为核心的最佳网站
+[Open-IM-Server](https://github.com/OpenIMSDK/Open-IM-Server) 基于 Go 实现的轻量级即时通讯（IM）项目。具有高性能、易扩展、安装简单、私有化部署等特性，同时包含多种客户端 SDK。从服务器到客户端一体的开源即时通讯（IM）解决方案
+[go-fly](https://github.com/taoshihan1991/go-fly) 基于 Go 语言实现的在线客服系统，采用 Gin+MySQL+JWT+WebSocket 等技术栈实现
+[bytehound](https://github.com/koute/bytehound) 更强大的 Linux 内存分析工具。它能够显示内存变化曲线、占用详情、完整的堆栈记录等信息，有助于解决内存泄漏等问题
+[uncle-novel](https://github.com/unclezs/uncle-novel) 一款电脑端小说阅读软件。该软件不仅支持本地导入小说，自动解析生成目录方便阅读。还支持全网搜索和下载小说、在线收听有声小说、自动更新章节等功能
+[semi-design](https://github.com/DouyinFE/semi-design) 抖音开源的中后台前端解决方案。包含设计语言、React 组件、主题，开箱即用可快速搭建美观的 React 应用
+[aliyunpan](https://github.com/liupan1890/aliyunpan) 基于网页版阿里云盘开发的 PC 客户端。能够同时登陆和管理多个账号、显示文件体积、文件夹树，还可以在线播放网盘中的视频并外挂字幕。支持 Windows、Linux、macOS 操作系统
+[automa](https://github.com/kholid060/automa) 通过图形化界面拖拽功能模块，实现浏览器自动操作的扩展工具。轻松实现自动填表、截图、定时执行等操作。让浏览器自动完成预设工作流的插件，从而减少重复性操作提高效率
+[zulip](https://github.com/zulip/zulip) 完全开源的企业级即时通讯项目。后端采用 Python 语言实现性能足够强大，功能齐全相当于开源、免费的 Slack，拥有拖拽上传文件、代码高亮、Markdown 语法、应用整合、容易接入的 API 等功能，还支持 Web、PC、iOS 和 Android 主流平台，众多知名企业都在用，能够有效地提高团队沟通和办公效率。同时该项目对新手用户友好，如果你想加入一个不错的 Python 开源项目，推荐你花时间研究下它一定会有所收获
+[webssh](https://github.com/huashengdun/webssh) 简单的 SSH 连接服务器的 Python Web 应用。该项目后端采用 Tornado Web 框架和 Python SSH 库 paramiko，前端是 TypeScript 写的命令行前端组件 Xterm.js 实现。整个项目简单还具有实用价值，可作为 Python Web 的实战项目学习
+[WindTerm](https://github.com/kingToolbox/WindTerm) 支持 SSH/Telnet/Serial/Shell/Sftp 的终端工具。虽然该软件完全免费，但部分代码尚未完全开源，对安全敏感的同学可以再观望下
