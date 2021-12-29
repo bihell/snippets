@@ -878,3 +878,10 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [zulip](https://github.com/zulip/zulip) 完全开源的企业级即时通讯项目。后端采用 Python 语言实现性能足够强大，功能齐全相当于开源、免费的 Slack，拥有拖拽上传文件、代码高亮、Markdown 语法、应用整合、容易接入的 API 等功能，还支持 Web、PC、iOS 和 Android 主流平台，众多知名企业都在用，能够有效地提高团队沟通和办公效率。同时该项目对新手用户友好，如果你想加入一个不错的 Python 开源项目，推荐你花时间研究下它一定会有所收获
 [webssh](https://github.com/huashengdun/webssh) 简单的 SSH 连接服务器的 Python Web 应用。该项目后端采用 Tornado Web 框架和 Python SSH 库 paramiko，前端是 TypeScript 写的命令行前端组件 Xterm.js 实现。整个项目简单还具有实用价值，可作为 Python Web 的实战项目学习
 [WindTerm](https://github.com/kingToolbox/WindTerm) 支持 SSH/Telnet/Serial/Shell/Sftp 的终端工具。虽然该软件完全免费，但部分代码尚未完全开源，对安全敏感的同学可以再观望下
+[mpv-player/mpv](https://github.com/mpv-player/mpv) 功能强大、免费开源、支持多平台的极简播放器。底层采用了 MPlayer、mplayer2 和 FFmpeg 等开源项目，支持多种音视频格式、高清视频、GPU 解码、自定义等功能，追求极简的命令行启动+快捷键操作方式，让它成为了技术爱好者的首选视频播放器
+[jynew](https://github.com/jynew/jynew) 采用 Unity 重制的《金庸群侠传》3D 版
+[cutter](https://github.com/rizinorg/cutter) 一款免费开源的逆向工程平台。采用 Rizin 作为核心引擎并集成了 Ghidra 反编译器，它界面简洁功能强大，深受逆向工程师们的喜爱
+[Cataclysm-DDA](https://github.com/CleverRaven/Cataclysm-DDA) 《大灾变：黑暗之日》是一款以世界末日为背景的生存游戏。游戏中没有任何任务，唯一的目标就是活下去。玩家可以通过寻找食物、装备等资源建造避难所，还支持车辆改装、制作物品等特色机制，支持 Windows、Linux、macOS、Android 系统。
+[sniffer](https://github.com/chenjiandongx/sniffer) 用于查看进程和连接的流量情况的命令行工具。界面简洁美观，支持进程、Socket 等不同视角查看流量数据
+[datahub](https://github.com/linkedin/datahub) 基于 Java 开发的元数据治理平台，可接入 Hive、Kafka、ES、MySQL 等数据源。随着公司业务的发展，数据的复杂度会呈指数倍增长，通过文档和口口相传的方式管理数据关系的方式终将被淘汰。如果你体验过到处问数据库的字段含义、没捋清某个字段导致线上事故、分析数据毫无头绪等情况。这个时候就需要元数据治理平台，它提供浏览、搜索和管理每个字段的含义、关系、来源等信息，通过元数据的方式更好的治理和挖掘数据的价值。
+[互联网最全黑话词典](https://nujuo8y1qx.feishu.cn/docs/doccnGbXj47lGM1iqHk7L1UyW8p#504VUT)
