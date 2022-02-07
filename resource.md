@@ -885,3 +885,10 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [sniffer](https://github.com/chenjiandongx/sniffer) 用于查看进程和连接的流量情况的命令行工具。界面简洁美观，支持进程、Socket 等不同视角查看流量数据
 [datahub](https://github.com/linkedin/datahub) 基于 Java 开发的元数据治理平台，可接入 Hive、Kafka、ES、MySQL 等数据源。随着公司业务的发展，数据的复杂度会呈指数倍增长，通过文档和口口相传的方式管理数据关系的方式终将被淘汰。如果你体验过到处问数据库的字段含义、没捋清某个字段导致线上事故、分析数据毫无头绪等情况。这个时候就需要元数据治理平台，它提供浏览、搜索和管理每个字段的含义、关系、来源等信息，通过元数据的方式更好的治理和挖掘数据的价值。
 [互联网最全黑话词典](https://nujuo8y1qx.feishu.cn/docs/doccnGbXj47lGM1iqHk7L1UyW8p#504VUT)
+[QPrompt](https://linux.cn/article-14187-1.html?utm_source=rss&utm_medium=rss) 一款为视频创作者提供的自由开源的提词器
+[daytripper](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/dekuNukem/daytripper) 上班摸鱼神器之激光绊脚器。它分为发射器和接收器两部分，设置好后会在有人路过绊脚器时，自动触发隐藏桌面、切换应用等操作
+[PowerRemoteDesktop](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/DarkCoderSc/PowerRemoteDesktop) 仅用 PowerShell 实现的远程桌面工具。它易于安装和使用、功能齐全，未依赖现有的协议和工具
+[thumbnailator](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/coobird/thumbnailator) Java 的缩略图生成库
+[mometa](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/imcuttle/mometa) 前端代码可视化编辑器。一款低代码辅助开发的工具，可通过拖拽的方式构建和编辑页面。特性：
+[lottery](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/moshang-xc/lottery) 年会抽奖程序。基于 Express + Three.js 的 3D 球体抽奖项目，能够自定义文字、图片和抽奖规则，还支持一键导入抽奖人员和导出抽奖结果
+[iGlance](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/iglance/iGlance) macOS 状态栏系统监视器
