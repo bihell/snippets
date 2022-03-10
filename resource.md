@@ -892,3 +892,12 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [mometa](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/imcuttle/mometa) 前端代码可视化编辑器。一款低代码辅助开发的工具，可通过拖拽的方式构建和编辑页面。特性：
 [lottery](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/moshang-xc/lottery) 年会抽奖程序。基于 Express + Three.js 的 3D 球体抽奖项目，能够自定义文字、图片和抽奖规则，还支持一键导入抽奖人员和导出抽奖结果
 [iGlance](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/iglance/iGlance) macOS 状态栏系统监视器
+[filestash](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/mickael-kerjean/filestash) 在线文件管理工具。在浏览器上管理 FTP、SFTP、Git、S3、MySQL、Dropbox 等服务中的文件和数据，支持编辑文件、图片管理、视频转码、Office 文档、全文搜索等功能
+[vitess](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/vitessio/vitess) 用于横向扩展 MySQL 数据库的集群系统。基于 Go 语言的并发特性，它能够轻松处理数千个连接。还可以根据配置好的规则，自动优化影响数据库性能的查询，运维方面支持自动处理主故障转移和备份等功能
+[nali](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/zu1k/nali) 离线查询 IP 地理信息和 CDN 服务提供商的命令行工具
+[thingsboard](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/thingsboard/thingsboard) 完全开源的物联网 IoT 平台。它使用行业的标准物联网协议 MQTT、CoAP 和 HTTP 连接设备，支持数据收集、处理、可视化和设备管理等功能。通过该项目可快速实现物联网平台搭建，从而成为众多大型企业的首选，行业覆盖电信、智慧城市、环境监测等
+[handle](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/antfu/handle) 汉字版 Wordle 游戏
+[Python](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/TheAlgorithms/Python) 用 Python 实现所有算法。该项目是用 Python 语言实现各种算法的集合，主要用于教育和学习。包括搜索、排序、数据结构、机器学习、密码、神经网络等方面
+[DevUtils-app](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/DevUtilsApp/DevUtils-app)macOS 上的开发者实用工具箱。单机应用无需联网，内含开发者开发时经常用到的 30 多种工具，比如：URL 解码、JSON 格式化、正则匹配、时间戳转化等，而且还会根据剪贴板的内容，自动推荐对应的处理工具，实用且高效
+[svg-path-editor](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/Yqnn/svg-path-editor) 在线 SVG 编辑器。
+[Arduino](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/arduino/Arduino) 开源电子平台，可用来制作嵌入式项目。Arduino 提供的电路板安装简单、价格便宜，而且电路图完全开源。官方还提供了配套的开发工具，加上交互式的开发模式使得上手变得极为简单。软硬件的完全开源让开发者社区十分活跃，为社区提供了丰富的教程、实战项目、三方资源。如果你想动手做个机器人，就从 Arduino 开始吧！
