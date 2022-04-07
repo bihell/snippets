@@ -901,3 +901,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [DevUtils-app](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/DevUtilsApp/DevUtils-app)macOS 上的开发者实用工具箱。单机应用无需联网，内含开发者开发时经常用到的 30 多种工具，比如：URL 解码、JSON 格式化、正则匹配、时间戳转化等，而且还会根据剪贴板的内容，自动推荐对应的处理工具，实用且高效
 [svg-path-editor](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/Yqnn/svg-path-editor) 在线 SVG 编辑器。
 [Arduino](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/arduino/Arduino) 开源电子平台，可用来制作嵌入式项目。Arduino 提供的电路板安装简单、价格便宜，而且电路图完全开源。官方还提供了配套的开发工具，加上交互式的开发模式使得上手变得极为简单。软硬件的完全开源让开发者社区十分活跃，为社区提供了丰富的教程、实战项目、三方资源。如果你想动手做个机器人，就从 Arduino 开始吧！
+[hashcat](https://github.com/hashcat/hashcat) 一款强大的密码恢复工具。破解速度超快支持多种算法，适用于 Linux、macOS 和 Windows 操作系统
+[supertokens-core](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/supertokens/supertokens-core) 开源的身份验证方案。为你的应用轻松增加登录、会话管理等功能，支持自行搭建服务。可用作 Auth0 的开源替代品
