@@ -903,3 +903,9 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Arduino](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/arduino/Arduino) 开源电子平台，可用来制作嵌入式项目。Arduino 提供的电路板安装简单、价格便宜，而且电路图完全开源。官方还提供了配套的开发工具，加上交互式的开发模式使得上手变得极为简单。软硬件的完全开源让开发者社区十分活跃，为社区提供了丰富的教程、实战项目、三方资源。如果你想动手做个机器人，就从 Arduino 开始吧！
 [hashcat](https://github.com/hashcat/hashcat) 一款强大的密码恢复工具。破解速度超快支持多种算法，适用于 Linux、macOS 和 Windows 操作系统
 [supertokens-core](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/supertokens/supertokens-core) 开源的身份验证方案。为你的应用轻松增加登录、会话管理等功能，支持自行搭建服务。可用作 Auth0 的开源替代品
+[pinry](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/pinry/pinry) 分享图片的开源网站。该项目前后端分离采用 Vue.js + Django 等技术栈，网站以平铺的方式展示图片，支持浏览、上传和搜索图片以及管理后台、个人页、增加标签等功能
+[memray](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/bloomberg/memray) Python 的内存分析器。帮你分析 Python 应用的内存使用情况，找到内存泄漏的原因、占用内存多的代码、内存使用率高的原因。支持生成内存报告（火焰图、表格、树状图）和实时报告等模式，以及统计结果等功能
+[vcard-personal-portfolio](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/codewithsadee/vcard-personal-portfolio) 用来展示个人信息的网站
+[RedisInsight](官方开源的 Redis 桌面管理工具。提供了可视化操作界面、监控、内存分析、管理 Redis 集群等功能) 
+[ iRedMail](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/iredmail/iRedMail) 开箱即用的免费邮件服务器。通过该项目可以快速在 Linux/BSD 上部署邮件服务，除此之外还拥有 Web 管理平台，数据均存储在服务器上，即保证了数据隐私还易于迁移和备份
+
