@@ -20,7 +20,7 @@ if [[ $FILE = "" ]]; then
 	echo \# Cancelled transfer
 else
 	cd "$FILE"
-	/usr/local/bin/rz -e -b -y
+	/opt/homebrew/bin/rz -e -b -y
 	sleep 1
 	echo
 	echo

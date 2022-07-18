@@ -6,8 +6,7 @@
 [ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)：《笨方法学 FFmpeg libav》
 [RuoYi](https://gitee.com/y_project/RuoYi) 基于SpringBoot的权限管理系统 易读易懂、界面简洁美观。 核心技术采用Spring、MyBatis、Shiro没有任何其它重度依赖。直接运行即可用  http://ruoyi.vip
  
-
-
+[music-website](https://github.com/Yin-Hongwei/music-website) Vue + SpringBoot + MyBatis 音乐网站
 [KGQA-Based-On-medicine](https://github.com/YeYzheng/KGQA-Based-On-medicine) | 一个基于医药知识图谱的智能问答系统，支持疾病症状、疾病用药、药品查询等功能 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HxaTtmRx6)
 [pngquant](https://pngquant.org/)：一个开源的 png 图片压缩器
 [TeaWeb/build](https://github.com/TeaWeb/build) | TeaWeb-可视化的 Web 代理服务。DEMO: http://teaos.cn:7777 | 382 | Go | 11/26 |
