@@ -907,4 +907,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [vcard-personal-portfolio](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/codewithsadee/vcard-personal-portfolio) 用来展示个人信息的网站
 [RedisInsight](官方开源的 Redis 桌面管理工具。提供了可视化操作界面、监控、内存分析、管理 Redis 集群等功能) 
 [ iRedMail](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/iredmail/iRedMail) 开箱即用的免费邮件服务器。通过该项目可以快速在 Linux/BSD 上部署邮件服务，除此之外还拥有 Web 管理平台，数据均存储在服务器上，即保证了数据隐私还易于迁移和备份
-
+[lemon-cleaner](https://github.com/Tencent/lemon-cleaner) 腾讯柠檬清理是针对macOS系统专属制定的清理工具。主要功能包括重复文件和相似照片的识别、软件的定制化垃圾扫描、可视化的全盘空间分析、内存释放、浏览器隐私清理以及设备实时状态的监控等。重点聚焦清理功能，对上百款软件提供定制化的清理方案，提供专业的清理建议，帮助用户轻松完成一键式清理。
