@@ -751,19 +751,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [NLPchina/ansj_seg](https://github.com/NLPchina/ansj_seg) | ansj 分词.ict 的真正 java 实现.分词效果速度都超过开源版的 ict. 中文分词
 [如何优雅关闭 Spring Boot 应用](https://juejin.im/post/5d3869585188257f6a20a02c)
 [Flink 与 Hive 的磨合期 - InfoQ 写作平台](https://xie.infoq.cn/article/73c7ecb7ebb6c66b1713dcca5)
-
-
-
-
-
-
-
-
-
-
-
-
-
 [learn_python3_spider](https://github.com/wistbean/learn_python3_spider) | 一份从 0 到 1 学习 Python 爬虫教程，内容含有如何抓包，各种爬虫常用的模块使用，实战教程，最后还教你如何反爬虫 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HDZypo4a5)
 [xingag/spider_python](https://github.com/xingag/spider_python) python 爬虫
 [lianjia-scrawler](https://github.com/XuefengHuang/lianjia-scrawler)：该项目提供一个链家网全国房源爬虫工具，数据存储目前支持 Mysql
@@ -918,3 +905,23 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [nas-tools](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/jxxghp/nas-tools) NAS 媒体库资源自动整理工具。支持资源检索和订阅、媒体库整理和通知服务的 NAS 媒体库工具，这是一个用爱发电的项目，可以不爱但请不要伤害。
 [label-studio](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/heartexlabs/label-studio) 开源的数据标注工具。支持音频、文本、图像、视频、时间序列等，多种类型数据的标注和注释工具。
 [sql-injection-payload-list](https://github.com/payloadbox/sql-injection-payload-list) sql 注入例子
+[gifsicle](https://github.com/kohler/gifsicle) 压缩和编辑 GIF 图片的工具。它是一款体积小、功能强大的 GIF 图片处理工具，不仅可以压缩 GIF 图片，还支持合并多个 GIF、导出所有帧、查看图片信息、减少帧数、设置循环次数、延迟、编辑某一帧等功能。
+[CPU-X](https://github.com/X0rg/CPU-X) 一款显示电脑 CPU、主板等信息的免费工具。能够显示设备的 CPU、主板、内存、显卡、操作系统等信息，支持 GUI 和命令行两种启动方式，适用于 Linux 和 FreeBSD 操作系统。
+[acl](https://github.com/acl-dev/acl) 一款跨平台的网络通信库和服务器框架。它既可以做网络通信的客户端，也可以编写服务器端，支持 HTTP、SMTP、ICMP、MQTT、Redis、Memcache 多种常见协议，以及 XML、JSON、BASE64 等编码格式。
+[jsoncrack.com](https://github.com/AykutSarac/jsoncrack.com) 优雅的 JSON 数据可视化工具。该项目不是简单的展示 JSON 数据，而是将其转化为类似脑图的形式，支持放大/缩小、展开/收缩、搜索节点、导出图片等操作，还可以快速部署成服务。
+[pg_activity](https://github.com/dalibo/pg_activity) 类似 top 的 PostgreSQL 数据库命令行监控工具。一条命令就能实时查看 PostgreSQL 数据库状态和每条 SQL 语句执行详情、耗时、占用资源、读/写速度等信息的工具。
+[style2paints](一款给线稿上色的 AI 辅助工具。能够帮助用户给没有上色的图片，快速完成上色的 AI 工具，上色效果广受好评，完全免费开箱即用。)
+[X Spring File Storage](https://spring-file-storage.xuyanwu.cn/) 在 SpringBoot 中通过简单的方式将文件存储到 本地、FTP、SFTP、WebDAV、阿里云OSS、华为云OBS、七牛云Kodo、腾讯云COS、百度云 BOS、又拍云USS、MinIO、 AWS S3、金山云 KS3、美团云 MSS、京东云 OSS、天翼云 OOS、移动云 EOS、沃云 OSS、 网易数帆 NOS、Ucloud US3、青云 QingStor、平安云 OBS、首云 OSS、IBM COS、其它兼容 S3 协议的平台
+[masscan](https://github.com/robertdavidgraham/masscan) 超快的 IP 端口扫描工具。异步的 TCP 端口扫描器，特点就是快。最快能在 5 分钟内扫描完整个互联网，但要小心别把本机打挂了。
+[jellyfin](https://github.com/jellyfin/jellyfin) 优秀的本地媒体库管理工具。这是一个完全免费、支持中文、安装简单、跨平台、功能强大的媒体库管理系统。它能把原本躺在文件夹里的视频文件，变成包含封面、描述、评分、演员表等信息的“影碟”，让视频整整齐齐、赏心悦目，还支持视频续播、订阅更新、多端可看，让你可以远离广告优雅地追剧。
+[srs](https://github.com/ossrs/srs) 一款简单、高效的实时视频服务器。高性能的流媒体服务器，支持 RTMP、WebRTC、HLS 和 HTTP-FLV 等协议，常用来构建直播和视频会议的后端服务。
+[30dayMakeCppServer](https://github.com/yuesong-feng/30dayMakeCppServer) 从零编写一个 C++ 服务器的教程。该项目包含图文教程和源码，讲解了 socket、epoll、线程池、CMake 等知识点，适合有一定 C/C++ 基础的小伙伴学习。
+[ImHex](https://github.com/WerWolv/ImHex) 保护视力的十六进制编辑器。面向逆向工程师和程序员的编辑器，可用来查看、解码、分析和编辑二进制数据。它功能丰富、界面炫酷、多彩高亮，而且项目更新积极，比如最初不支持中文路径的问题，现已解决可正常使用。
+[mizu](https://github.com/up9inc/mizu) 强大的 Kubernetes API 流量查看工具。如果把 k8s 比作操作系统，那它就是 k8s 上的 tcpdump，使用起来就像 Chrome 开发者工具一样简单直接，能够让 k8s 上微服务之间的网络通信一览无遗。
+[trivy](https://github.com/aquasecurity/trivy) 一款全面的容器安全扫描工具。目前最流行的开源容器镜像漏洞扫描工具，拥有速度快、精准度高、依赖检测、机密检查、对 CI 友好等特点。它不仅安装简单而且容易上手，仅需一条命令，即可发现镜像存在的安全漏洞。
+[spring-cloud-tencent](https://github.com/Tencent/spring-cloud-tencent) 腾讯开源的一站式微服务解决方案。基于 Spring Cloud 的服务治理框架，提供了微服务领域常见的服务注册与发现、配置中心、服务路由、限流熔断以及元数据链路透传等能力。
+[jvm-sandbox](https://github.com/alibaba/jvm-sandbox) 一种 JVM 的非侵入式运行期 AOP 解决方案。简单点说就是如果线上 Java 服务出现故障，需要加一条日志定位问题，通过该项目可以在不重新部署服务的情况下，完成增加日志的操作。它还支持线上故障模拟、请求录制和结果回放等功能。
+[LogicFlow](https://github.com/didi/LogicFlow) 滴滴开源的流程图编辑框架。该项目提供了一系列流程图交互和编辑的功能，支持实现脑图、ER 图、UML、工作流等各种场景。
+[PPTist](https://github.com/pipipi-pikachu/PPTist) 在线编辑和演示 PPT 的应用。该项目采用 Vue3+TypeScript 构建，还原了大部分 Office PowerPoint 常用功能，支持在线编辑、演示和导出 PPT 文件。
+[Umi-OCR](https://github.com/hiroi-sora/Umi-OCR) 基于 PaddleOCR 的 OCR 图片转文字识别软件。完全免费、可离线使用的开源软件，支持截屏识别文字、批量导入图片、横/竖排文字，还可以自动忽略水印区域，适用于 Win10 操作系统。
+[vim-config](https://github.com/AnnatarHe/vim-config) Vim 配置
