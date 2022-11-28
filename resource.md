@@ -925,3 +925,10 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [PPTist](https://github.com/pipipi-pikachu/PPTist) 在线编辑和演示 PPT 的应用。该项目采用 Vue3+TypeScript 构建，还原了大部分 Office PowerPoint 常用功能，支持在线编辑、演示和导出 PPT 文件。
 [Umi-OCR](https://github.com/hiroi-sora/Umi-OCR) 基于 PaddleOCR 的 OCR 图片转文字识别软件。完全免费、可离线使用的开源软件，支持截屏识别文字、批量导入图片、横/竖排文字，还可以自动忽略水印区域，适用于 Win10 操作系统。
 [vim-config](https://github.com/AnnatarHe/vim-config) Vim 配置
+[eepay](https://github.com/jeequan/jeepay) Jeepay是一套适合互联网企业使用的开源支付系统，支持多渠道服务商和普通商户模式。已对接微信支付，支付宝，云闪付官方接口，支持聚合码支付。
+[cockpit](https://github.com/cockpit-project/cockpit) 基于 Web 的服务器图形界面。这是一款开源的服务器管理工具，让你可以通过 Web 界面轻松管理 Linux 服务器，支持配置防火墙、Web 终端、容器管理、查看系统日志等功能。
+[Rocket.Chat](https://github.com/RocketChat/Rocket.Chat) 一款可自由定制的企业级开源通信平台。功能丰富的通信平台，可自托管做为 Slack 的开源替代品。支持创建频道、团队和讨论等多种不同功能的群聊，消息支持图片、文件、视频和语音，拥有包括 Windows、Linux、macOS、Android 和 iOS 在内的多种客户端。
+[YOURLS](https://github.com/YOURLS/YOURLS) 完全免费的短网址服务。采用 PHP 编写的短网址服务，它完全开源可自行搭建服务，支持数据统计、地理位置、可视化等功能。
+[Macast](https://github.com/xfangfang/Macast) 一款轻巧的投屏接收器。该项目可以让电脑接收来自手机的视频、图片和音乐投屏，支持手机上的主流视频和音乐软件，以及其它符合 DLNA 协议的软件。无打扰地运行在状态栏和菜单栏，适用于 Windows、macOS、Linux 操作系统。
+[sms_forwarding](https://github.com/chenxuuu/sms_forwarding) 超低成本的短信转发器。通过该项目仅需 50 元就可以制作出一个短信转发器，实现不用手机接收验证码。
+[hackingtool](https://github.com/Z4nzu/hackingtool) 黑客工具全家桶。该项目收录了各种黑客工具，包括破解密码、SQL 注入、钓鱼攻击、XSS、DDos 等。
