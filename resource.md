@@ -932,3 +932,7 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Macast](https://github.com/xfangfang/Macast) 一款轻巧的投屏接收器。该项目可以让电脑接收来自手机的视频、图片和音乐投屏，支持手机上的主流视频和音乐软件，以及其它符合 DLNA 协议的软件。无打扰地运行在状态栏和菜单栏，适用于 Windows、macOS、Linux 操作系统。
 [sms_forwarding](https://github.com/chenxuuu/sms_forwarding) 超低成本的短信转发器。通过该项目仅需 50 元就可以制作出一个短信转发器，实现不用手机接收验证码。
 [hackingtool](https://github.com/Z4nzu/hackingtool) 黑客工具全家桶。该项目收录了各种黑客工具，包括破解密码、SQL 注入、钓鱼攻击、XSS、DDos 等。
+[All-Defense-Tool](https://github.com/guchangan1/All-Defense-Tool) 本项目集成了全网优秀的攻防武器工具项目，包含自动化利用，子域名、目录扫描、端口扫描等信息收集工具，各大中间件、cms漏洞利用工具，爆破工具、内网横向及免杀、社工钓鱼以及应急响应等资料。
+[CMWTAT_Digital_Edition](https://github.com/TGSAN/CMWTAT_Digital_Edition) CloudMoe Windows 10/11 Activation Toolkit get digital license, the best open source Win 10/11 activator in GitHub. GitHub 上最棒的开源 Win10/Win11 数字权利（数字许可证）激活工具！
+[Yin-Hongwei / music-website](https://github.com/Yin-Hongwei/music-website) 🎧 Vue + SpringBoot + MyBatis 音乐网站
+
