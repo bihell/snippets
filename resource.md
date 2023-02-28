@@ -935,4 +935,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [All-Defense-Tool](https://github.com/guchangan1/All-Defense-Tool) 本项目集成了全网优秀的攻防武器工具项目，包含自动化利用，子域名、目录扫描、端口扫描等信息收集工具，各大中间件、cms漏洞利用工具，爆破工具、内网横向及免杀、社工钓鱼以及应急响应等资料。
 [CMWTAT_Digital_Edition](https://github.com/TGSAN/CMWTAT_Digital_Edition) CloudMoe Windows 10/11 Activation Toolkit get digital license, the best open source Win 10/11 activator in GitHub. GitHub 上最棒的开源 Win10/Win11 数字权利（数字许可证）激活工具！
 [Yin-Hongwei / music-website](https://github.com/Yin-Hongwei/music-website) 🎧 Vue + SpringBoot + MyBatis 音乐网站
-
+[ecapture](https://github.com/gojue/ecapture) capture SSL/TLS text content without CA cert using eBPF. supports Linux/Android x86_64/Aarch64.
+[Edgedb](https://github.com/edgedb/edgedb) 一款采用图-关系模型的新型开源数据库。一个底层由 PostgreSQL 提供支持的开源数据库，在兼容关系数据库特性的同时，结合了 ORM 的声明模式和 GraphQL 式的深度查询。自带 WebUI 界面，支持在线编辑数据、查询、关系可视化等功能。
+[esp32-weather-epd](https://github.com/lmarzen/esp32-weather-epd) 自制的天气应用
