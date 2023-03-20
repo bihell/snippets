@@ -938,3 +938,4 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [ecapture](https://github.com/gojue/ecapture) capture SSL/TLS text content without CA cert using eBPF. supports Linux/Android x86_64/Aarch64.
 [Edgedb](https://github.com/edgedb/edgedb) 一款采用图-关系模型的新型开源数据库。一个底层由 PostgreSQL 提供支持的开源数据库，在兼容关系数据库特性的同时，结合了 ORM 的声明模式和 GraphQL 式的深度查询。自带 WebUI 界面，支持在线编辑数据、查询、关系可视化等功能。
 [esp32-weather-epd](https://github.com/lmarzen/esp32-weather-epd) 自制的天气应用
+[acg-faka](https://github.com/lizhipay/acg-faka) 个人发卡源码，发卡系统，二次元发卡系统，二次元发卡源码，发卡程序，动漫发卡，PHP发卡源码，异次元发卡
