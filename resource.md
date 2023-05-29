@@ -941,3 +941,13 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
   [acg-faka](https://github.com/lizhipay/acg-faka) 个人发卡源码，发卡系统，二次元发卡系统，二次元发卡源码，发卡程序，动漫发卡，PHP发卡源码，异次元发卡
 
 [GreaterWMS](https://github.com/GreaterWMS/GreaterWMS) 可商用的开源仓库管理系统。该项目是采用福特亚太区售后物流仓储供应链流程的仓库系统，它提供了客户管理、订单管理、库存管理、供应商管理、盘点等模块，支持手机、电脑等多种设备。
+[Dperf](https://github.com/baidu/dperf) 一款能模拟巨大流量的压测工具。该项目是基于 DPDK 开发的高性能压测工具，能够每秒建立千万级的 HTTP 连接、亿级别的并发请求和数百 Gbps 的吞吐量。
+[VPet](https://github.com/LorisYounger/VPet) 一款虚拟桌宠模拟器。这是一款 Windows 桌面宠物软件，支持摸头、喂食、喝水、打工、睡觉、玩耍等多种互动方式。
+[Dozzle](https://github.com/amir20/dozzle) 轻巧的 Docker 实时日志查看工具。这是一个实时监控 Docker 日志的 Web 应用，打包成了一个非常小的 Docker 应用。它开箱即用、占用内存少、不存储任何日志文件，支持更加友好的日志展示、容器名称模糊搜索、正则表达式搜索日志等功能。
+[Scrutiny](https://github.com/AnalogJ/scrutiny) 一款监控硬盘运行状况的仪表板。这是 smartd 的 WebUI 平台，smartd 是一个守护进程，它能够监视拥有 S.M.A.R.T.(自我监测、分析及报告技术) 规范的硬盘。该项目基于 smartd 实现了硬盘各项指标的可视化界面，并增加了告警、自定义阈值等功能。
+[Hidden](https://github.com/dwarvesf/hidden) 帮助隐藏 macOS 菜单栏图标的小工具。它能够灵活地隐藏菜单栏应用，让你的 Mac 看起来更加简洁，可通过 App Store 一键安装。
+[Easydict](https://github.com/tisfeng/Easydict) 一个简洁优雅的翻译词典 macOS App。开箱即用，支持离线 OCR 识别，支持有道词典，🍎苹果系统翻译，DeepL，谷歌，百度和火山翻译。A concise and elegant Dictionary and Translator macOS App for looking up words and translating text.
+[AnimatedDrawings](https://github.com/facebookresearch/AnimatedDrawings) 让画作动起来的 AI 项目。这是 Meta AI 研究院开源的动画库，它能让你的画作动起来。无论是小朋友画的小人，还是高水平的卡通人物，该项目都能让它们跟着你一起做动作。
+[Bark](https://github.com/suno-ai/bark) Text-Prompted 生成音频的模型。该项目可以根据你输入的文本提示生成音频，甚至可以指定背景声音，比如我爱 HG (大笑)，生成的语音会包含爽朗的笑声。它还可以模拟音乐、声效，比传统的文本转语音更智能。
+[PlayEdu](https://github.com/PlayEdu/PlayEdu) 一款 Java 写的内部培训系统。这是一款基于 SpringBoot+React 开发而成的视频培训系统，它界面清爽、交互流畅，支持上传资源、创建部门、添加学员、指派课程等功能，可用于企业和机构搭建内部培训平台。
+
