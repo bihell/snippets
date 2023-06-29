@@ -950,4 +950,9 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [AnimatedDrawings](https://github.com/facebookresearch/AnimatedDrawings) 让画作动起来的 AI 项目。这是 Meta AI 研究院开源的动画库，它能让你的画作动起来。无论是小朋友画的小人，还是高水平的卡通人物，该项目都能让它们跟着你一起做动作。
 [Bark](https://github.com/suno-ai/bark) Text-Prompted 生成音频的模型。该项目可以根据你输入的文本提示生成音频，甚至可以指定背景声音，比如我爱 HG (大笑)，生成的语音会包含爽朗的笑声。它还可以模拟音乐、声效，比传统的文本转语音更智能。
 [PlayEdu](https://github.com/PlayEdu/PlayEdu) 一款 Java 写的内部培训系统。这是一款基于 SpringBoot+React 开发而成的视频培训系统，它界面清爽、交互流畅，支持上传资源、创建部门、添加学员、指派课程等功能，可用于企业和机构搭建内部培训平台。
-
+[ChatGLM2-6B](https://github.com/THUDM/ChatGLM2-6B) An Open Bilingual Chat LLM | 开源双语对话语言模型
+[Logan](https://github.com/Meituan-Dianping/Logan) 面向终端的统一日志服务。由美团技术团队开源的一整套前端日志系统，包含客户端 SDK、日志处理和管理平台。它适用于移动端 APP、Web、小程序、IoT 等终端场景下的实时日志收集。
+[Geometrize](https://github.com/Tw1ddle/geometrize) 将图像用几何图形重绘的工具。该项目可以用圆形、三角形、矩形等几何图形重新绘制图像，并将结果导出为 SVG、PNG、JPG、GIF 等格式。
+[Gotenberg](https://github.com/gotenberg/gotenberg) 基于 Docker 的生成 PDF 文件服务。它支持通过 Docker 启动一个服务，该服务可以通过 API 与 Chromium 和 LibreOffice 进行交互。让你可以通过调用接口，轻松地将网页、HTML、Markdown、Word、Excel 等格式的文档转换为 PDF 文件。
+[Sourcegraph](https://github.com/sourcegraph/sourcegraph) 一款强大的代码搜索平台。该项目能够对代码库进行语义索引和分析，支持正则表达式搜索、输入搜索条件时的自动补全、类似 IDE 的跳转到定义和引用。它可以用于构建公司内部的代码搜索平台，帮助程序员完成跨项目的代码查找、代码审查、代码追踪等。
+[SurveyKing](https://github.com/javahuang/SurveyKing) 功能强大的调查问卷系统。这是一款 Java 写的问卷调查和考试系统，支持 20 多种题型、Excel 导入问卷、白名单答卷、公开查询、数据导出等功能。
