@@ -956,3 +956,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Gotenberg](https://github.com/gotenberg/gotenberg) 基于 Docker 的生成 PDF 文件服务。它支持通过 Docker 启动一个服务，该服务可以通过 API 与 Chromium 和 LibreOffice 进行交互。让你可以通过调用接口，轻松地将网页、HTML、Markdown、Word、Excel 等格式的文档转换为 PDF 文件。
 [Sourcegraph](https://github.com/sourcegraph/sourcegraph) 一款强大的代码搜索平台。该项目能够对代码库进行语义索引和分析，支持正则表达式搜索、输入搜索条件时的自动补全、类似 IDE 的跳转到定义和引用。它可以用于构建公司内部的代码搜索平台，帮助程序员完成跨项目的代码查找、代码审查、代码追踪等。
 [SurveyKing](https://github.com/javahuang/SurveyKing) 功能强大的调查问卷系统。这是一款 Java 写的问卷调查和考试系统，支持 20 多种题型、Excel 导入问卷、白名单答卷、公开查询、数据导出等功能。
+[NotionNext](https://github.com/tangly1024/NotionNext) 使用 NextJS + Notion API 实现的，支持多种部署方案的静态博客，无需服务器、零门槛搭建网站，为Notion和所有创作者设计。 (A static blog built with NextJS and Notion API, supporting multiple deployment options. No server required, zero threshold to set up a website. Designed for Notion and all creators.)
+[slash](https://github.com/boojack/slash) A bookmarking and url shortener, save and share your links very easily.
