@@ -958,3 +958,19 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [SurveyKing](https://github.com/javahuang/SurveyKing) 功能强大的调查问卷系统。这是一款 Java 写的问卷调查和考试系统，支持 20 多种题型、Excel 导入问卷、白名单答卷、公开查询、数据导出等功能。
 [NotionNext](https://github.com/tangly1024/NotionNext) 使用 NextJS + Notion API 实现的，支持多种部署方案的静态博客，无需服务器、零门槛搭建网站，为Notion和所有创作者设计。 (A static blog built with NextJS and Notion API, supporting multiple deployment options. No server required, zero threshold to set up a website. Designed for Notion and all creators.)
 [slash](https://github.com/boojack/slash) A bookmarking and url shortener, save and share your links very easily.
+[miniob](https://github.com/oceanbase/miniob) 从 0 到 1 数据库内核实战教程。该项目是 OceanBase 团队基于华中科技大学数据库课程原型，联合多所高校重新开发的、从零上手数据库的学习项目。它结构简单、代码简洁，不仅有文字讲解和视频教程，还有由浅入深的题目。通过理论+实战的方式，帮忙初学者迅速掌握内核模块功能和协同关系，提高工程编码能力，有助于在面试和工作中脱颖而出。
+[Pop](https://github.com/charmbracelet/pop) 在终端发邮件的工具。这是一款用 Go 写的命令行发邮件的工具，它支持 TUI 和命令行两种使用方式，还以可以通过管道和其它工具结合，实现例如 AI 编写邮件等功能。
+[URLFinder](https://github.com/pingc0y/URLFinder) 一款快速提取网页信息的工具。该项目可以快速爬取网页上的 URL 地址、JS 文件里的 API 接口等信息，支持批量抓取、深入抓取、安全抓取等模式。
+[Gping](https://github.com/orf/gping) Rust 写的 ping 工具。该项目能够以折线图的方式，实时展示 ping 的结果，支持 Windows、Linux 和 macOS 操作系统。
+[Book4_Power-Of-Matrix](https://github.com/Visualize-ML/Book4_Power-of-Matrix) 《矩阵力量》。该书介绍了向量、矩阵、向量空间、矩阵分解、微积分、空间几何等知识，内含全彩图解和 Python 示例代码。
+[SearchEngine](https://github.com/wangshusen/SearchEngine) 《搜索引擎技术》。该书的作者是小红书的算法工程师，内容涵盖了搜索引擎基础、机器学习基础、排序、查询词推荐、决定用户体验的要素等方面，所以不要被它朴实无华的书名所迷惑。
+[poster-design](https://github.com/palxiao/poster-design) 一款漂亮且功能强大的在线图片设计器，仿稿定设计，适用于多种场景：海报生成、电商产品图、文章长图、视频/公众号封面等，让设计更简单！A beautiful online image designer, suitable for various scenarios like generate posters, making design easier.
+[WeHalo](https://github.com/savingrun/WeHalo) 清爽的微信小程序版博客。该项目是基于 Halo 博客后端的微信小程序，可以轻松地将博客内容搬到微信小程序上，支持个人名片、博文展示、评论、搜索文章、自定义导航栏等功能。
+[Nvitop](https://github.com/XuehaiPan/nvitop) 用 top 命令的方式查看 NVIDIA GPU 和进程状态。这是一款 NVIDIA 设备和进程监控工具，拥有多彩高亮的界面，实时更新的进程和设备信息，支持过滤进程、鼠标控制、发送信号等功能。
+[Barrier](https://github.com/debauchee/barrier) 一套键盘鼠标控制多台电脑的工具。该项目通过模拟 KVM 切换器功能，实现多台电脑、不同操作系统，共享一套键盘鼠标，让工作流程更加高效。它安装简单使用方便，无需复杂的配置，支持自定义热键、多种操作系统、可视化操作界面等功能。
+[Dependencies](https://github.com/lucasg/Dependencies) 查看 DLL 依赖关系的工具。DLL 文件即动态链接库文件是一种共享库文件，Windows 系统上的可执行文件(.exe) 一般包含多个 .dll 后缀的文件。该项目是 Windows 上查看 DLL 文件依赖树的工具，能够帮助解决因依赖缺失，导致运行 .exe 程序失败的问题。
+[Kopia](https://github.com/kopia/kopia) 好用的跨平台备份工具。适用于 Windows、Linux 和 macOS 的备份/还原工具，它能够将指定的文件和目录加密压缩后生成快照，然后上传到远程服务器或云存储，实现远程备份数据的功能，开箱即用支持命令行和 GUI 两种使用方式。
+[Photoprism](https://github.com/photoprism/photoprism) 带 AI 功能的开源私人云相册。该项目是用 Go 语言写的在线私人相册，它稳定、部署方便，支持浏览/备份图片、按地点/时间线浏览照片、移动端自动备份照片，以及人脸识别、图片自动分类等功能，可用来搭建私人相册管理你的照片。
+[WePush](https://github.com/rememberber/WePush) 专注批量推送的小工具。该项目是用 Java 写的批量推送桌面工具，支持自定义消息、预览消息、批量导入用户、多账号管理、定时推送等功能，目前已支持公众号模板消息、企业微信、微信客服、短信、邮件等消息类型。
+[Python-Holidays](https://github.com/vacanza/python-holidays) 处理假期的 Python 库。该项目支持动态生成国家/地区和省份公布的法定节假日，可以快速地判断指定日期是否为节假日。
+[Tacticalrmm](https://github.com/amidaware/tacticalrmm) 一个远程监控和管理 PC 的工具。该项目是采用 Django+Vue.js 构建的 IT 管理平台，支持类似 TeamViewer 的远程桌面控制、远程执行命令和脚本、上传和下载文件、警报等功能。
