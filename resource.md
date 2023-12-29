@@ -974,3 +974,6 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [WePush](https://github.com/rememberber/WePush) 专注批量推送的小工具。该项目是用 Java 写的批量推送桌面工具，支持自定义消息、预览消息、批量导入用户、多账号管理、定时推送等功能，目前已支持公众号模板消息、企业微信、微信客服、短信、邮件等消息类型。
 [Python-Holidays](https://github.com/vacanza/python-holidays) 处理假期的 Python 库。该项目支持动态生成国家/地区和省份公布的法定节假日，可以快速地判断指定日期是否为节假日。
 [Tacticalrmm](https://github.com/amidaware/tacticalrmm) 一个远程监控和管理 PC 的工具。该项目是采用 Django+Vue.js 构建的 IT 管理平台，支持类似 TeamViewer 的远程桌面控制、远程执行命令和脚本、上传和下载文件、警报等功能。
+[Sshwifty](https://github.com/nirui/sshwifty) 一款专为Web设计的SSH和Telnet连接器
+[dujiaoka](https://github.com/assimon/dujiaoka) 🦄独角数卡(自动售货系统)-开源站长自动化售货解决方案、高效、稳定、快速！ https://www.youtube.com/watch?v=QeKk5O-B2DQ&list=WL&index=7 利用Docker搭建独角数卡的USDT支付方式，轻松收取加密货币
+[pingvin-share](https://github.com/stonith404/pingvin-share) 一个专注于文件分享的高颜值轻量小工具！
