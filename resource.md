@@ -977,3 +977,11 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Sshwifty](https://github.com/nirui/sshwifty) 一款专为Web设计的SSH和Telnet连接器
 [dujiaoka](https://github.com/assimon/dujiaoka) 🦄独角数卡(自动售货系统)-开源站长自动化售货解决方案、高效、稳定、快速！ https://www.youtube.com/watch?v=QeKk5O-B2DQ&list=WL&index=7 利用Docker搭建独角数卡的USDT支付方式，轻松收取加密货币
 [pingvin-share](https://github.com/stonith404/pingvin-share) 一个专注于文件分享的高颜值轻量小工具！
+[Sensitive-Word](https://github.com/houbb/sensitive-word) 用于过滤敏感词的 Java 库。该项目是基于 DFA 算法实现的高性能敏感词过滤工具，词库收录了 6w+ 内容，支持自定义敏感词、白名单、替换策略、数字常见形式的互换、忽略重复词等功能。
+[SMS4J](https://github.com/dromara/SMS4J) Java 的短信服务聚合框架。该项目集成了国内众多第三方短信服务，简化了接入多个短信 SDK 的流程，仅通过修改配置文件，就能轻松实现发送短信的功能。
+[Tailspin](https://github.com/bensadeh/tailspin) 一款实用的日志高亮命令行工具。该项目是 Rust 写的命令行查看日志的工具，它无需配置开箱即用，通过高亮的形式，突出显示数字、日期、IP、URL 等内容，让重要的信息一目了然。
+[Wondershaper](https://github.com/magnific0/wondershaper) Linux 限制网络带宽的工具。该项目通过使用 iproute 的 tc 命令，实现了对 Linux 网络带宽限速的功能，支持多网卡、限制最大上传/下载速率。
+[Listmonk](https://github.com/knadh/listmonk) 开源的邮件列表和营销平台。这是一个开箱即用的邮件营销平台，可以帮助你管理邮件订阅者、创建和发送邮件、分析营销数据。可查看邮件阅读率、链接点击率等，支持自托管适用于个人和企业。
+[Dockge](https://github.com/louislam/dockge) 一个美观、易用的 Docker Compose 管理平台。该项目提供了一个 Web 界面，用于管理 docker-compose.yaml 文件。它开箱即用、界面设计精美，支持交互式编辑 compose.yaml 文件、更新 docker 镜像，以及启动、停止、重启、删除 docker 等操作。
+[Tiny-Rdm](https://github.com/tiny-craft/tiny-rdm) 一款轻量级的跨平台 Redis 桌面客户端。该项目是基于 WebView2 的 Redis 桌面客户端，拥有小巧的体积和精美的界面，同时支持中文。它提供了多种连接方式、分段加载、慢日志、转码显示等功能，可以在 Windows、Linux 和 macOS 系统上使用。
+[Text_blind_watermark](https://github.com/guofei9987/text_blind_watermark) 给文本加盲水印的 Python 库。通过该项目可以将一段隐秘信息嵌入到明文中，嵌入前后的明文无变化。简单说就是给文本打上隐藏水印，适合在版权保护、数据泄漏溯源、数据安全等场景使用，支持 macOS 的 Chrome 浏览器、苹果备忘录、macOS/iPhone 的微信和钉钉等应用。
