@@ -1,12 +1,3 @@
-[a597873885/webfunny_monitor](https://github.com/a597873885/webfunny_monitor) | 通过向 html 页面中插入一段简单的 JS 探针代码，实现无埋点监控前端页面的用户行为，包括但不限于 PV/UV、报错日志、请求日志、静态资源加载情况、用户点击行为以及截图信息等等，目的在于帮助前端开发提高解决线上问题的效率。页面 DEMO: | 520 | CSS | 11/29 |
-[【自荐项目】基于 OpenResty 的高性能 API 网关系统](https://github.com/apioak/apioak)
-[xluohome/phonedata](https://github.com/xluohome/phonedata) | 手机号码归属地信息库、手机号归属地查询 phone.dat 最后更新：2019 年 11 月 | 656 | Go | 11/16 |
-[ls0f/phone](https://github.com/ls0f/phone) | 手机号码归属地库
-[SpringBoot2.0 整合 WebSocket，实现后端数据实时推送！](https://juejin.im/post/5ddc7ff7518825731c34b332)
-[ffmpeg-libav-tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)：《笨方法学 FFmpeg libav》
-[RuoYi](https://gitee.com/y_project/RuoYi) 基于SpringBoot的权限管理系统 易读易懂、界面简洁美观。 核心技术采用Spring、MyBatis、Shiro没有任何其它重度依赖。直接运行即可用  http://ruoyi.vip
-[music-website](https://github.com/Yin-Hongwei/music-website) Vue + SpringBoot + MyBatis 音乐网站
-[KGQA-Based-On-medicine](https://github.com/YeYzheng/KGQA-Based-On-medicine) | 一个基于医药知识图谱的智能问答系统，支持疾病症状、疾病用药、药品查询等功能 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/HxaTtmRx6)
 [pngquant](https://pngquant.org/)：一个开源的 png 图片压缩器
 [TeaWeb/build](https://github.com/TeaWeb/build) | TeaWeb-可视化的 Web 代理服务。DEMO: http://teaos.cn:7777 | 382 | Go | 11/26 |
 [changmingxie/tcc-transaction](https://github.com/changmingxie/tcc-transaction) | tcc-transaction 是 TCC 型事务 java 实现 | 4.3k | Java | 11/13 |
