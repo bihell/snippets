@@ -161,7 +161,6 @@
 [wukong](https://github.com/huichen/wukong)：高度可定制的全文搜索引擎
 [gusibi/python-weixin](https://github.com/gusibi/python-weixin) | 微信(weixin\|wechat) Python SDK 支持开放平台和公众平台 支持微信小程序云开发 | 625 | Python | 10/31 |
 [Gourouting/giligili](https://github.com/Gourouting/giligili) | gin+gorm 开发的视频网站示例 | 253 | Go | 09/04 |
-[爱资料工具](https://www.toolnb.com/) | 收录了许多超实用的工具 | [![](https://raw.githubusercontent.com/GitHubDaily/GitHubDaily/master/assets/sina_logo.png)](https://weibo.com/5722964389/Hrn5cfIgy)
 [axhello/douyu-vue](https://github.com/axhello/douyu-vue) | 用 vue 写的斗鱼手机端页面 | 214 | Vue | 01/19 |
 [DataV-Team/DataV](https://github.com/DataV-Team/DataV) | Vue 数据可视化组件库（类似阿里 DataV，大屏数据展示），提供 SVG 的边框及装饰、图表、水位图、飞线图等组件，简单易用，长期更新(React 版已发布) | 781 | Vue | 11/28 |
 [ego008/goyoubbs](https://github.com/ego008/goyoubbs) | golang 实现的 youBBS，自动安装、更新 HTTPS | 265 | Go | 11/29 |
@@ -975,3 +974,5 @@ Flink 消费 Kafka 到 HDFS 实现及详解 - 哥不是小萝莉 - 博客园 htt
 [Dockge](https://github.com/louislam/dockge) 一个美观、易用的 Docker Compose 管理平台。该项目提供了一个 Web 界面，用于管理 docker-compose.yaml 文件。它开箱即用、界面设计精美，支持交互式编辑 compose.yaml 文件、更新 docker 镜像，以及启动、停止、重启、删除 docker 等操作。
 [Tiny-Rdm](https://github.com/tiny-craft/tiny-rdm) 一款轻量级的跨平台 Redis 桌面客户端。该项目是基于 WebView2 的 Redis 桌面客户端，拥有小巧的体积和精美的界面，同时支持中文。它提供了多种连接方式、分段加载、慢日志、转码显示等功能，可以在 Windows、Linux 和 macOS 系统上使用。
 [Text_blind_watermark](https://github.com/guofei9987/text_blind_watermark) 给文本加盲水印的 Python 库。通过该项目可以将一段隐秘信息嵌入到明文中，嵌入前后的明文无变化。简单说就是给文本打上隐藏水印，适合在版权保护、数据泄漏溯源、数据安全等场景使用，支持 macOS 的 Chrome 浏览器、苹果备忘录、macOS/iPhone 的微信和钉钉等应用。
+[MaxKB](https://github.com/1Panel-dev/MaxKB) 💬 基于 LLM 大语言模型的知识库问答系统。开箱即用，支持快速嵌入到第三方业务系统，1Panel 官方出品。
+
